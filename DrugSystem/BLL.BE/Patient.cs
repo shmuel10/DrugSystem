@@ -8,9 +8,10 @@ namespace BLL.BE
 {
     class Patient : Person
     {
-        public Patient()
-        {
-           
-        }
+        public double Weight { get; set; }
+        public List<Medicine> OldMedicines { get; set; }
+        public List<Medicine> CurrentMedicines { get; set; }
+
+
     }
 }

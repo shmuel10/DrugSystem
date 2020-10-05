@@ -15,5 +15,10 @@ namespace BLL.BE
             public string Street { get; set; }
             public string BuildingNumber { get; set; }
         }
+        public struct Date {
+            public int Year { get; set; }
+            public int Month { get; set; }
+            public int Day { get; set; }
+        }
     }
 }

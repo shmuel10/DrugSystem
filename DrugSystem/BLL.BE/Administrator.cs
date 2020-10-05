@@ -8,5 +8,6 @@ namespace BLL.BE
 {
     class Administrator : Person
     {
+        public string Password { get; set; }
     }
 }
