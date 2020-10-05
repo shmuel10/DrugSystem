@@ -8,5 +8,16 @@ namespace BLL.BE
 {
     class Doctor : Person
     {
+        public string Specialty { get; set; }
+        public void AddPation()
+        {
+            //To Do
+        }
+        public Prescription AddPrescription()
+        {
+            //To Do
+
+            return null;
+        }
     }
 }

@@ -9,5 +9,15 @@ namespace BLL.BE
     class Administrator : Person
     {
         public string Password { get; set; }
+        public void AddPerson(Person person)
+        {
+            //To Do
+
+        }
+        public void AddMedicion()
+        {
+            //To Do
+
+        }
     }
 }
