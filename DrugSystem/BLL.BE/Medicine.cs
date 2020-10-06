@@ -8,6 +8,7 @@ namespace BLL.BE
 {
     class Medicine
     {
+        public string MedicineCode { get; set; }
         public string CommercialName { get; set; }
         public string GenericName { get; set; }
         public string Manufacturer { get; set; }

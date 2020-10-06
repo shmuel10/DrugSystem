@@ -14,7 +14,7 @@ namespace BLL.BE
             public string FirstName { get; set; }
             public string LastName { get; set; }
         }
-            public struct Address
+        public struct Address
         {
             public string City { get; set; }
             public string Street { get; set; }

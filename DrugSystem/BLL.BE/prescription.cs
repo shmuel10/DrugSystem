@@ -7,12 +7,16 @@ using static BLL.BE.AuxiliaryObjects;
 
 namespace BLL.BE
 {
+    enum MedicineType { Pill, Syrup, Suppository }
     class Prescription
     {
-        public Patient PatientDetailes { get; set; }
-        public Medicine MedicineDetailes { get; set; }
-        public Doctor DoctorDetailes { get; set; }
-        public Date MyProperty { get; set; }
-
+        public string DoctorLicenceNumber { get; set; }
+        public string PatientID { get; set; }
+        public string MedicineCode { get; set; }
+        public Date StartDate { get; set; }
+        public Date ExpireDate { get; set; }
+        public double TimesADay { get; set; }
+        public MedicineType MedicineForm { get; set; }
+        public double Amount { get; set; }
     }
 }

@@ -6,14 +6,12 @@ using System.Threading.Tasks;
 
 namespace BLL.BE
 {
-    class Doctor : Person
+    class Doctor : User
     {
+        public string LicenceNumber { get; set; }
         public string Specialty { get; set; }
-        public void AddPation()
-        {
-            //To Do
-        }
-        public Prescription AddPrescription()
+      
+        public Prescription CreatePrescription()
         {
             //To Do
 

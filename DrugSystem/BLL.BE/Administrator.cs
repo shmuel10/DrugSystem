@@ -6,15 +6,14 @@ using System.Threading.Tasks;
 
 namespace BLL.BE
 {
-    class Administrator : Person
+    class Administrator : User
     {
-        public string Password { get; set; }
-        public void AddPerson(Person person)
+        public void AddUser(User person)
         {
             //To Do
 
         }
-        public void AddMedicion()
+        public void AddMedicine()
         {
             //To Do
 
