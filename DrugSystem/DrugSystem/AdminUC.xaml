@@ -5,8 +5,61 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DrugSystem"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
-       
+             d:DesignHeight="450" d:DesignWidth="800" FlowDirection="RightToLeft">
+    <UserControl.Background>
+        <ImageBrush ImageSource="Backgrounds/AdminBackground.png"/>
+    </UserControl.Background>
+   
+    <Viewbox VerticalAlignment="Top">
+    <Grid Margin="50 70 50 0">
+        <TabControl x:Name="tabs" BorderBrush="CornflowerBlue"  
+                   BorderThickness="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1"  >
+
+            <TabItem Header="רופאים"  Name="DoctorsTab" TabIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+                    <ListView x:Name="DoctorsList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
+                                <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                                <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
+                                <GridViewColumn Header="עיר" Width="150" DisplayMemberBinding="{Binding Address.City}" />
+                                <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
+                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                </TabItem>
+            
+            <TabItem Header="פקידים"  Name="OfficersTab" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+                    <ListView x:Name="OfficersList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
+                                <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                                <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
+                                <GridViewColumn Header="עיר" Width="150" DisplayMemberBinding="{Binding Address.City}" />
+                                <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
+                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+            </TabItem>
+            
+            <TabItem Header="מטופלים"  Name="PatientsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+                    <ListView x:Name="PatientsList">
+                        <ListView.View>
+                            <GridView>
+                                <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
+                                <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                                <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
+                                <GridViewColumn Header="עיר" Width="150" DisplayMemberBinding="{Binding Address.City}" />
+                                <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
+                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+            </TabItem>
+        </TabControl>
     </Grid>
+    </Viewbox>
 </UserControl>
