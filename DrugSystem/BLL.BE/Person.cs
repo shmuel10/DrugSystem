@@ -7,7 +7,7 @@ using static BLL.BE.AuxiliaryObjects;
 
 namespace BLL.BE
 {
-    abstract class Person
+    public abstract class Person
     {
         public string ID { get; set; }
         public Name PersonName { get; set; }

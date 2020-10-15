@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.BE
 {
-    class User : Person
+    abstract public class User : Person
     {
         public string Passowrd { get; set; }
         public bool AddPerson { get; set; }

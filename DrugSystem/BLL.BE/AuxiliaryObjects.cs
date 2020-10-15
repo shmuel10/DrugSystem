@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.BE
 {
-    class AuxiliaryObjects
+    public class AuxiliaryObjects
     {
         public enum Gender { Male, Feamle, Other }
         public struct Name

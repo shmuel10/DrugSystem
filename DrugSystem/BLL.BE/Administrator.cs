@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.BE
 {
-    class Administrator : User
+    public class Administrator : User
     {
         public void AddUser(User person)
         {

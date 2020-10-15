@@ -7,8 +7,8 @@ using static BLL.BE.AuxiliaryObjects;
 
 namespace BLL.BE
 {
-    enum MedicineType { Pill, Syrup, Suppository }
-    class Prescription
+    public enum MedicineType { Pill, Syrup, Suppository }
+    public class Prescription
     {
         public string DoctorLicenceNumber { get; set; }
         public string PatientID { get; set; }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BLL;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,9 +23,11 @@ namespace DrugSystem
     {
         UserControl UC;
         Grid AdminGr, LoginGr;
+        IBll bLL;
         public MainWindow()
         {
             InitializeComponent();
+            bLL = new BllImplentation();
             AdminGr = this.AdminGrid;
             LoginGr = this.LoginGrid;
             AdminGr.Visibility = Visibility.Collapsed;
