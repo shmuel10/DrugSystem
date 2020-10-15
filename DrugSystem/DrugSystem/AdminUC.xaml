@@ -15,7 +15,7 @@
         <TabControl x:Name="tabs" BorderBrush="CornflowerBlue"  
                    BorderThickness="3" HorizontalAlignment="Stretch" VerticalAlignment="Top" Grid.Column="1"  >
 
-            <TabItem Header="רופאים"  Name="DoctorsTab" TabIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="רופאים"  Name="DoctorsTab" TabIndex="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
                     <ListView x:Name="DoctorsList">
                         <ListView.View>
                             <GridView>
