@@ -3,10 +3,26 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:DrugSystem"
-        mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
-        
+        mc:Ignorable="d" d:DesignWidth="1838" d:DesignHeight="1530.842">
+    <Grid x:Name="MainGrid">
+        <Grid x:Name="LoginGrid">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1.5*"/>
+                <ColumnDefinition Width="2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+            <local:LoginUC x:Name="LoginUC" Grid.Column="1" ClickHandler="Login_func" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch"/>
+        </Grid>
+        <Grid x:Name="AdminGrid">
+            <local:AdminUC HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </Grid>
     </Grid>
-</Window>
+   
+  </Window>
