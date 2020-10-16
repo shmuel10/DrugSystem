@@ -9,9 +9,9 @@ namespace BLL.BE
     abstract public class User : Person
     {
         public string Passowrd { get; set; }
-        public bool AddPerson { get; set; }
-        public bool AddMedicine { get; set; }
-        public bool UpdatePatientDetails { get; set; }
-        public bool CreatePrescriptions { get; set; }
+        public bool CanAddPerson { get; set; }
+        public bool CanAddMedicine { get; set; }
+        public bool CanUpdatePatientDetails { get; set; }
+        public bool CanCreatePrescriptions { get; set; }
     }
 }

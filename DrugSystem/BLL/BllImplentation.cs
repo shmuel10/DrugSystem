@@ -1,4 +1,5 @@
 ﻿using BLL.BE;
+using DAL;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,6 +10,7 @@ namespace BLL
 {
     public class BllImplentation : IBll
     {
+        private IDAL dal;
         public void AddAdmin(Administrator administrator)
         {
             throw new NotImplementedException();

@@ -10,12 +10,5 @@ namespace BLL.BE
     {
         public string LicenceNumber { get; set; }
         public string Specialty { get; set; }
-      
-        public Prescription CreatePrescription()
-        {
-            //To Do
-
-            return null;
-        }
     }
 }
