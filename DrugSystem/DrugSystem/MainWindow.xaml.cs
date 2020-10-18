@@ -27,10 +27,10 @@ namespace DrugSystem
         public MainWindow()
         {
             InitializeComponent();
-            bLL = new BllImplentation();
+            bLL = new BllImplementation();
             AdminGr = this.AdminGrid;
-          LoginGr = this.LoginGrid;
-           AdminGr.Visibility = Visibility.Collapsed;
+            LoginGr = this.LoginGrid;
+            AdminGr.Visibility = Visibility.Collapsed;
         }
 
         public void Login_func(object sender, RoutedEventArgs e)
