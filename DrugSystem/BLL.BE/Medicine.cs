@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace BLL.BE
 {
-    class Medicine
+    public class Medicine
     {
         public string MedicineCode { get; set; }
         public string CommercialName { get; set; }

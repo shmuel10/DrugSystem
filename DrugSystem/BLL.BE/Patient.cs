@@ -8,7 +8,7 @@ using static BLL.BE.AuxiliaryObjects;
 
 namespace BLL.BE
 {
-    class Patient : Person
+    public class Patient : Person
     {
         public double Weight { get; set; }
         public Name FatherName { get; set; }
