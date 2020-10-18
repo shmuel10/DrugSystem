@@ -1,0 +1,27 @@
+﻿<UserControl x:Class="DrugSystem.ControlSide"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DrugSystem" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system="clr-namespace:System;assembly=mscorlib">
+    <UserControl.Resources>
+        <system:Double x:Key="IconSize">30</system:Double>
+    </UserControl.Resources>
+
+    <Grid >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Button Grid.Row="0" Background="Green" Margin="10" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="הוסף">
+            <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
+                                     Width="{StaticResource IconSize}" />
+        </Button>
+        <Button Grid.Row="1" Background="Red" Margin="10" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="הסר">
+            <materialDesign:PackIcon Kind="Remove" Height="{StaticResource IconSize}" 
+                                     Width="{StaticResource IconSize}" />
+        </Button>
+    </Grid>
+</UserControl>

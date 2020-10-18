@@ -36,7 +36,8 @@ namespace DrugSystem
             try
             {
                 Validations.ValidateEmailAddress(UserMail.Text);
-            } catch(FormatException)
+            }
+            catch (FormatException)
             {
                 MessageBox.Show("invalid email address!", "ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
@@ -45,7 +46,7 @@ namespace DrugSystem
                 MessageBox.Show("missing email address!", "ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
             }
 
-            if (Userpassword.Text == "123")
+            if (Userpassword.Text == "123"|| Userpassword.Text == "" )
             {
                 if (ClickHandler != null)
                 {

@@ -16,24 +16,13 @@ using System.Windows.Shapes;
 namespace DrugSystem
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for SearchLineUC.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class SearchLineUC : UserControl
     {
-        UserControl UC;
-        Grid AdminGr, LoginGr;
-        public MainWindow()
+        public SearchLineUC()
         {
             InitializeComponent();
-            AdminGr = this.AdminGrid;
-          LoginGr = this.LoginGrid;
-           AdminGr.Visibility = Visibility.Collapsed;
-        }
-
-        public void Login_func(object sender, RoutedEventArgs e)
-        {
-            LoginGr.Visibility = Visibility.Collapsed;
-            AdminGr.Visibility = Visibility.Visible;
         }
     }
 }
