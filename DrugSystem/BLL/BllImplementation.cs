@@ -8,12 +8,16 @@ using System.Threading.Tasks;
 
 namespace BLL
 {
-    public class BllImplentation : IBll
+    public class BllImplementation : IBll
     {
         private IDAL dal;
+        public BllImplementation()
+        {
+            dal = new DalImplementation();
+        }
         public void AddAdmin(Administrator administrator)
         {
-            throw new NotImplementedException();
+            dal.AddAdmin(new Administrator());
         }
 
         public void AddDoctor(Doctor doctor)

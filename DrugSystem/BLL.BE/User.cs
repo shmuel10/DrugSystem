@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.ComponentModel.DataAnnotations;
 
 namespace BLL.BE
 {
-    abstract public class User : Person
+    [Table("tblUsers")]
+    public abstract class User : Person
     {
         public string Passowrd { get; set; }
         public bool CanAddPerson { get; set; }
