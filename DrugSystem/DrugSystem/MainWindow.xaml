@@ -5,24 +5,24 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:DrugSystem"
-        mc:Ignorable="d" d:DesignWidth="1838" d:DesignHeight="1530.842">
+        MinHeight="450" MinWidth="500">
     <Grid x:Name="MainGrid">
         <Grid x:Name="LoginGrid">
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="2*"/>
-                <ColumnDefinition Width="1.5*"/>
-                <ColumnDefinition Width="2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
-                <RowDefinition Height="1.5*"/>
+                <RowDefinition Height="Auto"/>
                 <RowDefinition Height="1*"/>
             </Grid.RowDefinitions>
             <local:LoginUC x:Name="LoginUC" Grid.Column="1" ClickHandler="Login_func" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch"/>
         </Grid>
-        <Grid x:Name="AdminGrid">
+
+        <Grid x:Name="AdminGrid" Visibility="Collapsed">
             <local:AdminUC HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
         </Grid>
     </Grid>
-   
-  </Window>
+</Window>
