@@ -7,12 +7,14 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.IdentityModel.Protocols;
 using System.Configuration;
+using System.ComponentModel.DataAnnotations;
+using System.Windows.Forms;
 
 namespace DAL
 {
     public class DalImplementation : IDAL
     {
-        DrugSystemContext db = new DrugSystemContext();
+        DrugSystemContext DB = new DrugSystemContext();
         public DalImplementation()
         {
 
@@ -20,40 +22,44 @@ namespace DAL
 
         public void AddAdmin(Administrator administrator)
         {
-            db.testSqls.Add(new testSql("123", "simcha"));
-                db.SaveChanges();
-
-
+            DB.AdminsTable.Add(administrator);
+            DB.SaveChanges();
         }
 
         public void AddDoctor(Doctor doctor)
         {
-            throw new NotImplementedException();
+
+            DB.PersonsTable.Add(doctor);
+            DB.SaveChanges();
         }
 
         public void AddMedicine(Medicine medicine)
         {
-            throw new NotImplementedException();
+            DB.MedicinesTable.Add(medicine);
+            DB.SaveChanges();
         }
 
         public void AddOfficer(Officer officer)
         {
-            throw new NotImplementedException();
+            DB.PersonsTable.Add(officer);
+            DB.SaveChanges();
         }
 
         public void AddPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            DB.PersonsTable.Add(patient);
+            DB.SaveChanges();
         }
 
         public void AddPrescription(Prescription prescription)
         {
-            throw new NotImplementedException();
+            DB.PrescriptionsTable.Add(prescription);
+            DB.SaveChanges();
         }
 
         public Doctor GetDoctor(string DocrorsID)
         {
-            throw new NotImplementedException();
+            return DB.PersonsTable.Find(DocrorsID) as Doctor;
         }
 
         public List<Doctor> GetDoctors()
@@ -61,9 +67,9 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Medicine GetMedicine()
+        public Medicine GetMedicine(string MedicineCode)
         {
-            throw new NotImplementedException();
+            return DB.MedicinesTable.Find(MedicineCode);
         }
 
         public List<Medicine> GetMedicines()
@@ -71,9 +77,9 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Officer GetOfficer()
+        public Officer GetOfficer(string OfficerID)
         {
-            throw new NotImplementedException();
+            return DB.PersonsTable.Find(OfficerID) as Officer;
         }
 
         public List<Officer> GetOfficers()
@@ -81,9 +87,9 @@ namespace DAL
             throw new NotImplementedException();
         }
 
-        public Patient GetPatient()
+        public Patient GetPatient(string PatientID)
         {
-            throw new NotImplementedException();
+            return DB.PersonsTable.Find(PatientID) as Patient;
         }
 
         public List<Patient> GetPatients()
@@ -99,6 +105,11 @@ namespace DAL
         public List<Prescription> GetPrescriptions()
         {
             throw new NotImplementedException();
+        }
+
+        public User GetUserByEmail(string emailAddress)
+        {
+            return DB.PersonsTable.Where(user => user.EmailAddress == emailAddress).FirstOrDefault() as User;
         }
 
         public void UpdateDoctor(Doctor doctor)

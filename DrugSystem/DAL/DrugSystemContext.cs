@@ -14,8 +14,10 @@ namespace DAL
         {
 
         }
-        public DbSet<User> UsersTable { get; set; }
         public DbSet<Administrator> AdminsTable { get; set; }
-        public DbSet<testSql> testSqls { get; set; }
+
+        public DbSet<Person> PersonsTable { get; set; }
+        public DbSet<Prescription> PrescriptionsTable { get; set; }
+        public DbSet<Medicine> MedicinesTable { get; set; }
     }
 }

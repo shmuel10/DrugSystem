@@ -9,6 +9,9 @@ namespace DAL
 {
     public interface IDAL
     {
+        //Users DB
+        User GetUserByEmail(string emailAddress);
+
         //Admins DB
         void AddAdmin(Administrator administrator);
         
@@ -21,19 +24,19 @@ namespace DAL
         //Officers DB
         void AddOfficer(Officer officer);
         void UpdateOfficer(Officer officer);
-        Officer GetOfficer();
+        Officer GetOfficer(string OfficerID);
         List<Officer> GetOfficers();
 
         //Medicines DB
         void AddMedicine(Medicine medicine);
         void UpdateMedicine(Medicine medicine);
-        Medicine GetMedicine();
+        Medicine GetMedicine(string MedicineCode);
         List<Medicine> GetMedicines();
 
         //Patients DB
         void AddPatient(Patient patient);
         void UpdatePatient(Patient patient);
-        Patient GetPatient();
+        Patient GetPatient(string PatientID);
         List<Patient> GetPatients();
 
         //Prescription DB

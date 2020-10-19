@@ -84,7 +84,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="DalImplementation.cs" />
     <Compile Include="DrugSystemContext.cs" />
     <Compile Include="IDAL.cs" />

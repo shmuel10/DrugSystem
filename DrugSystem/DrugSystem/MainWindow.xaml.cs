@@ -23,11 +23,11 @@ namespace DrugSystem
     {
         UserControl UC;
         Grid AdminGr, LoginGr;
-        IBll bLL;
+        IBll Bll;
         public MainWindow()
         {
             InitializeComponent();
-            bLL = new BllImplementation();
+            Bll = new BllImplementation();
             AdminGr = this.AdminGrid;
             LoginGr = this.LoginGrid;
             AdminGr.Visibility = Visibility.Collapsed;

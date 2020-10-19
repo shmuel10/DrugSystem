@@ -8,8 +8,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BLL.BE
 {
-    [Table("tblUsers")]
-    public abstract class User : Person
+    [Table("Users")]
+    public class User : Person
     {
         public string Passowrd { get; set; }
         public bool CanAddPerson { get; set; }

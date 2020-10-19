@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace BLL.BE
 {
-    [Table("tblAdmin")]
+    [Table("Admins")]
     public class Administrator : User
     {
         public Administrator()

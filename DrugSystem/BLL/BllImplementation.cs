@@ -11,43 +11,64 @@ namespace BLL
     public class BllImplementation : IBll
     {
         private IDAL dal;
+        private Validations validations;
         public BllImplementation()
         {
             dal = new DalImplementation();
+            validations = new Validations();
         }
         public void AddAdmin(Administrator administrator)
         {
-            dal.AddAdmin(new Administrator());
+            validations.ValidateAdmin(administrator);
+            dal.AddAdmin(administrator);
         }
 
         public void AddDoctor(Doctor doctor)
         {
-            throw new NotImplementedException();
+            validations.ValidateDoctor(doctor);
+            dal.AddDoctor(doctor);        
         }
 
         public void AddMedicine(Medicine medicine)
         {
-            throw new NotImplementedException();
+            dal.AddMedicine(medicine);
         }
 
         public void AddOfficer(Officer officer)
         {
-            throw new NotImplementedException();
+            validations.ValidateOfficer(officer);
+            dal.AddOfficer(officer);
         }
 
         public void AddPatient(Patient patient)
         {
-            throw new NotImplementedException();
+            validations.ValidatePatient(patient);
+            dal.AddPatient(patient);
         }
 
         public void AddPrescription(Prescription prescription)
         {
-            throw new NotImplementedException();
+            dal.AddPrescription(prescription);
+        }
+
+        public User GetLoginUser(string userMail, string Password)
+        {
+            User user = dal.GetUserByEmail(userMail);
+            if(user == null)
+            {
+                throw new ArgumentException("User Dosn't Exist");
+            }
+            if (!user.Passowrd.Equals(Password))
+            {
+                throw new ArgumentException("Wrong Password");
+            }
+            return dal.GetUserByEmail(userMail);
         }
 
         public bool VerifyLogIn(string EmailAddress, string Password)
         {
-            throw new NotImplementedException();
+            User user = dal.GetUserByEmail(EmailAddress);
+            return (user.Passowrd.Equals(Password));
         }
     }
 }
