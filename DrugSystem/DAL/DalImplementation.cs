@@ -22,6 +22,7 @@ namespace DAL
 
         public void AddAdmin(Administrator administrator)
         {
+            //    DoesPersonExist(administrator);
             DB.AdminsTable.Add(administrator);
             DB.SaveChanges();
         }
@@ -62,7 +63,7 @@ namespace DAL
             return DB.PersonsTable.Find(DocrorsID) as Doctor;
         }
 
-        public List<Doctor> GetDoctors()
+        public List<Doctor> GetAllDoctors()
         {
             throw new NotImplementedException();
         }
@@ -82,9 +83,18 @@ namespace DAL
             return DB.PersonsTable.Find(OfficerID) as Officer;
         }
 
-        public List<Officer> GetOfficers()
+        public List<Officer> GetAllOfficers()
         {
-            throw new NotImplementedException();
+            return GetAllElementsOfTypeT<Officer>();
+        }
+
+        private List<T> GetAllElementsOfTypeT<T>()
+        {
+            return DB.PersonsTable.OfType<T>().ToList();
+        }
+        public List<User> GetAllUsers()
+        {
+            return GetAllElementsOfTypeT<User>();
         }
 
         public Patient GetPatient(string PatientID)
@@ -92,9 +102,9 @@ namespace DAL
             return DB.PersonsTable.Find(PatientID) as Patient;
         }
 
-        public List<Patient> GetPatients()
+        public List<Patient> GetAllPatients()
         {
-            throw new NotImplementedException();
+            return GetAllElementsOfTypeT<Patient>();
         }
 
         public List<Prescription> GetPatientsPrescriptions(string PatientID)
@@ -109,7 +119,20 @@ namespace DAL
 
         public User GetUserByEmail(string emailAddress)
         {
-            return DB.PersonsTable.Where(user => user.EmailAddress == emailAddress).FirstOrDefault() as User;
+            return DB.PersonsTable.Where(user => user.EmailAddress == emailAddress) as User;
+        }
+        public bool DoesPersonExist(Person person)
+        {
+            if (DoesElementExistInDB(user => user.ID == person.ID))
+                throw new ArgumentException("The ID number is already stored in the system");
+            if (DoesElementExistInDB(user => user.EmailAddress == person.EmailAddress))
+                throw new ArgumentException("The email address is already stored in the system");
+            return false;
+
+        }
+        private bool DoesElementExistInDB(Func<Person, bool> predicate)
+        {
+            return DB.PersonsTable.Where(predicate).FirstOrDefault() != null;
         }
 
         public void UpdateDoctor(Doctor doctor)

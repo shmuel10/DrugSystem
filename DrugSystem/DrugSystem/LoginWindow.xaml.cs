@@ -27,7 +27,6 @@ namespace DrugSystem
         public MainWindow()
         {
             InitializeComponent();
-           TextBox user = this.mail
             // Bll = new BllImplementation();          
         }
 
