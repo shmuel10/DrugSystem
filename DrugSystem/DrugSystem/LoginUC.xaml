@@ -5,8 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DrugSystem" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"
-           
+             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"        
              mc:Ignorable="d" 
              d:DesignHeight="550" d:DesignWidth="500">
 

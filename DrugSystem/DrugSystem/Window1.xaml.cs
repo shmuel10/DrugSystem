@@ -10,17 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DrugSystem
 {
     /// <summary>
-    /// Interaction logic for ControlSide.xaml
+    /// Interaction logic for Window1.xaml
     /// </summary>
-    public partial class ControlSide : UserControl
+    public partial class Window1 : Window
     {
-        public ControlSide()
+        public Window1()
         {
             InitializeComponent();
         }

@@ -86,18 +86,24 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="ControlSide.xaml.cs">
-      <DependentUpon>ControlSide.xaml</DependentUpon>
+    <Compile Include="DoctorUC.xaml.cs">
+      <DependentUpon>DoctorUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="SearchLineUC.xaml.cs">
       <DependentUpon>SearchLineUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ShellWindow.xaml.cs">
+      <DependentUpon>ShellWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validations.cs" />
+    <Compile Include="Window1.xaml.cs">
+      <DependentUpon>Window1.xaml</DependentUpon>
+    </Compile>
     <Page Include="AdminUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ControlSide.xaml">
+    <Page Include="DoctorUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -105,7 +111,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -119,11 +125,19 @@
     <Compile Include="LoginUC.xaml.cs">
       <DependentUpon>LoginUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="LoginWindow.xaml.cs">
+      <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
     <Page Include="SearchLineUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ShellWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -169,10 +183,16 @@
     <Resource Include="Icons\PasswordIcon.png" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Backgrounds\AdminBackground.png" />
+    <Resource Include="Backgrounds\BlueBackground.png" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\SearchIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\HomeIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Icons\Home.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />

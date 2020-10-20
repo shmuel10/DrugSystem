@@ -1,0 +1,28 @@
+﻿<UserControl x:Class="DrugSystem.DoctorUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DrugSystem"
+             FlowDirection="RightToLeft"
+             mc:Ignorable="d" >
+    <Grid Background="WhiteSmoke" Margin="20 0 20 0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1*"/>
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+        <local:SearchLineUC Grid.Row="0"/>
+        <ListView x:Name="DoctorsList" Grid.Row="1" Style="{x:Null}" Background="White" MinHeight="400">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
+                    <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                    <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
+                    <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
+                    <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
+                    <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</UserControl>

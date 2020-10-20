@@ -4,82 +4,111 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DrugSystem"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800" FlowDirection="RightToLeft">
-    <UserControl.Background>
-        <ImageBrush ImageSource="Backgrounds/AdminBackground.png"/>
-    </UserControl.Background>
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:system1="clr-namespace:System;assembly=mscorlib"
+             FlowDirection="RightToLeft">
 
-    <Viewbox>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="10*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <TabControl x:Name="tabs" Grid.Column="1" BorderThickness="3" MinHeight="600" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
-                <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1" HorizontalAlignment="Stretch" FontWeight="Bold">
-                    <ListView x:Name="DoctorsList" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <UserControl.Resources>
+        <system1:Double x:Key="IconSize">24</system1:Double>
+    </UserControl.Resources>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="10*"/>
+        </Grid.ColumnDefinitions>
+        <TabControl x:Name="tabs" Grid.Column="1" Style="{x:Null}" BorderThickness="3" MinHeight="500" HorizontalAlignment="Stretch" Margin="0 0 50 0">
+            <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <local:SearchLineUC Grid.Row="0"/>
+                    <ListView x:Name="DoctorsList" Grid.Row="1" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                                 <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="עיר" Width="150" DisplayMemberBinding="{Binding Address.City}" />
+                                <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
                                 <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
                                 <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
+                </Grid>
+            </TabItem>
 
-                </TabItem>
-
-                <TabItem Header="פקידים"  Name="OfficersTab" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
-                    <ListView x:Name="OfficersList">
+            <TabItem Header="פקידים"  Name="OfficersTab" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <local:SearchLineUC Grid.Row="0"/>
+                    <ListView x:Name="OfficersList" Grid.Row="1">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                                 <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="עיר" Width="150" DisplayMemberBinding="{Binding Address.City}" />
+                                <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
                                 <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
                                 <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
-                </TabItem>
+                </Grid>
+            </TabItem>
 
-                <TabItem Header="מטופלים"  Name="PatientsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
-                    <ListView x:Name="PatientsList">
+            <TabItem Header="מטופלים"  Name="PatientsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <local:SearchLineUC Grid.Row="0"/>
+                    <ListView x:Name="PatientsList" Grid.Row="1">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                                 <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="עיר" Width="150" DisplayMemberBinding="{Binding Address.City}" />
+                                <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
                                 <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
                                 <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
-                </TabItem>
+                </Grid>
+            </TabItem>
 
-                <TabItem Header="תרופות"  Name="MedsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
-                    <ListView x:Name="MedsList">
+            <TabItem Header="תרופות"  Name="MedsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="10*"/>
+                    </Grid.RowDefinitions>
+                    <local:SearchLineUC Grid.Row="0"/>
+                    <ListView x:Name="MedsList" Grid.Row="1">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                                 <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="עיר" Width="150" DisplayMemberBinding="{Binding Address.City}" />
+                                <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
                                 <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
                                 <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
-                </TabItem>
-            </TabControl>
-            <local:ControlSide Margin="20" Grid.Column="0" VerticalAlignment="Bottom" HorizontalAlignment="Center"/>
-        </Grid>
-    </Viewbox>
+                </Grid>
+            </TabItem>
+        </TabControl>
+        <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="הוסף">
+            <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
+                                     Width="{StaticResource IconSize}" />
+        </Button>
+    </Grid>
 </UserControl>

@@ -12,19 +12,17 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using MahApps.Metro.Controls;
 
 namespace DrugSystem
 {
     /// <summary>
-    /// Interaction logic for AdminUC.xaml
+    /// Interaction logic for DoctorUC.xaml
     /// </summary>
-    public partial class AdminUC : UserControl
-    {   
-        public AdminUC()
+    public partial class DoctorUC : UserControl
+    {
+        public DoctorUC()
         {
             InitializeComponent();
-
         }
     }
 }
