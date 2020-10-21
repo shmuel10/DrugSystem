@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Controls.Primitives;
 using System.Windows.Data;
 using System.Windows.Documents;
 using System.Windows.Input;
@@ -20,11 +21,13 @@ namespace DrugSystem
     public partial class ShellWindow : Window
     {
         private Grid AdminGr, LoginGr, DrGrid;
+        ToggleButton Togglebtn;
         private MenuItem AddNewMed, NewWorker, NewMed, Finish, NewDoctor, NewPatient, NewOfficer, Out;
         public ShellWindow(String user)
         {
             InitializeComponent();
-
+            Togglebtn = this.ColorModeToggle;
+            Togglebtn.IsChecked = true;
             AddNewMed = new MenuItem();
             NewWorker = new MenuItem();
             NewMed = new MenuItem();
@@ -78,6 +81,20 @@ namespace DrugSystem
             //    AdminGr.Visibility = Visibility.Visible;
             //    DrGrid.Visibility = Visibility.Collapsed;
             //}
+        }
+
+        private void ToggleButton_Checked(object sender, RoutedEventArgs e)
+        {
+            Grid MainGrid = this.MainGrid;
+            if ((bool)Togglebtn.IsChecked)
+            {
+                MainGrid.Background = Brushes.Black;
+            }
+            else
+            {
+                MainGrid.Background = Brushes.White;
+            }
+
         }
 
     }

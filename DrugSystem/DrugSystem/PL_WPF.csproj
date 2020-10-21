@@ -89,6 +89,10 @@
     <Compile Include="AddNewDoctor.xaml.cs">
       <DependentUpon>AddNewDoctor.xaml</DependentUpon>
     </Compile>
+    <Compile Include="FloatingControls.xaml.cs">
+      <DependentUpon>FloatingControls.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MyConverter.cs" />
     <Compile Include="DoctorUC.xaml.cs">
       <DependentUpon>DoctorUC.xaml</DependentUpon>
     </Compile>
@@ -102,9 +106,6 @@
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validations.cs" />
-    <Compile Include="Window1.xaml.cs">
-      <DependentUpon>Window1.xaml</DependentUpon>
-    </Compile>
     <Page Include="AddNewDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -114,6 +115,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="DoctorUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="FloatingControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -148,10 +153,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="ShellWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Window1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

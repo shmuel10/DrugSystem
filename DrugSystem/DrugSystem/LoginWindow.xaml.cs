@@ -27,7 +27,7 @@ namespace DrugSystem
         public MainWindow()
         {
             InitializeComponent();
-            // Bll = new BllImplementation();          
+            Bll = new BllImplementation();          
         }
 
         public void Login_func(object sender, RoutedEventArgs e)

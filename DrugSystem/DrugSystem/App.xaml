@@ -20,6 +20,7 @@
                 <Setter Property="wpf:TextFieldAssist.TextFieldCornerRadius" Value="4" />
             </Style>
             <system1:Double x:Key="IconSize">20</system1:Double>
+            <system1:Double x:Key="FontSize">20</system1:Double>
         </ResourceDictionary>
     </Application.Resources>
 </Application>
