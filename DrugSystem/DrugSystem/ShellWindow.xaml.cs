@@ -65,6 +65,7 @@ namespace DrugSystem
             AppMenu.Items.Add(NewMed);
             AppMenu.Items.Add(Finish);
 
+          
             //AdminGr = this.AdminGrid;
             //DrGrid = this.DoctorGrid;
             //if (user == "Doctor")

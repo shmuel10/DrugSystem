@@ -7,17 +7,13 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:system1="clr-namespace:System;assembly=mscorlib"
              FlowDirection="RightToLeft">
-
-    <UserControl.Resources>
-        <system1:Double x:Key="IconSize">24</system1:Double>
-    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <TabControl x:Name="tabs" Grid.Column="1" Style="{x:Null}" BorderThickness="3" MinHeight="500" HorizontalAlignment="Stretch" Margin="0 0 50 0">
-            <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1" FontWeight="Bold">
+            <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -39,7 +35,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="פקידים"  Name="OfficersTab" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+            <TabItem Header="פקידים"  Name="OfficersTab" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -61,7 +57,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="מטופלים"  Name="PatientsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+            <TabItem Header="מטופלים"  Name="PatientsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -83,7 +79,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="תרופות"  Name="MedsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" FontWeight="Bold">
+            <TabItem Header="תרופות"  Name="MedsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -106,7 +102,7 @@
             </TabItem>
         </TabControl>
         <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="הוסף">
+                ToolTip="הוסף" Click="Button_Click">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>

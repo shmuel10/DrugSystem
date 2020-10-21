@@ -3,12 +3,10 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:local="clr-namespace:DrugSystem" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system1="clr-namespace:System;assembly=mscorlib" FlowDirection="RightToLeft"
+        xmlns:local="clr-namespace:DrugSystem" 
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:system1="clr-namespace:System;assembly=mscorlib" FlowDirection="RightToLeft"
         x:Name="Shell">
-
-    <Window.Resources>
-        <system1:Double x:Key="IconSize">20</system1:Double>
-    </Window.Resources>
 
     <Viewbox Stretch="Fill">
         <DockPanel Name="myDock" Style="{x:Null}" LastChildFill="False" >
@@ -28,22 +26,24 @@
                     <Separator Width="15"/>
                     <Button Height="25" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
                         ToolTip="MaterialDesignFloatingActionMiniLightButton">
-                        <materialDesign:PackIcon Kind="ContentSave" Height="{StaticResource IconSize}"
+                        <materialDesign:PackIcon Kind="Home" Height="{StaticResource IconSize}"
+                            Width="{StaticResource IconSize}" />
+                    </Button>
+                    <Separator Width="15"/>
+                    <Button Height="25" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
+                        ToolTip="MaterialDesignFloatingActionMiniLightButton">
+                        <materialDesign:PackIcon Kind="FileDocument" Height="{StaticResource IconSize}"
                             Width="{StaticResource IconSize}" />
                     </Button>
                 </StackPanel>
             </Grid>
             <TextBlock DockPanel.Dock="Bottom" Background="LightGray"/>
             <Grid>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="23*"/>
-                    <ColumnDefinition Width="458*"/>
-                </Grid.ColumnDefinitions>
                 <Grid.Background>
                     <ImageBrush ImageSource="Backgrounds/BlueBackground.png"/>
                 </Grid.Background>
-                <local:AdminUC Visibility="Collapsed" Grid.ColumnSpan="2"/>
-                <local:DoctorUC Visibility="Visible" Grid.ColumnSpan="2"/>
+                <local:AdminUC Visibility="Visible"/>
+                <local:DoctorUC Visibility="Collapsed"/>
             </Grid>
         </DockPanel>
     </Viewbox>

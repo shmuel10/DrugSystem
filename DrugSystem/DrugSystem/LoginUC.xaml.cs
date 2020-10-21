@@ -37,22 +37,23 @@ namespace DrugSystem
 
         private void SignInButton_Click(object sender, RoutedEventArgs e)
         {
-            try
-            {
-                CheckTextBoxNotEmpty();
-                user = Bll.GetLoginUser(UserMail.Text, Userpassword.Text);
-                if (user != null)
-                {
-                    if (ClickHandler != null)
-                    {
-                        ClickHandler.Invoke(sender, e);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
-            }
+            ClickHandler.Invoke(sender, e);
+            //try
+            //{
+            //    CheckTextBoxNotEmpty();
+            //    user = Bll.GetLoginUser(UserMail.Text, Userpassword.Text);
+            //    if (user != null)
+            //    {
+            //        if (ClickHandler != null)
+            //        {
+            //            ClickHandler.Invoke(sender, e);
+            //        }
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message, "ERROR!", MessageBoxButton.OK, MessageBoxImage.Error);
+            //}
         }
 
         private void CheckTextBoxNotEmpty()
