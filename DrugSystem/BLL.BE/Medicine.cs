@@ -12,7 +12,7 @@ namespace BLL.BE
     public class Medicine
     {
         [Key]
-        public string MedicineCode { get; set; }
+        public string MedicineID { get; set; }
         public string CommercialName { get; set; }
         public string GenericName { get; set; }
         public string Manufacturer { get; set; }

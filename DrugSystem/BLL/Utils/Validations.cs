@@ -30,6 +30,12 @@ namespace BLL
         {
             return ValidateUser(administrator);
         }
+
+        internal void ValidateMedicine(Medicine medicine)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool ValidateDoctor(Doctor doctor)
         {
             return ValidateUser(doctor);
@@ -42,6 +48,12 @@ namespace BLL
         {
             return ValidatePerson(patient);
         }
+
+        internal void ValidatePrescription(Prescription prescription)
+        {
+            throw new NotImplementedException();
+        }
+
         public bool ValidateEmailAddress(string EmailToValidate)
         {
             try
@@ -105,9 +117,9 @@ namespace BLL
         public bool ValidateName(Name name)
         {
             string ErrorMessage = null;
-            if (name.FirstName.Length < 1)
+            if (name.FirstName == null || name.FirstName.Length < 1)
                 ErrorMessage += "First Name Is requierd\n";
-            if (name.LastName.Length < 1)
+            if (name.LastName == null || name.LastName.Length < 1)
                 ErrorMessage += "Last Name Is requierd";
             return ErrorMessage == null ? true : throw new ArgumentException(ErrorMessage);
         }
@@ -119,11 +131,13 @@ namespace BLL
             return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password)
                 && hasMinimum8Chars.IsMatch(password) ?
                 true :
-                throw new ArgumentException("Password must contain upper case letters as well as digits");
+                throw new ArgumentException("Password must contain 8 chracters and upper case letters as well as digits");
         }
         public bool ValidatePhoneNumber(string phonenNumber)
         {
-            Regex phoneRegex = new Regex(@"0([23489]|5[0123458]|77)([0-9]{7}");
+            if(phonenNumber == null)
+                throw new ArgumentException("Phone Number Is Required");
+            Regex phoneRegex = new Regex(@"0([23489]|5[0123458]|77)([0-9]{7})");
             return phoneRegex.IsMatch(phonenNumber) ? true :
                 throw new ArgumentException("Invalid Phone Number");
         }

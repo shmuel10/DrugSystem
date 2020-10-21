@@ -16,45 +16,137 @@ namespace BLL
         {
             dal = new DalImplementation();
             validations = new Validations();
+            //AddAdmin(new Administrator() { BirthDate = new AuxiliaryObjects.Date { Day = 20, Month = 10, Year = 2000 } ,
+            //ID = "311215149", EmailAddress="simchapodo@gmail.com", PersonName = new AuxiliaryObjects.Name{ FirstName = "simcha", LastName = "podolsky" }
+            //, PhoneNumber="0556679804", Passowrd="Simchap1"}) ;
+
+            //AddAdmin(new Administrator() {
+            //    BirthDate = new AuxiliaryObjects.Date { Day = 20, Month = 10, Year = 2000 },
+            //    ID = "206322042",
+            //    EmailAddress = "noa96f@gmail.com",
+            //    PersonName = new AuxiliaryObjects.Name { FirstName = "simcha", LastName = "podolsky" },
+            //    PhoneNumber = "0556679804",
+            //    Passowrd = "Simchap1"
+            //});
+            List<User> users = dal.GetAllUsers();
         }
         public void AddAdmin(Administrator administrator)
         {
-            validations.ValidateAdmin(administrator);
-            dal.AddAdmin(administrator);
+            try
+            {
+                validations.ValidateAdmin(administrator);
+                dal.AddAdmin(administrator);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         public void AddDoctor(Doctor doctor)
         {
-            validations.ValidateDoctor(doctor);
-            dal.AddDoctor(doctor);        
+            try
+            {
+                validations.ValidateDoctor(doctor);
+                dal.AddDoctor(doctor);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         public void AddMedicine(Medicine medicine)
         {
-            dal.AddMedicine(medicine);
+            try
+            {
+                validations.ValidateMedicine(medicine);
+                dal.AddMedicine(medicine);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         public void AddOfficer(Officer officer)
         {
-            validations.ValidateOfficer(officer);
-            dal.AddOfficer(officer);
+            try
+            {
+                validations.ValidateOfficer(officer);
+                dal.AddOfficer(officer);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         public void AddPatient(Patient patient)
         {
-            validations.ValidatePatient(patient);
-            dal.AddPatient(patient);
+            try
+            {
+                validations.ValidatePatient(patient);
+                dal.AddPatient(patient);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
         }
 
         public void AddPrescription(Prescription prescription)
         {
-            dal.AddPrescription(prescription);
+            try
+            {
+                validations.ValidatePrescription(prescription);
+                dal.AddPrescription(prescription);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
+        }
+
+        public List<Doctor> GetAllDoctors()
+        {
+            return dal.GetAllDoctors();
+        }
+
+        public List<Medicine> GetAllMedicines()
+        {
+            return dal.GetAllMedicines();
+        }
+
+        public List<Officer> GetAllOfficers()
+        {
+            return dal.GetAllOfficers();
+        }
+
+        public List<Patient> GetAllPatients()
+        {
+            return dal.GetAllPatients();
+        }
+
+        public List<Prescription> GetAllPrescriptions()
+        {
+            return dal.GetAllPrescriptions();
+        }
+
+        public List<User> GetAllUsers()
+        {
+            return dal.GetAllUsers();
+        }
+
+        public Doctor GetDoctor(string DocrorsID)
+        {
+            return dal.GetDoctor(DocrorsID);
         }
 
         public User GetLoginUser(string userMail, string Password)
         {
             User user = dal.GetUserByEmail(userMail);
-            if(user == null)
+            if (user == null)
             {
                 throw new ArgumentException("User Dosn't Exist");
             }
@@ -63,6 +155,51 @@ namespace BLL
                 throw new ArgumentException("Wrong Password");
             }
             return dal.GetUserByEmail(userMail);
+        }
+
+        public Medicine GetMedicine(string MedicineID)
+        {
+            return dal.GetMedicine(MedicineID);
+        }
+
+        public Officer GetOfficer(string OfficerID)
+        {
+            return dal.GetOfficer(OfficerID);
+        }
+
+        public Patient GetPatient(string PatientID)
+        {
+            return dal.GetPatient(PatientID);
+        }
+
+        public List<Prescription> GetPatientsPrescriptions(string PatientID)
+        {
+            return dal.GetPatientsPrescriptions(PatientID);
+        }
+
+        public User GetUserByEmail(string emailAddress)
+        {
+            return dal.GetUserByEmail(emailAddress);
+        }
+
+        public void UpdateDoctor(Doctor doctor)
+        {
+            dal.UpdateDoctor(doctor);
+        }
+
+        public void UpdateMedicine(Medicine medicine)
+        {
+            dal.UpdateMedicine(medicine);
+        }
+
+        public void UpdateOfficer(Officer officer)
+        {
+            dal.UpdateOfficer(officer);
+        }
+
+        public void UpdatePatient(Patient patient)
+        {
+            dal.UpdatePatient(patient);
         }
 
         public bool VerifyLogIn(string EmailAddress, string Password)

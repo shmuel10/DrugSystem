@@ -11,6 +11,7 @@ namespace DAL
     {
         //Users DB
         User GetUserByEmail(string emailAddress);
+        List<User> GetAllUsers();
 
         //Admins DB
         void AddAdmin(Administrator administrator);
@@ -19,29 +20,29 @@ namespace DAL
         void AddDoctor(Doctor doctor);
         void UpdateDoctor(Doctor doctor);
         Doctor GetDoctor(string DocrorsID);
-        List<Doctor> GetDoctors();
+        List<Doctor> GetAllDoctors();
 
         //Officers DB
         void AddOfficer(Officer officer);
         void UpdateOfficer(Officer officer);
         Officer GetOfficer(string OfficerID);
-        List<Officer> GetOfficers();
+        List<Officer> GetAllOfficers();
 
         //Medicines DB
         void AddMedicine(Medicine medicine);
         void UpdateMedicine(Medicine medicine);
         Medicine GetMedicine(string MedicineCode);
-        List<Medicine> GetMedicines();
+        List<Medicine> GetAllMedicines();
 
         //Patients DB
         void AddPatient(Patient patient);
         void UpdatePatient(Patient patient);
         Patient GetPatient(string PatientID);
-        List<Patient> GetPatients();
+        List<Patient> GetAllPatients();
 
         //Prescription DB
         void AddPrescription(Prescription prescription);
-        List<Prescription> GetPrescriptions();
+        List<Prescription> GetAllPrescriptions();
         List<Prescription> GetPatientsPrescriptions(string PatientID);
     }
 }
