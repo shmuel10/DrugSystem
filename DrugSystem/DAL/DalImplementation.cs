@@ -19,68 +19,143 @@ namespace DAL
         {
 
         }
-
+        // add to DB
         public void AddAdmin(Administrator administrator)
         {
-            //    DoesPersonExist(administrator);
+            ThrowExceptionIfPrsonExist(administrator);
             DB.AdminsTable.Add(administrator);
             DB.SaveChanges();
         }
 
         public void AddDoctor(Doctor doctor)
         {
-
+            ThrowExceptionIfPrsonExist(doctor);
             DB.PersonsTable.Add(doctor);
-            DB.SaveChanges();
-        }
-
-        public void AddMedicine(Medicine medicine)
-        {
-            DB.MedicinesTable.Add(medicine);
             DB.SaveChanges();
         }
 
         public void AddOfficer(Officer officer)
         {
+            ThrowExceptionIfPrsonExist(officer);
             DB.PersonsTable.Add(officer);
             DB.SaveChanges();
         }
 
         public void AddPatient(Patient patient)
         {
+            ThrowExceptionIfPrsonExist(patient);
             DB.PersonsTable.Add(patient);
             DB.SaveChanges();
+        }
+        public void AddMedicine(Medicine medicine)
+        {
+            ThrowExceptionIfMedicineExist(medicine);
+            DB.MedicinesTable.Add(medicine);
+            DB.SaveChanges();
+        }
+
+        private void ThrowExceptionIfMedicineExist(Medicine medicine)
+        {
+            if(DB.MedicinesTable.Find(medicine.MedicineID) != null)
+            {
+                throw new ArgumentException("Medicine already exist");
+            }
         }
 
         public void AddPrescription(Prescription prescription)
         {
+            ThrowExceptionIfPrescriptionExist(prescription);
             DB.PrescriptionsTable.Add(prescription);
             DB.SaveChanges();
         }
 
+        private void ThrowExceptionIfPrescriptionExist(Prescription prescription)
+        {
+            if( DB.PrescriptionsTable.Find(prescription.PrescriptionID) != null)
+            {
+                throw new ArgumentException("Medicine already exist");
+            }
+        }
+
+        //update element in DB
+        public void UpdateDoctor(Doctor doctor)
+        {
+            Doctor doctorToUpdate = GetDoctor(doctor.ID);
+            UpdateUser(doctorToUpdate, doctor);
+            doctorToUpdate.Specialty = doctor.Specialty;
+            doctorToUpdate.LicenceNumber = doctor.LicenceNumber;
+            DB.SaveChanges();
+        }
+        private void UpdatePerson(Person personToUpdate, Person updatedPerson)
+        {
+            personToUpdate.Gender = updatedPerson.Gender;
+            personToUpdate.EmailAddress = updatedPerson.EmailAddress;
+            personToUpdate.PersonAddress = updatedPerson.PersonAddress;
+            personToUpdate.PersonName = updatedPerson.PersonName;
+            personToUpdate.PhoneNumber = updatedPerson.PhoneNumber;
+        }
+        private void UpdateUser(User userToUpdate, User updatedUser)
+        {
+            UpdatePerson(userToUpdate, updatedUser);
+            userToUpdate.Passowrd = updatedUser.Passowrd;
+        }
+
+        public void UpdateMedicine(Medicine medicine)
+        {
+            Medicine medicineToUpdate = GetMedicine(medicine.MedicineID);
+            medicineToUpdate.ActiveIngredients = medicine.ActiveIngredients;
+            medicineToUpdate.CommercialName = medicine.CommercialName;
+            medicineToUpdate.DoseCharacteristics = medicine.DoseCharacteristics;
+            medicineToUpdate.GenericName = medicine.GenericName;
+            medicineToUpdate.ImageUrl = medicine.ImageUrl;
+            medicineToUpdate.Manufacturer = medicine.Manufacturer;
+            DB.SaveChanges();
+        }
+
+        public void UpdateOfficer(Officer officer)
+        {
+            Officer officerToUpdate = GetOfficer(officer.ID);
+            UpdateUser(officerToUpdate, officer);
+            DB.SaveChanges();
+        }
+
+        public void UpdatePatient(Patient patient)
+        {
+            Patient patientToUpdate = GetPatient(patient.ID);
+            UpdatePerson(patientToUpdate, patient);
+            patientToUpdate.FamilyDoctor = patient.FamilyDoctor;
+            patientToUpdate.Weight = patient.Weight;
+            patientToUpdate.FatherName = patient.FatherName;
+            DB.SaveChanges();
+        }
+
+        //get elements from DB
         public Doctor GetDoctor(string DocrorsID)
         {
-            return DB.PersonsTable.Find(DocrorsID) as Doctor;
+            Doctor doctor = DB.PersonsTable.Find(DocrorsID) as Doctor;
+            return doctor ?? throw new ArgumentException("Doctor Dosn't exist");
         }
 
         public List<Doctor> GetAllDoctors()
         {
-            throw new NotImplementedException();
+            return GetAllElementsOfTypeT<Doctor>();
         }
 
-        public Medicine GetMedicine(string MedicineCode)
+        public Medicine GetMedicine(string MedicineID)
         {
-            return DB.MedicinesTable.Find(MedicineCode);
+            Medicine medicine = DB.MedicinesTable.Find(MedicineID);
+            return medicine ?? throw new ArgumentException("Medicine Dosn't exist");
         }
 
-        public List<Medicine> GetMedicines()
+        public List<Medicine> GetAllMedicines()
         {
-            throw new NotImplementedException();
+            return DB.MedicinesTable.ToList();
         }
 
         public Officer GetOfficer(string OfficerID)
         {
-            return DB.PersonsTable.Find(OfficerID) as Officer;
+            Officer officer = DB.PersonsTable.Find(OfficerID) as Officer;
+            return officer ?? throw new ArgumentException("Officer Dosn't exist");
         }
 
         public List<Officer> GetAllOfficers()
@@ -99,7 +174,8 @@ namespace DAL
 
         public Patient GetPatient(string PatientID)
         {
-            return DB.PersonsTable.Find(PatientID) as Patient;
+            Patient patient = DB.PersonsTable.Find(PatientID) as Patient;
+            return patient ?? throw new ArgumentException("Patient Dosn't exist");
         }
 
         public List<Patient> GetAllPatients()
@@ -109,50 +185,39 @@ namespace DAL
 
         public List<Prescription> GetPatientsPrescriptions(string PatientID)
         {
-            throw new NotImplementedException();
+            if(DB.PersonsTable.Find(PatientID) == null)
+            {
+                throw new ArgumentException("Patient Dosn't exist");
+            }
+            return DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID).ToList();
         }
 
-        public List<Prescription> GetPrescriptions()
+        public List<Prescription> GetAllPrescriptions()
         {
-            throw new NotImplementedException();
+            return DB.PrescriptionsTable.ToList();
         }
 
         public User GetUserByEmail(string emailAddress)
         {
             return DB.PersonsTable.Where(user => user.EmailAddress == emailAddress) as User;
         }
-        public bool DoesPersonExist(Person person)
+        private void ThrowExceptionIfPrsonExist(Person person)
         {
-            if (DoesElementExistInDB(user => user.ID == person.ID))
+            if (DoesElementExistInPersonsDB(user => user.ID == person.ID))
+            {
                 throw new ArgumentException("The ID number is already stored in the system");
-            if (DoesElementExistInDB(user => user.EmailAddress == person.EmailAddress))
-                throw new ArgumentException("The email address is already stored in the system");
-            return false;
+            }
 
+            if (DoesElementExistInPersonsDB(user => user.EmailAddress == person.EmailAddress))
+            {
+                throw new ArgumentException("The email address is already stored in the system");
+            }
         }
-        private bool DoesElementExistInDB(Func<Person, bool> predicate)
+        private bool DoesElementExistInPersonsDB(Func<Person, bool> predicate)
         {
             return DB.PersonsTable.Where(predicate).FirstOrDefault() != null;
         }
 
-        public void UpdateDoctor(Doctor doctor)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateMedicine(Medicine medicine)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdateOfficer(Officer officer)
-        {
-            throw new NotImplementedException();
-        }
-
-        public void UpdatePatient(Patient patient)
-        {
-            throw new NotImplementedException();
-        }
+       
     }
 }

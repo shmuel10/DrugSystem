@@ -32,7 +32,7 @@ namespace DAL
         void AddMedicine(Medicine medicine);
         void UpdateMedicine(Medicine medicine);
         Medicine GetMedicine(string MedicineCode);
-        List<Medicine> GetMedicines();
+        List<Medicine> GetAllMedicines();
 
         //Patients DB
         void AddPatient(Patient patient);
@@ -42,7 +42,7 @@ namespace DAL
 
         //Prescription DB
         void AddPrescription(Prescription prescription);
-        List<Prescription> GetPrescriptions();
+        List<Prescription> GetAllPrescriptions();
         List<Prescription> GetPatientsPrescriptions(string PatientID);
     }
 }
