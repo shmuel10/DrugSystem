@@ -60,11 +60,19 @@ namespace DrugSystem
         {
             string ErrorMessage = null;
             if (UserMail.Text.Length < 1)
+            {
                 ErrorMessage += "Email Address Is Requierd\n";
+            }
+
             if (Userpassword.Text.Length < 1)
+            {
                 ErrorMessage += "Password Is Requierd\n";
+            }
+
             if (ErrorMessage != null)
+            {
                 throw new ArgumentException(ErrorMessage);
+            }
         }
     }
 }

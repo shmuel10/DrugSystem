@@ -16,8 +16,8 @@ namespace BLL.BE
         public string CommercialName { get; set; }
         public string GenericName { get; set; }
         public string Manufacturer { get; set; }
-        public List<string> ActiveIngredients { get; set; }
-        public List<string> DoseCharacteristics { get; set; }
+        public string ActiveIngredients { get; set; }
+        public string DoseCharacteristics { get; set; }
         public string ImageUrl { get; set; }
     }
 }

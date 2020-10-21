@@ -56,7 +56,7 @@ namespace DAL
 
         private void ThrowExceptionIfMedicineExist(Medicine medicine)
         {
-            if(DB.MedicinesTable.Find(medicine.MedicineID) != null)
+            if (DB.MedicinesTable.Find(medicine.MedicineID) != null)
             {
                 throw new ArgumentException("Medicine already exist");
             }
@@ -71,7 +71,7 @@ namespace DAL
 
         private void ThrowExceptionIfPrescriptionExist(Prescription prescription)
         {
-            if( DB.PrescriptionsTable.Find(prescription.PrescriptionID) != null)
+            if (DB.PrescriptionsTable.Find(prescription.PrescriptionID) != null)
             {
                 throw new ArgumentException("Medicine already exist");
             }
@@ -185,7 +185,7 @@ namespace DAL
 
         public List<Prescription> GetPatientsPrescriptions(string PatientID)
         {
-            if(DB.PersonsTable.Find(PatientID) == null)
+            if (DB.PersonsTable.Find(PatientID) == null)
             {
                 throw new ArgumentException("Patient Dosn't exist");
             }
@@ -218,6 +218,26 @@ namespace DAL
             return DB.PersonsTable.Where(predicate).FirstOrDefault() != null;
         }
 
-       
+        public void AddVisit(Visit visit)
+        {
+            DB.VisitsTable.Add(visit);
+            DB.SaveChanges();
+        }
+
+        public List<Visit> getAllVisits()
+        {
+            return DB.VisitsTable.ToList();
+        }
+
+        public List<Visit> GetAllPatientVisits(string patientID)
+        {
+            return DB.VisitsTable.Where(visit => visit.PatientID.Equals(patientID)).ToList();
+        }
+
+
+        public List<Visit> GetAllDoctorVisits(string doctorID)
+        {
+            return DB.VisitsTable.Where(visit => visit.DoctorID.Equals(doctorID)).ToList();
+        }
     }
 }

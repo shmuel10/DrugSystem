@@ -12,10 +12,12 @@ namespace BLL
     {
         private IDAL dal;
         private Validations validations;
+        private CheckInteraction checkInteraction;
         public BllImplementation()
         {
             dal = new DalImplementation();
             validations = new Validations();
+            checkInteraction = new CheckInteraction();
             //AddAdmin(new Administrator() { BirthDate = new AuxiliaryObjects.Date { Day = 20, Month = 10, Year = 2000 } ,
             //ID = "311215149", EmailAddress="simchapodo@gmail.com", PersonName = new AuxiliaryObjects.Name{ FirstName = "simcha", LastName = "podolsky" }
             //, PhoneNumber="0556679804", Passowrd="Simchap1"}) ;
@@ -28,7 +30,11 @@ namespace BLL
             //    PhoneNumber = "0556679804",
             //    Passowrd = "Simchap1"
             //});
-            List<User> users = dal.GetAllUsers();
+            //List<User> users = dal.GetAllUsers();
+            //AddMedicine(new Medicine() { CommercialName = "Advil", 
+            //ActiveIngredients = new List<string>() { "a", "b", "c" }
+            //});
+            //Medicine m = dal.GetAllMedicines()[0];
         }
         public void AddAdmin(Administrator administrator)
         {
@@ -61,6 +67,7 @@ namespace BLL
             try
             {
                 validations.ValidateMedicine(medicine);
+                medicine.MedicineID = checkInteraction.FindMedicineID(medicine.CommercialName).ToString();
                 dal.AddMedicine(medicine);
             }
             catch (Exception ex)
@@ -69,6 +76,10 @@ namespace BLL
             }
         }
 
+        public void AddVisit(Visit visit)
+        {
+            dal.AddVisit(visit);
+        }
         public void AddOfficer(Officer officer)
         {
             try
@@ -107,7 +118,19 @@ namespace BLL
                 throw new ArgumentException(ex.Message);
             }
         }
+        public List<Visit> GetAllVisits()
+        {
+            return dal.getAllVisits();
+        }
 
+        public List<Visit> GetAllPatientVisits(string patientID)
+        {
+            return dal.GetAllPatientVisits(patientID);
+        }
+        public List<Visit> GetAllDoctorVisits(string doctorID)
+        {
+            return dal.GetAllDoctorVisits(doctorID);
+        }
         public List<Doctor> GetAllDoctors()
         {
             return dal.GetAllDoctors();

@@ -14,10 +14,12 @@ namespace DAL
         {
 
         }
+
         public DbSet<Administrator> AdminsTable { get; set; }
 
         public DbSet<Person> PersonsTable { get; set; }
         public DbSet<Prescription> PrescriptionsTable { get; set; }
         public DbSet<Medicine> MedicinesTable { get; set; }
+        public DbSet<Visit> VisitsTable { get; set; }
     }
 }

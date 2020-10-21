@@ -49,5 +49,14 @@ namespace BLL
         void AddPrescription(Prescription prescription);
         List<Prescription> GetAllPrescriptions();
         List<Prescription> GetPatientsPrescriptions(string PatientID);
+
+        //Visits DB
+        void AddVisit(Visit visit);
+        List<Visit> GetAllVisits();
+        List<Visit> GetAllPatientVisits(string patientID);
+        List<Visit> GetAllDoctorVisits(string doctorID);
+
+
+
     }
 }
