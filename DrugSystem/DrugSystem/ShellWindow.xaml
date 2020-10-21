@@ -7,43 +7,54 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:system1="clr-namespace:System;assembly=mscorlib" FlowDirection="RightToLeft"
         x:Name="Shell">
-
+    <Window.Resources>
+        <local:MyConverter x:Key="FontSizeConverter"/>
+    </Window.Resources>
     <Viewbox Stretch="Fill">
-        <DockPanel Name="myDock" Style="{x:Null}" LastChildFill="False" >
-            <Grid DockPanel.Dock="Top" MinHeight="30" Background="AliceBlue">
+        <DockPanel Name="myDock" Style="{x:Null}" LastChildFill="False">
+            <Grid DockPanel.Dock="Top" MinHeight="30" Background="LightGray">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="0.5*"/>
                     <RowDefinition Height="0.3*"/>
                 </Grid.RowDefinitions>
-                <Menu x:Name="AppMenu" DockPanel.Dock="Top" Style="{x:Null}" Background="AliceBlue"/>
-                <StackPanel Grid.Row="2" Orientation="Horizontal" Style="{x:Null}" Margin="10">
-                   
-                    <Button Height="25" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                        ToolTip="MaterialDesignFloatingActionMiniLightButton">
-                        <materialDesign:PackIcon Kind="Arrow" Height="{StaticResource IconSize}"
-                            Width="{StaticResource IconSize}" />
-                    </Button>
-                    <Separator Width="15"/>
-                    <Button Height="25" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                        ToolTip="MaterialDesignFloatingActionMiniLightButton">
-                        <materialDesign:PackIcon Kind="Home" Height="{StaticResource IconSize}"
-                            Width="{StaticResource IconSize}" />
-                    </Button>
-                    <Separator Width="15"/>
-                    <Button Height="25" Style="{StaticResource MaterialDesignFloatingActionMiniLightButton}"
-                        ToolTip="MaterialDesignFloatingActionMiniLightButton">
-                        <materialDesign:PackIcon Kind="FileDocument" Height="{StaticResource IconSize}"
-                            Width="{StaticResource IconSize}" />
-                    </Button>
-                </StackPanel>
+                <Menu x:Name="AppMenu" DockPanel.Dock="Top" Style="{x:Null}"/>
+                <ToolBarTray Grid.Row="1">
+                    <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                         <Button ToolTip="Save">
+                            <materialDesign:PackIcon Kind="ContentSave" />
+                        </Button>
+                        <Separator />
+                        <Button Command="Cut" ToolTip="Cut" ToolBar.OverflowMode="AsNeeded">
+                            <materialDesign:PackIcon Kind="ContentCut" />
+                        </Button>
+                        <Button Command="Copy" ToolTip="Copy that stuff" ToolBar.OverflowMode="AsNeeded">
+                            <materialDesign:PackIcon Kind="ContentCopy" />
+                        </Button>
+                        <Separator />
+                        <Button Command="Paste" ToolTip="Paste some stuff" ToolBar.OverflowMode="AsNeeded">
+                            <materialDesign:PackIcon Kind="ContentPaste" />
+                        </Button>
+                        <Separator />
+                        <Label Content="Font size:" VerticalAlignment="Center" />
+                        <ComboBox x:Name="FontSizeComboBox">
+                            <ComboBoxItem Content="10" />
+                            <ComboBoxItem IsSelected="True" Content="12" />
+                            <ComboBoxItem Content="14" />
+                            <ComboBoxItem Content="16" />
+                        </ComboBox>
+
+                        <Button ToolTip="Take a nap" ToolBar.OverflowMode="Always">
+                            <materialDesign:PackIcon Kind="Hotel" />
+                        </Button>
+                        <Separator />
+                        <ToggleButton x:Name="ColorModeToggle" ToolTip="מצב חשוך"  Unchecked="ToggleButton_Checked" Checked="ToggleButton_Checked"/>
+                    </ToolBar>
+                </ToolBarTray>
             </Grid>
             <TextBlock DockPanel.Dock="Bottom" Background="LightGray"/>
-            <Grid>
-                <Grid.Background>
-                    <ImageBrush ImageSource="Backgrounds/BlueBackground.png"/>
-                </Grid.Background>
-                <local:AdminUC Visibility="Visible"/>
-                <local:DoctorUC Visibility="Collapsed"/>
+            <Grid x:Name="MainGrid">
+                <local:AdminUC Visibility="Visible" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
+                <local:DoctorUC Visibility="Collapsed"  FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
             </Grid>
         </DockPanel>
     </Viewbox>

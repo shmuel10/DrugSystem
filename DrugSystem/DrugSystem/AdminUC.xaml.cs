@@ -32,5 +32,18 @@ namespace DrugSystem
             AddNewDoctor newd = new AddNewDoctor();
             newd.Show();
         }
+
+        private void Button_PreviewMouseMove(object sender, MouseEventArgs e)
+        {
+            this.FloatingButtons.Visibility = Visibility.Visible;
+
+            //UserControl userControl = this.FloatingButtons;
+            //userControl.Visibility = Visibility.Visible;
+        }
+
+        private void Button_MouseLeave(object sender, MouseEventArgs e)
+        {
+            this.FloatingButtons.Visibility = Visibility.Collapsed;
+        }
     }
 }
