@@ -1,0 +1,64 @@
+﻿<Window x:Class="DrugSystem.VisitWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DrugSystem" xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system1="clr-namespace:System;assembly=mscorlib"
+        Title="VisitWindow" FlowDirection="RightToLeft">
+    <Window.Resources>
+        <system1:Double x:Key="IconSize">5</system1:Double>
+    </Window.Resources>
+    <Viewbox Stretch="Fill">
+        <DockPanel Name="myDock" LastChildFill="False" >
+            <Grid DockPanel.Dock="Top" Background="AliceBlue">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="200"/>
+                    <RowDefinition Height="270"/>
+                </Grid.RowDefinitions>
+                <Line VerticalAlignment="Bottom" Stroke="Red" StrokeThickness="2" Height="1"/>
+                <GroupBox Header="פרטי המטופל" Style="{x:Null}" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="180" Margin="10">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="1*"/>
+                            <RowDefinition Height="1*"/>
+                        </Grid.RowDefinitions>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock x:Name="PatientID" Width="130" Height="18" Text="תעודת זהות" Margin="10"/>
+                            <TextBlock x:Name="PatientName" Width="130" Height="18" Text="שם" Margin="10"/>
+                            <TextBlock x:Name="PatientFatherName" Width="130" Height="18" Text="שם האב" Margin="10"/>
+                            <TextBlock x:Name="PatientBirthDate" Width="130" Height="18" Text="תאריך לידה" Margin="10"/>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Grid.Row="1">
+                            <TextBlock x:Name="PatientEmailAddress" Width="130" Height="18" Text="דואר אלקטרוני" Margin="10"/>
+                            <TextBlock x:Name="PatientWeight" Width="130" Height="18" Text="משקל" Margin="10"/>
+                            <TextBlock x:Name="PatientPhoneNumber" Width="130" Height="18" Text="מספר טלפון" Margin="10"/>
+                            <TextBlock x:Name="PatientGender" Width="130" Height="18" Text="מין" Margin="10"/>
+                        </StackPanel>
+                    </Grid>
+                </GroupBox>
+                <ScrollViewer Grid.Row="1" Margin="30,0">
+                    <Grid Margin="20">
+                        <StackPanel Orientation="Vertical">
+                            <GroupBox Style="{x:Null}" Header="סיבת הפניה" MinHeight="100">
+                                <TextBox Width="470" AcceptsReturn="True"/>
+                            </GroupBox>
+                            <GroupBox Style="{x:Null}" Header="אבחנה" MinHeight="100" Margin="0 10 0 0">
+                                <TextBox Width="470" AcceptsReturn="True"/>
+                            </GroupBox>
+                            <GroupBox Style="{x:Null}" Header="טיפול" MinHeight="100" Margin="0 10 0 0">
+                                <StackPanel Orientation="Horizontal">
+                                    <Button Click="Button_Click" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="בחר תרופה">
+                                        <materialDesign:PackIcon Kind="Menu" Height="{StaticResource IconSize}" Width="{StaticResource IconSize}" />
+                                    </Button>
+                                    <TextBox Width="470" AcceptsReturn="True" Margin="5" />
+                                </StackPanel>
+                            </GroupBox>
+                            <Button Content="סיום" Margin="0 20 0 10" Width="150" Height="25"/>
+                        </StackPanel>
+                        <local:MedChooseUC x:Name="MedChoose" HorizontalAlignment="Center" Visibility="Collapsed" Margin="0 250 0 0"/>
+                    </Grid>
+                </ScrollViewer>
+            </Grid>
+        </DockPanel>
+    </Viewbox>
+</Window>

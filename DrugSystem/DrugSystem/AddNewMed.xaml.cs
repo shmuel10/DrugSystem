@@ -16,22 +16,13 @@ using System.Windows.Shapes;
 namespace DrugSystem
 {
     /// <summary>
-    /// Interaction logic for FloatingControls.xaml
+    /// Interaction logic for AddNewMed.xaml
     /// </summary>
-    public partial class FloatingControls : UserControl
+    public partial class AddNewMed : UserControl
     {
-        public event EventHandler<RoutedEventArgs> ClickHandler;
-        public FloatingControls()
+        public AddNewMed()
         {
             InitializeComponent();
-        }
-
-        private void New_Med_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if(ClickHandler != null)
-            {
-                ClickHandler.Invoke(sender, e);
-            }          
         }
     }
 }

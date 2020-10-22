@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Net;
+using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Xml;
 
@@ -12,9 +13,12 @@ namespace BLL
         private XmlDocument drugsNums;
         public CheckInteraction()
         {
-            drugsNums = new XmlDocument();
-            string p2 = @"C:\Users\OWNER\Source\Repos\DrugSystem\DrugSystem\BLL\xmlFiles\mainxml.xml";
-            drugsNums.Load(p2);
+            //drugsNums = new XmlDocument();
+            //string p2 = @"../xmlFiles/mainxml.xml";
+            //drugsNums.Load(p2);
+
+
+
             //string p8 = @"C:\Users\OWNER\Source\Repos\DrugSystem\DrugSystem\DrugSystem\bin\Debug\BLL\xmlFiles\mainxml.xml";
             //string str = Regex.Replace(p8, "DrugSystem\\bin$", @"BLL\xmlFiles\mainxml.xml");
             //string p = Path.GetFullPath(@"BLL\xmlFiles\mainxml.xml");

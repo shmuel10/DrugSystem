@@ -23,6 +23,12 @@ namespace DrugSystem
         private Grid AdminGr, LoginGr, DrGrid;
         ToggleButton Togglebtn;
         private MenuItem AddNewMed, NewWorker, NewMed, Finish, NewDoctor, NewPatient, NewOfficer, Out;
+
+        private void AdminUC_ClickHandler(object sender, RoutedEventArgs e)
+        {
+            this.AddNewMedUC.Visibility = Visibility.Visible;
+        }
+
         public ShellWindow(String user)
         {
             InitializeComponent();

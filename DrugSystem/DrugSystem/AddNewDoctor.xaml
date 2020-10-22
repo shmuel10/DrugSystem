@@ -5,7 +5,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"         
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DrugSystem" xmlns:system1="clr-namespace:System;assembly=mscorlib"
-        Title="AddNewDoctor">
+        Title="AddNewDoctor" MinHeight="500">
     <Window.Resources>
         <system1:Double x:Key="IconSize">5</system1:Double>
         <system1:Double x:Key="FontSize">6</system1:Double>
@@ -52,7 +52,6 @@
                         <TextBox x:Name="ClinicTextBox" FontSize="{StaticResource FontSize}" Width="150" materialDesign:HintAssist.Hint="מרפאה" Margin="5"/>
                         <local:PermitionsUC FontSize="{StaticResource FontSize}" Margin="25" Width="150"/>
                         <Button Content="סיום" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="100"  Margin="10 10 10 20"/>
-
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

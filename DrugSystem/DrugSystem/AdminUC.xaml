@@ -101,11 +101,13 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Grid.Row="0" VerticalAlignment="Bottom" MouseLeave="Button_MouseLeave" PreviewMouseMove="Button_PreviewMouseMove" HorizontalAlignment="Center" Margin="20" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+        <Button Grid.Row="0" VerticalAlignment="Bottom" PreviewMouseMove="Button_PreviewMouseMove" HorizontalAlignment="Center" Margin="20" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
                 ToolTip="הוסף" Click="Button_Click">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>
-        <local:FloatingControls x:Name="FloatingButtons" VerticalAlignment="Bottom" Margin="10 0 10 80" Visibility="Collapsed"/>
+        <Grid VerticalAlignment="Bottom" MouseLeave="Button_MouseLeave" Background="Transparent">
+            <local:FloatingControls x:Name="FloatingButtons" ClickHandler="FloatingButtons_ClickHandler" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+        </Grid>
     </Grid>
 </UserControl>

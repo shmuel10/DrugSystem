@@ -10,28 +10,26 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace DrugSystem
 {
     /// <summary>
-    /// Interaction logic for FloatingControls.xaml
+    /// Interaction logic for VisitWindow.xaml
     /// </summary>
-    public partial class FloatingControls : UserControl
+    public partial class VisitWindow : Window
     {
-        public event EventHandler<RoutedEventArgs> ClickHandler;
-        public FloatingControls()
+        public VisitWindow()
         {
             InitializeComponent();
         }
 
-        private void New_Med_Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-            if(ClickHandler != null)
-            {
-                ClickHandler.Invoke(sender, e);
-            }          
+            if (this.MedChoose.Visibility == Visibility.Collapsed)
+                this.MedChoose.Visibility = Visibility.Visible;
+            else
+                this.MedChoose.Visibility = Visibility.Collapsed;
         }
     }
 }

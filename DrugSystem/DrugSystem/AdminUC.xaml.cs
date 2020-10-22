@@ -20,7 +20,9 @@ namespace DrugSystem
     /// Interaction logic for AdminUC.xaml
     /// </summary>
     public partial class AdminUC : UserControl
-    {   
+    {
+        public event EventHandler<RoutedEventArgs> ClickHandler;
+
         public AdminUC()
         {
             InitializeComponent();
@@ -29,7 +31,7 @@ namespace DrugSystem
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            AddNewDoctor newd = new AddNewDoctor();
+            VisitWindow newd = new VisitWindow();
             newd.Show();
         }
 
@@ -44,6 +46,14 @@ namespace DrugSystem
         private void Button_MouseLeave(object sender, MouseEventArgs e)
         {
             this.FloatingButtons.Visibility = Visibility.Collapsed;
+        }
+
+        private void FloatingButtons_ClickHandler(object sender, RoutedEventArgs e)
+        {
+            if(ClickHandler != null)
+            {
+                ClickHandler.Invoke(sender, e);
+            }
         }
     }
 }
