@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.Design;
 using System.IO;
 using System.Net;
 using System.Reflection;
@@ -8,30 +9,35 @@ using System.Xml;
 
 namespace BLL
 {
-    class CheckInteraction
+    class HandleMedicineAPI
     {
         private XmlDocument drugsNums;
-        public CheckInteraction()
+        public HandleMedicineAPI()
         {
-            //drugsNums = new XmlDocument();
+            drugsNums = new XmlDocument();
             //string p2 = @"../xmlFiles/mainxml.xml";
             //drugsNums.Load(p2);
 
 
-
+            string p;
             //string p8 = @"C:\Users\OWNER\Source\Repos\DrugSystem\DrugSystem\DrugSystem\bin\Debug\BLL\xmlFiles\mainxml.xml";
             //string str = Regex.Replace(p8, "DrugSystem\\bin$", @"BLL\xmlFiles\mainxml.xml");
-            //string p = Path.GetFullPath(@"BLL\xmlFiles\mainxml.xml");
-            //drugsNums.Load(p);
+            //string p = Path.GetFullPath(@"mainxml.xml");
+            string str = Assembly.GetExecutingAssembly().Location;
+            string localPath = Path.GetDirectoryName(str);
+            for (int i = 0; i < 3; i++)
+                localPath = Path.GetDirectoryName(localPath);
 
+            p = localPath + @"\BLL\xmlFiles\mainxml.xml";
+            ////////drugsNums.Load(p);
         }
-        public List<string> GetInteractionMedicines(string medicineName)
+        public List<string> GetInteractionMedicinesID(string medicineId)
         {
-            int drugNum = FindMedicineID(medicineName);
-            List<string> interactionMedicines = new List<string>();
+            //int medicineId = FindMedicineID(medicineName);
+            List<string> interactionMedicinesID = new List<string>();
             try
             {
-                string interactionJsonString = HttpRequest(GenerateURL(drugNum));
+                string interactionJsonString = HttpRequest(GenerateURL(medicineId));
                 Root interactionObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(interactionJsonString);
                 if (interactionObj.interactionTypeGroup != null)
                 {
@@ -43,9 +49,9 @@ namespace BLL
                             {
                                 foreach (var item3 in item2.interactionConcept)
                                 {
-                                    if (item3.sourceConceptItem.name != medicineName)
+                                    if (item3.sourceConceptItem.id != medicineId.ToString())
                                     {
-                                        interactionMedicines.Add(item3.sourceConceptItem.name);
+                                        interactionMedicinesID.Add(item3.sourceConceptItem.id);
                                     }
                                 }
                             }
@@ -57,12 +63,11 @@ namespace BLL
             {
                 throw new Exception("Error");
             }
-            return interactionMedicines;
+            return interactionMedicinesID;
         }
 
-        public int FindMedicineID(string name)
+        public string FindMedicineID(string name)
         {
-            int result;
             XmlElement root = drugsNums.DocumentElement;
             XmlNodeList nodes = root.SelectNodes("minConcept"); // You can also use XPath here
             foreach (XmlNode node in nodes)
@@ -70,8 +75,7 @@ namespace BLL
                 XmlNodeList properties = node.ChildNodes;
                 if (properties[1].InnerText.ToLower() == name.ToLower())
                 {
-                    result = int.Parse(properties[0].InnerText);
-                    return result;
+                    return properties[0].InnerText;
                 }
             }
             throw new ArgumentException("Can't find medicine name");
@@ -93,11 +97,11 @@ namespace BLL
             return html;
         }
 
-        private string GenerateURL(int drugNum)
+        private string GenerateURL(string drugNum)
         {
             string first = @"https://rxnav.nlm.nih.gov/REST/interaction/interaction.json?rxcui=";
             string second = @"&sources=ONCHigh";
-            return first + drugNum.ToString() + second;
+            return first + drugNum + second;
         }
 
         public class UserInput

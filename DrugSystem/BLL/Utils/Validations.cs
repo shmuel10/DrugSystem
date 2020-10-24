@@ -31,7 +31,7 @@ namespace BLL
             return ValidateUser(administrator);
         }
 
-        internal bool ValidateMedicine(Medicine medicine)
+        public bool ValidateMedicine(Medicine medicine)
         {
             if(medicine.CommercialName == null)
             {
@@ -53,9 +53,27 @@ namespace BLL
             return ValidatePerson(patient);
         }
 
-        internal void ValidatePrescription(Prescription prescription)
+        public bool ValidatePrescription(Prescription prescription)
         {
-            throw new NotImplementedException();
+            string ErrorMessage = null;
+            if (prescription.DoctorLicenceNumber == null)
+            {
+                ErrorMessage += "Doctor Licence Number is Missing\n";
+            }
+            if (prescription.PrescriptionID == null)
+            {
+                ErrorMessage += "Patient ID Number is Missing\n";
+            }
+            if (IsFirstDateLater(prescription.StartDate, prescription.ExpireDate))
+            {
+                ErrorMessage += "Start Date is after expire date\n";
+            }
+            if (prescription.MedicineCode == null)
+            {
+                ErrorMessage += "Medicine Code is Missing\n";
+            }
+
+            return ErrorMessage == null ? true : throw new ArgumentException(ErrorMessage);
         }
 
         public bool ValidateEmailAddress(string EmailToValidate)
@@ -114,12 +132,24 @@ namespace BLL
         }
         public bool ValidateBirthDate(Date BirthDate)
         {
-            if (BirthDate.Day < 1 || BirthDate.Day > 31 || BirthDate.Month < 1 || BirthDate.Month > 12 || BirthDate.Year < 1900 || BirthDate.Year > 2021)
+            Date now = new Date() { Day = DateTime.Today.Day, Month = DateTime.Today.Month, Year = DateTime.Today.Year };
+            if (IsFirstDateLater(BirthDate, now) || !ValidateDate(BirthDate))
             {
                 throw new ArgumentException("Invalid Birth Date");
             }
 
             return true;
+        }
+
+        private bool IsFirstDateLater(Date firstDate, Date secoundDate)
+        {
+            return firstDate.Year > secoundDate.Year || firstDate.Year == secoundDate.Year && firstDate.Month > secoundDate.Month ||
+                            firstDate.Year == secoundDate.Year && firstDate.Month == secoundDate.Month && firstDate.Day > secoundDate.Day;
+        }
+
+        public bool ValidateDate(Date date)
+        {
+            return date.Day >= 1 && date.Day <= 31 && date.Month >= 1 && date.Month <= 12;
         }
         public bool ValidateName(Name name)
         {

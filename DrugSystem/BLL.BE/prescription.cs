@@ -14,7 +14,7 @@ namespace BLL.BE
     public class Prescription
     {
         [Key]
-        public int PrescriptionID { get; set; }
+        public string PrescriptionID { get; set; }
         public string DoctorLicenceNumber { get; set; }
         public string PatientID { get; set; }
         public string MedicineCode { get; set; }

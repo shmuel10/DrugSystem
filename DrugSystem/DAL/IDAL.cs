@@ -48,5 +48,7 @@ namespace DAL
         List<Visit> getAllVisits();
         List<Visit> GetAllPatientVisits(string patientID);
         List<Visit> GetAllDoctorVisits(string doctorID);
+        List<string> GetPatientsCurrentMedicines(string PatientID);
+        List<string> GetMedicinesNames(List<string> MedicinesID);
     }
 }

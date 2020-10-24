@@ -12,12 +12,12 @@ namespace BLL
     {
         private IDAL dal;
         private Validations validations;
-        private CheckInteraction checkInteraction;
+        private HandleMedicineAPI medicineApiHandler;
         public BllImplementation()
         {
             dal = new DalImplementation();
             validations = new Validations();
-            checkInteraction = new CheckInteraction();
+            medicineApiHandler = new HandleMedicineAPI();
             //AddAdmin(new Administrator() { BirthDate = new AuxiliaryObjects.Date { Day = 20, Month = 10, Year = 2000 } ,
             //ID = "311215149", EmailAddress="simchapodo@gmail.com", PersonName = new AuxiliaryObjects.Name{ FirstName = "simcha", LastName = "podolsky" }
             //, PhoneNumber="0556679804", Passowrd="Simchap1"}) ;
@@ -36,6 +36,8 @@ namespace BLL
             //});
             //Medicine m = dal.GetAllMedicines()[0];
         }
+
+        #region add to DB
         public void AddAdmin(Administrator administrator)
         {
             try
@@ -67,7 +69,7 @@ namespace BLL
             try
             {
                 validations.ValidateMedicine(medicine);
-                medicine.MedicineID = checkInteraction.FindMedicineID(medicine.CommercialName).ToString();
+                medicine.MedicineID = medicineApiHandler.FindMedicineID(medicine.CommercialName).ToString();
                 dal.AddMedicine(medicine);
             }
             catch (Exception ex)
@@ -122,7 +124,9 @@ namespace BLL
         {
             return dal.getAllVisits();
         }
+        #endregion
 
+        #region get from db
         public List<Visit> GetAllPatientVisits(string patientID)
         {
             return dal.GetAllPatientVisits(patientID);
@@ -165,6 +169,11 @@ namespace BLL
         {
             return dal.GetDoctor(DocrorsID);
         }
+        public List<string> GetInteractionMedicines(string patientID, string medicineID)
+        {
+            return dal.GetMedicinesNames(medicineApiHandler.GetInteractionMedicinesID(medicineID)
+                .Intersect(dal.GetPatientsCurrentMedicines(patientID)).ToList());
+        }
 
         public User GetLoginUser(string userMail, string Password)
         {
@@ -204,7 +213,9 @@ namespace BLL
         {
             return dal.GetUserByEmail(emailAddress);
         }
+        #endregion
 
+        #region update DB
         public void UpdateDoctor(Doctor doctor)
         {
             dal.UpdateDoctor(doctor);
@@ -224,6 +235,7 @@ namespace BLL
         {
             dal.UpdatePatient(patient);
         }
+        #endregion
 
         public bool VerifyLogIn(string EmailAddress, string Password)
         {

@@ -9,6 +9,7 @@ using Microsoft.IdentityModel.Protocols;
 using System.Configuration;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
+using static BLL.BE.AuxiliaryObjects;
 
 namespace DAL
 {
@@ -19,11 +20,17 @@ namespace DAL
         {
 
         }
-        // add to DB
+        #region add to DB
         public void AddAdmin(Administrator administrator)
         {
             ThrowExceptionIfPrsonExist(administrator);
             DB.AdminsTable.Add(administrator);
+            DB.SaveChanges();
+        }
+
+        public void AddVisit(Visit visit)
+        {
+            DB.VisitsTable.Add(visit);
             DB.SaveChanges();
         }
 
@@ -54,30 +61,15 @@ namespace DAL
             DB.SaveChanges();
         }
 
-        private void ThrowExceptionIfMedicineExist(Medicine medicine)
-        {
-            if (DB.MedicinesTable.Find(medicine.MedicineID) != null)
-            {
-                throw new ArgumentException("Medicine already exist");
-            }
-        }
-
         public void AddPrescription(Prescription prescription)
         {
             ThrowExceptionIfPrescriptionExist(prescription);
             DB.PrescriptionsTable.Add(prescription);
             DB.SaveChanges();
         }
+        #endregion
 
-        private void ThrowExceptionIfPrescriptionExist(Prescription prescription)
-        {
-            if (DB.PrescriptionsTable.Find(prescription.PrescriptionID) != null)
-            {
-                throw new ArgumentException("Medicine already exist");
-            }
-        }
-
-        //update element in DB
+        #region update DB
         public void UpdateDoctor(Doctor doctor)
         {
             Doctor doctorToUpdate = GetDoctor(doctor.ID);
@@ -128,8 +120,9 @@ namespace DAL
             patientToUpdate.FatherName = patient.FatherName;
             DB.SaveChanges();
         }
+        #endregion
 
-        //get elements from DB
+        #region get elements from DB
         public Doctor GetDoctor(string DocrorsID)
         {
             Doctor doctor = DB.PersonsTable.Find(DocrorsID) as Doctor;
@@ -140,11 +133,35 @@ namespace DAL
         {
             return GetAllElementsOfTypeT<Doctor>();
         }
+        public List<Visit> getAllVisits()
+        {
+            return DB.VisitsTable.ToList();
+        }
 
+        public List<Visit> GetAllPatientVisits(string patientID)
+        {
+            return DB.VisitsTable.Where(visit => visit.PatientID.Equals(patientID)).ToList();
+        }
+
+
+        public List<Visit> GetAllDoctorVisits(string doctorID)
+        {
+            return DB.VisitsTable.Where(visit => visit.DoctorID.Equals(doctorID)).ToList();
+        }
         public Medicine GetMedicine(string MedicineID)
         {
             Medicine medicine = DB.MedicinesTable.Find(MedicineID);
             return medicine ?? throw new ArgumentException("Medicine Dosn't exist");
+        }
+
+        public List<string> GetMedicinesNames(List<string> MedicinesID)
+        {
+            List<string> medicinesNames = new List<string>();
+            foreach (string medicineId in MedicinesID)
+            {
+                medicinesNames.Add(GetMedicine(medicineId).CommercialName);
+            }
+            return medicinesNames;
         }
 
         public List<Medicine> GetAllMedicines()
@@ -191,7 +208,15 @@ namespace DAL
             }
             return DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID).ToList();
         }
-
+        public List<string> GetPatientsCurrentMedicines(string PatientID)
+        {
+            if (DB.PersonsTable.Find(PatientID) == null)
+            {
+                throw new ArgumentException("Patient Dosn't exist");
+            }
+            return DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID && IsStillValid(prescription.ExpireDate)).
+                Select(prescription => prescription.MedicineCode).ToList();
+        }
         public List<Prescription> GetAllPrescriptions()
         {
             return DB.PrescriptionsTable.ToList();
@@ -201,6 +226,14 @@ namespace DAL
         {
             return DB.PersonsTable.Where(user => user.EmailAddress == emailAddress) as User;
         }
+        #endregion
+        private bool IsStillValid(Date expireDate)
+        {
+            Date now = new Date() { Day = DateTime.Today.Day, Month = DateTime.Today.Month, Year = DateTime.Today.Year };
+            return expireDate.Year > now.Year || expireDate.Year == now.Year && expireDate.Month > now.Month ||
+                            expireDate.Year == now.Year && expireDate.Month == now.Month && expireDate.Day > now.Day;
+        }
+
         private void ThrowExceptionIfPrsonExist(Person person)
         {
             if (DoesElementExistInPersonsDB(user => user.ID == person.ID))
@@ -213,31 +246,23 @@ namespace DAL
                 throw new ArgumentException("The email address is already stored in the system");
             }
         }
+        private void ThrowExceptionIfMedicineExist(Medicine medicine)
+        {
+            if (DB.MedicinesTable.Find(medicine.MedicineID) != null)
+            {
+                throw new ArgumentException("Medicine already exist");
+            }
+        }
+        private void ThrowExceptionIfPrescriptionExist(Prescription prescription)
+        {
+            if (DB.PrescriptionsTable.Find(prescription.PrescriptionID) != null)
+            {
+                throw new ArgumentException("Medicine already exist");
+            }
+        }
         private bool DoesElementExistInPersonsDB(Func<Person, bool> predicate)
         {
             return DB.PersonsTable.Where(predicate).FirstOrDefault() != null;
-        }
-
-        public void AddVisit(Visit visit)
-        {
-            DB.VisitsTable.Add(visit);
-            DB.SaveChanges();
-        }
-
-        public List<Visit> getAllVisits()
-        {
-            return DB.VisitsTable.ToList();
-        }
-
-        public List<Visit> GetAllPatientVisits(string patientID)
-        {
-            return DB.VisitsTable.Where(visit => visit.PatientID.Equals(patientID)).ToList();
-        }
-
-
-        public List<Visit> GetAllDoctorVisits(string doctorID)
-        {
-            return DB.VisitsTable.Where(visit => visit.DoctorID.Equals(doctorID)).ToList();
         }
     }
 }
