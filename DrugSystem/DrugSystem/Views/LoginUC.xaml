@@ -41,17 +41,31 @@
             <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Style="{StaticResource MaterialDesignHeadline3TextBlock}">Log In</TextBlock>
 
                     <TextBox x:Name="UserEmail" Grid.Row="3" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Email address">
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Email address" materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
                         </TextBox.InputBindings>
+                        <TextBox.Text>
+                            <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <domain1:EmailAddressValidation ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
                     </TextBox>
 
                     <TextBox x:Name="UserPassword" Grid.Row="4" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Password">
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Password"   materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute" AutomationProperties.ItemType="Password">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
                         </TextBox.InputBindings>
+                        <TextBox.Text>
+                            <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
+                                <Binding.ValidationRules>
+                                    <domain1:NotEmptyValidation ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                </Binding.ValidationRules>
+                            </Binding>
+                        </TextBox.Text>
                     </TextBox>
 
                     <Button x:Name="SignInButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" Style="{StaticResource MaterialDesignRaisedButton}" 

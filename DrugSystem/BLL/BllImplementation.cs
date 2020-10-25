@@ -237,10 +237,16 @@ namespace BLL
         }
         #endregion
 
-        public bool VerifyLogIn(string EmailAddress, string Password)
+        public User VerifyLogIn(string EmailAddress, string Password)
         {
-            User user = dal.GetUserByEmail(EmailAddress);
-            return (user.Passowrd.Equals(Password));
+            try
+            {
+                User user = dal.GetUserByEmail(EmailAddress);
+                return user.Passowrd.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
+            } catch
+            {
+                throw new ArgumentException("No Such User");
+            }
         }
     }
 }

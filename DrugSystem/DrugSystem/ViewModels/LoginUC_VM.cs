@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -10,9 +11,12 @@ using DrugSystem.Models;
 
 namespace DrugSystem.ViewModels
 {
-    public class LoginUC_VM
+    public class LoginUC_VM : INotifyPropertyChanged
     {
         LoginUC_M LoginUC_M;
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public SignInCommand SignInCommand { get; set; }
         public string Mail { get; set; }
         public string Password { get; set; }
@@ -24,19 +28,26 @@ namespace DrugSystem.ViewModels
         
         public void Login()
         {
-            User currentUser = LoginUC_M.Login(Mail, Password);
-            if (currentUser != null)
+            try
             {
-                ((App)Application.Current).CurrentUser = currentUser;
-                ShellWindow shellWindow = new ShellWindow();
-                if (currentUser is Doctor)
+                User currentUser = LoginUC_M.Login(Mail, Password);
+                if (currentUser != null)
                 {
-                    shellWindow.DoctorUc.Visibility = Visibility.Visible;
-                }else if(currentUser is Administrator)
-                {
-                    shellWindow.AdminUc.Visibility = Visibility.Visible;
+                    ((App)Application.Current).CurrentUser = currentUser;
+                    ShellWindow shellWindow = new ShellWindow();
+                    if (currentUser is Doctor)
+                    {
+                        shellWindow.DoctorUc.Visibility = Visibility.Visible;
+                    }
+                    else if (currentUser is Administrator)
+                    {
+                        shellWindow.AdminUc.Visibility = Visibility.Visible;
+                    }
                 }
-            }       
+            } catch(Exception ex)
+            {
+
+            }
         }
     }
 }

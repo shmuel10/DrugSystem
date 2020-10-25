@@ -9,7 +9,7 @@ namespace BLL
 {
     public interface IBll
     {
-        bool VerifyLogIn(string EmailAddress, string Password);
+       // bool VerifyLogIn(string EmailAddress, string Password);
         User GetLoginUser(string userMail, string Password);
 
 
