@@ -22,7 +22,7 @@ namespace DrugSystem.Models
             NewDoctor = new Doctor();
         }
 
-        public string Name 
+        public string FirstName 
         {
             get 
             {

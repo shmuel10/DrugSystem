@@ -86,6 +86,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\NewDoctorCommand.cs" />
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Converters\MultyStringToArrConverter.cs" />
     <Compile Include="Models\AddNewDoctorM.cs" />

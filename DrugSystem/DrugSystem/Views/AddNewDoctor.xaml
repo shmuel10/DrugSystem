@@ -31,8 +31,16 @@
             <Grid Grid.Column="1" Background="LightGray" DockPanel.Dock="Bottom" Margin="0 2 0 0">
                 <ScrollViewer Margin="50 0 50 0" FlowDirection="RightToLeft" Height="100" Width="250">
                     <StackPanel>
-                     <!--   <TextBox x:Name="FirsNameTextBox" FontSize="{StaticResource FontSize}" Width="150"  materialDesign:HintAssist.Hint="שם פרטי" Margin="5" /> -->
-                        <TextBox x:Name="NameTextBox" materialDesign:HintAssist.Hint="Name" materialDesign:HintAssist.HelperText="Helper text longer than error">
+                        <TextBox x:Name="FirsNameTextBox" materialDesign:HintAssist.Hint="שם פרטי"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="FirstName" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="LastNameTextBox" materialDesign:HintAssist.Hint="שם משפחה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
                                 <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
@@ -41,13 +49,44 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <TextBox x:Name="LastNameTextBox" FontSize="{StaticResource FontSize}" Width="150"  materialDesign:HintAssist.Hint="שם משפחה" Margin="5"/>
-                        <TextBox x:Name="PhoneTextBox" FontSize="{StaticResource FontSize}" Width="150"  materialDesign:HintAssist.Hint="מספר טלפון" Margin="5"/>
-                        <TextBox x:Name="BirthDayTextBox" FontSize="{StaticResource FontSize}" Width="150" materialDesign:HintAssist.Hint="תאריך לידה" Margin="5"/>
-                        <ComboBox x:Name="ExpertiseTextBox" FontSize="{StaticResource FontSize}" Width="150" materialDesign:HintAssist.Hint="מומחיות" Margin="5"/>
-                        <TextBox x:Name="ClinicTextBox" FontSize="{StaticResource FontSize}" Width="150" materialDesign:HintAssist.Hint="מרפאה" Margin="5"/>
-                        <local:PermitionsUC FontSize="{StaticResource FontSize}" Margin="25" Width="150"/>
-                        <Button Content="סיום" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="100"  Margin="10 10 10 20"/>
+                        <TextBox x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="טלפון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="BirthDayTextBox" materialDesign:HintAssist.Hint="תאריך לידה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="ExpertiseTextBox" materialDesign:HintAssist.Hint="מומחיות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="ClinicTextBox" materialDesign:HintAssist.Hint="מרפאה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <local:PermitionsUC FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
+                        <Button Content="סיום" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>

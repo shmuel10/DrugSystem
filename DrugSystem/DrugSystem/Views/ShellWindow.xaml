@@ -53,7 +53,7 @@
             </Grid>
             <TextBlock DockPanel.Dock="Bottom" Background="LightGray"/>
             <Grid x:Name="MainGrid" HorizontalAlignment="Stretch">
-                <local:AdminUC x:Name="AdminUc" Visibility="Collapsed" ClickHandler="AdminUC_ClickHandler" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
+                <local:AdminUC x:Name="AdminUc" Visibility="Visible" ClickHandler="AdminUC_ClickHandler" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
                 <local:DoctorUC x:Name="DoctorUc" Visibility="Collapsed"  FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
                 <local:AddNewMed x:Name="AddNewMedUC" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
             </Grid>
