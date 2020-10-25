@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
@@ -11,6 +12,8 @@ namespace BLL.BE
     [Table("Visits")]
     public class Visit
     {
+        [Key]
+        public string VisitID { get; set; }
         public string DoctorID { get; set; }
         public string PatientID { get; set; }
         public Date VisitDate { get; set; }

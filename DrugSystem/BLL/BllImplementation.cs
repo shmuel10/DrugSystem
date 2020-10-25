@@ -2,6 +2,7 @@
 using DAL;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,14 +23,16 @@ namespace BLL
             //ID = "311215149", EmailAddress="simchapodo@gmail.com", PersonName = new AuxiliaryObjects.Name{ FirstName = "simcha", LastName = "podolsky" }
             //, PhoneNumber="0556679804", Passowrd="Simchap1"}) ;
 
-            //AddAdmin(new Administrator() {
-            //    BirthDate = new AuxiliaryObjects.Date { Day = 20, Month = 10, Year = 2000 },
-            //    ID = "206322042",
-            //    EmailAddress = "noa96f@gmail.com",
-            //    PersonName = new AuxiliaryObjects.Name { FirstName = "simcha", LastName = "podolsky" },
-            //    PhoneNumber = "0556679804",
-            //    Passowrd = "Simchap1"
-            //});
+            AddAdmin(new Administrator() {
+                BirthDate = new AuxiliaryObjects.Date { Day = 20, Month = 10, Year = 2000 },
+                ID = "311215149",
+                EmailAddress = "a@b",
+                FirstName = "simcha",
+                LastName = "podolsky",
+                PhoneNumber = "0556679804",
+                Passowrd = "AAAA1111",
+                PersonAddress = new AuxiliaryObjects.Address { BuildingNumber="27", City="Netanya", Street="yehuda halevi"}
+            });
             //List<User> users = dal.GetAllUsers();
             //AddMedicine(new Medicine() { CommercialName = "Advil", 
             //ActiveIngredients = new List<string>() { "a", "b", "c" }
@@ -45,9 +48,16 @@ namespace BLL
                 validations.ValidateAdmin(administrator);
                 dal.AddAdmin(administrator);
             }
-            catch (Exception ex)
+            catch (DbEntityValidationException  ex)
             {
-                throw new ArgumentException(ex.Message);
+                foreach (var errors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in errors.ValidationErrors)
+                    {
+                        // get the error message 
+                        string errorMessage = validationError.ErrorMessage;
+                    }
+                }
             }
         }
 
