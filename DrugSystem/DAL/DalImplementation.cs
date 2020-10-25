@@ -82,7 +82,9 @@ namespace DAL
         {
             personToUpdate.Gender = updatedPerson.Gender;
             personToUpdate.EmailAddress = updatedPerson.EmailAddress;
-            personToUpdate.PersonAddress = updatedPerson.PersonAddress;
+            personToUpdate.City = updatedPerson.City;
+            personToUpdate.Street = updatedPerson.Street;
+            personToUpdate.BuildingNumber = updatedPerson.BuildingNumber;
             personToUpdate.FirstName = updatedPerson.FirstName;
             personToUpdate.LastName = updatedPerson.LastName;
             personToUpdate.PhoneNumber = updatedPerson.PhoneNumber;

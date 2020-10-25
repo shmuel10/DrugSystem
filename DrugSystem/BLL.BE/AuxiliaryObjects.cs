@@ -9,11 +9,5 @@ namespace BLL.BE
     public class AuxiliaryObjects
     {
         public enum Gender { Male, Feamle, Other }
-        public struct Address
-        {
-            public string City { get; set; }
-            public string Street { get; set; }
-            public string BuildingNumber { get; set; }
-        }
     }
 }

@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DrugSystem.ViewModels;
 using MahApps.Metro.Controls;
 
 namespace DrugSystem
@@ -26,7 +27,7 @@ namespace DrugSystem
         public AdminUC()
         {
             InitializeComponent();
-
+            DataContext = new AdminUC_VM();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

@@ -90,10 +90,12 @@
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Converters\MultyStringToArrConverter.cs" />
     <Compile Include="Models\AddNewDoctorM.cs" />
+    <Compile Include="Models\AdminUC_M.cs" />
     <Compile Include="Models\LoginUC_M.cs" />
     <Compile Include="Validation\EmailAddressValidation.cs" />
     <Compile Include="Validation\NotEmptyValidation.cs" />
     <Compile Include="ViewModels\AddNewDoctorVM.cs" />
+    <Compile Include="ViewModels\AdminUC_VM.cs" />
     <Compile Include="ViewModels\LoginUC_VM.cs" />
     <Compile Include="Views\AddNewDoctor.xaml.cs">
       <DependentUpon>AddNewDoctor.xaml</DependentUpon>
