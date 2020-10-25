@@ -16,7 +16,8 @@ namespace BLL.BE
         public string ID { get; set; }
         [Index(IsUnique =true), MaxLength(40), MinLength(5)]
         public string EmailAddress { get; set; }
-        public Name PersonName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public Date BirthDate { get; set; }
         public string PhoneNumber { get; set; }
         public Address PersonAddress { get; set; }

@@ -5,9 +5,8 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DrugSystem" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes"        
-             mc:Ignorable="d" 
-             d:DesignHeight="550" d:DesignWidth="500">
+             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:DrugSystem.Converters"
+             mc:Ignorable="d">
 
     <UserControl.Resources>
         <Style x:Key="MaterialDesignOutlinedTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
@@ -19,6 +18,7 @@
                 <ResourceDictionary Source="pack://application:,,,/MaterialDesignColors;component/Themes/Recommended/Primary/MaterialDesignColor.indigo.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
+        <local1:MultyStringToArrConverter x:Key="MultyStringConverter"/>
     </UserControl.Resources>
     <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid>
@@ -40,15 +40,30 @@
             </Grid.ColumnDefinitions>
             <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Style="{StaticResource MaterialDesignHeadline3TextBlock}">Log In</TextBlock>
 
-            <TextBox x:Name="UserEmail" Grid.Row="3" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Email address"/>
+                    <TextBox x:Name="UserEmail" Grid.Row="3" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Email address">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
 
                     <TextBox x:Name="UserPassword" Grid.Row="4" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Password"/>
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Password">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
 
-            <Button x:Name="SignInButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" Style="{StaticResource MaterialDesignRaisedButton}" 
-                    ToolTip="Press To Sign In" Content="Sign In" Click="SignInButton_Click"/>
-        </Grid>
+                    <Button x:Name="SignInButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" Style="{StaticResource MaterialDesignRaisedButton}" 
+                 Command="{Binding SignInCommand}" ToolTip="Press To Sign In" Content="Sign In">
+                        <Button.CommandParameter>
+                            <MultiBinding Converter="{StaticResource MultyStringConverter}">
+                                <Binding Path="Text" ElementName="UserEmail"/>
+                                <Binding Path="Text" ElementName="UserPassword"/>
+                            </MultiBinding>
+                        </Button.CommandParameter>
+                    </Button>
+                </Grid>
     </Border>
         </Grid>
     </Viewbox>

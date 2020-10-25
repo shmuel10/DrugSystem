@@ -1,4 +1,5 @@
 ﻿using BLL;
+using DrugSystem.Command;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,18 +24,14 @@ namespace DrugSystem
     public partial class MainWindow : Window
     {
         private IBll Bll;
-       
+
+
         public MainWindow()
         {
             InitializeComponent();
-            Bll = new BllImplementation();          
+            Bll = new BllImplementation();
         }
 
-        public void Login_func(object sender, RoutedEventArgs e)
-        {
-            ShellWindow sw = new ShellWindow("Doctor");
-            this.Close();
-            sw.Show();
-        }
+      
     }
 }

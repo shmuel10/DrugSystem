@@ -9,7 +9,7 @@ using System.Windows.Data;
 
 namespace DrugSystem
 {
-    internal class MyConverter : IValueConverter
+    internal class FontSizeConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
         {

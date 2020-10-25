@@ -6,9 +6,9 @@
         xmlns:local="clr-namespace:DrugSystem" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:system1="clr-namespace:System;assembly=mscorlib" FlowDirection="RightToLeft"
-        x:Name="Shell">
+        x:Name="Shell" Title="fdgehjr">
     <Window.Resources>
-        <local:MyConverter x:Key="FontSizeConverter"/>
+        <local:FontSizeConverter x:Key="FontSizeConverter"/>
     </Window.Resources>
     <Viewbox Stretch="Fill">
         <DockPanel Name="myDock" Style="{x:Null}" LastChildFill="True">
@@ -53,8 +53,8 @@
             </Grid>
             <TextBlock DockPanel.Dock="Bottom" Background="LightGray"/>
             <Grid x:Name="MainGrid" HorizontalAlignment="Stretch">
-                <local:AdminUC Visibility="Visible" ClickHandler="AdminUC_ClickHandler" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
-                <local:DoctorUC Visibility="Collapsed"  FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
+                <local:AdminUC x:Name="AdminUc" Visibility="Collapsed" ClickHandler="AdminUC_ClickHandler" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
+                <local:DoctorUC x:Name="DoctorUc" Visibility="Collapsed"  FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
                 <local:AddNewMed x:Name="AddNewMedUC" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
             </Grid>
         </DockPanel>

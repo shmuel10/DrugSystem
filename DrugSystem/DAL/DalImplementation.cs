@@ -83,7 +83,8 @@ namespace DAL
             personToUpdate.Gender = updatedPerson.Gender;
             personToUpdate.EmailAddress = updatedPerson.EmailAddress;
             personToUpdate.PersonAddress = updatedPerson.PersonAddress;
-            personToUpdate.PersonName = updatedPerson.PersonName;
+            personToUpdate.FirstName = updatedPerson.FirstName;
+            personToUpdate.LastName = updatedPerson.LastName;
             personToUpdate.PhoneNumber = updatedPerson.PhoneNumber;
         }
         private void UpdateUser(User userToUpdate, User updatedUser)

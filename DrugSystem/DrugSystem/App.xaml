@@ -4,7 +4,7 @@
              xmlns:local="clr-namespace:DrugSystem"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system1="clr-namespace:System;assembly=mscorlib"
-             StartupUri="LoginWindow.xaml">
+             StartupUri="Views/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>

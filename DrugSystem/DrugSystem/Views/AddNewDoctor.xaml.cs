@@ -11,25 +11,19 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using DrugSystem.Models;
 
 namespace DrugSystem
 {
     /// <summary>
-    /// Interaction logic for VisitWindow.xaml
+    /// Interaction logic for AddNewDoctor.xaml
     /// </summary>
-    public partial class VisitWindow : Window
+    public partial class AddNewDoctor : Window
     {
-        public VisitWindow()
+        public AddNewDoctor()
         {
             InitializeComponent();
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.MedChoose.Visibility == Visibility.Collapsed)
-                this.MedChoose.Visibility = Visibility.Visible;
-            else
-                this.MedChoose.Visibility = Visibility.Collapsed;
+            DataContext = new AddNewDoctorVM();
         }
     }
 }

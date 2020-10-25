@@ -17,6 +17,6 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <local:LoginUC x:Name="LoginUC" Grid.Column="1" ClickHandler="Login_func" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch"/>
+        <local:LoginUC x:Name="LoginUC" Grid.Column="1" HorizontalAlignment="Stretch" Grid.Row="1" VerticalAlignment="Stretch"/>
     </Grid>
 </Window>

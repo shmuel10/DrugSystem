@@ -86,94 +86,101 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="AddNewDoctor.xaml.cs">
+    <Compile Include="Command\SignInCommand.cs" />
+    <Compile Include="Converters\MultyStringToArrConverter.cs" />
+    <Compile Include="Models\AddNewDoctorM.cs" />
+    <Compile Include="Models\LoginUC_M.cs" />
+    <Compile Include="Validation\NotEmptyValidation.cs" />
+    <Compile Include="ViewModels\AddNewDoctorVM.cs" />
+    <Compile Include="ViewModels\LoginUC_VM.cs" />
+    <Compile Include="Views\AddNewDoctor.xaml.cs">
       <DependentUpon>AddNewDoctor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="AddNewMed.xaml.cs">
+    <Compile Include="Views\AddNewMed.xaml.cs">
       <DependentUpon>AddNewMed.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FloatingControls.xaml.cs">
+    <Compile Include="Views\FloatingControls.xaml.cs">
       <DependentUpon>FloatingControls.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MedChooseUC.xaml.cs">
+    <Compile Include="Views\MedChooseUC.xaml.cs">
       <DependentUpon>MedChooseUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MyConverter.cs" />
-    <Compile Include="DoctorUC.xaml.cs">
+    <Compile Include="Converters\FontSizeConverter.cs" />
+    <Compile Include="Views\DoctorUC.xaml.cs">
       <DependentUpon>DoctorUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="PermitionsUC.xaml.cs">
+    <Compile Include="Views\PermitionsUC.xaml.cs">
       <DependentUpon>PermitionsUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SearchLineUC.xaml.cs">
+    <Compile Include="Views\SearchLineUC.xaml.cs">
       <DependentUpon>SearchLineUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="ShellWindow.xaml.cs">
+    <Compile Include="Views\ShellWindow.xaml.cs">
       <DependentUpon>ShellWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Validations.cs" />
-    <Compile Include="VisitWindow.xaml.cs">
+    <Compile Include="Views\VisitWindow.xaml.cs">
       <DependentUpon>VisitWindow.xaml</DependentUpon>
     </Compile>
-    <Page Include="AddNewDoctor.xaml">
+    <Page Include="Views\AddNewDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AddNewMed.xaml">
+    <Page Include="Views\AddNewMed.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="AdminUC.xaml">
+    <Page Include="Views\AdminUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="DoctorUC.xaml">
+    <Page Include="Views\DoctorUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="FloatingControls.xaml">
+    <Page Include="Views\FloatingControls.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginUC.xaml">
+    <Page Include="Views\LoginUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="LoginWindow.xaml">
+    <Page Include="Views\LoginWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="AdminUC.xaml.cs">
+    <Compile Include="Views\AdminUC.xaml.cs">
       <DependentUpon>AdminUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="LoginUC.xaml.cs">
+    <Compile Include="Views\LoginUC.xaml.cs">
       <DependentUpon>LoginUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="LoginWindow.xaml.cs">
+    <Compile Include="Views\LoginWindow.xaml.cs">
       <DependentUpon>LoginWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="MedChooseUC.xaml">
+    <Page Include="Views\MedChooseUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="PermitionsUC.xaml">
+    <Page Include="Views\PermitionsUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SearchLineUC.xaml">
+    <Page Include="Views\SearchLineUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="ShellWindow.xaml">
+    <Page Include="Views\ShellWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="VisitWindow.xaml">
+    <Page Include="Views\VisitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,11 +240,7 @@
   <ItemGroup>
     <Resource Include="Icons\UserIcon.jpg" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
-    <Folder Include="Views\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Resource Include="Icons\DeafultMedPicture.jpg" />
   </ItemGroup>

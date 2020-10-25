@@ -7,11 +7,11 @@
              xmlns:local="clr-namespace:DrugSystem" FlowDirection="RightToLeft">
     <StackPanel Orientation="Vertical">
         <StackPanel>
-            <Ellipse Height="40" Width="40">
+            <!--<Ellipse Height="40" Width="40">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="Icons/DeafultMedPicture.jpg"/>
                 </Ellipse.Fill>
-            </Ellipse>
+            </Ellipse>-->
             <TextBox x:Name="CommercialName" Width="150" materialDesign:HintAssist.Hint="שם מסחרי" Margin="5 10" />
             <TextBox x:Name="GenericName" Width="150"  materialDesign:HintAssist.Hint="שם גנרי" Margin="5"/>
             <TextBox x:Name="Manufacturer" Width="150"  materialDesign:HintAssist.Hint="יצרן" Margin="5"/>

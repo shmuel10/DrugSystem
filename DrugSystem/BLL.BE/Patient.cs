@@ -13,7 +13,7 @@ namespace BLL.BE
     public class Patient : Person
     {
         public double Weight { get; set; }
-        public Name FatherName { get; set; }
+        public string FatherName { get; set; }
         public string FamilyDoctor { get; set; }
     }
 }

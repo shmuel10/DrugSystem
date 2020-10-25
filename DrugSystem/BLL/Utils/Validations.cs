@@ -17,7 +17,8 @@ namespace BLL
         {
             return ValidateEmailAddress(person.EmailAddress) &
             ValidateID(person.ID) &
-            ValidateName(person.PersonName) &
+            ValidateName(person.FirstName) &
+            ValidateName(person.LastName) &
             ValidatePhoneNumber(person.PhoneNumber) &
             ValidateBirthDate(person.BirthDate);
         }
@@ -151,15 +152,15 @@ namespace BLL
         {
             return date.Day >= 1 && date.Day <= 31 && date.Month >= 1 && date.Month <= 12;
         }
-        public bool ValidateName(Name name)
+        public bool ValidateName(string name)
         {
             string ErrorMessage = null;
-            if (name.FirstName == null || name.FirstName.Length < 1)
+            if (name == null || name.Length < 1)
             {
                 ErrorMessage += "First Name Is requierd\n";
             }
 
-            if (name.LastName == null || name.LastName.Length < 1)
+            if (name == null || name.Length < 1)
             {
                 ErrorMessage += "Last Name Is requierd";
             }

@@ -29,7 +29,7 @@ namespace DrugSystem
             this.AddNewMedUC.Visibility = Visibility.Visible;
         }
 
-        public ShellWindow(String user)
+        public ShellWindow()
         {
             InitializeComponent();
             Togglebtn = this.ColorModeToggle;
@@ -88,6 +88,8 @@ namespace DrugSystem
             //    DrGrid.Visibility = Visibility.Collapsed;
             //}
         }
+
+      
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
