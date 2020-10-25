@@ -18,8 +18,9 @@ namespace BLL.BE
         public string DoctorLicenceNumber { get; set; }
         public string PatientID { get; set; }
         public string MedicineCode { get; set; }
-        public Date StartDate { get; set; }
-        public Date ExpireDate { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime ExpireDate { get; set; }
+        public int TreatmentDays { get; set; }
         public double TimesADay { get; set; }
         public MedicineType MedicineForm { get; set; }
         public double Amount { get; set; }

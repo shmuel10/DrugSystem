@@ -18,7 +18,7 @@ namespace BLL.BE
         public string EmailAddress { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public Date BirthDate { get; set; }
+        public DateTime BirthDate { get; set; }
         public string PhoneNumber { get; set; }
         public Address PersonAddress { get; set; }
         public Gender Gender { get; set; }

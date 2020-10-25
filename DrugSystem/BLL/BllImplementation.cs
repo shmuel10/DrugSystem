@@ -19,20 +19,21 @@ namespace BLL
             dal = new DalImplementation();
             validations = new Validations();
             medicineApiHandler = new HandleMedicineAPI();
-            //AddAdmin(new Administrator() { BirthDate = new AuxiliaryObjects.Date { Day = 20, Month = 10, Year = 2000 } ,
+            //AddAdmin(new Administrator() { BirthDate = new AuxiliaryObjects.DateTime { Day = 20, Month = 10, Year = 2000 } ,
             //ID = "311215149", EmailAddress="simchapodo@gmail.com", PersonName = new AuxiliaryObjects.Name{ FirstName = "simcha", LastName = "podolsky" }
             //, PhoneNumber="0556679804", Passowrd="Simchap1"}) ;
 
-            AddAdmin(new Administrator() {
-                BirthDate = new AuxiliaryObjects.Date { Day = 20, Month = 10, Year = 2000 },
-                ID = "311215149",
-                EmailAddress = "a@b",
-                FirstName = "simcha",
-                LastName = "podolsky",
-                PhoneNumber = "0556679804",
-                Passowrd = "AAAA1111",
-                PersonAddress = new AuxiliaryObjects.Address { BuildingNumber="27", City="Netanya", Street="yehuda halevi"}
-            });
+            //AddAdmin(new Administrator() {
+            //    BirthDate = new AuxiliaryObjects.DateTime { Day = 20, Month = 10, Year = 2000 },
+            //    ID = "311215149",
+            //    EmailAddress = "a@b",
+            //    FirstName = "simcha",
+            //    LastName = "podolsky",
+            //    PhoneNumber = "0556679804",
+            //    Passowrd = "AAAA1111",
+            //    PersonAddress = new AuxiliaryObjects.Address { BuildingNumber="27", City="Netanya", Street="yehuda halevi"}
+            //});
+
             //List<User> users = dal.GetAllUsers();
             //AddMedicine(new Medicine() { CommercialName = "Advil", 
             //ActiveIngredients = new List<string>() { "a", "b", "c" }

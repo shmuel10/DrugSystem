@@ -67,7 +67,7 @@ namespace BLL
             }
             if (IsFirstDateLater(prescription.StartDate, prescription.ExpireDate))
             {
-                ErrorMessage += "Start Date is after expire date\n";
+                ErrorMessage += "Start DateTime is after expire date\n";
             }
             if (prescription.MedicineCode == null)
             {
@@ -131,27 +131,26 @@ namespace BLL
             }
             return EerrorMessage == null ? true : throw new ArgumentException(EerrorMessage);
         }
-        public bool ValidateBirthDate(Date BirthDate)
+        public bool ValidateBirthDate(DateTime BirthDate)
         {
-            Date now = new Date() { Day = DateTime.Today.Day, Month = DateTime.Today.Month, Year = DateTime.Today.Year };
-            if (IsFirstDateLater(BirthDate, now) || !ValidateDate(BirthDate))
+            int result = DateTime.Compare(DateTime.Now, BirthDate);
+            if(result < 0)
             {
-                throw new ArgumentException("Invalid Birth Date");
+                return false;
             }
-
             return true;
         }
 
-        private bool IsFirstDateLater(Date firstDate, Date secoundDate)
+        private bool IsFirstDateLater(DateTime firstDate, DateTime secondDate)
         {
-            return firstDate.Year > secoundDate.Year || firstDate.Year == secoundDate.Year && firstDate.Month > secoundDate.Month ||
-                            firstDate.Year == secoundDate.Year && firstDate.Month == secoundDate.Month && firstDate.Day > secoundDate.Day;
+            int result = DateTime.Compare(firstDate, secondDate);
+            if (result > 0)
+            {
+                return true;
+            }
+            return false;
         }
-
-        public bool ValidateDate(Date date)
-        {
-            return date.Day >= 1 && date.Day <= 31 && date.Month >= 1 && date.Month <= 12;
-        }
+       
         public bool ValidateName(string name)
         {
             string ErrorMessage = null;

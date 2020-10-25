@@ -215,7 +215,7 @@ namespace DAL
             {
                 throw new ArgumentException("Patient Dosn't exist");
             }
-            return DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID && IsStillValid(prescription.ExpireDate)).
+            return DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID && IsMedicineStillTaken(prescription.StartDate, prescription.TreatmentDays)).
                 Select(prescription => prescription.MedicineCode).ToList();
         }
         public List<Prescription> GetAllPrescriptions()
@@ -225,14 +225,18 @@ namespace DAL
 
         public User GetUserByEmail(string emailAddress)
         {
-            return DB.PersonsTable.Where(user => user.EmailAddress == emailAddress) as User;
+            User result = DB.PersonsTable.Where(user => user.EmailAddress.Equals(emailAddress.Trim())).FirstOrDefault() as User;
+            return result;
         }
         #endregion
-        private bool IsStillValid(Date expireDate)
+        private bool IsMedicineStillTaken(DateTime startDate, int treatmentDays)
         {
-            Date now = new Date() { Day = DateTime.Today.Day, Month = DateTime.Today.Month, Year = DateTime.Today.Year };
-            return expireDate.Year > now.Year || expireDate.Year == now.Year && expireDate.Month > now.Month ||
-                            expireDate.Year == now.Year && expireDate.Month == now.Month && expireDate.Day > now.Day;
+            int result = DateTime.Compare(DateTime.Now, startDate.AddDays(treatmentDays));
+            if (result < 0)
+            {
+                return true;
+            }
+            return false;
         }
 
         private void ThrowExceptionIfPrsonExist(Person person)

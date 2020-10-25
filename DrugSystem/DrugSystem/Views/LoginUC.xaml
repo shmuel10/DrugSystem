@@ -48,21 +48,21 @@
                         <TextBox.Text>
                             <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <domain1:EmailAddressValidation ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    <domain1:EmailAddressValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>
                     </TextBox>
 
                     <TextBox x:Name="UserPassword" Grid.Row="4" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Password"   materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute" AutomationProperties.ItemType="Password">
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Password" materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute" AutomationProperties.ItemType="Password">
                         <TextBox.InputBindings>
                             <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
                         </TextBox.InputBindings>
                         <TextBox.Text>
                             <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
                                 <Binding.ValidationRules>
-                                    <domain1:NotEmptyValidation ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                 </Binding.ValidationRules>
                             </Binding>
                         </TextBox.Text>

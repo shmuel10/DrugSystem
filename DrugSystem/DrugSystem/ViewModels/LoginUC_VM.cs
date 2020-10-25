@@ -35,6 +35,7 @@ namespace DrugSystem.ViewModels
                 {
                     ((App)Application.Current).CurrentUser = currentUser;
                     ShellWindow shellWindow = new ShellWindow();
+                    shellWindow.Show();
                     if (currentUser is Doctor)
                     {
                         shellWindow.DoctorUc.Visibility = Visibility.Visible;
@@ -46,7 +47,7 @@ namespace DrugSystem.ViewModels
                 }
             } catch(Exception ex)
             {
-
+                MessageBox.Show(ex.Message);
             }
         }
     }
