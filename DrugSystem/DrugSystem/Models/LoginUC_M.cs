@@ -18,11 +18,7 @@ namespace DrugSystem.Models
 
         public User Login(string mail, string password)
         {
-            if(BL.VerifyLogIn(mail, password))
-            {
-                return BL.GetUserByEmail(mail);
-            }
-            return null;
+            return BL.GetUserByEmail(mail);
         }
     }
 }
