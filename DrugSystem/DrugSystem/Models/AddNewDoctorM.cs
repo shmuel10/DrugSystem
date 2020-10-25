@@ -11,9 +11,11 @@ namespace DrugSystem.Models
     class AddNewDoctorM
     {
         IBll BL;
+        public Doctor Doctor { get; set; }
         public AddNewDoctorM()
         {
             BL = new BllImplementation();
+            Doctor = new Doctor();
         }
 
         public void AddNewDoctor(Doctor doctor)
