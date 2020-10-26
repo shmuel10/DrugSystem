@@ -8,7 +8,7 @@ using BLL.BE;
 
 namespace DrugSystem.Models
 {
-    class AdminUC_M
+    public class AdminUC_M
     {
         public IBll BL { get; set; }
         public List<Doctor> Doctors { get; set; }

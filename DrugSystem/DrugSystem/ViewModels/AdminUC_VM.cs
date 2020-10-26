@@ -6,16 +6,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DrugSystem.Command;
 using DrugSystem.Models;
 
 namespace DrugSystem.ViewModels
 {
     
-    class AdminUC_VM : INotifyPropertyChanged
+    public class AdminUC_VM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public AdminUC_M AdminUC_M { get; set; }
-        public object FloatingButtons { get; private set; }
 
         public AdminUC_VM()
         {

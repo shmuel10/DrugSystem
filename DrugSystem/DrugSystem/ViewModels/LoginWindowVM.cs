@@ -36,8 +36,7 @@ namespace DrugSystem.ViewModels
             {
                 User currentUser = loginWindowM.Login(Mail, Password);
                 if (currentUser != null)
-                {
-                    
+                {                   
                     if (currentUser is Doctor)
                     {
                         ((App)Application.Current).CurrentViewModel = new DoctorUC_VM();
@@ -46,9 +45,7 @@ namespace DrugSystem.ViewModels
                     {
                         ((App)System.Windows.Application.Current).CurrentViewModel = new AdminUC_VM();
                     }
-                    ShellWindow shell = new ShellWindow();
-                    shell.Show();
-                    ((App)System.Windows.Application.Current).CurrentWindow = shell;
+                    ((App)System.Windows.Application.Current).CurrentWindow = new ShellWindow();
                 }
             }
             catch (Exception ex)

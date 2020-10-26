@@ -20,7 +20,22 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical">
-                <Menu x:Name="AppMenu" DockPanel.Dock="Top" Style="{x:Null}" Height="20"/>
+                <Menu x:Name="AppMenu" DockPanel.Dock="Top" Style="{x:Null}" Height="20">
+                    <MenuItem Header="עובדים" Style="{x:Null}">
+                        <MenuItem Header="רופא חדש" Style="{x:Null}" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor"/>
+                        <MenuItem Header="פקיד חדש" Style="{x:Null}" Command="{Binding NewWorkerCommand}" CommandParameter="Officer"/>
+                    </MenuItem>
+                    <MenuItem Header="תרופות" Style="{x:Null}">
+                        <MenuItem Header="הוסף תרופה" Style="{x:Null}" Command="{Binding NewMedicineCommand}"/>
+                    </MenuItem>
+                    <MenuItem Header="מטופלים" Style="{x:Null}">
+                        <MenuItem Header="מטופל חדש" Style="{x:Null}" Command="{Binding NewPatientCommand}"/>
+                    </MenuItem>
+                    <MenuItem Header="סיום" Style="{x:Null}">
+                        <MenuItem Header="התנתק" Style="{x:Null}" Command="{Binding SignOutCommand}"/>
+                        <MenuItem Header="יציאה" Style="{x:Null}" Command="{Binding ExitCommand}"/>
+                    </MenuItem>
+                </Menu>
                 <ToolBarTray x:Name="ToolBar" Height="50">
                     <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False" >
                         <Button ToolTip="Save">

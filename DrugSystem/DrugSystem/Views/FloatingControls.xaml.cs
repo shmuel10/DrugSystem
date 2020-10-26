@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DrugSystem.Command;
+using DrugSystem.ViewModels;
 
 namespace DrugSystem
 {
@@ -21,11 +22,10 @@ namespace DrugSystem
     /// </summary>
     public partial class FloatingControls : UserControl
     {
-        public event EventHandler<RoutedEventArgs> ClickHandler;
         public FloatingControls()
         {
             InitializeComponent();
-            DataContext = this;
+            DataContext = new FloatingControlsVM();
         }
     }
 }

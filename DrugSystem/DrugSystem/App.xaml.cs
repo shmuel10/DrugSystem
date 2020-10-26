@@ -26,22 +26,27 @@ namespace DrugSystem
             set 
             {
                 _currentViewModel = value; 
-                if(PropertyChanged != null)
+                if(PropertyChanged != null) 
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentViewModel"));
                 }
             }
         }
 
+        public Window ReferenceToMainWindow { get; set; }
         public Window CurrentWindow {
             get { return _currentWindow; }
             set {
-                _currentWindow = value;
-                _currentWindow.Show();
-                if (_currentWindow != null)
+                if (_currentWindow == null)
                 {
-                    //Current.MainWindow.Close();
-                }   
+                    _currentWindow = Current.MainWindow;
+                }
+                
+                    value.Show();
+                    _currentWindow.Close();
+                    _currentWindow = value;
+                
+               
                 if (PropertyChanged != null)
                 {
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentWindow"));
@@ -52,6 +57,7 @@ namespace DrugSystem
         public App()
         {
             CurrentViewModel = new LoginWindowVM();
+
         }
     }
 }
