@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 namespace BLL.BE
 {
     [Table("Persons")]
-    public abstract class Person
+    public class Person
     {
         [Key]
         [Required(ErrorMessage = "ID Is Required")]

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"             
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             xmlns:system="clr-namespace:System;assembly=System.Runtime"         
              xmlns:local="clr-namespace:DrugSystem.Views" xmlns:system1="clr-namespace:System;assembly=mscorlib" xmlns:local1="clr-namespace:DrugSystem"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -83,6 +84,15 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
+                        <TextBox x:Name="PasswordTextBox" materialDesign:HintAssist.Hint="סיסמה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="newDoctor.Password" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <TextBox x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="טלפון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
                                 <Binding Path="newDoctor.PhoneNumber" UpdateSourceTrigger="PropertyChanged">
@@ -101,7 +111,7 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <DatePicker x:Name="BirthDayTextBox" Text="{Binding Path=BirthDate}" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}">
+                        <DatePicker x:Name="BirthDayTextBox" Text="{Binding Path=newDoctor.BirthDate}" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}">
                             <!--<TextBox.Text>
                                 <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
@@ -110,6 +120,44 @@
                                 </Binding>
                             </TextBox.Text>-->
                         </DatePicker>
+                        <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=AddNewDoctorUC_M.Gender}" SelectedItem="{Binding Path=newDoctor.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
+
+                        <TextBox x:Name="LicenceNumTextBox" materialDesign:HintAssist.Hint="מספר רשיון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="newDoctor.LicenceNumber" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="CityTextBox" materialDesign:HintAssist.Hint="עיר"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="newDoctor.City" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="StreetTextBox" materialDesign:HintAssist.Hint="רחוב"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="newDoctor.Street" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
+                        <TextBox x:Name="BuildingNumberTextBox" materialDesign:HintAssist.Hint="מספר בית"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                            <TextBox.Text>
+                                <Binding Path="newDoctor.BuildingNumber" UpdateSourceTrigger="PropertyChanged">
+                                    <Binding.ValidationRules>
+                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                    </Binding.ValidationRules>
+                                </Binding>
+                            </TextBox.Text>
+                        </TextBox>
                         <TextBox x:Name="ExpertiseTextBox" materialDesign:HintAssist.Hint="מומחיות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
                                 <Binding Path="newDoctor.Specialty" UpdateSourceTrigger="PropertyChanged">
@@ -128,7 +176,7 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>-->
-                        <local1:PermitionsUC DataContext="{Binding Path=Parent.DataContext}" FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
+                        <local1:PermitionsUC CreateDoctor="{Binding newDoctor.CanAddPerson}" FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
                         <Button Content="סיום" Command="{Binding CreateNewDoctorCommand}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
                     </StackPanel>
                 </ScrollViewer>

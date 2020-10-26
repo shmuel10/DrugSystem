@@ -21,7 +21,7 @@ namespace BLL
             medicineApiHandler = new HandleMedicineAPI();
             //AddAdmin(new Administrator() { BirthDate = new AuxiliaryObjects.DateTime { Day = 20, Month = 10, Year = 2000 } ,
             //ID = "311215149", EmailAddress="simchapodo@gmail.com", PersonName = new AuxiliaryObjects.Name{ FirstName = "simcha", LastName = "podolsky" }
-            //, PhoneNumber="0556679804", Passowrd="Simchap1"}) ;
+            //, PhoneNumber="0556679804", Password="Simchap1"}) ;
 
             //AddAdmin(new Administrator() {
             //    BirthDate = new DateTime(2000, 10, 20),
@@ -30,7 +30,7 @@ namespace BLL
             //    FirstName = "simcha",
             //    LastName = "podolsky",
             //    PhoneNumber = "0556679804",
-            //    Passowrd = "AAAA1111",
+            //    Password = "AAAA1111",
             //    BuildingNumber = "27",
             //    City = "Netanya",
             //    Street = "yehuda halevi"
@@ -195,7 +195,7 @@ namespace BLL
             {
                 throw new ArgumentException("User Dosn't Exist");
             }
-            if (!user.Passowrd.Equals(Password))
+            if (!user.Password.Equals(Password))
             {
                 throw new ArgumentException("Wrong Password");
             }
@@ -255,7 +255,7 @@ namespace BLL
             try
             {
                 User user = dal.GetUserByEmail(EmailAddress);
-                return user.Passowrd.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
+                return user.Password.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
             } catch
             {
                 throw new ArgumentException("No Such User");

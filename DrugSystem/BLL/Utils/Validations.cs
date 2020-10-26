@@ -25,7 +25,7 @@ namespace BLL
         private bool ValidateUser(User user)
         {
             return ValidatePerson(user) &
-                ValidatePassword(user.Passowrd);
+                ValidatePassword(user.Password);
         }
         public bool ValidateAdmin(Administrator administrator)
         {

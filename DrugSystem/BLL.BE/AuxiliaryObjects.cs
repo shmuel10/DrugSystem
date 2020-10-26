@@ -8,6 +8,6 @@ namespace BLL.BE
 {
     public class AuxiliaryObjects
     {
-        public enum Gender { Male, Feamle, Other }
+        public enum Gender { זכר, נקבה, אחר }
     }
 }

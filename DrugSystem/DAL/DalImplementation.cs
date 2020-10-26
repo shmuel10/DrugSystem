@@ -92,7 +92,7 @@ namespace DAL
         private void UpdateUser(User userToUpdate, User updatedUser)
         {
             UpdatePerson(userToUpdate, updatedUser);
-            userToUpdate.Passowrd = updatedUser.Passowrd;
+            userToUpdate.Password = updatedUser.Password;
         }
 
         public void UpdateMedicine(Medicine medicine)

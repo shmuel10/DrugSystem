@@ -32,26 +32,31 @@ namespace DrugSystem.ViewModels
 
         public void Login()
         {
-            try
-            {
-                User currentUser = loginWindowM.Login(Mail, Password);
-                if (currentUser != null)
-                {                   
-                    if (currentUser is Doctor)
-                    {
-                        ((App)Application.Current).CurrentViewModel = new DoctorUC_VM();
-                    }
-                    else if (currentUser is Administrator)
-                    {
-                        ((App)System.Windows.Application.Current).CurrentViewModel = new AdminUC_VM();
-                    }
-                    ((App)System.Windows.Application.Current).CurrentWindow = new ShellWindow();
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message);
-            }
+            //delete row below
+            ((App)System.Windows.Application.Current).CurrentViewModel = new AdminUC_VM();
+            ((App)System.Windows.Application.Current).CurrentWindow = new ShellWindow();
+
+            //try
+            //{
+
+            //    User currentUser = loginWindowM.Login(Mail, Password);
+            //    if (currentUser != null)
+            //    {                   
+            //        if (currentUser is Doctor)
+            //        {
+            //            ((App)Application.Current).CurrentViewModel = new DoctorUC_VM();
+            //        }
+            //        else if (currentUser is Administrator)
+            //        {
+            //            ((App)System.Windows.Application.Current).CurrentViewModel = new AdminUC_VM();
+            //        }
+            //           ((App)System.Windows.Application.Current).CurrentWindow = new ShellWindow();
+            //    }
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+            //}
         }
     }
 }
