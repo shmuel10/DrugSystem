@@ -8,7 +8,7 @@
              mc:Ignorable="d">
     <StackPanel Orientation="Vertical" >
         <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="רופא חדש" Command="{Binding NewDoctorCommand}">
+                ToolTip="רופא חדש" Command="{Binding NewDoctorCommand}" >
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,13 +20,17 @@ namespace DrugSystem
     /// <summary>
     /// Interaction logic for FloatingControls.xaml
     /// </summary>
-    public partial class FloatingControls : UserControl
+    public partial class FloatingControls : UserControl, INotifyPropertyChanged
     {
         public event EventHandler<RoutedEventArgs> ClickHandler;
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        ICommand command;
         public FloatingControls()
         {
             InitializeComponent();
-            DataContext = this;
+            this.DataContext = this;
+            command = new NewDoctorCommand(this);
         }
     }
 }

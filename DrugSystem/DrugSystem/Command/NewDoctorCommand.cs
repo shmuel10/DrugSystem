@@ -12,6 +12,7 @@ namespace DrugSystem.Command
     public class NewDoctorCommand : ICommand
     {
         public INotifyPropertyChanged CurrentVM { get; set; }
+
         public NewDoctorCommand(INotifyPropertyChanged adminUC)
         {
             CurrentVM = adminUC;
@@ -20,10 +21,6 @@ namespace DrugSystem.Command
         public event EventHandler CanExecuteChanged {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
-        }
-
-        public NewDoctorCommand()
-        {
         }
 
         public bool CanExecute(object parameter)
