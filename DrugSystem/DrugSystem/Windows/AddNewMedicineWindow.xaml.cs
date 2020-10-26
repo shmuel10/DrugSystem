@@ -10,22 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
-using DrugSystem.ViewModels;
-using MahApps.Metro.Controls;
 
 namespace DrugSystem
 {
     /// <summary>
-    /// Interaction logic for AdminUC.xaml
+    /// Interaction logic for AddNewMedicineWindow.xaml
     /// </summary>
-    public partial class AdminUC : UserControl
+    public partial class AddNewMedicineWindow : Window
     {
-        public AdminUC()
+        public AddNewMedicineWindow()
         {
             InitializeComponent();
-            DataContext = new AdminUC_VM();
         }
     }
 }

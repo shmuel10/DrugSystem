@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DrugSystem.Command;
+using DrugSystem.ViewModels;
 
 namespace DrugSystem
 {
@@ -22,15 +23,10 @@ namespace DrugSystem
     /// </summary>
     public partial class FloatingControls : UserControl, INotifyPropertyChanged
     {
-        public event EventHandler<RoutedEventArgs> ClickHandler;
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        ICommand command;
         public FloatingControls()
         {
             InitializeComponent();
-            this.DataContext = this;
-            command = new NewDoctorCommand(this);
+            DataContext = new FloatingControlsVM();
         }
     }
 }

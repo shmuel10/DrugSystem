@@ -24,14 +24,16 @@ namespace BLL
             //, PhoneNumber="0556679804", Passowrd="Simchap1"}) ;
 
             //AddAdmin(new Administrator() {
-            //    BirthDate = new AuxiliaryObjects.DateTime { Day = 20, Month = 10, Year = 2000 },
+            //    BirthDate = new DateTime(2000, 10, 20),
             //    ID = "311215149",
             //    EmailAddress = "a@b",
             //    FirstName = "simcha",
             //    LastName = "podolsky",
             //    PhoneNumber = "0556679804",
             //    Passowrd = "AAAA1111",
-            //    PersonAddress = new AuxiliaryObjects.Address { BuildingNumber="27", City="Netanya", Street="yehuda halevi"}
+            //    BuildingNumber = "27",
+            //    City = "Netanya",
+            //    Street = "yehuda halevi"
             //});
 
             //List<User> users = dal.GetAllUsers();

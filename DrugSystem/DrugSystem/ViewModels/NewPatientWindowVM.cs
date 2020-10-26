@@ -1,14 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace DrugSystem.ViewModels
 {
-    public class DoctorUC_VM : INotifyPropertyChanged
+    class NewPatientWindowVM
     {
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }
