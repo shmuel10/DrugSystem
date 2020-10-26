@@ -29,32 +29,5 @@ namespace DrugSystem
             InitializeComponent();
             DataContext = new AdminUC_VM();
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            VisitWindow newd = new VisitWindow();
-            newd.Show();
-        }
-
-        private void Button_PreviewMouseMove(object sender, MouseEventArgs e)
-        {
-            this.FloatingButtons.Visibility = Visibility.Visible;
-
-            //UserControl userControl = this.FloatingButtons;
-            //userControl.Visibility = Visibility.Visible;
-        }
-
-        private void Button_MouseLeave(object sender, MouseEventArgs e)
-        {
-            this.FloatingButtons.Visibility = Visibility.Collapsed;
-        }
-
-        private void FloatingButtons_ClickHandler(object sender, RoutedEventArgs e)
-        {
-            if(ClickHandler != null)
-            {
-                ClickHandler.Invoke(sender, e);
-            }
-        }
     }
 }

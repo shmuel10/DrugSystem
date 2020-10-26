@@ -19,19 +19,13 @@ using System.Windows.Shapes;
 namespace DrugSystem
 {
     /// <summary>
-    /// Interaction logic for MainWindow.xaml
+    /// Interaction logic for LoginWindow.xaml
     /// </summary>
-    public partial class MainWindow : Window
+    public partial class LoginWindow : Window
     {
-        private IBll Bll;
-
-
-        public MainWindow()
+        public LoginWindow()
         {
-            InitializeComponent();
-            Bll = new BllImplementation();
+            InitializeComponent();            
         }
-
-      
     }
 }

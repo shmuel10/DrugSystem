@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DrugSystem.Command;
 
 namespace DrugSystem
 {
@@ -24,14 +25,7 @@ namespace DrugSystem
         public FloatingControls()
         {
             InitializeComponent();
-        }
-
-        private void New_Med_Button_Click(object sender, RoutedEventArgs e)
-        {
-            if(ClickHandler != null)
-            {
-                ClickHandler.Invoke(sender, e);
-            }          
+            DataContext = this;
         }
     }
 }

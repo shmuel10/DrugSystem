@@ -1,4 +1,4 @@
-﻿<Window x:Class="DrugSystem.MainWindow"
+﻿<Window x:Class="DrugSystem.LoginWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -6,7 +6,7 @@
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
         xmlns:local="clr-namespace:DrugSystem"
         MinHeight="450" MinWidth="500">
-    <Grid x:Name="LoginGrid" Visibility="Visible" Height="Auto" Width="Auto">
+    <Grid x:Name="LoginGrid" Visibility="Visible" MinHeight="450" MinWidth="500">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="Auto"/>

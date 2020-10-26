@@ -87,16 +87,23 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Command\NewDoctorCommand.cs" />
+    <Compile Include="Command\ShowGridCommand.cs" />
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Converters\MultyStringToArrConverter.cs" />
     <Compile Include="Models\AddNewDoctorM.cs" />
     <Compile Include="Models\AdminUC_M.cs" />
     <Compile Include="Models\LoginUC_M.cs" />
+    <Compile Include="Models\LoginWindowM.cs" />
+    <Compile Include="ShellWindow.xaml.cs">
+      <DependentUpon>ShellWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Validation\EmailAddressValidation.cs" />
     <Compile Include="Validation\NotEmptyValidation.cs" />
     <Compile Include="ViewModels\AddNewDoctorVM.cs" />
     <Compile Include="ViewModels\AdminUC_VM.cs" />
     <Compile Include="ViewModels\LoginUC_VM.cs" />
+    <Compile Include="ViewModels\DoctorUC_VM.cs" />
+    <Compile Include="ViewModels\LoginWindowVM.cs" />
     <Compile Include="Views\AddNewDoctor.xaml.cs">
       <DependentUpon>AddNewDoctor.xaml</DependentUpon>
     </Compile>
@@ -119,13 +126,14 @@
     <Compile Include="Views\SearchLineUC.xaml.cs">
       <DependentUpon>SearchLineUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\ShellWindow.xaml.cs">
-      <DependentUpon>ShellWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Validations.cs" />
     <Compile Include="Views\VisitWindow.xaml.cs">
       <DependentUpon>VisitWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="ShellWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Views\AddNewDoctor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -177,10 +185,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchLineUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\ShellWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

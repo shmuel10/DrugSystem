@@ -6,20 +6,23 @@
         xmlns:local="clr-namespace:DrugSystem" 
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
         xmlns:system1="clr-namespace:System;assembly=mscorlib" FlowDirection="RightToLeft"
-        x:Name="Shell">
+        x:Name="Shell"
+        MinHeight="450" MinWidth="500">
     <Window.Resources>
         <local:FontSizeConverter x:Key="FontSizeConverter"/>
     </Window.Resources>
-    <Viewbox Stretch="Fill">
-        <DockPanel Name="myDock" Style="{x:Null}" LastChildFill="True">
-            <Grid DockPanel.Dock="Top" MinHeight="30" Background="LightGray">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="0.5*"/>
-                    <RowDefinition Height="0.3*"/>
-                </Grid.RowDefinitions>
-                <Menu x:Name="AppMenu" VerticalAlignment="Top" Style="{x:Null}"/>
-                <ToolBarTray Grid.Row="1" VerticalAlignment="Top">
-                    <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+
+    <Grid>
+        <Grid x:Name="UsersGrid" Visibility="Visible">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
+            <StackPanel Orientation="Vertical">
+                <Menu x:Name="AppMenu" DockPanel.Dock="Top" Style="{x:Null}" Height="20"/>
+                <ToolBarTray x:Name="ToolBar" Height="50">
+                    <ToolBar Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False" >
                         <Button ToolTip="Save">
                             <materialDesign:PackIcon Kind="ContentSave" />
                         </Button>
@@ -50,13 +53,18 @@
                         <ToggleButton x:Name="ColorModeToggle" ToolTip="מצב חשוך"  Unchecked="ToggleButton_Checked" Checked="ToggleButton_Checked"/>
                     </ToolBar>
                 </ToolBarTray>
+            </StackPanel>
+
+            <Grid x:Name="ContentGrid" Grid.Row="1" Background="Transparent">
+                <!--<local:AdminUC x:Name="AdminUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
+                <local:DoctorUC x:Name="DoctorUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>-->
+                <ContentControl Content="{Binding Path=CurrentViewModel, Source={x:Static Application.Current}}"/>
             </Grid>
-            <TextBlock DockPanel.Dock="Bottom" Background="LightGray"/>
-            <Grid x:Name="MainGrid" MinHeight="300">
-                <local:AdminUC x:Name="AdminUc" Visibility="Collapsed" ClickHandler="AdminUC_ClickHandler" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
-                <local:DoctorUC x:Name="DoctorUc" Visibility="Collapsed"  FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
-                <local:AddNewMed x:Name="AddNewMedUC" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="Collapsed"/>
-            </Grid>
-        </DockPanel>
-    </Viewbox>
+            <TextBlock Grid.Row="2" Background="LightGray"/>
+        </Grid>
+        <!--<Grid x:Name="LoginGrid" Visibility="Visible">
+            <local:LoginUC x:Name="LoginUC" Background="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="2" Margin="150"/>
+        </Grid>-->
+    </Grid>
+    
 </Window>

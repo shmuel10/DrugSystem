@@ -3,11 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DrugSystem"
+             xmlns:local="clr-namespace:DrugSystem"  
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-             xmlns:system1="clr-namespace:System;assembly=mscorlib"
+             xmlns:system1="clr-namespace:System;assembly=mscorlib" xmlns:i1="http://schemas.microsoft.com/xaml/behaviors"
              FlowDirection="RightToLeft">
-    
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -36,7 +35,7 @@
                 </Grid>
             </TabItem>
 
-            <TabItem Header="פקידים"  Name="OfficersTab" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="פקידים" Name="OfficersTab" TabIndex="2" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -102,13 +101,18 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Button Grid.Row="0" VerticalAlignment="Bottom" PreviewMouseMove="Button_PreviewMouseMove" HorizontalAlignment="Center" Margin="20" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="הוסף" Click="Button_Click">
+        <Ellipse Height="60" Width="60" VerticalAlignment="Bottom" Margin="10">
+            <Ellipse.Fill>
+                <ImageBrush ImageSource="/Icons/SearchIcon.png"/>
+            </Ellipse.Fill>
+        </Ellipse>
+        <!--<Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="הוסף">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
-        </Button>
-        <Grid VerticalAlignment="Bottom" MouseLeave="Button_MouseLeave" Background="Transparent">
-            <local:FloatingControls x:Name="FloatingButtons" ClickHandler="FloatingButtons_ClickHandler" VerticalAlignment="Bottom" Visibility="Collapsed"/>
+        </Button>-->
+        <Grid VerticalAlignment="Bottom">
+            <local:FloatingControls x:Name="FloatingButtons" VerticalAlignment="Bottom"/>
         </Grid>
     </Grid>
 </UserControl>

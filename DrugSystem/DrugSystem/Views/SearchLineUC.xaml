@@ -13,7 +13,7 @@
             <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
             <Border  BorderThickness="1" BorderBrush="DarkBlue" Grid.Column="1">
-        <Image x:Name="SearchIcon" MaxHeight="40" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Center" Source="Icons/SearchIcon.png" Grid.Column="1"/>
+        <Image x:Name="SearchIcon" MaxHeight="40" Margin="3" VerticalAlignment="Center" HorizontalAlignment="Center" Source="/Icons/SearchIcon.png" Grid.Column="1"/>
             </Border>
             <Border BorderThickness="1" BorderBrush="DarkBlue">
                 <TextBox x:Name="SearchLine" FontWeight="Normal" Style="{x:Null}" Background="White" FlowDirection="RightToLeft" FontSize="23" MaxHeight="50" TextWrapping="Wrap" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="0"/>

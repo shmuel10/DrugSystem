@@ -6,7 +6,10 @@
              xmlns:local="clr-namespace:DrugSystem" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:DrugSystem.Converters"
-             mc:Ignorable="d">
+             mc:Ignorable="d" Background="White" >
+    <!--<UserControl.InputBindings>
+        <KeyBinding x:Name="rr" Key="Enter" Command="{Binding SignInCommand}"/>
+    </UserControl.InputBindings>-->
 
     <UserControl.Resources>
         <Style x:Key="MaterialDesignOutlinedTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
@@ -20,25 +23,27 @@
         </ResourceDictionary>
         <local1:MultyStringToArrConverter x:Key="MultyStringConverter"/>
     </UserControl.Resources>
+
+
     <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
         <Grid>
             <Border BorderBrush="DarkBlue" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="400" MinWidth="480">
-        <Grid Margin="3 3 3 3">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="0.35*"/>
-                <RowDefinition Height="0.35*"/>
-                <RowDefinition Height="0.35*"/>
-                <RowDefinition Height="0.35*"/>
-                <RowDefinition Height="0.35*"/>
-                <RowDefinition Height="1*"/>
-            </Grid.RowDefinitions>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="1*"/>
-                <ColumnDefinition Width="4*"/>
-                <ColumnDefinition Width="1*"/>
-            </Grid.ColumnDefinitions>
-            <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Style="{StaticResource MaterialDesignHeadline3TextBlock}">Log In</TextBlock>
+                <Grid Margin="3 3 3 3">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="1*"/>
+                        <RowDefinition Height="0.35*"/>
+                        <RowDefinition Height="0.35*"/>
+                        <RowDefinition Height="0.35*"/>
+                        <RowDefinition Height="0.35*"/>
+                        <RowDefinition Height="0.35*"/>
+                        <RowDefinition Height="1*"/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="1*"/>
+                        <ColumnDefinition Width="4*"/>
+                        <ColumnDefinition Width="1*"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Style="{StaticResource MaterialDesignHeadline3TextBlock}">Log In</TextBlock>
 
                     <TextBox x:Name="UserEmail" Grid.Row="3" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                  TextWrapping="Wrap" materialDesign:HintAssist.Hint="Email address" materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute">
@@ -78,7 +83,7 @@
                         </Button.CommandParameter>
                     </Button>
                 </Grid>
-    </Border>
+            </Border>
         </Grid>
     </Viewbox>
 </UserControl>

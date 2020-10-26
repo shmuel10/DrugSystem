@@ -23,6 +23,5 @@ namespace DrugSystem.Models
             Officers = BL.GetAllOfficers();
             Medicines = BL.GetAllMedicines();
         }
-
     }
 }

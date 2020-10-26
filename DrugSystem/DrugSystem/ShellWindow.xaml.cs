@@ -26,14 +26,14 @@ namespace DrugSystem
 
         private void AdminUC_ClickHandler(object sender, RoutedEventArgs e)
         {
-            this.AddNewMedUC.Visibility = Visibility.Visible;
+          //  this.AddNewMedUC.Visibility = Visibility.Visible;
         }
 
         public ShellWindow()
         {
             InitializeComponent();
-            Togglebtn = this.ColorModeToggle;
-            Togglebtn.IsChecked = true;
+         //   Togglebtn = this.ColorModeToggle;
+          //  Togglebtn.IsChecked = true;
             AddNewMed = new MenuItem();
             NewWorker = new MenuItem();
             NewMed = new MenuItem();
@@ -74,7 +74,7 @@ namespace DrugSystem
             AppMenu.Items.Add(NewMed);
             AppMenu.Items.Add(Finish);
 
-          
+
             //AdminGr = this.AdminGrid;
             //DrGrid = this.DoctorGrid;
             //if (user == "Doctor")
@@ -93,14 +93,14 @@ namespace DrugSystem
 
         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
         {
-            Grid MainGrid = this.MainGrid;
+          //  Grid MainGrid = this.MainGrid;
             if ((bool)Togglebtn.IsChecked)
             {
-                MainGrid.Background = Brushes.Black;
+                //MainGrid.Background = Brushes.White;
             }
             else
             {
-                MainGrid.Background = Brushes.White;
+               // MainGrid.Background = Brushes.White;
             }
 
         }
