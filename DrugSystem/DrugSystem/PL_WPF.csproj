@@ -88,6 +88,9 @@
     </ApplicationDefinition>
     <Compile Include="Command\AddNewPatientCommand.cs" />
     <Compile Include="Command\AddNewWorkerCommand.cs" />
+    <Compile Include="Command\CreateNewDoctorCommand.cs" />
+    <Compile Include="Converters\ConctenateStringConverter.cs" />
+    <Compile Include="ViewModels\AddNewDoctorUC_VM.cs" />
     <Compile Include="ViewModels\NewPatientWindowVM.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
       <DependentUpon>AddNewDoctorUC.xaml</DependentUpon>
@@ -106,7 +109,7 @@
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Command\SignOutCommand.cs" />
     <Compile Include="Converters\MultyStringToArrConverter.cs" />
-    <Compile Include="Models\AddNewDoctorM.cs" />
+    <Compile Include="Models\AddNewDoctorUC_M.cs" />
     <Compile Include="Models\AdminUC_M.cs" />
     <Compile Include="Models\LoginUC_M.cs" />
     <Compile Include="Models\LoginWindowM.cs" />

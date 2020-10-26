@@ -5,8 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DrugSystem.Windows"
         mc:Ignorable="d"
+        x:Name="AddNewWorkerWin"
         Title="AddNewWorker" Height="450" Width="800">
-    <Grid>
+    <Grid x:Name="MainGrid">
         <Views:AddNewDoctorUC x:Name="DoctorUC" Visibility="Collapsed"/>
         <Views:AddNewOfficerUC x:Name="OfficerUC" Visibility="Collapsed" />
     </Grid>

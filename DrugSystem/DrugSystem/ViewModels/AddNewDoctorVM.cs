@@ -5,6 +5,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Input;
 using BLL.BE;
@@ -16,28 +17,39 @@ namespace DrugSystem.Models
     class AddNewDoctorVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        AddNewDoctorM newDoctorM;
+        AddNewDoctorUC_M newDoctorM;
         Doctor NewDoctor;
-        public AddNewDoctorVM()
+        public ICommand CreateNewDoctorCommand { get; set; }
+        public Window NewDoctorWindow { get; set; }
+        public AddNewDoctorVM(Window window)
         {
-            newDoctorM = new AddNewDoctorM();
+            NewDoctorWindow = window;
+            newDoctorM = new AddNewDoctorUC_M();
             NewDoctor = new Doctor();
+         
         }
 
-        public string FirstName 
+        public void CreateNewDoctor()
         {
-            get 
-            {
-                return NewDoctor.FirstName;
-            }
-            set 
-            {
-                NewDoctor.FirstName = value;
-                if(PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("FirstName"));
-                }
-            }
+            newDoctorM.AddNewDoctor(NewDoctor);
+            NewDoctorWindow.Close();
         }
+
+       
+        //public string FirstName 
+        //{
+        //    get 
+        //    {
+        //        return NewDoctor.FirstName;
+        //    }
+        //    set 
+        //    {
+        //        NewDoctor.FirstName = value;
+        //        if(PropertyChanged != null)
+        //        {
+        //            PropertyChanged(this, new PropertyChangedEventArgs("FirstName"));
+        //        }
+        //    }
+        //}
     }
 }

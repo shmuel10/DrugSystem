@@ -8,11 +8,11 @@ using BLL.BE;
 
 namespace DrugSystem.Models
 {
-    class AddNewDoctorM
+    public class AddNewDoctorUC_M
     {
         IBll BL;
         public Doctor Doctor { get; set; }
-        public AddNewDoctorM()
+        public AddNewDoctorUC_M()
         {
             BL = new BllImplementation();
             Doctor = new Doctor();

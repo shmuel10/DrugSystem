@@ -21,7 +21,7 @@ namespace DrugSystem
     /// <summary>
     /// Interaction logic for FloatingControls.xaml
     /// </summary>
-    public partial class FloatingControls : UserControl, INotifyPropertyChanged
+    public partial class FloatingControls : UserControl
     {
         public FloatingControls()
         {

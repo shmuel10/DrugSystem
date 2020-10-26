@@ -5,15 +5,18 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DrugSystem"  
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-             xmlns:system1="clr-namespace:System;assembly=mscorlib" xmlns:i1="http://schemas.microsoft.com/xaml/behaviors"
+             xmlns:system1="clr-namespace:System;assembly=mscorlib" xmlns:i1="http://schemas.microsoft.com/xaml/behaviors" xmlns:local1="clr-namespace:DrugSystem.Converters"
              FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <local1:ConctenateStringConverter x:Key="ConcatString"/>
+    </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
         <TabControl x:Name="tabs" Grid.Column="1" Style="{x:Null}" BorderThickness="3" MinHeight="500" HorizontalAlignment="Stretch" Margin="0 0 50 0">
-            <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1">
+            <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1" DataContext="{Binding Source=AdminUC_M, Path=Doctors}">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
@@ -26,9 +29,17 @@
                                 <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                                 <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
-                                <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
-                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
+                                <GridViewColumn Header="כתובת" Width="150">
+                                    <GridViewColumn.DisplayMemberBinding>
+                                        <MultiBinding Converter="{StaticResource ConcatString}">
+                                            <Binding  Path="City" />
+                                            <Binding  Path="Street" />
+                                            <Binding  Path="BuildingNumber" />
+                                        </MultiBinding>
+                                    </GridViewColumn.DisplayMemberBinding>
+                                </GridViewColumn>
+                                <GridViewColumn Header="מספר רשיון" Width="150" DisplayMemberBinding="{Binding LicenceNumber}" />
+                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding Specialty}" />
                             </GridView>
                         </ListView.View>
                     </ListView>

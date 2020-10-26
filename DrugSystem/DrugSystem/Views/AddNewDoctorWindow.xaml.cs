@@ -23,7 +23,7 @@ namespace DrugSystem
         public AddNewDoctor()
         {
             InitializeComponent();
-            DataContext = new AddNewDoctorVM();
+            DataContext = new AddNewDoctorVM(this);
         }
     }
 }

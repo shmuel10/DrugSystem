@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using BLL.BE;
 using DrugSystem.Command;
 using DrugSystem.Models;
 
@@ -16,10 +17,11 @@ namespace DrugSystem.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public AdminUC_M AdminUC_M { get; set; }
-
+      
         public AdminUC_VM()
         {
             AdminUC_M = new AdminUC_M();
+           
         }
 
         private void Button_PreviewMouseMove(object sender, MouseEventArgs e)
