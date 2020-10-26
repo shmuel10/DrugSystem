@@ -35,7 +35,7 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            //((AddNewDoctorUC_VM)CurrentVM).CreateNewDoctor();
+            ((AddNewDoctorUC_VM)CurrentVM).CreateNewDoctor();
             AddNewWorkerWindow win = ((App)System.Windows.Application.Current).Windows.OfType<AddNewWorkerWindow>().FirstOrDefault();
             if(win!= null)
             {

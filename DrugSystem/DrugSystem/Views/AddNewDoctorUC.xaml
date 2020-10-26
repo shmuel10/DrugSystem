@@ -58,7 +58,7 @@
                     <StackPanel>
                         <TextBox x:Name="IDTextBox" materialDesign:HintAssist.Hint="תעודת זהות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
-                                <Binding Source="NewDoctor" Path="ID" UpdateSourceTrigger="PropertyChanged">
+                                <Binding Path="newDoctor.ID" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
@@ -67,7 +67,7 @@
                         </TextBox>
                         <TextBox x:Name="FirsNameTextBox" materialDesign:HintAssist.Hint="שם פרטי"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
-                                <Binding Source="NewDoctor" Path="FirstName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding Path="newDoctor.FirstName" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
@@ -76,7 +76,7 @@
                         </TextBox>
                         <TextBox x:Name="LastNameTextBox" materialDesign:HintAssist.Hint="שם משפחה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
-                                <Binding Path="LastName" UpdateSourceTrigger="PropertyChanged">
+                                <Binding Path="newDoctor.LastName" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
@@ -85,7 +85,7 @@
                         </TextBox>
                         <TextBox x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="טלפון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
-                                <Binding Path="PhoneNumber" UpdateSourceTrigger="PropertyChanged">
+                                <Binding Path="newDoctor.PhoneNumber" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
@@ -94,7 +94,7 @@
                         </TextBox>
                         <TextBox x:Name="MailTextBox" materialDesign:HintAssist.Hint="אימייל"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
-                                <Binding Source="NewDoctor" Path="EmailAddress" UpdateSourceTrigger="PropertyChanged">
+                                <Binding Path="newDoctor.EmailAddress" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
@@ -112,7 +112,7 @@
                         </DatePicker>
                         <TextBox x:Name="ExpertiseTextBox" materialDesign:HintAssist.Hint="מומחיות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
-                                <Binding Path="Specialty" UpdateSourceTrigger="PropertyChanged">
+                                <Binding Path="newDoctor.Specialty" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
@@ -128,7 +128,7 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>-->
-                        <local1:PermitionsUC DataContext="{Binding Path=Parent.DataContext.NewDoctor}" FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
+                        <local1:PermitionsUC DataContext="{Binding Path=Parent.DataContext}" FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
                         <Button Content="סיום" Command="{Binding CreateNewDoctorCommand}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
                     </StackPanel>
                 </ScrollViewer>

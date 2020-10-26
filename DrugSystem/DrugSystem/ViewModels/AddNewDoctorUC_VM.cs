@@ -16,13 +16,13 @@ namespace DrugSystem.ViewModels
     public class AddNewDoctorUC_VM : INotifyPropertyChanged
     {
         AddNewDoctorUC_M AddNewDoctorUC_M;
-        Doctor newDoctor;
+        public Doctor newDoctor { get; set; }
         public ICommand CreateNewDoctorCommand { get; set; }
         public AddNewDoctorUC_VM(UserControl addNeWDocUC)
         {
             AddNewDoctorUC_M = new AddNewDoctorUC_M();
-            newDoctor = new Doctor();
             CreateNewDoctorCommand = new CreateNewDoctorCommand(this);
+            newDoctor = new Doctor();
         }
         public event PropertyChangedEventHandler PropertyChanged;
 
