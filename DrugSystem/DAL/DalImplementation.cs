@@ -40,7 +40,6 @@ namespace DAL
             try
             {
                 ThrowExceptionIfPrsonExist(doctor);
-                doctor.BirthDate = DateTime.Now;
                 DB.PersonsTable.Add(doctor);
                 DB.SaveChanges();
             }

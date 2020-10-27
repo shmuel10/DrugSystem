@@ -133,7 +133,6 @@ namespace BLL
         }
         public bool ValidateBirthDate(DateTime BirthDate)
         {
-            string ErrorMessage = null;
             int result = DateTime.Compare(DateTime.Now, BirthDate);
             if(result < 0 || BirthDate.Year < 1800)
             {
