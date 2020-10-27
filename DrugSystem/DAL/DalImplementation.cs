@@ -10,15 +10,16 @@ using System.Configuration;
 using System.ComponentModel.DataAnnotations;
 using System.Windows.Forms;
 using static BLL.BE.AuxiliaryObjects;
+using System.Data.Entity.Validation;
 
 namespace DAL
 {
     public class DalImplementation : IDAL
     {
-        DrugSystemContext DB = new DrugSystemContext();
+        DrugSystemContext DB;
         public DalImplementation()
         {
-
+            DB = new DrugSystemContext();
         }
         #region add to DB
         public void AddAdmin(Administrator administrator)
@@ -36,9 +37,24 @@ namespace DAL
 
         public void AddDoctor(Doctor doctor)
         {
-            ThrowExceptionIfPrsonExist(doctor);
-            DB.PersonsTable.Add(doctor);
-            DB.SaveChanges();
+            try
+            {
+                ThrowExceptionIfPrsonExist(doctor);
+                doctor.BirthDate = DateTime.Now;
+                DB.PersonsTable.Add(doctor);
+                DB.SaveChanges();
+            }
+            catch (DbEntityValidationException ex)
+            {
+                foreach (var errors in ex.EntityValidationErrors)
+                {
+                    foreach (var validationError in errors.ValidationErrors)
+                    {
+                        // get the error message 
+                        string errorMessage = validationError.ErrorMessage;
+                    }
+                }
+            }
         }
 
         public void AddOfficer(Officer officer)

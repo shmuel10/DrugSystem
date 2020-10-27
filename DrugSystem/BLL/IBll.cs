@@ -9,13 +9,11 @@ namespace BLL
 {
     public interface IBll
     {
-       // bool VerifyLogIn(string EmailAddress, string Password);
         User GetLoginUser(string userMail, string Password);
 
 
 
         //Users DB
-        User GetUserByEmail(string emailAddress);
         List<User> GetAllUsers();
 
         //Admins DB

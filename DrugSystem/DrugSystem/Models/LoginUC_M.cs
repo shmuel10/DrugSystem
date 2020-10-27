@@ -15,10 +15,5 @@ namespace DrugSystem.Models
         {
             BL = new BllImplementation();
         }
-
-        public User Login(string mail, string password)
-        {
-            return BL.GetUserByEmail(mail);
-        }
     }
 }
