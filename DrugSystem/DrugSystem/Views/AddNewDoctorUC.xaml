@@ -7,6 +7,7 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"       
              xmlns:local="clr-namespace:DrugSystem.Views" xmlns:system1="clr-namespace:System;assembly=mscorlib" xmlns:local1="clr-namespace:DrugSystem"
              mc:Ignorable="d" 
+             x:Name="AddNewDocUC"
              d:DesignHeight="450" d:DesignWidth="800">
 
     <UserControl.Resources>
@@ -37,7 +38,7 @@
         </Style>
         <ViewModels:AddNewDoctorUC_VM x:Key="ADD_VM"/>
     </UserControl.Resources>
-    
+   
     <Viewbox Stretch="Fill">
         <DockPanel Name="myDock" Style="{x:Null}" LastChildFill="True" >
             <Grid DockPanel.Dock="Top" Background="AliceBlue" MinHeight="70">
@@ -178,8 +179,12 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>-->
-                        <local1:PermitionsUC x:Name="Permissions" FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
-
+                        <local1:PermitionsUC x:Name="Permissions" CanAddDoctorDP="{Binding ElementName=AddNewDocUC, Path=DataContext.newDoctor.CanAddDoctor, Mode=TwoWay}" 
+                                             CanAddPatientDP="{Binding ElementName=AddNewDocUC, Path=DataContext.newDoctor.CanAddPatient, Mode=TwoWay}"
+                                             CanAddPrescriptionDP="{Binding ElementName=AddNewDocUC, Path=DataContext.newDoctor.CanCreatePrescriptions, Mode=TwoWay}"
+                                             CanAddMedicineDP="{Binding ElementName=AddNewDocUC, Path=DataContext.newDoctor.CanAddMedicine, Mode=TwoWay}"
+                                             FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
+    
                         <Button Content="סיום" Command="{Binding CreateNewDoctorCommand}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
                     </StackPanel>
                 </ScrollViewer>

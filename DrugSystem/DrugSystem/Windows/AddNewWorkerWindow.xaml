@@ -9,7 +9,7 @@
         x:Name="AddNewWorkerWin"
         Title="AddNewWorker" Height="450" Width="800">
     <Grid x:Name="MainGrid">
-        <Views:AddNewDoctorUC x:Name="DoctorUC" Visibility="Collapsed"/>
-        <Views:AddNewOfficerUC x:Name="OfficerUC" Visibility="Collapsed" />
+        <Views:AddNewDoctorUC x:Name="DoctorUC"  Visibility="Collapsed"/>
+        <Views:AddNewOfficerUC x:Name="OfficerUC" Visibility="Collapsed"/>
     </Grid>
 </Window>

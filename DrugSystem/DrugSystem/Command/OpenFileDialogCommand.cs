@@ -24,6 +24,7 @@ namespace DrugSystem.Command
         {
             OpenFileDialog op = new OpenFileDialog();
             op.Title = "Select a Picture";
+            op.ShowDialog();
         }
     }
 }

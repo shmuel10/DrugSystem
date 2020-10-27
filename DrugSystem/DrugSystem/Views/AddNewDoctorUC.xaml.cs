@@ -23,9 +23,21 @@ namespace DrugSystem.Views
     {
         public AddNewDoctorUC()
         {
-            InitializeComponent();  
+            InitializeComponent();
             DataContext = new AddNewDoctorUC_VM();
-            this.Permissions.DataContext = DataContext;
         }
+
+
+
+
+        //    public bool Shmulik {
+        //        get { return (bool)GetValue(ShmulikProperty); }
+        //        set { SetValue(ShmulikProperty, value); }
+        //    }
+
+        //    // Using a DependencyProperty as the backing store for Shmulik.  This enables animation, styling, binding, etc...
+        //    public static readonly DependencyProperty ShmulikProperty =
+        //        DependencyProperty.Register("Shmulik", typeof(bool), typeof(AddNewDoctorUC), new PropertyMetadata(null));
+        //}
     }
 }

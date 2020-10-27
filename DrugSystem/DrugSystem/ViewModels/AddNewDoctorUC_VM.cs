@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Data;
 using System.Windows.Input;
 using System.Windows.Media;
 using BLL.BE;
@@ -34,17 +35,7 @@ namespace DrugSystem.ViewModels
 
         public void CreateNewDoctor()
         {
-            //newDoctor.CanAddDoctor = CanAddDoctor;
-            //newDoctor.CanAddMedicine = CanAddMedicine;
-            //newDoctor.CanAddPatient = CanAddPatient;
-            //newDoctor.CanCreatePrescriptions = CanCreatePrescriptions;
             AddNewDoctorUC_M.AddNewDoctor(newDoctor);
         }
-
-        public bool CanAddDoctor { get { return newDoctor.CanAddDoctor; } set { newDoctor.CanAddDoctor = value; } }
-        public bool CanAddMedicine { get { return newDoctor.CanAddMedicine; } set { newDoctor.CanAddMedicine = value; } }
-        public bool CanAddPatient { get { return newDoctor.CanAddPatient; } set { newDoctor.CanAddPatient = value; } }
-        public bool CanCreatePrescriptions { get { return newDoctor.CanCreatePrescriptions; } set { newDoctor.CanCreatePrescriptions = value; } }
-
     }
 }
