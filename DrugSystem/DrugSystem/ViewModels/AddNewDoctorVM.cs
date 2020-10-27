@@ -35,7 +35,7 @@ namespace DrugSystem.Models
             NewDoctorWindow.Close();
         }
 
-       
+        public bool E{ get; set; }
         //public string FirstName 
         //{
         //    get 

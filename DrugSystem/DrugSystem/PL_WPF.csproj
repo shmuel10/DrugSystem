@@ -89,6 +89,7 @@
     <Compile Include="Command\AddNewPatientCommand.cs" />
     <Compile Include="Command\AddNewWorkerCommand.cs" />
     <Compile Include="Command\CreateNewDoctorCommand.cs" />
+    <Compile Include="Command\OpenFileDialogCommand.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
     <Compile Include="ViewModels\AddNewDoctorUC_VM.cs" />
     <Compile Include="ViewModels\NewPatientWindowVM.cs" />

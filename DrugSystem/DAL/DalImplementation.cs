@@ -184,7 +184,7 @@ namespace DAL
         }
 
         private List<T> GetAllElementsOfTypeT<T>()
-        {
+        {   
             return DB.PersonsTable.OfType<T>().ToList();
         }
         public List<User> GetAllUsers()

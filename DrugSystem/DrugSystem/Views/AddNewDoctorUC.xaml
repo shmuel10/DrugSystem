@@ -3,8 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:system="clr-namespace:System;assembly=System.Runtime"         
+             xmlns:ViewModels="clr-namespace:DrugSystem.ViewModels"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"       
              xmlns:local="clr-namespace:DrugSystem.Views" xmlns:system1="clr-namespace:System;assembly=mscorlib" xmlns:local1="clr-namespace:DrugSystem"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
@@ -35,7 +35,9 @@
                 </Setter.Value>
             </Setter>
         </Style>
+        <ViewModels:AddNewDoctorUC_VM x:Key="ADD_VM"/>
     </UserControl.Resources>
+    
     <Viewbox Stretch="Fill">
         <DockPanel Name="myDock" Style="{x:Null}" LastChildFill="True" >
             <Grid DockPanel.Dock="Top" Background="AliceBlue" MinHeight="70">
@@ -46,7 +48,7 @@
                 </Grid.RowDefinitions>
 
 
-                <Button Grid.Row="1"  VerticalAlignment="Center" Height="7" Width="7" HorizontalAlignment="Center" Background="Gray" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                <Button Grid.Row="1" Command="{Binding FileDialogCommand}"  VerticalAlignment="Center" Height="7" Width="7" HorizontalAlignment="Center" Background="Gray" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
                 ToolTip="בחר תמונה">
                     <materialDesign:PackIcon Kind="Upload" HorizontalAlignment="Center" VerticalAlignment="Center" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
@@ -59,7 +61,7 @@
                     <StackPanel>
                         <TextBox x:Name="IDTextBox" materialDesign:HintAssist.Hint="תעודת זהות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
-                                <Binding Path="newDoctor.ID" UpdateSourceTrigger="PropertyChanged">
+                                <Binding  Path="newDoctor.ID" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
@@ -176,13 +178,15 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>-->
-                        <local1:PermitionsUC CreateDoctor="{Binding newDoctor.CanAddPerson}" FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
+                        <local1:PermitionsUC x:Name="Permissions" FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
+
                         <Button Content="סיום" Command="{Binding CreateNewDoctorCommand}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
                     </StackPanel>
                 </ScrollViewer>
             </Grid>
         </DockPanel>
     </Viewbox>
+    
     <!--<Viewbox Stretch="Fill">
         <DockPanel Name="myDock" Style="{x:Null}" LastChildFill="False" >
             <Grid DockPanel.Dock="Top" MinHeight="30" Background="AliceBlue">

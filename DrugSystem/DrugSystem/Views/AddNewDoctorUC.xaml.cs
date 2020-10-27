@@ -24,7 +24,8 @@ namespace DrugSystem.Views
         public AddNewDoctorUC()
         {
             InitializeComponent();  
-            DataContext = new AddNewDoctorUC_VM(this);
+            DataContext = new AddNewDoctorUC_VM();
+            this.Permissions.DataContext = DataContext;
         }
     }
 }
