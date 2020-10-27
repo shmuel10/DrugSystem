@@ -23,17 +23,19 @@ namespace BLL
             //ID = "311215149", EmailAddress="simchapodo@gmail.com", PersonName = new AuxiliaryObjects.Name{ FirstName = "simcha", LastName = "podolsky" }
             //, PhoneNumber="0556679804", Password="Simchap1"}) ;
 
-            //AddAdmin(new Administrator() {
+            //AddDoctor(new Doctor() {
             //    BirthDate = new DateTime(2000, 10, 20),
-            //    ID = "311215149",
-            //    EmailAddress = "a@b",
+            //    ID = "024219107",
+            //    EmailAddress = "e@wewe",
             //    FirstName = "simcha",
             //    LastName = "podolsky",
             //    PhoneNumber = "0556679804",
             //    Password = "AAAA1111",
             //    BuildingNumber = "27",
             //    City = "Netanya",
-            //    Street = "yehuda halevi"
+            //    Street = "yehuda halevi",
+            //    LicenceNumber = "60",
+            //    Specialty = "as"
             //});
 
             //List<User> users = dal.GetAllUsers();
@@ -46,22 +48,10 @@ namespace BLL
         #region add to DB
         public void AddAdmin(Administrator administrator)
         {
-            try
-            {
                 validations.ValidateAdmin(administrator);
                 dal.AddAdmin(administrator);
-            }
-            catch (DbEntityValidationException  ex)
-            {
-                foreach (var errors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in errors.ValidationErrors)
-                    {
-                        // get the error message 
-                        string errorMessage = validationError.ErrorMessage;
-                    }
-                }
-            }
+            
+            
         }
 
         public void AddDoctor(Doctor doctor)
@@ -71,6 +61,7 @@ namespace BLL
                 validations.ValidateDoctor(doctor);
                 dal.AddDoctor(doctor);
             }
+
             catch (Exception ex)
             {
                 throw new ArgumentException(ex.Message);
@@ -199,7 +190,7 @@ namespace BLL
             {
                 throw new ArgumentException("Wrong Password");
             }
-            return dal.GetUserByEmail(userMail);
+            return user;
         }
 
         public Medicine GetMedicine(string MedicineID)
@@ -222,10 +213,6 @@ namespace BLL
             return dal.GetPatientsPrescriptions(PatientID);
         }
 
-        public User GetUserByEmail(string emailAddress)
-        {
-            return dal.GetUserByEmail(emailAddress);
-        }
         #endregion
 
         #region update DB
@@ -250,16 +237,16 @@ namespace BLL
         }
         #endregion
 
-        public User VerifyLogIn(string EmailAddress, string Password)
-        {
-            try
-            {
-                User user = dal.GetUserByEmail(EmailAddress);
-                return user.Password.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
-            } catch
-            {
-                throw new ArgumentException("No Such User");
-            }
-        }
+       // public User VerifyLogIn(string EmailAddress, string Password)
+       // {
+       //     try
+       //     {
+       //         User user = dal.GetUserByEmail(EmailAddress);
+       //         return user.Password.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
+       //     } catch
+       //     {
+       //         throw new ArgumentException("No Such User");
+       //     }
+       // }
     }
 }
