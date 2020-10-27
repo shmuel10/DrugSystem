@@ -24,6 +24,12 @@ namespace DrugSystem.ViewModels
            
         }
 
+        public List<Doctor> Doctors { get { return AdminUC_M.Doctors; } }
+        public List<Patient> Patients { get { return AdminUC_M.Patients; } }
+        public List<Officer> Officers { get { return AdminUC_M.Officers; } }
+        public List<Medicine> Medicines { get { return AdminUC_M.Medicines; } }
+
+
         private void Button_PreviewMouseMove(object sender, MouseEventArgs e)
         {
            // this.FloatingButtons.Visibility = Visibility.Visible;

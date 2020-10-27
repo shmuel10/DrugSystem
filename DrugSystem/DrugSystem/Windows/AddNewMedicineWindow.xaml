@@ -18,7 +18,7 @@
             <TextBox x:Name="GenericName" Width="150"  materialDesign:HintAssist.Hint="שם גנרי" Margin="5"/>
             <TextBox x:Name="Manufacturer" Width="150"  materialDesign:HintAssist.Hint="יצרן" Margin="5"/>
             <TextBox x:Name="ActiveIngredient" Width="150" materialDesign:HintAssist.Hint="חומר פעיל" Margin="5"/>
-            <Button Content="הוסף" Height="Auto" HorizontalAlignment="Stretch" Width="100"  Margin="10 30 10 20"/>
+            <Button Content="הוסף" Command="{Binding AddNewMedicineCommand}" Height="Auto" HorizontalAlignment="Stretch" Width="100"  Margin="10 30 10 20"/>
         </StackPanel>
     </StackPanel>
 </Window>
