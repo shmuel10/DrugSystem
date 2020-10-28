@@ -10,6 +10,7 @@
         MinHeight="450" MinWidth="500">
     <Window.Resources>
         <local:FontSizeConverter x:Key="FontSizeConverter"/>
+        <local:FontSizeConverter x:Key="BoolToVisibilityConverter"/>
     </Window.Resources>
 
     <Grid>
@@ -76,12 +77,11 @@
                 <ContentControl Content="{Binding Path=CurrentViewModel, Source={x:Static Application.Current}}" 
                                 FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, 
                     Converter={StaticResource FontSizeConverter}}"/>
+                <Frame x:Name="MiddleFrame" Margin="60" Visibility="{Binding Path=FrameVisibility,  Source={x:Static Application.Current}, Converter={StaticResource BooleanToVisibilityConverter}}"
+                       Content="{Binding Path=OnFrame, Source={x:Static Application.Current}}"/>
             </Grid>
             <TextBlock Grid.Row="2" Background="LightGray"/>
         </Grid>
-        <!--<Grid x:Name="LoginGrid" Visibility="Visible">
-            <local:LoginUC x:Name="LoginUC" Background="White" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.RowSpan="2" Margin="150"/>
-        </Grid>-->
     </Grid>
     
 </Window>

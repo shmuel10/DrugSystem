@@ -14,7 +14,6 @@ using DrugSystem.Models;
 
 namespace DrugSystem.ViewModels
 {
-    
     public class AdminUC_VM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
@@ -28,6 +27,9 @@ namespace DrugSystem.ViewModels
         public List<Doctor> Doctors { get { return AdminUC_M.Doctors; } }
         public List<Patient> Patients { get { return AdminUC_M.Patients; } }
         public List<Officer> Officers { get { return AdminUC_M.Officers; } }
-        public List<Medicine> Medicines { get { return AdminUC_M.Medicines; } }     
+        public List<Medicine> Medicines { get { return AdminUC_M.Medicines; } }
+
+     
+     
     }
 }

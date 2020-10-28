@@ -12,7 +12,7 @@
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <local:SearchLineUC Grid.Row="0"/>
-        <ListView x:Name="DoctorsList" Grid.Row="1" Style="{x:Null}" Background="White" MinHeight="400">
+        <ListView x:Name="DoctorsList" SelectedItem="{Binding SelectedPatient}" Grid.Row="1" Style="{x:Null}" Background="White" MinHeight="400">
             <ListView.View>
                 <GridView>
                     <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />

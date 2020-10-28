@@ -2,9 +2,11 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:DrugSystem"
+             xmlns:local1="clr-namespace:DrugSystem.Views"
              xmlns:ViewModels="clr-namespace:DrugSystem.ViewModels"
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:system1="clr-namespace:System;assembly=mscorlib"
+             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:system1="clr-namespace:System;assembly=mscorlib" 
              StartupUri="Views/LoginWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
@@ -15,6 +17,11 @@
             <DataTemplate DataType="{x:Type ViewModels:DoctorUC_VM}">
                 <local:DoctorUC />
             </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:PatientUC_VM}">
+                <local1:PatientUC/>
+            </DataTemplate>
+
 
             <system1:Double x:Key="IconSize">12</system1:Double>
             <system1:Double x:Key="FontSize">20</system1:Double>

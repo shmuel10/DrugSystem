@@ -94,8 +94,10 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
     <Compile Include="Models\AddNewPatientUC_M.cs" />
+    <Compile Include="Models\PatientUC_M.cs" />
     <Compile Include="ViewModels\AddNewDoctorUC_VM.cs" />
     <Compile Include="ViewModels\AddNewPatientUC_VM.cs" />
+    <Compile Include="ViewModels\PatientUC_VM.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
       <DependentUpon>AddNewDoctorUC.xaml</DependentUpon>
     </Compile>
@@ -104,6 +106,9 @@
     </Compile>
     <Compile Include="Views\AddNewPatientUC.xaml.cs">
       <DependentUpon>AddNewPatientUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PatientUC.xaml.cs">
+      <DependentUpon>PatientUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddNewMedicineWindow.xaml.cs">
       <DependentUpon>AddNewMedicineWindow.xaml</DependentUpon>
@@ -164,6 +169,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddNewPatientUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PatientUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
