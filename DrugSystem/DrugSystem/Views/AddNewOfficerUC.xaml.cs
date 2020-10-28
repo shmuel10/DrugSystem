@@ -23,6 +23,7 @@ namespace DrugSystem.Views
         public AddNewOfficerUC()
         {
             InitializeComponent();
+            DataContext = new AddNewOfficerUC_VM();
         }
     }
 }

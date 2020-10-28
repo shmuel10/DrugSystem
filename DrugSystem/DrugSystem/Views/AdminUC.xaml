@@ -60,9 +60,15 @@
                                 <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                                 <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
-                                <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
-                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
+                                <GridViewColumn Header="כתובת" Width="150">
+                                    <GridViewColumn.DisplayMemberBinding>
+                                        <MultiBinding Converter="{StaticResource ConcatString}">
+                                            <Binding  Path="City" />
+                                            <Binding  Path="Street" />
+                                            <Binding  Path="BuildingNumber" />
+                                        </MultiBinding>
+                                    </GridViewColumn.DisplayMemberBinding>
+                                </GridViewColumn>
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -82,9 +88,17 @@
                                 <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
                                 <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                                 <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
-                                <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
-                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
+                                <GridViewColumn Header="כתובת" Width="150">
+                                    <GridViewColumn.DisplayMemberBinding>
+                                        <MultiBinding Converter="{StaticResource ConcatString}">
+                                            <Binding  Path="City" />
+                                            <Binding  Path="Street" />
+                                            <Binding  Path="BuildingNumber" />
+                                        </MultiBinding>
+                                    </GridViewColumn.DisplayMemberBinding>
+                                </GridViewColumn>
+                                <GridViewColumn Header="משקל" Width="150" DisplayMemberBinding="{Binding Weight}" />
+                                <GridViewColumn Header="רופא משפחה" Width="150" DisplayMemberBinding="{Binding FamilyDoctor}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
@@ -101,26 +115,18 @@
                     <ListView x:Name="MedsList" ItemsSource="{Binding Medicines}" Grid.Row="1">
                         <ListView.View>
                             <GridView>
-                                <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
-                                <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
-                                <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
-                                <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
-                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
+                                <GridViewColumn Header="קוד תרופה" Width="150" DisplayMemberBinding="{Binding MedicineID}" />
+                                <GridViewColumn Header="שם מסחרי" Width="150" DisplayMemberBinding="{Binding CommercialName}" />
+                                <GridViewColumn Header="שם גנרי" Width="150" DisplayMemberBinding="{Binding GenericName}" />
+                                <GridViewColumn Header="יצרן" Width="150" DisplayMemberBinding="{Binding Manufacturer}" />
+                                <GridViewColumn Header="חומרים פעילים" Width="150" DisplayMemberBinding="{Binding ActiveIngredients}" />
+                                <GridViewColumn Header="מאפייני מנה" Width="150" DisplayMemberBinding="{Binding DoseCharacteristics}" />
                             </GridView>
                         </ListView.View>
                     </ListView>
                 </Grid>
             </TabItem>
         </TabControl>
-
-        
-
-        <!--<Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="הוסף">
-            <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
-                                     Width="{StaticResource IconSize}" />
-        </Button>-->
         <StackPanel x:Name="ContainGrid" Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Background="Transparent">
             <local:FloatingControls x:Name="FloatingButtons" VerticalAlignment="Bottom"  Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}"/>
             <Ellipse x:Name="MenuIcon" Height="60" Width="60" VerticalAlignment="Bottom" Margin="10" Visibility="Visible">
