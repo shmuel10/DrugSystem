@@ -16,7 +16,7 @@
                 <local:DoctorUC />
             </DataTemplate>
 
-            <system1:Double x:Key="IconSize">20</system1:Double>
+            <system1:Double x:Key="IconSize">12</system1:Double>
             <system1:Double x:Key="FontSize">20</system1:Double>
             <Style x:Key="MaterialDesignOutlinedTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
                 <Setter Property="wpf:TextFieldAssist.HasOutlinedTextField" Value="True"/>

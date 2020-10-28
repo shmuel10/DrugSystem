@@ -27,7 +27,6 @@ namespace DrugSystem
         {
             InitializeComponent();
             DataContext = new ShellWindowVM();
-
         }
 
          private void ToggleButton_Checked(object sender, RoutedEventArgs e)

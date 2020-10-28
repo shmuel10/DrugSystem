@@ -73,7 +73,9 @@
             <Grid x:Name="ContentGrid" Grid.Row="1" Background="Transparent">
                 <!--<local:AdminUC x:Name="AdminUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
                 <local:DoctorUC x:Name="DoctorUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>-->
-                <ContentControl Content="{Binding Path=CurrentViewModel, Source={x:Static Application.Current}}"/>
+                <ContentControl Content="{Binding Path=CurrentViewModel, Source={x:Static Application.Current}}" 
+                                FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, 
+                    Converter={StaticResource FontSizeConverter}}"/>
             </Grid>
             <TextBlock Grid.Row="2" Background="LightGray"/>
         </Grid>

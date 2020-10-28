@@ -16,7 +16,7 @@ namespace DrugSystem.ViewModels
         public ICommand NewMedicineCommand { get; set; }
         public FloatingControlsVM()
         {
-            NewWorkerCommand = new AddNewWorkerCommand();
+            NewWorkerCommand = new NewItemCommand();
             NewMedicineCommand = new NewMedicineCommand();
         }
     }

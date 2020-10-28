@@ -9,11 +9,11 @@ using static BLL.BE.AuxiliaryObjects;
 
 namespace DrugSystem.Models
 {
-    public class AddNewDoctorUC_M
+    public class AddNewPatientUC_M
     {
         IBll BL;
         public List<Gender> Gender { get; set; }
-        public AddNewDoctorUC_M()
+        public AddNewPatientUC_M()
         {
             BL = new BllImplementation();
             Gender = new List<Gender>();
@@ -22,9 +22,9 @@ namespace DrugSystem.Models
             Gender.Add(AuxiliaryObjects.Gender.אחר);
         }
 
-        public void AddNewDoctor(Doctor doctor)
+        public void AddNewPatient(Patient patient)
         {
-            BL.AddDoctor(doctor);
-        }     
+            BL.AddPatient(patient);
+        }
     }
 }

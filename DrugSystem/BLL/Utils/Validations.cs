@@ -92,6 +92,7 @@ namespace BLL
 
         public bool ValidateID(string id)
         {
+            return true;
             string EerrorMessage = null;
             if (id == null)
             {

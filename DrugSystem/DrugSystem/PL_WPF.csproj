@@ -86,25 +86,29 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Command\AddNewMedicineCommand.cs" />
-    <Compile Include="Command\AddNewPatientCommand.cs" />
-    <Compile Include="Command\AddNewWorkerCommand.cs" />
+    <Compile Include="Command\CreateNewPatientCommand.cs" />
+    <Compile Include="Command\NewPatientCommand.cs" />
+    <Compile Include="Command\NewItemCommand.cs" />
     <Compile Include="Command\CreateNewDoctorCommand.cs" />
     <Compile Include="Command\OpenFileDialogCommand.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
+    <Compile Include="Models\AddNewPatientUC_M.cs" />
     <Compile Include="ViewModels\AddNewDoctorUC_VM.cs" />
-    <Compile Include="ViewModels\NewPatientWindowVM.cs" />
+    <Compile Include="ViewModels\AddNewPatientUC_VM.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
       <DependentUpon>AddNewDoctorUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddNewOfficerUC.xaml.cs">
       <DependentUpon>AddNewOfficerUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\AddNewPatientUC.xaml.cs">
+      <DependentUpon>AddNewPatientUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\AddNewMedicineWindow.xaml.cs">
       <DependentUpon>AddNewMedicineWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Command\ExitCommand.cs" />
-    <Compile Include="Command\NewDoctorCommand.cs" />
     <Compile Include="Command\NewMedicineCommand.cs" />
     <Compile Include="Command\NewOfficerCommand.cs" />
     <Compile Include="Command\ShowGridCommand.cs" />
@@ -120,16 +124,12 @@
     </Compile>
     <Compile Include="Validation\EmailAddressValidation.cs" />
     <Compile Include="Validation\NotEmptyValidation.cs" />
-    <Compile Include="ViewModels\AddNewDoctorVM.cs" />
     <Compile Include="ViewModels\AdminUC_VM.cs" />
     <Compile Include="ViewModels\FloatingControlsVM.cs" />
     <Compile Include="ViewModels\LoginUC_VM.cs" />
     <Compile Include="ViewModels\DoctorUC_VM.cs" />
     <Compile Include="ViewModels\LoginWindowVM.cs" />
     <Compile Include="ViewModels\ShellWindowVM.cs" />
-    <Compile Include="Views\AddNewDoctorWindow.xaml.cs">
-      <DependentUpon>AddNewDoctorWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\AddNewMed.xaml.cs">
       <DependentUpon>AddNewMed.xaml</DependentUpon>
     </Compile>
@@ -152,17 +152,18 @@
     <Compile Include="Views\VisitWindow.xaml.cs">
       <DependentUpon>VisitWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\AddNewWorkerWindow.xaml.cs">
-      <DependentUpon>AddNewWorkerWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\NewPatientWindow.xaml.cs">
-      <DependentUpon>NewPatientWindow.xaml</DependentUpon>
+    <Compile Include="Windows\AddNewUserWindow.xaml.cs">
+      <DependentUpon>AddNewUserWindow.xaml</DependentUpon>
     </Compile>
     <Page Include="Views\AddNewDoctorUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddNewOfficerUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\AddNewPatientUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -173,10 +174,6 @@
     <Page Include="ShellWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AddNewDoctorWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AddNewMed.xaml">
       <SubType>Designer</SubType>
@@ -232,11 +229,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\AddNewWorkerWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\NewPatientWindow.xaml">
+    <Page Include="Windows\AddNewUserWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -296,7 +289,9 @@
   <ItemGroup>
     <Resource Include="Icons\UserIcon.jpg" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Resource Include="Icons\MenuIcon.png" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\DeafultMedPicture.jpg" />
   </ItemGroup>

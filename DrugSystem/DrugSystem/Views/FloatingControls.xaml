@@ -4,21 +4,29 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DrugSystem"
+             xmlns:local="clr-namespace:DrugSystem" xmlns:system1="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d">
+    <UserControl.Resources>
+        <system1:Double x:Key="ButtonSize">30</system1:Double>
+    </UserControl.Resources>
     <StackPanel Orientation="Vertical" >
         <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="רופא חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor">
+                ToolTip="רופא חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}"/>
         </Button>
         <Button  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="פקיד חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Officer" >
+                ToolTip="פקיד חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Officer"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>
-        <Button  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="0 10 0 100" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="תרופה חדשה" Command="{Binding NewMedicineCommand}">
+        <Button  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="מטופל חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Patient"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}" >
+            <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
+                                     Width="{StaticResource IconSize}" />
+        </Button>
+        <Button  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="תרופה חדשה" Command="{Binding NewMedicineCommand}"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>

@@ -9,7 +9,7 @@
     <Grid Background="WhiteSmoke" Margin="20 0 20 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <local:SearchLineUC Grid.Row="0"/>
         <ListView x:Name="DoctorsList" Grid.Row="1" Style="{x:Null}" Background="White" MinHeight="400">
@@ -19,8 +19,6 @@
                     <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
                     <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
                     <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
-                    <GridViewColumn Header="שנות נסיון" Width="150" DisplayMemberBinding="{Binding YearsOfExperience}" />
-                    <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding VehicleType}" />
                 </GridView>
             </ListView.View>
         </ListView>

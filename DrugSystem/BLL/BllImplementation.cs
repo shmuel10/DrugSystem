@@ -58,7 +58,7 @@ namespace BLL
         {
             try
             {
-                validations.ValidateDoctor(doctor);
+             //   validations.ValidateDoctor(doctor);
                 dal.AddDoctor(doctor);
             }
 
@@ -103,7 +103,7 @@ namespace BLL
         {
             try
             {
-                validations.ValidatePatient(patient);
+                //validations.ValidatePatient(patient);
                 dal.AddPatient(patient);
             }
             catch (Exception ex)

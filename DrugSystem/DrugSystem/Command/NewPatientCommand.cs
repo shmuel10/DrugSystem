@@ -8,7 +8,7 @@ using DrugSystem.Windows;
 
 namespace DrugSystem.Command
 {
-    public class AddNewPatientCommand : ICommand
+    public class NewPatientCommand : ICommand
     {
         public event EventHandler CanExecuteChanged {
             add { CommandManager.RequerySuggested += value; }
@@ -22,8 +22,6 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            NewPatientWindow newPatientWindow = new NewPatientWindow();
-            newPatientWindow.Show();
 
         }
     }

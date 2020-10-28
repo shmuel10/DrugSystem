@@ -9,6 +9,7 @@
              FlowDirection="RightToLeft">
     <UserControl.Resources>
         <local1:ConctenateStringConverter x:Key="ConcatString"/>
+        <local1:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -112,19 +113,21 @@
                 </Grid>
             </TabItem>
         </TabControl>
-        <Ellipse Height="60" Width="60" VerticalAlignment="Bottom" Margin="10">
-            <Ellipse.Fill>
-                <ImageBrush ImageSource="/Icons/SearchIcon.png"/>
-            </Ellipse.Fill>
-        </Ellipse>
+
+        
+
         <!--<Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="20" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
                 ToolTip="הוסף">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>-->
-        <Grid VerticalAlignment="Bottom">
-            <local:FloatingControls x:Name="FloatingButtons" VerticalAlignment="Bottom"/>
-            <!--Loaded="FloatingButtons_Loaded"-->
-        </Grid>
+        <StackPanel x:Name="ContainGrid" Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Background="Transparent">
+            <local:FloatingControls x:Name="FloatingButtons" VerticalAlignment="Bottom"  Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}"/>
+            <Ellipse x:Name="MenuIcon" Height="60" Width="60" VerticalAlignment="Bottom" Margin="10" Visibility="Visible">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/Icons/MenuIcon.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </StackPanel>
     </Grid>
 </UserControl>

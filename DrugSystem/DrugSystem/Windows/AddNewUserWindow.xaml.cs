@@ -17,9 +17,9 @@ namespace DrugSystem.Windows
     /// <summary>
     /// Interaction logic for AddNewWorker.xaml
     /// </summary>
-    public partial class AddNewWorkerWindow : Window
+    public partial class AddNewUserWindow : Window
     {
-        public AddNewWorkerWindow()
+        public AddNewUserWindow()
         {
             InitializeComponent();
         }

@@ -6,32 +6,35 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
 using DrugSystem.ViewModels;
+using DrugSystem.Windows;
 
 namespace DrugSystem.Command
 {
-    public class NewDoctorCommand : ICommand
+    public class CreateNewPatientCommand : ICommand
     {
-        public INotifyPropertyChanged CurrentVM { get; set; }
-
-        public NewDoctorCommand(INotifyPropertyChanged adminUC)
-        {
-            //CurrentVM = adminUC;
-        }
-
         public event EventHandler CanExecuteChanged {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
         }
-
+        public INotifyPropertyChanged CurrentVM { get; set; }
         public bool CanExecute(object parameter)
         {
             return true;
         }
 
+        public CreateNewPatientCommand(INotifyPropertyChanged currentVM)
+        {
+            CurrentVM = currentVM;
+        }
+
         public void Execute(object parameter)
         {
-            AddNewDoctor newDoctor = new AddNewDoctor();
-            newDoctor.Show();
+            ((AddNewPatientUC_VM)CurrentVM).CreateNewPatient();
+            AddNewUserWindow win = ((App)System.Windows.Application.Current).Windows.OfType<AddNewUserWindow>().FirstOrDefault();
+            if (win != null)
+            {
+                win.Close();
+            }
         }
     }
 }

@@ -10,8 +10,6 @@ namespace DrugSystem.ViewModels
 {
     public class ShellWindowVM
     {
-        //public ICommand NewDoctorCommand { get; set; }
-        //public ICommand NewOfficerCommand { get; set; }
         public ICommand NewMedicineCommand { get; set; }
         public ICommand NewPatientCommand { get; set; }
         public ICommand SignOutCommand { get; set; }
@@ -21,11 +19,9 @@ namespace DrugSystem.ViewModels
 
         public ShellWindowVM()
         {
-            //NewDoctorCommand = new NewDoctorCommand();
-            //NewOfficerCommand = new NewOfficerCommand();
-            NewWorkerCommand = new AddNewWorkerCommand();
+            NewWorkerCommand = new NewItemCommand();
             NewMedicineCommand = new NewMedicineCommand();
-            NewPatientCommand = new AddNewPatientCommand();
+            NewPatientCommand = new NewPatientCommand();
             SignOutCommand = new SignOutCommand();
             ExitCommand = new ExitCommand();
         }

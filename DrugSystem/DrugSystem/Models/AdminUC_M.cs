@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using BLL;
 using BLL.BE;
@@ -15,6 +17,7 @@ namespace DrugSystem.Models
         public List<Patient> Patients { get; set; }
         public List<Officer> Officers { get; set; }
         public List<Medicine> Medicines { get; set; }
+
         public AdminUC_M()
         {
             BL = new BllImplementation();
