@@ -96,14 +96,16 @@
     <Compile Include="Models\AddNewPatientUC_M.cs" />
     <Compile Include="Models\PatientUC_M.cs" />
     <Compile Include="ViewModels\AddNewDoctorUC_VM.cs" />
+    <Compile Include="Models\AddNewOfficerUC_M.cs" />
     <Compile Include="ViewModels\AddNewPatientUC_VM.cs" />
-    <Compile Include="ViewModels\PatientUC_VM.cs" />
+    <Compile Include="Command\CreateNewOfficerCommand.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
       <DependentUpon>AddNewDoctorUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\AddNewOfficerUC.xaml.cs">
       <DependentUpon>AddNewOfficerUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddNewOfficerUC_VM.cs" />
     <Compile Include="Views\AddNewPatientUC.xaml.cs">
       <DependentUpon>AddNewPatientUC.xaml</DependentUpon>
     </Compile>

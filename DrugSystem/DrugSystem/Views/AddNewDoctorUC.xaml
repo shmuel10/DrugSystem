@@ -112,15 +112,7 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=newDoctor.BirthDate, Mode=OneWayToSource}"  DisplayDate="{x:Static system1:DateTime.Now}" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}">
-                            <!--<TextBox.Text>
-                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox.Text>-->
-                        </DatePicker>
+                        <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=newDoctor.BirthDate, Mode=OneWayToSource}"  DisplayDate="{x:Static system1:DateTime.Now}" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}"/>
                         <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=AddNewDoctorUC_M.Gender}" SelectedItem="{Binding Path=newDoctor.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
 
                         <TextBox x:Name="LicenceNumTextBox" materialDesign:HintAssist.Hint="מספר רשיון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
@@ -168,15 +160,6 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <!--<TextBox x:Name="ClinicTextBox" materialDesign:HintAssist.Hint="מרפאה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
-                            <TextBox.Text>
-                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox.Text>
-                        </TextBox>-->
                         <local1:PermitionsUC x:Name="Permissions" CanAddDoctorDP="{Binding ElementName=AddNewDocUC, Path=DataContext.newDoctor.CanAddDoctor, Mode=TwoWay}" 
                                              CanAddPatientDP="{Binding ElementName=AddNewDocUC, Path=DataContext.newDoctor.CanAddPatient, Mode=TwoWay}"
                                              CanAddPrescriptionDP="{Binding ElementName=AddNewDocUC, Path=DataContext.newDoctor.CanCreatePrescriptions, Mode=TwoWay}"

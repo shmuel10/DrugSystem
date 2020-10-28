@@ -12,7 +12,7 @@ namespace DrugSystem.Converters
     {
         public object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            string result = values[0] + "," + values[1] + " " + values[2];
+            string result = values[1] + " " + values[2] + ", " + values[0];
             return result;
         }
 

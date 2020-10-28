@@ -88,16 +88,7 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=newPatient.BirthDate, Mode=OneWayToSource}"  DisplayDate="{x:Static system1:DateTime.Now}" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}">
-                            <!--<TextBox.Text>
-                                <Binding Path="Name" UpdateSourceTrigger="PropertyChanged">
-                                    <Binding.ValidationRules>
-                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
-                                    </Binding.ValidationRules>
-                                </Binding>
-                            </TextBox.Text>-->
-                        </DatePicker>
-
+                        <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=newPatient.BirthDate, Mode=OneWayToSource}"  DisplayDate="{x:Static system1:DateTime.Now}" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}"/>
                         <TextBox x:Name="FatherNameTextBox" materialDesign:HintAssist.Hint="שם האבא"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
                                 <Binding Path="newPatient.FatherName" UpdateSourceTrigger="PropertyChanged">
@@ -109,7 +100,7 @@
                         </TextBox>
                         <TextBox x:Name="WeightBox" materialDesign:HintAssist.Hint="משקל"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
-                                <Binding Path="newPatient.Weight" UpdateSourceTrigger="PropertyChanged">
+                                <Binding Mode="OneWayToSource" Path="newPatient.Weight" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
                                         <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
@@ -154,7 +145,6 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-
                         <Button Content="סיום" Command="{Binding CreateNewPatientCommand}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
                     </StackPanel>
                 </ScrollViewer>
