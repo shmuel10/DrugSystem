@@ -19,69 +19,46 @@ namespace DrugSystem
     public partial class App : Application, INotifyPropertyChanged
     {
         private INotifyPropertyChanged _currentViewModel;
-        private INotifyPropertyChanged _onFrame;
-        private bool _frameVisibility;
-        private Window _currentWindow;
+        private INotifyPropertyChanged _currentOnShell;
+        public Stack<INotifyPropertyChanged> StackOnShell { get; set; }
+        public INotifyPropertyChanged LastFromStack { get; set; }
+        public App()
+        {
+            CurrentViewModel = new LoginUC_VM();
+            StackOnShell = new Stack<INotifyPropertyChanged>();
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public INotifyPropertyChanged OnFrame { get { return _onFrame; }
-            set {
-                _onFrame = value;
-                if (PropertyChanged != null)
-                {
-                    FrameVisibility = true;
-                    PropertyChanged(this, new PropertyChangedEventArgs("OnFrame"));
-                }
-            }
-        }
-
-        public bool FrameVisibility {
-            get { return _frameVisibility; }
-            set {
-                _frameVisibility = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("FrameVisibility"));
-                }
-            }
-        }
-
 
         public INotifyPropertyChanged CurrentViewModel {
             get { return _currentViewModel; }
-            set 
-            {
-                _currentViewModel = value; 
-                if(PropertyChanged != null) 
+            set {
+                _currentViewModel = value;
+                if (PropertyChanged != null)
                 {
-                    FrameVisibility = false;
                     PropertyChanged(this, new PropertyChangedEventArgs("CurrentViewModel"));
                 }
             }
         }
 
-        public Window CurrentWindow {
-            get { return _currentWindow; }
+        public INotifyPropertyChanged CurrentOnShell {
+            get { return _currentOnShell; }
             set {
-                if (_currentWindow == null)
+
+                if (_currentOnShell != null)
                 {
-                    _currentWindow = Current.MainWindow;
+                    if (StackOnShell != null)
+                    {
+                        StackOnShell.Push(_currentOnShell);
+                    }
+
                 }
-                
-                    value.Show();
-                    _currentWindow.Close();
-                    _currentWindow = value;
-                
+                _currentOnShell = value;
                 if (PropertyChanged != null)
                 {
-                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentWindow"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentOnShell"));
                 }
             }
-        }
-
-        public App()
-        {
-            CurrentViewModel = new LoginWindowVM();
         }
     }
 }

@@ -9,13 +9,18 @@ using DrugSystem.Models;
 
 namespace DrugSystem.ViewModels
 {
-    public class PatientUC_VM : INotifyPropertyChanged
+    class PatientUC_VM : INotifyPropertyChanged
     {
         PatientUC_M PatientUC_M { get; set; }
         public PatientUC_VM(Patient currentPatient)
         {
             CurrentPatient = currentPatient;
             PatientUC_M = new PatientUC_M();
+        }
+
+        public PatientUC_VM()
+        {
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

@@ -3,24 +3,83 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DrugSystem"
+             xmlns:local="clr-namespace:DrugSystem" xmlns:local1="clr-namespace:DrugSystem.Converters"
+             xmlns:local2="clr-namespace:DrugSystem.Command"
              FlowDirection="RightToLeft"
              mc:Ignorable="d" >
-    <Grid Background="WhiteSmoke" Margin="20 0 20 0">
+    <UserControl.Resources>
+        <local1:ConctenateStringConverter x:Key="ConcatString"/>
+        <local1:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+   </UserControl.Resources>
+    <Grid Margin="20 0 20 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
-        <local:SearchLineUC Grid.Row="0"/>
-        <ListView x:Name="DoctorsList" SelectedItem="{Binding SelectedPatient}" Grid.Row="1" Style="{x:Null}" Background="White" MinHeight="400">
-            <ListView.View>
-                <GridView>
-                    <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
-                    <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
-                    <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                    <GridViewColumn Header="כתובת" Width="150" DisplayMemberBinding="{Binding Address.City}" />
-                </GridView>
-            </ListView.View>
-        </ListView>
+        <local:SearchLineUC/>
+        <Grid Grid.Row="1">
+            <!--<Grid.ColumnDefinitions>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="10*"/>
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="10*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>-->
+
+
+            <ListView x:Name="PatientsList"  SelectedItem="{Binding SelectedPatient, Mode=TwoWay}" ItemsSource="{Binding Path=Patients}" Grid.Row="1">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
+                        <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                        <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
+                        <GridViewColumn Header="כתובת" Width="150">
+                            <GridViewColumn.DisplayMemberBinding>
+                                <MultiBinding Converter="{StaticResource ConcatString}">
+                                    <Binding  Path="City" />
+                                    <Binding  Path="Street" />
+                                    <Binding  Path="BuildingNumber" />
+                                </MultiBinding>
+                            </GridViewColumn.DisplayMemberBinding>
+                        </GridViewColumn>
+                        <GridViewColumn Header="משקל" Width="150" DisplayMemberBinding="{Binding Weight}" />
+                        <GridViewColumn Header="רופא משפחה" Width="150" DisplayMemberBinding="{Binding FamilyDoctor}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+
+
+
+
+
+            <!--<ListView x:Name="DoctorsList" Grid.ColumnSpan="3" Grid.RowSpan="3" ItemsSource="{Binding Path=Patients}" 
+              Style="{x:Null}" Background="White" MinHeight="400">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
+                        <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
+                        <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
+                        <GridViewColumn Header="כתובת" Width="150">
+                            <GridViewColumn.DisplayMemberBinding>
+                                <MultiBinding Converter="{StaticResource ConcatString}">
+                                    <Binding  Path="City" />
+                                    <Binding  Path="Street" />
+                                    <Binding  Path="BuildingNumber" />
+                                </MultiBinding>
+                            </GridViewColumn.DisplayMemberBinding>
+                        </GridViewColumn>
+                        <GridViewColumn Header="משקל" Width="150" DisplayMemberBinding="{Binding Weight}" />
+                        <GridViewColumn Header="רופא משפחה" Width="150" DisplayMemberBinding="{Binding FamilyDoctor}" />
+                    </GridView>
+                </ListView.View>
+            </ListView>-->
+            <Frame Visibility="{Binding Source={x:Static Application.Current}, Path=FrameVisibility,
+                Converter={StaticResource BooleanToVisibilityConverter}}"
+                       Content="{Binding Path=OnFrame, Source={x:Static Application.Current}}"/>
+        </Grid>
     </Grid>
 </UserControl>

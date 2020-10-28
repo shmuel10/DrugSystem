@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using DrugSystem.ViewModels;
 
 namespace DrugSystem.Command
 {
@@ -21,7 +22,7 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            ((App)System.Windows.Application.Current).CurrentWindow = new LoginWindow();         
+           ((App)System.Windows.Application.Current).CurrentViewModel = new LoginUC_VM();         
         }
     }
 }

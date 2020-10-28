@@ -23,30 +23,33 @@ namespace DrugSystem.ViewModels
         public LoginUC_VM()
         {
             LoginUC_M = new LoginUC_M();
-            SignInCommand = new SignInCommand();         
+            SignInCommand = new SignInCommand(this);         
         }
 
-        //public void Login()
-        //{
-        //    try
-        //    {
-        //        User currentUser = LoginUC_M.Login(Mail, Password);
-        //        if (currentUser != null)
-        //        {
-        //            if (currentUser is Doctor)
-        //            {
-        //                ((App)Application.Current).CurrentViewModel = new DoctorUC_VM();
-        //            }
-        //            else if (currentUser is Administrator)
-        //            {
-        //                ((App)Application.Current).CurrentViewModel = new AdminUC_VM();
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        MessageBox.Show(ex.Message);
-        //    }
-        //}
+        public void Login()
+        {
+            ((App)System.Windows.Application.Current).CurrentViewModel = new ShellWindowVM();
+            ((App)System.Windows.Application.Current).CurrentOnShell = new DoctorUC_VM();
+
+            //    try
+            //    {
+            //        User currentUser = LoginUC_M.Login(Mail, Password);
+            //        if (currentUser != null)
+            //        {
+            //            if (currentUser is Doctor)
+            //            {
+            //                ((App)Application.Current).CurrentViewModel = new DoctorUC_VM();
+            //            }
+            //            else if (currentUser is Administrator)
+            //            {
+            //                ((App)Application.Current).CurrentViewModel = new AdminUC_VM();
+            //            }
+            //        }
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        MessageBox.Show(ex.Message);
+            //    }
+        }
     }
 }

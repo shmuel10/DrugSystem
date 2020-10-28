@@ -4,16 +4,24 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"           
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DrugSystem.Views"
+             xmlns:local="clr-namespace:DrugSystem.Views" 
+             xmlns:system1="clr-namespace:System;assembly=mscorlib" 
+             xmlns:local1="clr-namespace:DrugSystem.Converters"
+             xmlns:local2="clr-namespace:DrugSystem.Command"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" FlowDirection="RightToLeft">
-    <Grid>
+    <UserControl.Resources>
+        <system1:Double x:Key="ButtonSize">30</system1:Double>
+        <local1:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+        <local2:NewVisitCommand x:Key="NewVisit"/>
+    </UserControl.Resources>
+    <Grid Background="WhiteSmoke">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="80"/>
             <ColumnDefinition Width="*"/>
             <ColumnDefinition Width="80"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" Background="WhiteSmoke">
+        <Grid Grid.Column="1" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="1*"/>
                 <RowDefinition Height="2*"/>
@@ -53,33 +61,44 @@
                 </Grid.ColumnDefinitions>
                 <materialDesign:Card Margin="5" UniformCornerRadius="20">
                     <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="בעיות פעילות">
-                        <ListView>
-                            
-                        </ListView>
+                        <ListView/>
                     </GroupBox>
                 </materialDesign:Card>
                 <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Column="1">
                     <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="תרופות קבועות">
-                        <ListView>
-
-                        </ListView>
+                        <ListView/>
                     </GroupBox>
                 </materialDesign:Card>
                 <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Column="2">
                     <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="מרשמים בתוקף">
-                        <ListView>
-
-                        </ListView>
+                        <ListView/>
                     </GroupBox>
                 </materialDesign:Card>
                 <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Row="1" Grid.ColumnSpan="3">
                     <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="היסטוריית ביקורים">
-                        <ListView>
-
-                        </ListView>
+                        <ListView/>
                     </GroupBox>
                 </materialDesign:Card>
             </Grid>
         </Grid>
+        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Background="Transparent" x:Name="ContainGrid" Visibility="Visible">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}">
+                <Button x:Name="First" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="ביקור חדש" Command="{StaticResource NewVisit}" CommandParameter="Doctor" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+                    <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
+                                     Width="{StaticResource IconSize}"/>
+                </Button>
+                <Button x:Name="Second" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="מרשם חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+                    <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
+                                     Width="{StaticResource IconSize}"/>
+                </Button>
+            </StackPanel>
+            <Ellipse x:Name="MenuIcon" Height="60" Width="60" VerticalAlignment="Bottom" Margin="10" Visibility="Visible">
+                <Ellipse.Fill>
+                    <ImageBrush ImageSource="/Icons/MenuIcon.png"/>
+                </Ellipse.Fill>
+            </Ellipse>
+        </StackPanel>
     </Grid>
 </UserControl>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,7 +9,7 @@ using DrugSystem.Command;
 
 namespace DrugSystem.ViewModels
 {
-    public class ShellWindowVM
+    public class ShellWindowVM : INotifyPropertyChanged
     {
         public ICommand NewMedicineCommand { get; set; }
         public ICommand NewPatientCommand { get; set; }
@@ -25,5 +26,7 @@ namespace DrugSystem.ViewModels
             SignOutCommand = new SignOutCommand();
             ExitCommand = new ExitCommand();
         }
+
+        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

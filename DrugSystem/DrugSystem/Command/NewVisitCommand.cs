@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DrugSystem.ViewModels;
 
 namespace DrugSystem.Command
 {
-    public class NewOfficerCommand : ICommand
+    public class NewVisitCommand : ICommand
     {
         public event EventHandler CanExecuteChanged {
             add { CommandManager.RequerySuggested += value; }
@@ -15,12 +16,13 @@ namespace DrugSystem.Command
         }
         public bool CanExecute(object parameter)
         {
-            throw new NotImplementedException();
+            return true;
         }
 
         public void Execute(object parameter)
         {
-            throw new NotImplementedException();
+            ((App)System.Windows.Application.Current).CurrentOnShell =
+               new NewVisitUC_VM();
         }
     }
 }

@@ -7,9 +7,17 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:system1="clr-namespace:System;assembly=mscorlib" 
-             StartupUri="Views/LoginWindow.xaml">
+             StartupUri="ShellWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
+            <DataTemplate DataType="{x:Type ViewModels:LoginUC_VM}">
+                <local:LoginUC />
+            </DataTemplate>
+
+            <DataTemplate DataType="{x:Type ViewModels:ShellWindowVM}">
+                <local1:ShellUC />
+            </DataTemplate>
+
             <DataTemplate DataType="{x:Type ViewModels:AdminUC_VM}">
                 <local:AdminUC />
             </DataTemplate>
@@ -22,6 +30,9 @@
                 <local1:PatientUC/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type ViewModels:NewVisitUC_VM}">
+                <local1:NewVisitUC/>
+            </DataTemplate>
 
             <system1:Double x:Key="IconSize">12</system1:Double>
             <system1:Double x:Key="FontSize">20</system1:Double>

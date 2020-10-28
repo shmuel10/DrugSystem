@@ -18,10 +18,13 @@ namespace DrugSystem.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         public AdminUC_M AdminUC_M { get; set; }
+
+        ICommand command { get; set; }
       
         public AdminUC_VM()
         {
             AdminUC_M = new AdminUC_M();
+            command = new NewItemCommand();
         }
 
         public List<Doctor> Doctors { get { return AdminUC_M.Doctors; } }

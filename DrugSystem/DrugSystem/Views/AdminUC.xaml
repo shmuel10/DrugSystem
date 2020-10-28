@@ -5,7 +5,10 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DrugSystem"  
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
-             xmlns:system1="clr-namespace:System;assembly=mscorlib" xmlns:i1="http://schemas.microsoft.com/xaml/behaviors" xmlns:local1="clr-namespace:DrugSystem.Converters"
+             xmlns:system1="clr-namespace:System;assembly=mscorlib" 
+             xmlns:i1="http://schemas.microsoft.com/xaml/behaviors" 
+             xmlns:local1="clr-namespace:DrugSystem.Converters"
+             xmlns:local2="clr-namespace:DrugSystem.Command"
              FlowDirection="RightToLeft">
     <UserControl.Resources>
         <local1:ConctenateStringConverter x:Key="ConcatString"/>
@@ -128,7 +131,9 @@
             </TabItem>
         </TabControl>
         <StackPanel x:Name="ContainGrid" Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Background="Transparent">
-            <local:FloatingControls x:Name="FloatingButtons" VerticalAlignment="Bottom"  Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}"/>
+            <local:FloatingControls x:Name="FloatingButtons" ToolTipFirst="רופא חדש" ToolTipSecond="פקיד חדש"
+                                    ToolTipThird="מטופל חדש" ToolTipForth="תרופה חדשה"
+                                    VerticalAlignment="Bottom"  Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}"/>
             <Ellipse x:Name="MenuIcon" Height="60" Width="60" VerticalAlignment="Bottom" Margin="10" Visibility="Visible">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="/Icons/MenuIcon.png"/>

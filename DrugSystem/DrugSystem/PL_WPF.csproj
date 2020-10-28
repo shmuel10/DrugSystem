@@ -90,7 +90,9 @@
     <Compile Include="Command\NewPatientCommand.cs" />
     <Compile Include="Command\NewItemCommand.cs" />
     <Compile Include="Command\CreateNewDoctorCommand.cs" />
+    <Compile Include="Command\NewVisitCommand.cs" />
     <Compile Include="Command\OpenFileDialogCommand.cs" />
+    <Compile Include="Command\StackCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
     <Compile Include="Models\AddNewPatientUC_M.cs" />
@@ -99,6 +101,9 @@
     <Compile Include="Models\AddNewOfficerUC_M.cs" />
     <Compile Include="ViewModels\AddNewPatientUC_VM.cs" />
     <Compile Include="Command\CreateNewOfficerCommand.cs" />
+    <Compile Include="Models\DoctorUC_M.cs" />
+    <Compile Include="ViewModels\NewVisitUC_VM.cs" />
+    <Compile Include="ViewModels\PatientUC_VM.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
       <DependentUpon>AddNewDoctorUC.xaml</DependentUpon>
     </Compile>
@@ -109,16 +114,20 @@
     <Compile Include="Views\AddNewPatientUC.xaml.cs">
       <DependentUpon>AddNewPatientUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\NewVisitUC.xaml.cs">
+      <DependentUpon>NewVisitUC.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\PatientUC.xaml.cs">
       <DependentUpon>PatientUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ShellUC.xaml.cs">
+      <DependentUpon>ShellUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\AddNewMedicineWindow.xaml.cs">
       <DependentUpon>AddNewMedicineWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="Command\ExitCommand.cs" />
     <Compile Include="Command\NewMedicineCommand.cs" />
-    <Compile Include="Command\NewOfficerCommand.cs" />
-    <Compile Include="Command\ShowGridCommand.cs" />
     <Compile Include="Command\SignInCommand.cs" />
     <Compile Include="Command\SignOutCommand.cs" />
     <Compile Include="Converters\MultyStringToArrConverter.cs" />
@@ -135,7 +144,6 @@
     <Compile Include="ViewModels\FloatingControlsVM.cs" />
     <Compile Include="ViewModels\LoginUC_VM.cs" />
     <Compile Include="ViewModels\DoctorUC_VM.cs" />
-    <Compile Include="ViewModels\LoginWindowVM.cs" />
     <Compile Include="ViewModels\ShellWindowVM.cs" />
     <Compile Include="Views\AddNewMed.xaml.cs">
       <DependentUpon>AddNewMed.xaml</DependentUpon>
@@ -156,9 +164,6 @@
     <Compile Include="Views\SearchLineUC.xaml.cs">
       <DependentUpon>SearchLineUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\VisitWindow.xaml.cs">
-      <DependentUpon>VisitWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\AddNewUserWindow.xaml.cs">
       <DependentUpon>AddNewUserWindow.xaml</DependentUpon>
     </Compile>
@@ -174,7 +179,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\NewVisitUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\PatientUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ShellUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -206,10 +219,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\LoginWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
     <Compile Include="Views\AdminUC.xaml.cs">
       <DependentUpon>AdminUC.xaml</DependentUpon>
     </Compile>
@@ -220,10 +229,6 @@
     <Compile Include="Views\LoginUC.xaml.cs">
       <DependentUpon>LoginUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\LoginWindow.xaml.cs">
-      <DependentUpon>LoginWindow.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
     <Page Include="Views\MedChooseUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -233,10 +238,6 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchLineUC.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Views\VisitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

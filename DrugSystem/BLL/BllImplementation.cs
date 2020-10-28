@@ -90,7 +90,7 @@ namespace BLL
         {
             try
             {
-                validations.ValidateOfficer(officer);
+               // validations.ValidateOfficer(officer);
                 dal.AddOfficer(officer);
             }
             catch (Exception ex)

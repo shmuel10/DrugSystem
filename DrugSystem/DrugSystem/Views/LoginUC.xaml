@@ -6,11 +6,8 @@
              xmlns:local="clr-namespace:DrugSystem" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:DrugSystem.Converters"
-             mc:Ignorable="d" Background="White" >
-    <!--<UserControl.InputBindings>
-        <KeyBinding x:Name="rr" Key="Enter" Command="{Binding SignInCommand}"/>
-    </UserControl.InputBindings>-->
-
+             mc:Ignorable="d" Height="400" Width="500">
+  
     <UserControl.Resources>
         <Style x:Key="MaterialDesignOutlinedTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
             <Setter Property="wpf:TextFieldAssist.HasOutlinedTextField" Value="True" />
@@ -25,65 +22,64 @@
     </UserControl.Resources>
 
 
-    <Viewbox HorizontalAlignment="Stretch" VerticalAlignment="Stretch" >
-        <Grid>
-            <Border BorderBrush="DarkBlue" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" MinHeight="400" MinWidth="480">
-                <Grid Margin="3 3 3 3">
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="1*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="0.35*"/>
-                        <RowDefinition Height="1*"/>
-                    </Grid.RowDefinitions>
-                    <Grid.ColumnDefinitions>
-                        <ColumnDefinition Width="1*"/>
-                        <ColumnDefinition Width="4*"/>
-                        <ColumnDefinition Width="1*"/>
-                    </Grid.ColumnDefinitions>
-                    <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Style="{StaticResource MaterialDesignHeadline3TextBlock}">Log In</TextBlock>
+    <Grid Width="500" Height="400">
+        <Border BorderBrush="DarkBlue" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Grid Margin="3 3 3 3">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="0.5*"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="1*"/>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Style="{StaticResource MaterialDesignHeadline3TextBlock}">Log In</TextBlock>
 
-                    <TextBox x:Name="UserEmail" Grid.Row="3" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                <TextBox x:Name="UserEmail" FontSize="20" Margin="5" Grid.Row="3" Grid.Column="1"
+                             MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}"
                  TextWrapping="Wrap" materialDesign:HintAssist.Hint="Email address" materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
-                        </TextBox.InputBindings>
-                        <TextBox.Text>
-                            <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <domain1:EmailAddressValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </TextBox.Text>
-                    </TextBox>
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
+                    </TextBox.InputBindings>
+                    <TextBox.Text>
+                        <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:EmailAddressValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
-                    <TextBox x:Name="UserPassword" Grid.Row="4" Grid.Column="1" Margin="5,5,5,5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                <TextBox x:Name="UserPassword" FontSize="20" Grid.Row="4" Grid.Column="1" Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                  TextWrapping="Wrap" materialDesign:HintAssist.Hint="Password" materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute" AutomationProperties.ItemType="Password">
-                        <TextBox.InputBindings>
-                            <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
-                        </TextBox.InputBindings>
-                        <TextBox.Text>
-                            <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
-                                <Binding.ValidationRules>
-                                    <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
-                                </Binding.ValidationRules>
-                            </Binding>
-                        </TextBox.Text>
-                    </TextBox>
+                    <TextBox.InputBindings>
+                        <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
+                    </TextBox.InputBindings>
+                    <TextBox.Text>
+                        <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
 
-                    <Button x:Name="SignInButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5,5,5,5" Style="{StaticResource MaterialDesignRaisedButton}" 
+                <Button x:Name="SignInButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}" 
                  Command="{Binding SignInCommand}" ToolTip="Press To Sign In" Content="Sign In">
-                        <Button.CommandParameter>
-                            <MultiBinding Converter="{StaticResource MultyStringConverter}">
-                                <Binding Path="Text" ElementName="UserEmail"/>
-                                <Binding Path="Text" ElementName="UserPassword"/>
-                            </MultiBinding>
-                        </Button.CommandParameter>
-                    </Button>
-                </Grid>
-            </Border>
-        </Grid>
-    </Viewbox>
+                    <Button.CommandParameter>
+                        <MultiBinding Converter="{StaticResource MultyStringConverter}">
+                            <Binding Path="Text" ElementName="UserEmail"/>
+                            <Binding Path="Text" ElementName="UserPassword"/>
+                        </MultiBinding>
+                    </Button.CommandParameter>
+                </Button>
+            </Grid>
+        </Border>
+    </Grid>
 </UserControl>

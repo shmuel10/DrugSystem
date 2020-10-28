@@ -23,11 +23,6 @@ namespace DrugSystem.Command
             CurrentVM = vm;
         }
 
-        public SignInCommand()
-        {
-            CurrentVM = new LoginWindowVM();
-        }
-
         public event EventHandler CanExecuteChanged 
         {
             add { CommandManager.RequerySuggested += value; }
@@ -45,7 +40,7 @@ namespace DrugSystem.Command
             {
                // ((LoginWindowVM)CurrentVM).Mail = ((IEnumerable)parameter).Cast<object>().Select(x => x.ToString()).ElementAt(0);
                // ((LoginWindowVM)CurrentVM).Password = ((IEnumerable)parameter).Cast<object>().Select(x => x.ToString()).ElementAt(1);
-                ((LoginWindowVM)CurrentVM).Login();
+                ((LoginUC_VM)CurrentVM).Login();
             }            
         }
     }

@@ -10,23 +10,23 @@
         <system1:Double x:Key="ButtonSize">30</system1:Double>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical" >
-        <Button Grid.Row="0" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="רופא חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+        <Button x:Name="First" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="{Binding ToolTipFirst}" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}"/>
         </Button>
-        <Button  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="פקיד חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Officer"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+        <Button x:Name="Second" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+               Command="{Binding NewWorkerCommand}" CommandParameter="Officer"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>
-        <Button  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="מטופל חדש" Command="{Binding NewWorkerCommand}" CommandParameter="Patient"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}" >
+        <Button x:Name="Third"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+               Command="{Binding NewWorkerCommand}" CommandParameter="Patient"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}" >
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>
-        <Button  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="תרופה חדשה" Command="{Binding NewMedicineCommand}"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+        <Button x:Name="Forth" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                Command="{Binding NewMedicineCommand}"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>

@@ -14,17 +14,17 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using DrugSystem.ViewModels;
 
-namespace DrugSystem
+namespace DrugSystem.Views
 {
     /// <summary>
-    /// Interaction logic for DoctorUC.xaml
+    /// Interaction logic for ShellUC.xaml
     /// </summary>
-    public partial class DoctorUC : UserControl
+    public partial class ShellUC : UserControl
     {
-        public DoctorUC()
+        public ShellUC()
         {
             InitializeComponent();
-            DataContext = new DoctorUC_VM();
+            DataContext = new ShellWindowVM();
         }
     }
 }
