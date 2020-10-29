@@ -15,106 +15,106 @@
         <local1:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
         <local2:NewVisitCommand x:Key="NewVisit"/>
     </UserControl.Resources>
-    <Grid Background="WhiteSmoke">
+    <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="80"/>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="80"/>
+            <ColumnDefinition Width="70"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="70"/>
         </Grid.ColumnDefinitions>
-        <Grid Grid.Column="1" >
-            <Grid.RowDefinitions>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="2*"/>
-            </Grid.RowDefinitions>
-                <materialDesign:Card Margin="5" UniformCornerRadius="20">
-                <GroupBox Margin="5" Header="פרטי המטופל" Style="{x:Null}" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="180" >
-                    <Grid>
-                        <Grid.RowDefinitions>
-                            <RowDefinition Height="1*"/>
-                            <RowDefinition Height="1*"/>
-                        </Grid.RowDefinitions>
+        <Viewbox Stretch="Fill" Grid.Column="1">
+            <ScrollViewer Margin="10" Background="WhiteSmoke" Height="470">
+                <Grid Margin="20">
+                    <StackPanel Orientation="Vertical">
+                        <materialDesign:Card Margin="5" UniformCornerRadius="20">
+                            <GroupBox Margin="5" Header="פרטי המטופל" Style="{x:Null}" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="180" >
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="1*"/>
+                                        <RowDefinition Height="1*"/>
+                                    </Grid.RowDefinitions>
+                                    <StackPanel Orientation="Horizontal">
+                                        <StackPanel Width="130" Height="45">
+                                            <TextBlock x:Name="ID" Width="120" FontWeight="Bold" Height="18" Text="תעודת זהות" Margin="2"/>
+                                            <TextBlock x:Name="PatientID" Text="{Binding CurrentPatient.ID}" Style="{x:Null}" Width="120" Height="18" Margin="2"/>
+                                        </StackPanel>
+                                        <StackPanel Width="130" Height="45" Margin="10">
+                                            <TextBlock x:Name="Name" Width="120" FontWeight="Bold" Height="18" Text="שם" Margin="2"/>
+                                            <TextBlock x:Name="PatientName" Style="{x:Null}" Width="120" Height="18" Margin="2">
+                                                <TextBlock.Text>
+                                                    <MultiBinding StringFormat="{}{0} {1}">
+                                                        <Binding Path="CurrentPatient.FirstName" />
+                                                        <Binding Path="CurrentPatient.LastName" />
+                                                    </MultiBinding>
+                                                </TextBlock.Text>
+                                            </TextBlock>
+                                        </StackPanel>
+                                        <StackPanel  Width="130" Height="45" Margin="10">
+                                            <TextBlock x:Name="FatherName" FontWeight="Bold" Width="120" Height="18" Text="שם האב" Margin="2"/>
+                                            <TextBlock x:Name="PatientFatherName" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.FatherName}" Margin="2"/>
+                                        </StackPanel>
+                                        <StackPanel  Width="130" Height="45" Margin="10">
+                                            <TextBlock x:Name="BirthDate" FontWeight="Bold" Width="120" Height="18" Text="תאריך לידה" Margin="2"/>
+                                            <TextBlock x:Name="PatientBirthDate" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.BirthDate, StringFormat={}{0:dd/MM/yyyy}}" Margin="2"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+                                    <StackPanel Orientation="Horizontal" Grid.Row="1">
+                                        <StackPanel Width="130" Height="45">
+                                            <TextBlock x:Name="EmailAddress" FontWeight="Bold" Width="120" Height="18" Text="דואר אלקטרוני" Margin="2"/>
+                                            <TextBlock x:Name="PatientEmailAddress" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.EmailAddress}" Margin="2"/>
+                                        </StackPanel>
+                                        <StackPanel Width="130" Height="45" Margin="10">
+                                            <TextBlock x:Name="Weight" Width="120" FontWeight="Bold" Height="18" Text="משקל" Margin="2"/>
+                                            <TextBlock x:Name="PatientWeight" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.Weight}" Margin="2"/>
+                                        </StackPanel>
+                                        <StackPanel  Width="130" Height="45" Margin="10">
+                                            <TextBlock x:Name="PhoneNumber" FontWeight="Bold" Width="120" Height="18" Text="מספר טלפון" Margin="2"/>
+                                            <TextBlock x:Name="PatientPhoneNumber" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.PhoneNumber}" Margin="2"/>
+                                        </StackPanel>
+                                        <StackPanel  Width="130" Height="45" Margin="10">
+                                            <TextBlock x:Name="Gender" Width="120" FontWeight="Bold" Height="18" Text="מין" Margin="2"/>
+                                            <TextBlock x:Name="PatientGender" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.Gender}" Margin="2"/>
+                                        </StackPanel>
+                                    </StackPanel>
+
+
+                                </Grid>
+                            </GroupBox>
+                        </materialDesign:Card>
                         <StackPanel Orientation="Horizontal">
-                            <StackPanel Width="130" Height="45">
-                                <TextBlock x:Name="ID" Width="120" FontWeight="Bold" Height="18" Text="תעודת זהות" Margin="2"/>
-                                <TextBlock x:Name="PatientID" Text="{Binding CurrentPatient.ID}" Style="{x:Null}" Width="120" Height="18" Margin="2"/>
-                            </StackPanel>
-                            <StackPanel Width="130" Height="45" Margin="10">
-                                <TextBlock x:Name="Name" Width="120" FontWeight="Bold" Height="18" Text="שם" Margin="2"/>
-                                <TextBlock x:Name="PatientName" Style="{x:Null}" Width="120" Height="18" Margin="2">
-                                    <TextBlock.Text>
-                                        <MultiBinding StringFormat="{}{0} {1}">
-                                            <Binding Path="CurrentPatient.FirstName" />
-                                            <Binding Path="CurrentPatient.LastName" />
-                                        </MultiBinding>
-                                    </TextBlock.Text>
-                                </TextBlock>
-                            </StackPanel>
-                            <StackPanel  Width="130" Height="45" Margin="10">
-                                <TextBlock x:Name="FatherName" FontWeight="Bold" Width="120" Height="18" Text="שם האב" Margin="2"/>
-                                <TextBlock x:Name="PatientFatherName" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.FatherName}" Margin="2"/>
-                            </StackPanel>
-                            <StackPanel  Width="130" Height="45" Margin="10">
-                                <TextBlock x:Name="BirthDate" FontWeight="Bold" Width="120" Height="18" Text="תאריך לידה" Margin="2"/>
-                                <TextBlock x:Name="PatientBirthDate" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.BirthDate, StringFormat={}{0:dd/MM/yyyy}}" Margin="2"/>
-                            </StackPanel>
+                            <Grid HorizontalAlignment="Stretch" MinHeight="150" MinWidth="610">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                    <ColumnDefinition Width="1*"/>
+                                </Grid.ColumnDefinitions>
+                                <materialDesign:Card Margin="5" UniformCornerRadius="20">
+                                    <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="בעיות פעילות">
+                                        <ListView/>
+                                    </GroupBox>
+                                </materialDesign:Card>
+                                <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Column="1">
+                                    <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="תרופות קבועות">
+                                        <ListView/>
+                                    </GroupBox>
+                                </materialDesign:Card>
+                                <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Column="2">
+                                    <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="מרשמים בתוקף">
+                                        <ListView ItemsSource="{Binding Path=Visits}" x:Name="VisitsList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                                    </GroupBox>
+                                </materialDesign:Card>
+                            </Grid>
                         </StackPanel>
-
-                        <StackPanel Orientation="Horizontal" Grid.Row="1">
-                            <StackPanel Width="130" Height="45">
-                                <TextBlock x:Name="EmailAddress" FontWeight="Bold" Width="120" Height="18" Text="דואר אלקטרוני" Margin="2"/>
-                                <TextBlock x:Name="PatientEmailAddress" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.EmailAddress}" Margin="2"/>
-                            </StackPanel>
-                            <StackPanel Width="130" Height="45" Margin="10">
-                                <TextBlock x:Name="Weight" Width="120" FontWeight="Bold" Height="18" Text="משקל" Margin="2"/>
-                                <TextBlock x:Name="PatientWeight" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.Weight}" Margin="2"/>
-                            </StackPanel>
-                            <StackPanel  Width="130" Height="45" Margin="10">
-                                <TextBlock x:Name="PhoneNumber" FontWeight="Bold" Width="120" Height="18" Text="מספר טלפון" Margin="2"/>
-                                <TextBlock x:Name="PatientPhoneNumber" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.PhoneNumber}" Margin="2"/>
-                            </StackPanel>
-                            <StackPanel  Width="130" Height="45" Margin="10">
-                                <TextBlock x:Name="Gender" Width="120" FontWeight="Bold" Height="18" Text="מין" Margin="2"/>
-                                <TextBlock x:Name="PatientGender" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.Gender}" Margin="2"/>
-                            </StackPanel>
-                        </StackPanel>
-
-
-                    </Grid>
-                </GroupBox>
-            </materialDesign:Card>
-            <Grid Grid.Row="1">
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="1*"/>
-                    <RowDefinition Height="1*"/>
-                </Grid.RowDefinitions>
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="1*"/>
-                </Grid.ColumnDefinitions>
-                <materialDesign:Card Margin="5" UniformCornerRadius="20">
-                    <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="בעיות פעילות">
-                        <ListView/>
-                    </GroupBox>
-                </materialDesign:Card>
-                <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Column="1">
-                    <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="תרופות קבועות">
-                        <ListView/>
-                    </GroupBox>
-                </materialDesign:Card>
-                <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Column="2">
-                    <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="מרשמים בתוקף">
-                        <ListView ItemsSource="{Binding Path=Visits}" x:Name="VisitsList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                    </GroupBox>
-                </materialDesign:Card>
-                <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Row="1" Grid.ColumnSpan="3">
-                    <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="היסטוריית ביקורים">
-                        <ListView ItemsSource="{Binding Path=MedicinesNames}" x:Name="MedicinesList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-                    </GroupBox>
-                </materialDesign:Card>
-            </Grid>
-        </Grid>
-        <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Background="Transparent" x:Name="ContainGrid" Visibility="Visible">
+                        <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.ColumnSpan="3">
+                            <GroupBox Style="{x:Null}" Margin="5" FontWeight="UltraBlack" BorderBrush="Transparent" Header="היסטוריית ביקורים" MinHeight="100">
+                                <ListView ItemsSource="{Binding Path=MedicinesNames}" x:Name="MedicinesList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+                            </GroupBox>
+                        </materialDesign:Card>
+                    </StackPanel>
+                </Grid>
+            </ScrollViewer>
+        </Viewbox>
+        <StackPanel Margin="10" Orientation="Vertical" VerticalAlignment="Bottom" Background="Transparent" x:Name="ContainGrid" Visibility="Visible">
             <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}">
                 <Button x:Name="First" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
                 ToolTip="ביקור חדש" Command="{StaticResource NewVisit}" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
@@ -127,11 +127,11 @@
                                      Width="{StaticResource IconSize}"/>
                 </Button>
             </StackPanel>
-            <Ellipse x:Name="MenuIcon" Height="60" Width="60" VerticalAlignment="Bottom" Margin="10" Visibility="Visible">
+            <Ellipse x:Name="MenuIcon" Height="40" Width="40" VerticalAlignment="Bottom" Margin="5" Visibility="Visible">
                 <Ellipse.Fill>
                     <ImageBrush ImageSource="/Icons/MenuIcon.png"/>
                 </Ellipse.Fill>
             </Ellipse>
         </StackPanel>
     </Grid>
-</UserControl>
+  </UserControl>

@@ -9,6 +9,7 @@
         xmlns:local1="clr-namespace:DrugSystem.Converters" 
         xmlns:local2="clr-namespace:DrugSystem.Command" FlowDirection="RightToLeft"
         x:Name="Shell"
+        WindowState="Maximized"
         MinHeight="450" MinWidth="500">
     <Window.Resources>
         <local:FontSizeConverter x:Key="FontSizeConverter"/>
