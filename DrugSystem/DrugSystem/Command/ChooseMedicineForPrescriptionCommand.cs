@@ -4,11 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
-using DrugSystem.Windows;
 
 namespace DrugSystem.Command
 {
-    public class NewPatientCommand : ICommand
+    public class ChooseMedicineForPrescriptionCommand : ICommand
     {
         public event EventHandler CanExecuteChanged {
             add { CommandManager.RequerySuggested += value; }
@@ -17,12 +16,12 @@ namespace DrugSystem.Command
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            return true; 
         }
 
         public void Execute(object parameter)
         {
-
+            throw new NotImplementedException();
         }
     }
 }

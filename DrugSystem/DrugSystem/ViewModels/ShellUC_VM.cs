@@ -13,7 +13,6 @@ namespace DrugSystem.ViewModels
     public class ShellUC_VM : INotifyPropertyChanged
     {
         public ICommand NewMedicineCommand { get; set; }
-        public ICommand NewPatientCommand { get; set; }
         public ICommand SignOutCommand { get; set; }
         public ICommand ExitCommand { get; set; }
         public ICommand NewWorkerCommand { get; set; }
@@ -62,7 +61,6 @@ namespace DrugSystem.ViewModels
             DarkMode = false;
             NewWorkerCommand = new NewItemCommand();
             NewMedicineCommand = new NewMedicineCommand();
-            NewPatientCommand = new NewPatientCommand();
             SignOutCommand = new SignOutCommand();
             ExitCommand = new ExitCommand();
         }

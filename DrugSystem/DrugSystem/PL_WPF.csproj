@@ -86,8 +86,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Command\ChooseMedicineForPrescriptionCommand.cs" />
     <Compile Include="Command\CreateNewPatientCommand.cs" />
-    <Compile Include="Command\NewPatientCommand.cs" />
     <Compile Include="Command\NewItemCommand.cs" />
     <Compile Include="Command\CreateNewDoctorCommand.cs" />
     <Compile Include="Command\NewVisitCommand.cs" />

@@ -293,8 +293,17 @@ namespace DAL
             {
                 throw new ArgumentException("Patient Dosn't exist");
             }
-            return GetMedicinesNames(DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID && IsMedicineStillTaken(prescription.StartDate, prescription.TreatmentDays)).
-                Select(prescription => prescription.MedicineCode).ToList());
+            List<Prescription> prescriptions = DB.PrescriptionsTable.Where(prescription =>
+            prescription.PatientID == PatientID).ToList();
+            List<string> medicineCodes = new List<string>();
+            foreach (var pres in prescriptions)
+            {
+                if (IsMedicineStillTaken(pres.StartDate, pres.TreatmentDays))
+                {
+                    medicineCodes.Add(pres.MedicineCode);
+                }
+            }
+            return GetMedicinesNames(medicineCodes);
         }
     }
 }

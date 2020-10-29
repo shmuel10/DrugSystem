@@ -16,9 +16,12 @@ namespace DrugSystem.Models
         public List<string> MedicinesNames { get; set; }
         public PatientUC_M(string patientID)
         {
-            BL = new BllImplementation();
-            Visits = BL.GetAllPatientVisits(patientID);
-            MedicinesNames = BL.GetPatientsCurrentMedicinesNames(patientID);
+            if (patientID != null)
+            {
+                BL = new BllImplementation();
+                Visits = BL.GetAllPatientVisits(patientID);
+                MedicinesNames = BL.GetPatientsCurrentMedicinesNames(patientID);
+            }
         }
     }
 }

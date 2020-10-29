@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
+using BLL.BE;
 using DrugSystem.Windows;
 
 namespace DrugSystem.Command
@@ -18,7 +19,11 @@ namespace DrugSystem.Command
        
         public bool CanExecute(object parameter)
         {
-            return true;
+            if (((App)System.Windows.Application.Current).CurrentUser is Administrator)
+            {
+                return true;
+            }
+            return false;
         }
 
         public void Execute(object parameter)

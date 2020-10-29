@@ -26,17 +26,44 @@
                                 <RowDefinition Height="1*"/>
                             </Grid.RowDefinitions>
                             <StackPanel Orientation="Horizontal">
-                                <TextBlock x:Name="PatientID" Width="130" Height="18" Text="תעודת זהות" Margin="10"/>
-                                <TextBlock x:Name="PatientName" Width="130" Height="18" Text="שם" Margin="10"/>
-                                <TextBlock x:Name="PatientFatherName" Width="130" Height="18" Text="שם האב" Margin="10"/>
-                                <TextBlock x:Name="PatientBirthDate" Width="130" Height="18" Text="תאריך לידה" Margin="10"/>
+                                <StackPanel Width="130" Height="45">
+                                    <TextBlock x:Name="ID" Width="120" Height="18" Text="תעודת זהות" Margin="2"/>
+                                    <TextBox x:Name="PatientID" Style="{x:Null}" Width="120" Height="18" Text="תעודת זהות" Margin="2"/>
+                                </StackPanel>
+                                <StackPanel Width="130" Height="45" Margin="10">
+                                    <TextBlock x:Name="Name" Width="120" Height="18" Text="שם" Margin="2"/>
+                                    <TextBox x:Name="PatientName" Style="{x:Null}" Width="120" Height="18" Text="שם" Margin="2"/>
+                                </StackPanel>
+                                <StackPanel  Width="130" Height="45" Margin="10">
+                                    <TextBlock x:Name="FatherName" Width="120" Height="18" Text="שם האב" Margin="2"/>
+                                    <TextBox x:Name="PatientFatherName" Style="{x:Null}" Width="120" Height="18" Text="שם האב" Margin="2"/>
+                                </StackPanel>
+                                <StackPanel  Width="130" Height="45" Margin="10">
+                                    <TextBlock x:Name="BirthDate" Width="120" Height="18" Text="תאריך לידה" Margin="2"/>
+                                    <TextBox x:Name="PatientBirthDate" Style="{x:Null}" Width="120" Height="18" Text="תאריך לידה" Margin="2"/>
+                                </StackPanel>
                             </StackPanel>
+
                             <StackPanel Orientation="Horizontal" Grid.Row="1">
-                                <TextBlock x:Name="PatientEmailAddress" Width="130" Height="18" Text="דואר אלקטרוני" Margin="10"/>
-                                <TextBlock x:Name="PatientWeight" Width="130" Height="18" Text="משקל" Margin="10"/>
-                                <TextBlock x:Name="PatientPhoneNumber" Width="130" Height="18" Text="מספר טלפון" Margin="10"/>
-                                <TextBlock x:Name="PatientGender" Width="130" Height="18" Text="מין" Margin="10"/>
+                                <StackPanel Width="130" Height="45">
+                                    <TextBlock x:Name="EmailAddress" Width="120" Height="18" Text="דואר אלקטרוני" Margin="2"/>
+                                    <TextBox x:Name="PatientEmailAddress" Style="{x:Null}" Width="120" Height="18" Text="תעודת זהות" Margin="2"/>
+                                </StackPanel>
+                                <StackPanel Width="130" Height="45" Margin="10">
+                                    <TextBlock x:Name="Weight" Width="120" Height="18" Text="משקל" Margin="2"/>
+                                    <TextBox x:Name="PatientWeight" Style="{x:Null}" Width="120" Height="18" Text="שם" Margin="2"/>
+                                </StackPanel>
+                                <StackPanel  Width="130" Height="45" Margin="10">
+                                    <TextBlock x:Name="PhoneNumber" Width="120" Height="18" Text="מספר טלפון" Margin="2"/>
+                                    <TextBox x:Name="PatientPhoneNumber" Style="{x:Null}" Width="120" Height="18" Text="שם האב" Margin="2"/>
+                                </StackPanel>
+                                <StackPanel  Width="130" Height="45" Margin="10">
+                                    <TextBlock x:Name="Gender" Width="120" Height="18" Text="מין" Margin="2"/>
+                                    <TextBox x:Name="PatientGender" Style="{x:Null}" Width="120" Height="18" Text="תאריך לידה" Margin="2"/>
+                                </StackPanel>
                             </StackPanel>
+
+                     
                         </Grid>
                     </GroupBox>
                 </materialDesign:Card>
@@ -59,7 +86,8 @@
                                         <Button Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="בחר תרופה">
                                             <materialDesign:PackIcon Kind="Menu" Height="{StaticResource IconSize}" Width="{StaticResource IconSize}" />
                                         </Button>
-                                        <TextBox Width="470" AcceptsReturn="True" Margin="5" />
+                                        <TextBox Width="300" AcceptsReturn="True" Margin="5" />
+                                        <ListView x:Name="IteractionMedicine" Width="150" Margin="15,5"/>
                                     </StackPanel>
                                 </GroupBox>
                             </materialDesign:Card>
