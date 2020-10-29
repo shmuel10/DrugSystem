@@ -21,27 +21,9 @@ namespace DrugSystem
     /// </summary>
     public partial class ShellWindow : Window
     {
-        ToggleButton Togglebtn;
-       
         public ShellWindow()
         {
             InitializeComponent();
-         //   DataContext = new ShellUC_VM();
         }
-
-         private void ToggleButton_Checked(object sender, RoutedEventArgs e)
-        {
-          //  Grid MainGrid = this.MainGrid;
-            if ((bool)Togglebtn.IsChecked)
-            {
-                //MainGrid.Background = Brushes.White;
-            }
-            else
-            {
-               // MainGrid.Background = Brushes.White;
-            }
-
-        }
-
     }
 }

@@ -53,6 +53,8 @@ namespace BLL
         List<Visit> GetAllVisits();
         List<Visit> GetAllPatientVisits(string patientID);
         List<Visit> GetAllDoctorVisits(string doctorID);
+        List<string> GetPatientsCurrentMedicines(string PatientID);
+        List<string> GetPatientsCurrentMedicinesNames(string PatientID);
         List<string> GetInteractionMedicines(string patientID, string medicineID);
     }
 }

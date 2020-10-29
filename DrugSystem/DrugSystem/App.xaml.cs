@@ -21,7 +21,6 @@ namespace DrugSystem
         private INotifyPropertyChanged _currentViewModel;
         private INotifyPropertyChanged _currentOnShell;
         public Stack<INotifyPropertyChanged> StackOnShell { get; set; }
-        public INotifyPropertyChanged LastFromStack { get; set; }
         public App()
         {
             CurrentViewModel = new LoginUC_VM();
@@ -44,14 +43,16 @@ namespace DrugSystem
         public INotifyPropertyChanged CurrentOnShell {
             get { return _currentOnShell; }
             set {
-
                 if (_currentOnShell != null)
                 {
-                    if (StackOnShell != null)
+                    if (StackOnShell.Count > 0 && value == StackOnShell.Peek())
+                    {
+                        StackOnShell.Pop();
+                    }
+                    else
                     {
                         StackOnShell.Push(_currentOnShell);
                     }
-
                 }
                 _currentOnShell = value;
                 if (PropertyChanged != null)

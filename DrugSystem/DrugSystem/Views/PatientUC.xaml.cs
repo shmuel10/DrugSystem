@@ -25,6 +25,7 @@ namespace DrugSystem.Views
         {
             InitializeComponent();
             DataContext = new PatientUC_VM();
+            //DataContext = (App)System.Windows.Application.Current).CurrentOnShell;
         }
     }
 }

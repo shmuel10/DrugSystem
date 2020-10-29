@@ -12,10 +12,12 @@ namespace DrugSystem.ViewModels
     class PatientUC_VM : INotifyPropertyChanged
     {
         PatientUC_M PatientUC_M { get; set; }
+        public List<Visit> Visits { get { return PatientUC_M.Visits; } }
+        public List<string> MedicinesNames { get { return PatientUC_M.MedicinesNames; } }
         public PatientUC_VM(Patient currentPatient)
         {
             CurrentPatient = currentPatient;
-            PatientUC_M = new PatientUC_M();
+            PatientUC_M = new PatientUC_M(currentPatient.ID);
         }
 
         public PatientUC_VM()

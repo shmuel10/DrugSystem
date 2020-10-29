@@ -226,7 +226,7 @@ namespace DAL
             }
             return DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID).ToList();
         }
-        public List<string> GetPatientsCurrentMedicines(string PatientID)
+        public List<string> GetPatientsCurrentMedicinesCodes(string PatientID)
         {
             if (DB.PersonsTable.Find(PatientID) == null)
             {
@@ -285,6 +285,16 @@ namespace DAL
         private bool DoesElementExistInPersonsDB(Func<Person, bool> predicate)
         {
             return DB.PersonsTable.Where(predicate).FirstOrDefault() != null;
+        }
+
+        public List<string> GetPatientsCurrentMedicinesNames(string PatientID)
+        {
+            if (DB.PersonsTable.Find(PatientID) == null)
+            {
+                throw new ArgumentException("Patient Dosn't exist");
+            }
+            return GetMedicinesNames(DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID && IsMedicineStillTaken(prescription.StartDate, prescription.TreatmentDays)).
+                Select(prescription => prescription.MedicineCode).ToList());
         }
     }
 }

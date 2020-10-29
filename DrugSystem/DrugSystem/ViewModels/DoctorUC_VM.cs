@@ -23,7 +23,7 @@ namespace DrugSystem.ViewModels
                 if(value.ID != null)
                 {
                     ((App)System.Windows.Application.Current).CurrentOnShell = 
-                        new PatientUC_VM(_selectedPatient as Patient);
+                        new PatientUC_VM(_selectedPatient);
                 }
             }
         }

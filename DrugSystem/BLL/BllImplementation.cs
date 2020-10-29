@@ -176,7 +176,7 @@ namespace BLL
         public List<string> GetInteractionMedicines(string patientID, string medicineID)
         {
             return dal.GetMedicinesNames(medicineApiHandler.GetInteractionMedicinesID(medicineID)
-                .Intersect(dal.GetPatientsCurrentMedicines(patientID)).ToList());
+                .Intersect(dal.GetPatientsCurrentMedicinesCodes(patientID)).ToList());
         }
 
         public User GetLoginUser(string userMail, string Password)
@@ -235,18 +235,28 @@ namespace BLL
         {
             dal.UpdatePatient(patient);
         }
+
+        public List<string> GetPatientsCurrentMedicines(string PatientID)
+        {
+            return dal.GetPatientsCurrentMedicinesCodes(PatientID);
+        }
+
+        public List<string> GetPatientsCurrentMedicinesNames(string PatientID)
+        {
+            return dal.GetPatientsCurrentMedicinesNames(PatientID);
+        }
         #endregion
 
-       // public User VerifyLogIn(string EmailAddress, string Password)
-       // {
-       //     try
-       //     {
-       //         User user = dal.GetUserByEmail(EmailAddress);
-       //         return user.Password.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
-       //     } catch
-       //     {
-       //         throw new ArgumentException("No Such User");
-       //     }
-       // }
+        // public User VerifyLogIn(string EmailAddress, string Password)
+        // {
+        //     try
+        //     {
+        //         User user = dal.GetUserByEmail(EmailAddress);
+        //         return user.Password.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
+        //     } catch
+        //     {
+        //         throw new ArgumentException("No Such User");
+        //     }
+        // }
     }
 }
