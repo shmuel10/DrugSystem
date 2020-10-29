@@ -7,6 +7,6 @@
              Height="200"  Width="300">
     <StackPanel Orientation="Vertical">
         <local:SearchLineUC/>
-        <ListView/>
+        <ListView ItemsSource="{Binding Path=Medicines}" x:Name="MedicinesList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
     </StackPanel>
 </UserControl>

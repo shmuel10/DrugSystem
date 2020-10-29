@@ -16,6 +16,7 @@ namespace DrugSystem.ViewModels
         public ICommand SignOutCommand { get; set; }
         public ICommand ExitCommand { get; set; }
         public ICommand NewWorkerCommand { get; set; }
+        public ICommand StackCommand { get; set; }
 
         Brush _background;
         public Brush Background { get { return _background; }
@@ -63,6 +64,7 @@ namespace DrugSystem.ViewModels
             NewMedicineCommand = new NewMedicineCommand();
             SignOutCommand = new SignOutCommand();
             ExitCommand = new ExitCommand();
+            StackCommand = new StackCommand();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

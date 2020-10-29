@@ -41,8 +41,8 @@ namespace DrugSystem.ViewModels
         {
             _chooseMedUCVisibility = false;
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
-            if (((App)System.Windows.Application.Current).StackOnShell.Count > 1)
-                CurrentPatient = (((App)System.Windows.Application.Current).CurrentPatient);
+            if (((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Count > 1)
+                CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.CurrentPatient;
         }
     }
 }

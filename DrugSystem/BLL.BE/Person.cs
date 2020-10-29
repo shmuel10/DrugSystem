@@ -15,8 +15,6 @@ namespace BLL.BE
     {
         [Key]
         [Required(ErrorMessage = "ID Is Required")]
-
-        string _ID; 
         public string ID { get; set; }
         [Index(IsUnique = true), MaxLength(40), MinLength(3)]
         public string EmailAddress { get; set; }

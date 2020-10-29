@@ -19,11 +19,12 @@ namespace DrugSystem.Command
        
         public bool CanExecute(object parameter)
         {
-            if (((App)System.Windows.Application.Current).CurrentUser is Administrator)
-            {
-                return true;
-            }
-            return false;
+            return true;
+            //if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser is Administrator)
+            //{
+            //    return true;
+            //}
+            //return false;
         }
 
         public void Execute(object parameter)

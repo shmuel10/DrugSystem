@@ -245,6 +245,11 @@ namespace BLL
         {
             return dal.GetPatientsCurrentMedicinesNames(PatientID);
         }
+
+        public List<string> GetAllMedicinesByName()
+        {
+            return dal.GetAllMedicinesByName();
+        }
         #endregion
 
         // public User VerifyLogIn(string EmailAddress, string Password)

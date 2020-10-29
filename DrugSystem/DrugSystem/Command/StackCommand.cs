@@ -16,15 +16,15 @@ namespace DrugSystem.Command
 
         public bool CanExecute(object parameter)
         {
-            return (((App)System.Windows.Application.Current).StackOnShell.Count > 0);
+            return (((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Count > 0);
         }
 
         public void Execute(object parameter)
         {
-            if (((App)System.Windows.Application.Current).StackOnShell.Count > 0)
+            if (((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Count > 0)
             {
-                ((App)System.Windows.Application.Current).CurrentOnShell =
-                ((App)System.Windows.Application.Current).StackOnShell.Peek();
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
             }
         }
     }
