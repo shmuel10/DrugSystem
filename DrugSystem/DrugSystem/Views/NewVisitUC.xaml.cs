@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DrugSystem.ViewModels;
 
 namespace DrugSystem.Views
 {
@@ -23,6 +24,7 @@ namespace DrugSystem.Views
         public NewVisitUC()
         {
             InitializeComponent();
+            DataContext = new NewVisitUC_VM();
         }
     }
 }

@@ -29,5 +29,14 @@ namespace DrugSystem.ViewModels
             _chooseMedUCVisibility = false;
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
         }
+        public Patient CurrentPatient { get; set; }
+        public NewVisitUC_VM(Patient currentPatient)
+        {
+            CurrentPatient = currentPatient;
+        }
+
+        public NewVisitUC_VM()
+        {
+        }
     }
 }

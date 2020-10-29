@@ -22,11 +22,18 @@ namespace DrugSystem.ViewModels
 
         public PatientUC_VM()
         {
-
+            CurrentPatient = new Patient();
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
-
-        public Patient CurrentPatient { get; set; }
+        private Patient _currentPatient;
+        public Patient CurrentPatient {
+            get { return _currentPatient; }
+            set {
+                _currentPatient = value;
+                if (PropertyChanged != null)
+                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentPatient"));
+            }
+        }
     }
 }

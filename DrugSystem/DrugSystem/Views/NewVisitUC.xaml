@@ -32,7 +32,7 @@
                             <StackPanel Orientation="Horizontal">
                                 <StackPanel Width="130" Height="45">
                                     <TextBlock x:Name="ID" Width="120" Height="18" Text="תעודת זהות" Margin="2"/>
-                                    <TextBox x:Name="PatientID" Style="{x:Null}" Width="120" Height="18" Text="תעודת זהות" Margin="2"/>
+                                    <TextBox x:Name="PatientID" Text="{Binding Path=CurrentPatient.ID}" Style="{x:Null}" Width="120" Height="18" Margin="2"/>
                                 </StackPanel>
                                 <StackPanel Width="130" Height="45" Margin="10">
                                     <TextBlock x:Name="Name" Width="120" Height="18" Text="שם" Margin="2"/>
