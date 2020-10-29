@@ -28,7 +28,7 @@ namespace DrugSystem.ViewModels
 
         public void Login()
         {
-            ((App)System.Windows.Application.Current).CurrentViewModel = new ShellWindowVM();
+            ((App)System.Windows.Application.Current).CurrentViewModel = new ShellUC_VM();
             ((App)System.Windows.Application.Current).CurrentOnShell = new DoctorUC_VM();
 
             //    try

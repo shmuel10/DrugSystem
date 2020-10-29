@@ -27,7 +27,7 @@
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
                     <local:SearchLineUC Grid.Row="0"/>
-                    <ListView ItemsSource="{Binding Path=Doctors}" x:Name="DoctorsList" Grid.Row="1" Background="White" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ListView ItemsSource="{Binding Path=Doctors}" x:Name="DoctorsList" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <ListView.View>
                             <GridView>
                                 <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />

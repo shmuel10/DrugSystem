@@ -144,7 +144,7 @@
     <Compile Include="ViewModels\FloatingControlsVM.cs" />
     <Compile Include="ViewModels\LoginUC_VM.cs" />
     <Compile Include="ViewModels\DoctorUC_VM.cs" />
-    <Compile Include="ViewModels\ShellWindowVM.cs" />
+    <Compile Include="ViewModels\ShellUC_VM.cs" />
     <Compile Include="Views\AddNewMed.xaml.cs">
       <DependentUpon>AddNewMed.xaml</DependentUpon>
     </Compile>

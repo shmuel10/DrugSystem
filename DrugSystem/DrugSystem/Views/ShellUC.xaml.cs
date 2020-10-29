@@ -24,7 +24,7 @@ namespace DrugSystem.Views
         public ShellUC()
         {
             InitializeComponent();
-            DataContext = new ShellWindowVM();
+            DataContext = new ShellUC_VM();
         }
     }
 }

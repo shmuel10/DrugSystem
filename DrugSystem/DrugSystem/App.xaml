@@ -14,12 +14,12 @@
                 <local:LoginUC />
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModels:ShellWindowVM}">
-                <local1:ShellUC />
-            </DataTemplate>
+            <DataTemplate DataType="{x:Type ViewModels:ShellUC_VM}">
+                <local1:ShellUC/>
+              </DataTemplate>
 
             <DataTemplate DataType="{x:Type ViewModels:AdminUC_VM}">
-                <local:AdminUC />
+                <local:AdminUC  Background="{Binding ElementName=Shell_UC, Path=Background}" Foreground="{Binding ElementName=Shell_UC, Path=Foreground}"/>
             </DataTemplate>
 
             <DataTemplate DataType="{x:Type ViewModels:DoctorUC_VM}">
