@@ -15,6 +15,7 @@ namespace BLL
 
         //Users DB
         List<User> GetAllUsers();
+        List<string> GetAllMedicinesByName();
 
         //Admins DB
         void AddAdmin(Administrator administrator);

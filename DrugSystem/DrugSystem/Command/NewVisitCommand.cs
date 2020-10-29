@@ -22,8 +22,8 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            PatientUC_VM current = ((App)System.Windows.Application.Current).CurrentOnShell as PatientUC_VM;          
-            ((App)System.Windows.Application.Current).CurrentOnShell = new NewVisitUC_VM();
+            PatientUC_VM current = ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell as PatientUC_VM;          
+            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new NewVisitUC_VM();
         }
     }
 }

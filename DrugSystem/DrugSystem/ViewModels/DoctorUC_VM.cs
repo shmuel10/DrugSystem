@@ -4,7 +4,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Windows;
 using System.Windows.Input;
 using BLL.BE;
 using DrugSystem.Command;
@@ -22,11 +21,11 @@ namespace DrugSystem.ViewModels
                 _selectedPatient = value;
                 if(value.ID != null)
                 {
-                    ((App)System.Windows.Application.Current).CurrentOnShell = 
-                        new PatientUC_VM(_selectedPatient);
+                    ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = 
+                        new PatientUC_VM();
                     if(PropertyChanged != null)
                     {
-                        ((App)System.Windows.Application.Current).CurrentPatient = _selectedPatient;
+                        ((App)System.Windows.Application.Current).CurrentElements.CurrentPatient = _selectedPatient;
                         PropertyChanged(this, new PropertyChangedEventArgs("SelectedPatient"));
                     }
                 }

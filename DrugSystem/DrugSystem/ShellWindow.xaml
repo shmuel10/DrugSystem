@@ -17,7 +17,7 @@
     </Window.Resources>
 
     <Grid>
-        <ContentControl x:Name="MainContentControl" Content="{Binding Path=CurrentViewModel, Source={x:Static Application.Current}}" 
+        <ContentControl x:Name="MainContentControl" Content="{Binding Path=CurrentElements.CurrentViewModel, Source={x:Static Application.Current}}" 
                                 FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, 
                     Converter={StaticResource FontSizeConverter}}" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
 

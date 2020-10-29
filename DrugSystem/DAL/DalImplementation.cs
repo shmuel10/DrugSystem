@@ -25,7 +25,7 @@ namespace DAL
         public void AddAdmin(Administrator administrator)
         {
             ThrowExceptionIfPrsonExist(administrator);
-            DB.AdminsTable.Add(administrator);
+            DB.PersonsTable.Add(administrator);
             DB.SaveChanges();
         }
 
@@ -304,6 +304,11 @@ namespace DAL
                 }
             }
             return GetMedicinesNames(medicineCodes);
+        }
+
+        public List<string> GetAllMedicinesByName()
+        {
+            return DB.MedicinesTable.Select(medicine => medicine.GenericName).ToList();
         }
     }
 }

@@ -16,7 +16,6 @@
     <UserControl.Resources>
         <local1:FontSizeConverter x:Key="FontSizeConverter"/>
         <local11:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
-        <local2:StackCommand x:Key="StackCommand"/>
     </UserControl.Resources>
 
     <Grid Background="{Binding Background}">
@@ -45,7 +44,7 @@
                 </Menu>
                 <ToolBarTray Background="{Binding Background}" x:Name="ToolBar" Height="50">
                     <ToolBar Background="{Binding Background}" Foreground="{Binding Foreground}" Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False" >
-                        <Button Background="{Binding Background}" Foreground="{Binding Foreground}" ToolTip="Back" Command="{StaticResource StackCommand}" >
+                        <Button Background="{Binding Background}" Foreground="{Binding Foreground}" ToolTip="Back" Command="{Binding StackCommand}" >
                             <materialDesign:PackIcon Kind="ArrowForward" />
                         </Button>
                         <Separator />
@@ -74,7 +73,7 @@
             </StackPanel>
 
             <Grid x:Name="ContentGrid" Grid.Row="1" Background="{Binding Background}">
-                <ContentControl x:Name="MainContentControl" Content="{Binding Path=CurrentOnShell, Source={x:Static Application.Current}}" 
+                <ContentControl x:Name="MainContentControl" Content="{Binding Path=CurrentElements.CurrentOnShell, Source={x:Static Application.Current}}" 
                                 FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, 
                     Converter={StaticResource FontSizeConverter}}" Grid.ColumnSpan="3" Grid.RowSpan="3"
                                 Background="{Binding Background}" Foreground="{Binding Foreground}">

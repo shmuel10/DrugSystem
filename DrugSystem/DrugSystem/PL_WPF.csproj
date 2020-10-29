@@ -95,6 +95,7 @@
     <Compile Include="Command\StackCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
+    <Compile Include="ToolsFolder\CurrentElements.cs" />
     <Compile Include="Models\AddNewPatientUC_M.cs" />
     <Compile Include="Models\PatientUC_M.cs" />
     <Compile Include="ViewModels\AddNewDoctorUC_VM.cs" />
@@ -102,6 +103,8 @@
     <Compile Include="ViewModels\AddNewPatientUC_VM.cs" />
     <Compile Include="Command\CreateNewOfficerCommand.cs" />
     <Compile Include="Models\DoctorUC_M.cs" />
+    <Compile Include="Models\MedChooseUC_M.cs" />
+    <Compile Include="ViewModels\MedChooseUC_VM.cs" />
     <Compile Include="ViewModels\NewVisitUC_VM.cs" />
     <Compile Include="ViewModels\PatientUC_VM.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
@@ -307,6 +310,7 @@
   <ItemGroup>
     <Resource Include="Icons\DeafultMedPicture.jpg" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.3.2.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

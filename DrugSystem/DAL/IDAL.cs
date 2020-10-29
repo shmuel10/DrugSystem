@@ -51,5 +51,6 @@ namespace DAL
         List<string> GetPatientsCurrentMedicinesCodes(string PatientID);
         List<string> GetMedicinesNames(List<string> MedicinesID);
         List<string> GetPatientsCurrentMedicinesNames(string patientID);
+        List<string> GetAllMedicinesByName();
     }
 }
