@@ -57,5 +57,6 @@ namespace BLL
         List<string> GetPatientsCurrentMedicines(string PatientID);
         List<string> GetPatientsCurrentMedicinesNames(string PatientID);
         List<string> GetInteractionMedicines(string patientID, string medicineID);
+        string GetMedicineCodeIfExistInXML(string medicineName);
     }
 }

@@ -95,6 +95,7 @@
     <Compile Include="Command\StackCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
+    <Compile Include="Models\AddNewMedicinWindow_M.cs" />
     <Compile Include="ToolsFolder\CurrentElements.cs" />
     <Compile Include="Models\AddNewPatientUC_M.cs" />
     <Compile Include="Models\PatientUC_M.cs" />
@@ -104,12 +105,14 @@
     <Compile Include="Command\CreateNewOfficerCommand.cs" />
     <Compile Include="Models\DoctorUC_M.cs" />
     <Compile Include="Models\MedChooseUC_M.cs" />
+    <Compile Include="Command\CreateNewMedicineCommand.cs" />
     <Compile Include="ViewModels\MedChooseUC_VM.cs" />
     <Compile Include="ViewModels\NewVisitUC_VM.cs" />
     <Compile Include="ViewModels\PatientUC_VM.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
       <DependentUpon>AddNewDoctorUC.xaml</DependentUpon>
     </Compile>
+    <Compile Include="ViewModels\AddNewMedicineWindow_VM.cs" />
     <Compile Include="Views\AddNewOfficerUC.xaml.cs">
       <DependentUpon>AddNewOfficerUC.xaml</DependentUpon>
     </Compile>
@@ -148,9 +151,6 @@
     <Compile Include="ViewModels\LoginUC_VM.cs" />
     <Compile Include="ViewModels\DoctorUC_VM.cs" />
     <Compile Include="ViewModels\ShellUC_VM.cs" />
-    <Compile Include="Views\AddNewMed.xaml.cs">
-      <DependentUpon>AddNewMed.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Views\FloatingControls.xaml.cs">
       <DependentUpon>FloatingControls.xaml</DependentUpon>
     </Compile>
@@ -201,10 +201,6 @@
     <Page Include="ShellWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Views\AddNewMed.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\AdminUC.xaml">
       <SubType>Designer</SubType>

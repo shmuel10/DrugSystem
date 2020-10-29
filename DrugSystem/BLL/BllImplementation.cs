@@ -67,13 +67,24 @@ namespace BLL
                 throw new ArgumentException(ex.Message);
             }
         }
-
+        public string GetMedicineCodeIfExistInXML(string medicineName)
+        {
+            string result = null;
+            try
+            {
+                result = medicineApiHandler.FindMedicineID(medicineName).ToString();
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
+        }
         public void AddMedicine(Medicine medicine)
         {
             try
             {
                 validations.ValidateMedicine(medicine);
-                medicine.MedicineID = medicineApiHandler.FindMedicineID(medicine.CommercialName).ToString();
                 dal.AddMedicine(medicine);
             }
             catch (Exception ex)

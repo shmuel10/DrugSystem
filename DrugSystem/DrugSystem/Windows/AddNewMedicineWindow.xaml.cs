@@ -22,6 +22,7 @@ namespace DrugSystem
         public AddNewMedicineWindow()
         {
             InitializeComponent();
+            DataContext = new AddNewMedicineWindow_VM();
         }
     }
 }

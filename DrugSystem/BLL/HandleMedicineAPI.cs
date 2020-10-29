@@ -16,20 +16,14 @@ namespace BLL
         {
             drugsNums = new XmlDocument();
             //string p2 = @"../xmlFiles/mainxml.xml";
-            //drugsNums.Load(p2);
-
-
             string p;
-            //string p8 = @"C:\Users\OWNER\Source\Repos\DrugSystem\DrugSystem\DrugSystem\bin\Debug\BLL\xmlFiles\mainxml.xml";
-            //string str = Regex.Replace(p8, "DrugSystem\\bin$", @"BLL\xmlFiles\mainxml.xml");
-            //string p = Path.GetFullPath(@"mainxml.xml");
             string str = Assembly.GetExecutingAssembly().Location;
             string localPath = Path.GetDirectoryName(str);
             for (int i = 0; i < 3; i++)
                 localPath = Path.GetDirectoryName(localPath);
 
             p = localPath + @"\BLL\xmlFiles\mainxml.xml";
-            ////////drugsNums.Load(p);
+            drugsNums.Load(p);
         }
         public List<string> GetInteractionMedicinesID(string medicineId)
         {

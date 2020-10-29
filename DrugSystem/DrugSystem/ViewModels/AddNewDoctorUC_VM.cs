@@ -37,5 +37,6 @@ namespace DrugSystem.ViewModels
         {
             AddNewDoctorUC_M.AddNewDoctor(newDoctor);
         }
+       
     }
 }
