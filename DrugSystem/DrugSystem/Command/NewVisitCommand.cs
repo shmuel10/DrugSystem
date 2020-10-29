@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using BLL.BE;
 using DrugSystem.ViewModels;
 
 namespace DrugSystem.Command
@@ -22,7 +23,7 @@ namespace DrugSystem.Command
         public void Execute(object parameter)
         {
             ((App)System.Windows.Application.Current).CurrentOnShell =
-               new NewVisitUC_VM();
+               new NewVisitUC_VM(parameter as Patient);
         }
     }
 }
