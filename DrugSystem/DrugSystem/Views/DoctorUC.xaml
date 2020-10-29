@@ -19,7 +19,9 @@
         </Grid.RowDefinitions>
         <local:SearchLineUC/>
         <Grid Grid.Row="1">
-            <ListView x:Name="PatientsList" Background="{Binding ElementName=Shell_UC, Path=Background}" Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" SelectedItem="{Binding SelectedPatient, Mode=TwoWay}" ItemsSource="{Binding Path=Patients}" Grid.Row="1">
+            <ListView x:Name="PatientsList" Background="{Binding ElementName=Shell_UC, Path=Background}" 
+                      Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" 
+                      SelectedItem="{Binding SelectedPatient, Mode=TwoWay}" ItemsSource="{Binding Path=Patients}" Grid.Row="1">
                 <ListView.View>
                     <GridView>
                         <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}"/>

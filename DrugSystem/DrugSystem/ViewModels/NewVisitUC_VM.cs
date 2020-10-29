@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using BLL.BE;
 using DrugSystem.Command;
 
 namespace DrugSystem.ViewModels
@@ -13,6 +15,16 @@ namespace DrugSystem.ViewModels
     {
         public event PropertyChangedEventHandler PropertyChanged;
         bool _chooseMedUCVisibility;
+        Patient _currentPatient;
+
+        public Patient CurrentPatient {
+            get { return _currentPatient; }
+            set {
+                _currentPatient = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentPatient"));
+            }
+        }
+
         public ICommand ChooseMedCommand { get; set; }
         public bool ChooseMedUCVisibility {
             get { return _chooseMedUCVisibility; }
@@ -24,19 +36,13 @@ namespace DrugSystem.ViewModels
                 }
             }
         }
+
         public NewVisitUC_VM()
         {
             _chooseMedUCVisibility = false;
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
-        }
-        public Patient CurrentPatient { get; set; }
-        public NewVisitUC_VM(Patient currentPatient)
-        {
-            CurrentPatient = currentPatient;
-        }
-
-        public NewVisitUC_VM()
-        {
+            if (((App)System.Windows.Application.Current).StackOnShell.Count > 1)
+                CurrentPatient = (((App)System.Windows.Application.Current).CurrentPatient);
         }
     }
 }

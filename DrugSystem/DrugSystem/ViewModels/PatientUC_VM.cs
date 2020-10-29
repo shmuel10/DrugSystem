@@ -22,7 +22,7 @@ namespace DrugSystem.ViewModels
 
         public PatientUC_VM()
         {
-            CurrentPatient = new Patient();
+
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

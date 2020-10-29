@@ -24,6 +24,11 @@ namespace DrugSystem.ViewModels
                 {
                     ((App)System.Windows.Application.Current).CurrentOnShell = 
                         new PatientUC_VM(_selectedPatient);
+                    if(PropertyChanged != null)
+                    {
+                        ((App)System.Windows.Application.Current).CurrentPatient = _selectedPatient;
+                        PropertyChanged(this, new PropertyChangedEventArgs("SelectedPatient"));
+                    }
                 }
             }
         }

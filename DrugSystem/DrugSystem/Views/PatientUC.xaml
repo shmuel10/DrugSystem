@@ -84,7 +84,7 @@
         <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Background="Transparent" x:Name="ContainGrid" Visibility="Visible">
             <StackPanel Orientation="Vertical" VerticalAlignment="Bottom" Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}">
                 <Button x:Name="First" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="ביקור חדש" Command="{StaticResource NewVisit}" CommandParameter="{Binding CurrentPatient}" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+                ToolTip="ביקור חדש" Command="{StaticResource NewVisit}" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
                     <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}"/>
                 </Button>

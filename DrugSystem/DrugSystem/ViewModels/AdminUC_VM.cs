@@ -20,19 +20,11 @@ namespace DrugSystem.ViewModels
         public AdminUC_M AdminUC_M { get; set; }
 
         ICommand command { get; set; }
-      
+
         public AdminUC_VM()
         {
             AdminUC_M = new AdminUC_M();
             command = new NewItemCommand();
         }
-
-        public List<Doctor> Doctors { get { return AdminUC_M.Doctors; } }
-        public List<Patient> Patients { get { return AdminUC_M.Patients; } }
-        public List<Officer> Officers { get { return AdminUC_M.Officers; } }
-        public List<Medicine> Medicines { get { return AdminUC_M.Medicines; } }
-
-     
-     
     }
 }

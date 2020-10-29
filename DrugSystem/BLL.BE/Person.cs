@@ -6,14 +6,17 @@ using System.Threading.Tasks;
 using static BLL.BE.AuxiliaryObjects;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel;
 
 namespace BLL.BE
 {
     [Table("Persons")]
-    public class Person
+    public class Person 
     {
         [Key]
         [Required(ErrorMessage = "ID Is Required")]
+
+        string _ID; 
         public string ID { get; set; }
         [Index(IsUnique = true), MaxLength(40), MinLength(3)]
         public string EmailAddress { get; set; }

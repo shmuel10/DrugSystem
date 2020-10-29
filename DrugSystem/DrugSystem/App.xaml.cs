@@ -21,16 +21,18 @@ namespace DrugSystem
         private INotifyPropertyChanged _currentViewModel;
         private INotifyPropertyChanged _currentOnShell;
         private User _currentUser;
+        public event PropertyChangedEventHandler PropertyChanged;
+
         public Stack<INotifyPropertyChanged> StackOnShell { get; set; }
         public App()
         {
             CurrentUser = new User();
             CurrentViewModel = new LoginUC_VM();
             StackOnShell = new Stack<INotifyPropertyChanged>();
+            CurrentPatient = new Patient();
         }
 
-        public event PropertyChangedEventHandler PropertyChanged;
-
+        public Patient CurrentPatient { get; set; }
         public User CurrentUser { get { return _currentUser; } 
             set { _currentUser = value;
                 if (PropertyChanged != null)
