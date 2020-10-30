@@ -30,10 +30,7 @@ namespace DrugSystem.ViewModels
             get { return _chooseMedUCVisibility; }
             set {
                 _chooseMedUCVisibility = value;
-                if(PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("ChooseMedUCVisibility"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ChooseMedUCVisibility"));
             }
         }
 

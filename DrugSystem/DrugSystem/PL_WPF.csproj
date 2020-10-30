@@ -129,6 +129,10 @@
     <Compile Include="ToolsFolder\CurrentElements.cs" />
     <Compile Include="Models\AddNewPatientUC_M.cs" />
     <Compile Include="Models\PatientUC_M.cs" />
+    <Compile Include="Validation\IDValidation.cs" />
+    <Compile Include="Validation\PasswordLogInValidation.cs" />
+    <Compile Include="Validation\PhoneNumberValidation.cs" />
+    <Compile Include="Validation\WeightValidation.cs" />
     <Compile Include="ViewModels\AddNewDoctorUC_VM.cs" />
     <Compile Include="Models\AddNewOfficerUC_M.cs" />
     <Compile Include="ViewModels\AddNewPatientUC_VM.cs" />

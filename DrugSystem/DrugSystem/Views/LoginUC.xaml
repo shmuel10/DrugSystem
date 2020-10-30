@@ -43,7 +43,7 @@
 
                 <TextBox x:Name="UserEmail" FontSize="20" Margin="5" Grid.Row="3" Grid.Column="1"
                              MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Email address" materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute">
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="כתובת מייל" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" >
                     <TextBox.InputBindings>
                         <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
                     </TextBox.InputBindings>
@@ -56,22 +56,22 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBox x:Name="UserPassword" FontSize="20" Grid.Row="4" Grid.Column="1" Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="Password" materialDesign:ValidationAssist.UsePopup="True" materialDesign:ValidationAssist.PopupPlacement="Absolute" AutomationProperties.ItemType="Password">
+                <TextBox x:Name="UserPassword" FontSize="20" Grid.Row="4" Grid.Column="1"  Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="סיסמה" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" AutomationProperties.ItemType="Password">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
                     </TextBox.InputBindings>
                     <TextBox.Text>
                         <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:PasswordLogInValidation x:Name="PasswordValidation" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
 
                 <Button x:Name="SignInButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}" 
-                 Command="{Binding SignInCommand}" ToolTip="Press To Sign In" Content="Sign In">
+                 Command="{Binding SignInCommand}" ToolTip="Press To Sign In" Content="כניסה">
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource MultyStringConverter}">
                             <Binding Path="Text" ElementName="UserEmail"/>

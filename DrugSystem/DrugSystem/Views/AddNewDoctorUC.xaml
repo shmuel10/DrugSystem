@@ -58,11 +58,11 @@
             <Grid Grid.Column="1" Background="LightGray" DockPanel.Dock="Bottom" Margin="0 2 0 0" Height="200">
                 <ScrollViewer Margin="50 0 50 0" FlowDirection="RightToLeft" Height="150" Width="250">
                     <StackPanel>
-                        <TextBox x:Name="IDTextBox" materialDesign:HintAssist.Hint="תעודת זהות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                        <TextBox x:Name="IDTextBox" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="תעודת זהות" MaxLength="9" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
                                 <Binding Path="newDoctor.ID" UpdateSourceTrigger="PropertyChanged">
                                     <Binding.ValidationRules>
-                                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                        <domain1:IDValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                                     </Binding.ValidationRules>
                                 </Binding>
                             </TextBox.Text>

@@ -9,19 +9,14 @@ using System.Windows.Controls;
 
 namespace DrugSystem.Validation
 {
-    class EmailAddressValidation : ValidationRule
+    class PasswordLogInValidation : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            try
-            {
-                new MailAddress(value as string);
-                return ValidationResult.ValidResult;
-            }
-            catch
-            {
-                return new ValidationResult(false, "כתובת מייל לא תקינה!");
-            }
+            string str = value as string;
+            return str.Length < 5
+                ? new ValidationResult(false, "סיסמה מכילה לפחות 5 תווים")
+                : ValidationResult.ValidResult;
         }
     }
 }
