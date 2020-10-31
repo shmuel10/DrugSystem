@@ -9,20 +9,17 @@ using static BLL.BE.AuxiliaryObjects;
 
 namespace BLL.BE
 {
-    public enum MedicineType { Pill, Syrup, Suppository }
+  //  public enum MedicineType { Pill, Syrup, Suppository }
     [Table("Prescriptions")]
     public class Prescription
     {
         [Key]
         public string PrescriptionID { get; set; }
-        public string DoctorLicenceNumber { get; set; }
+        public string DoctorID { get; set; }
         public string PatientID { get; set; }
         public string MedicineCode { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime ExpireDate { get; set; }
-        public int TreatmentDays { get; set; }
-        public double TimesADay { get; set; }
-        public MedicineType MedicineForm { get; set; }
-        public double Amount { get; set; }
+        public string Instructions { get; set; }
     }
 }

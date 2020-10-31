@@ -116,7 +116,7 @@
                                 </Binding>
                             </TextBox.Text>
                         </TextBox>
-                        <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=AddNewPatientUC_M.Gender}" SelectedItem="{Binding Path=newDoctor.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
+                        <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=Gender}" SelectedItem="{Binding Path=newDoctor.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
                      
                         <TextBox x:Name="CityTextBox" materialDesign:HintAssist.Hint="עיר"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>

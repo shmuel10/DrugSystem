@@ -13,19 +13,21 @@ using BLL.BE;
 using DrugSystem.Command;
 using DrugSystem.Models;
 using DrugSystem.Views;
+using static BLL.BE.AuxiliaryObjects;
 
 namespace DrugSystem.ViewModels
 {
     public class AddNewDoctorUC_VM : INotifyPropertyChanged
     {
-        public AddNewDoctorUC_M AddNewDoctorUC_M { get; set; }
+        AddNewDoctorUC_M _addNewDoctorUC_M;
         public Doctor newDoctor { get; set; }
         public ICommand CreateNewDoctorCommand { get; set; }
         public ICommand FileDialogCommand { get; set; }
-
+        public List<Gender> Gender { get; set; }
         public AddNewDoctorUC_VM()
-        {
-            AddNewDoctorUC_M = new AddNewDoctorUC_M();
+        {           
+            _addNewDoctorUC_M = new AddNewDoctorUC_M();
+            Gender = _addNewDoctorUC_M.Gender;
             CreateNewDoctorCommand = new CreateNewDoctorCommand(this);
             FileDialogCommand = new OpenFileDialogCommand();
             newDoctor = new Doctor();
@@ -35,7 +37,7 @@ namespace DrugSystem.ViewModels
 
         public void CreateNewDoctor()
         {
-            AddNewDoctorUC_M.AddNewDoctor(newDoctor);
+            _addNewDoctorUC_M.AddNewDoctor(newDoctor);
         }
        
     }

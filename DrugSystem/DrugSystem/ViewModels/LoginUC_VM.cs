@@ -14,7 +14,7 @@ namespace DrugSystem.ViewModels
 {
     public class LoginUC_VM : INotifyPropertyChanged
     {
-        LoginUC_M LoginUC_M;
+        LoginUC_M _loginUC_M;
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand SignInCommand { get; set; }
@@ -22,7 +22,7 @@ namespace DrugSystem.ViewModels
         public string Password { get; set; }
         public LoginUC_VM()
         {
-            LoginUC_M = new LoginUC_M();
+            _loginUC_M = new LoginUC_M();
             SignInCommand = new SignInCommand(this);         
         }
 

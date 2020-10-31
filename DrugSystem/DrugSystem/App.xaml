@@ -34,6 +34,10 @@
                 <local1:NewVisitUC/>
             </DataTemplate>
 
+            <DataTemplate DataType="{x:Type ViewModels:PrescriptionUC_VM}">
+                <local1:PrescriptionUC/>
+            </DataTemplate>
+
             <system1:Double x:Key="IconSize">12</system1:Double>
             <system1:Double x:Key="FontSize">20</system1:Double>
             <Style x:Key="MaterialDesignOutlinedTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">

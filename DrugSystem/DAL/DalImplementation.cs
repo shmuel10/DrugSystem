@@ -232,7 +232,9 @@ namespace DAL
             {
                 throw new ArgumentException("Patient Dosn't exist");
             }
-            return DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID && IsMedicineStillTaken(prescription.StartDate, prescription.TreatmentDays)).
+            return DB.PrescriptionsTable.Where(prescription => 
+            prescription.PatientID.Equals(PatientID) &&
+            IsMedicineStillTaken(prescription.ExpireDate)).
                 Select(prescription => prescription.MedicineCode).ToList();
         }
         public List<Prescription> GetAllPrescriptions()
@@ -246,9 +248,9 @@ namespace DAL
             return result;
         }
         #endregion
-        private bool IsMedicineStillTaken(DateTime startDate, int treatmentDays)
+        private bool IsMedicineStillTaken(DateTime prescriptionExpireDate)
         {
-            int result = DateTime.Compare(DateTime.Now, startDate.AddDays(treatmentDays));
+            int result = DateTime.Compare(DateTime.Now, prescriptionExpireDate);
             if (result < 0)
             {
                 return true;
@@ -298,7 +300,7 @@ namespace DAL
             List<string> medicineCodes = new List<string>();
             foreach (var pres in prescriptions)
             {
-                if (IsMedicineStillTaken(pres.StartDate, pres.TreatmentDays))
+                if (IsMedicineStillTaken(pres.ExpireDate))
                 {
                     medicineCodes.Add(pres.MedicineCode);
                 }

@@ -8,11 +8,12 @@ namespace DrugSystem.ViewModels
 {
     public class MedChooseUC_VM
     {
-        public MedChooseUC_M MedChooseUC_M { get; set; }
-        public List<string> Medicines { get { return MedChooseUC_M.Medicines; } }
+        MedChooseUC_M _medChooseUC_M;
+        public List<string> Medicines { get; set; }
         public MedChooseUC_VM()
         {
-            MedChooseUC_M = new MedChooseUC_M();
+            _medChooseUC_M = new MedChooseUC_M();
+            Medicines = new List<string>(_medChooseUC_M.Medicines);
         }
     }
 }

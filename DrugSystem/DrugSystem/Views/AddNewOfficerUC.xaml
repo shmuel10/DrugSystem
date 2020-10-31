@@ -112,7 +112,7 @@
                             </TextBox.Text>
                         </TextBox>
                         <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=newOfficer.BirthDate, Mode=OneWayToSource}"  DisplayDate="{x:Static system1:DateTime.Now}" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}"/>
-                        <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=AddNewOfficerUC_M.Gender}" SelectedItem="{Binding Path=newOfficer.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
+                        <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=Gender}" SelectedItem="{Binding Path=newOfficer.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
                         <TextBox x:Name="CityTextBox" materialDesign:HintAssist.Hint="עיר"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                             <TextBox.Text>
                                 <Binding Path="newOfficer.City" UpdateSourceTrigger="PropertyChanged">

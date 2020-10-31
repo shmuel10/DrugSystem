@@ -126,6 +126,8 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
     <Compile Include="Models\AddNewMedicinWindow_M.cs" />
+    <Compile Include="Models\NewVisitUC_M.cs" />
+    <Compile Include="Models\PrescriptionUC_M.cs" />
     <Compile Include="ToolsFolder\CurrentElements.cs" />
     <Compile Include="Models\AddNewPatientUC_M.cs" />
     <Compile Include="Models\PatientUC_M.cs" />
@@ -143,6 +145,7 @@
     <Compile Include="ViewModels\MedChooseUC_VM.cs" />
     <Compile Include="ViewModels\NewVisitUC_VM.cs" />
     <Compile Include="ViewModels\PatientUC_VM.cs" />
+    <Compile Include="ViewModels\PrescriptionUC_VM.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
       <DependentUpon>AddNewDoctorUC.xaml</DependentUpon>
     </Compile>
@@ -159,6 +162,9 @@
     </Compile>
     <Compile Include="Views\PatientUC.xaml.cs">
       <DependentUpon>PatientUC.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrescriptionUC.xaml.cs">
+      <DependentUpon>PrescriptionUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellUC.xaml.cs">
       <DependentUpon>ShellUC.xaml</DependentUpon>
@@ -221,6 +227,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\PatientUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrescriptionUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

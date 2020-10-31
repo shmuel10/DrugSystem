@@ -25,6 +25,26 @@ namespace DrugSystem.Models
             Patients = BL.GetAllPatients();
             Officers = BL.GetAllOfficers();
             Medicines = BL.GetAllMedicines();
+            GetData();
+        }
+
+        private void GetData()
+        {
+            (new Thread(() => {
+                while (true)
+                {
+                    Doctors?.Clear();
+                    Doctors = BL.GetAllDoctors();
+                    Patients?.Clear();
+                    Patients = BL.GetAllPatients();
+                    Officers?.Clear();
+                    Officers = BL.GetAllOfficers();
+                    Medicines?.Clear();
+                    Medicines = BL.GetAllMedicines();
+                    Thread.Sleep(1000);
+                }
+            }
+            )).Start();
         }
     }
 }

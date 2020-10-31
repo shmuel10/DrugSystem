@@ -57,10 +57,6 @@ namespace BLL
         public bool ValidatePrescription(Prescription prescription)
         {
             string ErrorMessage = null;
-            if (prescription.DoctorLicenceNumber == null)
-            {
-                ErrorMessage += "Doctor Licence Number is Missing\n";
-            }
             if (prescription.PrescriptionID == null)
             {
                 ErrorMessage += "Patient ID Number is Missing\n";

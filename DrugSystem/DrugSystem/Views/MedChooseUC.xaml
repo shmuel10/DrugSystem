@@ -3,10 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:DrugSystem" Background="AntiqueWhite"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"           
+             xmlns:local="clr-namespace:DrugSystem" 
              Height="200"  Width="300">
-    <StackPanel Orientation="Vertical">
-        <local:SearchLineUC/>
-        <ListView ItemsSource="{Binding Path=Medicines}" x:Name="MedicinesList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
-    </StackPanel>
+    <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.ColumnSpan="3">
+        <StackPanel Orientation="Vertical" Margin="8">
+            <local:SearchLineUC/>
+            <ListView ItemsSource="{Binding Path=Medicines}" x:Name="MedicinesList" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"/>
+        </StackPanel>
+    </materialDesign:Card>
 </UserControl>

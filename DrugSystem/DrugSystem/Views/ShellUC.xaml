@@ -26,7 +26,7 @@
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
             <StackPanel Orientation="Vertical" Background="{Binding Background}">
-                <Menu Background="{Binding Background}" Foreground="{Binding Foreground}" x:Name="AppMenu" DockPanel.Dock="Top" Style="{x:Null}" Height="20">
+                <Menu  x:Name="AppMenu" Background="{Binding Background}" Foreground="{Binding Foreground}" DockPanel.Dock="Top" Style="{x:Null}" Height="20">
                     <MenuItem Header="עובדים" Style="{x:Null}" Background="{Binding Background}" Foreground="{Binding Foreground}">
                         <MenuItem Header="רופא חדש" Style="{x:Null}" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
                         <MenuItem Header="פקיד חדש" Style="{x:Null}" Command="{Binding NewWorkerCommand}" CommandParameter="Officer" Background="{Binding Background}" Foreground="{Binding Foreground}"/>

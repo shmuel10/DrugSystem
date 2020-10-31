@@ -13,9 +13,9 @@ namespace DrugSystem.ViewModels
     public class DoctorUC_VM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        DoctorUC_M DoctorUC_M;
+        DoctorUC_M _doctorUC_M;
         Patient _selectedPatient;
-        public List<Patient> Patients { get { return DoctorUC_M.Patients; } }
+        public List<Patient> Patients { get { return _doctorUC_M.Patients; } }
         public Patient SelectedPatient { get { return _selectedPatient; }
             set {
                 _selectedPatient = value;
@@ -34,7 +34,7 @@ namespace DrugSystem.ViewModels
 
         public DoctorUC_VM()
         {
-            DoctorUC_M = new DoctorUC_M();
+            _doctorUC_M = new DoctorUC_M();
             _selectedPatient = new Patient();
             SelectedPatient = new Patient();
         }

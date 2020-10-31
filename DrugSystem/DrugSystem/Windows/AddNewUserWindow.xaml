@@ -7,6 +7,7 @@
         xmlns:local="clr-namespace:DrugSystem.Windows"
         mc:Ignorable="d"
         x:Name="AddNewWorkerWin"
+        WindowState="Maximized"
         Title="AddNewWorker" Height="450" Width="800">
     <Grid x:Name="MainGrid">
         <Views:AddNewDoctorUC x:Name="DoctorUC"  Visibility="Collapsed"/>

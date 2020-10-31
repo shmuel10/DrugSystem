@@ -17,14 +17,38 @@ namespace DrugSystem.ViewModels
     public class AdminUC_VM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public AdminUC_M AdminUC_M { get; set; }
-
+        AdminUC_M _adminUC_M { get; set; }
         ICommand command { get; set; }
+        public ObservableCollection<Doctor> Doctors { get; set; }
+        public ObservableCollection<Officer> Officers { get; set; }
+        public ObservableCollection<Patient> Patients { get; set; }
+        public ObservableCollection<Medicine> Medicines { get; set; }
 
         public AdminUC_VM()
         {
-            AdminUC_M = new AdminUC_M();
+            _adminUC_M = new AdminUC_M();
             command = new NewItemCommand();
+            Doctors = new ObservableCollection<Doctor>(_adminUC_M.Doctors);
+            Officers = new ObservableCollection<Officer>(_adminUC_M.Officers);
+            Patients = new ObservableCollection<Patient>(_adminUC_M.Patients);
+            Medicines = new ObservableCollection<Medicine>(_adminUC_M.Medicines);
+            Doctors.CollectionChanged += Doctors_CollectionChanged;
+        }
+
+        private void Doctors_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
+        {
+            (new Thread(() => {
+                while (true)
+                {
+                    Doctors.Clear();
+                    foreach (var item in _adminUC_M.Doctors)
+                    {
+                        Doctors.Add(item);
+                    }
+                    Thread.Sleep(1000);
+                }
+            }
+            )).Start();
         }
     }
 }

@@ -11,13 +11,13 @@ namespace DrugSystem.ViewModels
 {
     class PatientUC_VM : INotifyPropertyChanged
     {
-        PatientUC_M PatientUC_M { get; set; }
-        public List<Visit> Visits { get { return PatientUC_M.Visits; } }
-        public List<string> MedicinesNames { get { return PatientUC_M.MedicinesNames; } }
+        PatientUC_M _patientUC_M;
+        public List<Visit> Visits { get { return _patientUC_M.Visits; } }
+        public List<string> MedicinesNames { get { return _patientUC_M.MedicinesNames; } }
         public PatientUC_VM()
         {
             CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.CurrentPatient;
-            PatientUC_M = new PatientUC_M(CurrentPatient.ID);
+            _patientUC_M = new PatientUC_M(CurrentPatient.ID);
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
