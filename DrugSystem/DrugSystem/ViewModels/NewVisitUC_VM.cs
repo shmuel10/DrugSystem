@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
@@ -22,9 +23,16 @@ namespace DrugSystem.ViewModels
         Patient _currentPatient;
         Prescription _prescription;
         public List<string> Medicines { get { return _newVisitUC_M.Medicines; } }
+        
         string _selectedMed = "";
-        public string SelectedMed { get { return _selectedMed; } set { _selectedMed += "\n" + value + " ";
-                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed")); } }
+        public string SelectedMed {
+            get { return _selectedMed; }
+            set {
+                _selectedMed += "\n" + value + " ";
+                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed"));
+            }
+        }
+
         //public List<string> Interactions { get; set; }
         public ICommand CreatePrescripton { get; set; }
       
