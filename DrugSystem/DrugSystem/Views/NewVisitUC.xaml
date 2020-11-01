@@ -13,6 +13,7 @@
     <UserControl.Resources>
         <system1:Double x:Key="IconSize">5</system1:Double>
         <local2:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <local2:ListToStringConverter x:Key="ListToStringConverter"/>
     </UserControl.Resources>
     <Viewbox Stretch="Fill">
         <ScrollViewer Margin="30,10" Background="WhiteSmoke" Height="470">
@@ -69,8 +70,6 @@
                                         <TextBlock x:Name="PatientGender" Style="{x:Null}" Width="120" Height="18" Text="{Binding Path=CurrentPatient.Gender}" Margin="2"/>
                                     </StackPanel>
                                 </StackPanel>
-
-
                             </Grid>
                         </GroupBox>
                     </materialDesign:Card>
@@ -89,17 +88,17 @@
                         <GroupBox Style="{x:Null}" BorderBrush="Transparent" Header="טיפול" MinHeight="100" Margin="0 10 0 0">
                             <StackPanel Orientation="Horizontal">
                                 <Button x:Name="ChooseMed" Command="{Binding ChooseMedCommand}" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="בחר תרופה">
-                                    <materialDesign:PackIcon Kind="Menu" Height="{StaticResource IconSize}" Width="{StaticResource IconSize}" />
+                                    <materialDesign:PackIcon Kind="Menu" Height="{StaticResource IconSize}" Width="{StaticResource IconSize}"/>
                                 </Button>
-                                <Grid Width="300" Margin="5" Visibility="{Binding ChooseMedUCVisibility, Converter={StaticResource BoolToVisibilityConverter}}">
-                                    <TextBox AcceptsReturn="True" Text="{Binding TreatmentDetails}"/>
-                                    <local1:MedChooseUC/>
+                                <TextBox x:Name="MedChoosenBox" AcceptsReturn="True" Width="200" Text="{Binding ElementName=med, Path=DataContext.SelectedMed}"/>
+                                <Grid Width="200" Margin="5" Visibility="{Binding ChooseMedUCVisibility, Converter={StaticResource BoolToVisibilityConverter}}">
+                                    <local1:MedChooseUC x:Name="med"/>
                                 </Grid>
-                                <ListView x:Name="IteractionMedicine" Width="150" Margin="15,5"/>
+                                <ListView x:Name="IteractionMedicine" Width="100" Margin="10,5"/>
                             </StackPanel>
                         </GroupBox>
                     </materialDesign:Card>
-                    <Button Content="סיום" Margin="0 20 0 10" Width="150" Height="25" />
+                    <Button Content="סיום" Command="{Binding CreatePrescripton}" Margin="0 20 0 10" Width="150" Height="25" />
                 </StackPanel>
             </Grid>
         </ScrollViewer>

@@ -83,11 +83,13 @@ namespace DrugSystem
 
 
 
-        public bool CanAddMedicine { get { return (bool)GetValue(CanAddMedicineDPProperty); }
+        public bool CanAddMedicine {
+            get { return (bool)GetValue(CanAddMedicineDPProperty); }
             set {
                 SetValue(CanAddMedicineDPProperty, value);
                 PropertyChanged(this, new PropertyChangedEventArgs("CanAddMedicine"));
-            } }
+            }
+        }
     
 
         public bool CanAddMedicineDP {

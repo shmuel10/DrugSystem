@@ -87,7 +87,6 @@ namespace DrugSystem
             {
                 result.Forth.ToolTip = e.NewValue.ToString();
             }
-
         }
 
         private static object FixValueCallBack(DependencyObject d, object baseValue)

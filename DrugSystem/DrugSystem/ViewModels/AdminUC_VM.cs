@@ -32,23 +32,6 @@ namespace DrugSystem.ViewModels
             Officers = new ObservableCollection<Officer>(_adminUC_M.Officers);
             Patients = new ObservableCollection<Patient>(_adminUC_M.Patients);
             Medicines = new ObservableCollection<Medicine>(_adminUC_M.Medicines);
-            Doctors.CollectionChanged += Doctors_CollectionChanged;
-        }
-
-        private void Doctors_CollectionChanged(object sender, System.Collections.Specialized.NotifyCollectionChangedEventArgs e)
-        {
-            (new Thread(() => {
-                while (true)
-                {
-                    Doctors.Clear();
-                    foreach (var item in _adminUC_M.Doctors)
-                    {
-                        Doctors.Add(item);
-                    }
-                    Thread.Sleep(1000);
-                }
-            }
-            )).Start();
         }
     }
 }

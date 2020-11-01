@@ -122,9 +122,11 @@
     <Compile Include="Command\CreateNewDoctorCommand.cs" />
     <Compile Include="Command\NewVisitCommand.cs" />
     <Compile Include="Command\OpenFileDialogCommand.cs" />
+    <Compile Include="Command\SaveVisitCommand.cs" />
     <Compile Include="Command\StackCommand.cs" />
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
+    <Compile Include="Converters\ListToStringConverter.cs" />
     <Compile Include="Models\AddNewMedicinWindow_M.cs" />
     <Compile Include="Models\NewVisitUC_M.cs" />
     <Compile Include="Models\PrescriptionUC_M.cs" />

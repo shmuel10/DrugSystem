@@ -127,6 +127,17 @@ namespace BLL
         {
             try
             {
+                if (dal.GetAllPrescriptions().Count == 0)
+                {
+                    Random random = new Random();
+                    string prescriptionID = Convert.ToString(random.Next(2345465, 999999999));
+                    prescription.PrescriptionID = prescriptionID;
+                }
+                else
+                {
+                    int max = Int32.Parse(dal.GetAllPrescriptions().Max(x => x.PrescriptionID));
+                    prescription.PrescriptionID = Convert.ToString(max + 1);
+                }
                 validations.ValidatePrescription(prescription);
                 dal.AddPrescription(prescription);
             }

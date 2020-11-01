@@ -15,5 +15,8 @@ namespace DrugSystem.ViewModels
             _medChooseUC_M = new MedChooseUC_M();
             Medicines = new List<string>(_medChooseUC_M.Medicines);
         }
+
+        string g = "";
+        public string SelectedMed { get { return g; } set { g += "\n" + value + " "; } }   
     }
 }

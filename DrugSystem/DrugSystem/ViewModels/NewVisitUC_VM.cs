@@ -5,10 +5,12 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using BLL.BE;
 using DrugSystem.Command;
 using DrugSystem.Models;
+using DrugSystem.Views;
 
 namespace DrugSystem.ViewModels
 {
@@ -19,6 +21,7 @@ namespace DrugSystem.ViewModels
         NewVisitUC_M _newVisitUC_M;
         Patient _currentPatient;
         Prescription _prescription;
+        public ICommand CreatePrescripton { get; set; }
         string _treatmentDetails;
         public ICommand ChooseMedCommand { get; set; }
         public string TreatmentDetails { get { return _treatmentDetails; }
@@ -31,6 +34,7 @@ namespace DrugSystem.ViewModels
         {
             _newVisitUC_M = new NewVisitUC_M();
             _prescription = new Prescription();
+            CreatePrescripton = new SaveVisitCommand(this);
             ChooseMedUCVisibility = false;
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
             if (((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Count > 1)
@@ -56,7 +60,7 @@ namespace DrugSystem.ViewModels
         public void SavePrescription()
         {
             Doctor doctor = ((App)System.Windows.Application.Current).CurrentElements.CurrentUser as Doctor;
-            _prescription.DoctorID = doctor.FirstName + doctor.LastName;
+            _prescription.DoctorID = doctor.ID;
             _prescription.ExpireDate = DateTime.Now.AddDays(90);
             _prescription.PatientID = _currentPatient.ID;
             _prescription.StartDate = DateTime.Now;

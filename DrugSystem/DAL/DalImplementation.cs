@@ -80,7 +80,7 @@ namespace DAL
         {
             ThrowExceptionIfPrescriptionExist(prescription);
             DB.PrescriptionsTable.Add(prescription);
-            DB.SaveChanges();
+            DB.SaveChanges();  
         }
         #endregion
 
