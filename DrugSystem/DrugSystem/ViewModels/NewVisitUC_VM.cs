@@ -21,6 +21,11 @@ namespace DrugSystem.ViewModels
         NewVisitUC_M _newVisitUC_M;
         Patient _currentPatient;
         Prescription _prescription;
+        public List<string> Medicines { get { return _newVisitUC_M.Medicines; } }
+        string _selectedMed = "";
+        public string SelectedMed { get { return _selectedMed; } set { _selectedMed += "\n" + value + " ";
+                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed")); } }
+        //public List<string> Interactions { get; set; }
         public ICommand CreatePrescripton { get; set; }
         string _treatmentDetails;
         public ICommand ChooseMedCommand { get; set; }

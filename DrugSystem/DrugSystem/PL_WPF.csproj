@@ -142,9 +142,7 @@
     <Compile Include="ViewModels\AddNewPatientUC_VM.cs" />
     <Compile Include="Command\CreateNewOfficerCommand.cs" />
     <Compile Include="Models\DoctorUC_M.cs" />
-    <Compile Include="Models\MedChooseUC_M.cs" />
     <Compile Include="Command\CreateNewMedicineCommand.cs" />
-    <Compile Include="ViewModels\MedChooseUC_VM.cs" />
     <Compile Include="ViewModels\NewVisitUC_VM.cs" />
     <Compile Include="ViewModels\PatientUC_VM.cs" />
     <Compile Include="ViewModels\PrescriptionUC_VM.cs" />

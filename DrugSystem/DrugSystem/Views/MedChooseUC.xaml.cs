@@ -25,7 +25,7 @@ namespace DrugSystem
         public MedChooseUC()
         {
             InitializeComponent();
-            DataContext = new MedChooseUC_VM();
+        //    DataContext = this;
         }
     }
 }
