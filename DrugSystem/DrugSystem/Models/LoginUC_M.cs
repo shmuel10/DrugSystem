@@ -8,12 +8,17 @@ using BLL.BE;
 
 namespace DrugSystem.Models
 {
-    class LoginUC_M
+    public class LoginUC_M
     {
         IBll BL;
         public LoginUC_M()
         {
             BL = new BllImplementation();
+        }
+
+        public User SignIn(string mail,string password)
+        {
+            return BL.GetLoginUser(mail, password);
         }
     }
 }

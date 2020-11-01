@@ -62,7 +62,7 @@
                         <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
                     </TextBox.InputBindings>
                     <TextBox.Text>
-                        <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <domain1:PasswordLogInValidation x:Name="PasswordValidation" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>

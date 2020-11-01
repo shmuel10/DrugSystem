@@ -27,14 +27,9 @@ namespace DrugSystem.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed")); } }
         //public List<string> Interactions { get; set; }
         public ICommand CreatePrescripton { get; set; }
-        string _treatmentDetails;
+      
         public ICommand ChooseMedCommand { get; set; }
-        public string TreatmentDetails { get { return _treatmentDetails; }
-            set {
-                _treatmentDetails = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("TreatmentDetails"));
-            }
-        }
+      
         public NewVisitUC_VM()
         {
             _newVisitUC_M = new NewVisitUC_M();
@@ -69,7 +64,8 @@ namespace DrugSystem.ViewModels
             _prescription.ExpireDate = DateTime.Now.AddDays(90);
             _prescription.PatientID = _currentPatient.ID;
             _prescription.StartDate = DateTime.Now;
-            _prescription.Instructions = TreatmentDetails;
+            _prescription.MedicineCode = _newVisitUC_M.GetMedicineCode(SelectedMed);
+            _prescription.Instructions = SelectedMed;
             _newVisitUC_M.AddPrescription(_prescription);
         }
     }

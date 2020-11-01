@@ -29,5 +29,11 @@ namespace DrugSystem.Models
         {
             return BL.GetAllMedicinesByName();
         }
+
+        public string GetMedicineCode(string genericName)
+        {
+            string result = BL.GetMedicineCodeByName(genericName);
+            return result;
+        }
     }
 }

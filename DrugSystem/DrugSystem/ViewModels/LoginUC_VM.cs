@@ -28,31 +28,35 @@ namespace DrugSystem.ViewModels
 
         public void Login()
         {
-            User user = new Doctor();   
-            ((App)System.Windows.Application.Current).CurrentElements.CurrentViewModel = new ShellUC_VM();
-            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new DoctorUC_VM();
-            ((App)System.Windows.Application.Current).CurrentElements.CurrentUser = user;
-                
+            //User currentUser = _loginUC_M.SignIn(Mail, Password);
+            // User user = new Doctor();   
+            //((App)System.Windows.Application.Current).CurrentElements.CurrentViewModel = new ShellUC_VM();
+            //((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new DoctorUC_VM();
+            //((App)System.Windows.Application.Current).CurrentElements.CurrentUser = currentUser;
 
-            //    try
-            //    {
-            //        User currentUser = LoginUC_M.Login(Mail, Password);
-            //        if (currentUser != null)
-            //        {
-            //            if (currentUser is Doctor)
-            //            {
-            //                ((App)Application.Current).CurrentViewModel = new DoctorUC_VM();
-            //            }
-            //            else if (currentUser is Administrator)
-            //            {
-            //                ((App)Application.Current).CurrentViewModel = new AdminUC_VM();
-            //            }
-            //        }
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        MessageBox.Show(ex.Message);
-            //    }
+            try
+            {
+                 User currentUser = _loginUC_M.SignIn(Mail, Password);
+                if (currentUser != null)
+                {
+                    if (currentUser is Doctor)
+                    {
+                        ((App)Application.Current).CurrentElements.CurrentViewModel = new ShellUC_VM();
+                        ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new DoctorUC_VM();
+                        ((App)System.Windows.Application.Current).CurrentElements.CurrentUser = currentUser;
+                    }
+                    else if (currentUser is Administrator)
+                    {
+                        ((App)Application.Current).CurrentElements.CurrentViewModel = new ShellUC_VM();
+                        ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new AdminUC_VM();
+
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
     }
 }

@@ -48,10 +48,8 @@ namespace BLL
         #region add to DB
         public void AddAdmin(Administrator administrator)
         {
-                validations.ValidateAdmin(administrator);
-                dal.AddAdmin(administrator);
-            
-            
+            validations.ValidateAdmin(administrator);
+            dal.AddAdmin(administrator);
         }
 
         public void AddDoctor(Doctor doctor)
@@ -169,6 +167,11 @@ namespace BLL
         public List<Medicine> GetAllMedicines()
         {
             return dal.GetAllMedicines();
+        }
+
+        public string GetMedicineCodeByName(string genericCode)
+        {
+            return dal.GetMedicineCodeByName(genericCode);
         }
 
         public List<Officer> GetAllOfficers()

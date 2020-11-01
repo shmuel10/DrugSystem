@@ -79,7 +79,7 @@
                                 Background="{Binding Background}" Foreground="{Binding Foreground}">
                 </ContentControl>
             </Grid>
-            <TextBlock Grid.Row="2" Background="LightGray"/>
+            <TextBlock x:Name="StatusBar" Text="{Binding StatusBar}" Grid.Row="2" Background="LightGray"/>
         </Grid>
     </Grid>
 </UserControl>

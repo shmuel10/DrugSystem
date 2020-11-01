@@ -166,6 +166,13 @@ namespace DAL
         {
             return DB.VisitsTable.Where(visit => visit.DoctorID.Equals(doctorID)).ToList();
         }
+
+        public string GetMedicineCodeByName(string genericName)
+        {
+            return DB.MedicinesTable.Where(MedName => MedName.GenericName.Equals(genericName))
+                .Select(Med => Med.MedicineID).FirstOrDefault();
+        }
+
         public Medicine GetMedicine(string MedicineID)
         {
             Medicine medicine = DB.MedicinesTable.Find(MedicineID);

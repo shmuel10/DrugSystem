@@ -33,6 +33,7 @@ namespace DAL
         void UpdateMedicine(Medicine medicine);
         Medicine GetMedicine(string MedicineCode);
         List<Medicine> GetAllMedicines();
+        string GetMedicineCodeByName(string genericName);
 
         //Patients DB
         void AddPatient(Patient patient);

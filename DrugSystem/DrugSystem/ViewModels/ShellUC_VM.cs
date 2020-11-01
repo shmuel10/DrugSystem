@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Input;
 using System.Windows.Media;
 using DrugSystem.Command;
@@ -57,6 +58,13 @@ namespace DrugSystem.ViewModels
             }
         }
 
+        string _statusBar;
+        public string StatusBar { get { return _statusBar; } 
+            set { _statusBar = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("StatusBar"));
+            }
+        }
+
         public ShellUC_VM()
         {
             DarkMode = false;
@@ -65,6 +73,7 @@ namespace DrugSystem.ViewModels
             SignOutCommand = new SignOutCommand();
             ExitCommand = new ExitCommand();
             StackCommand = new StackCommand();
+            StatusBar = "";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

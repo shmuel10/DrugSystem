@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using BLL.BE;
+using DrugSystem.ViewModels;
 using DrugSystem.Windows;
 
 namespace DrugSystem.Command
@@ -29,9 +30,11 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
+            (((App)System.Windows.Application.Current).CurrentElements.CurrentViewModel as ShellUC_VM).StatusBar = "GGG";
+
             string workerToAdd = parameter as string;
             AddNewUserWindow newWorkerWindow = new AddNewUserWindow();
-            if(workerToAdd.Equals("Doctor"))
+            if (workerToAdd.Equals("Doctor"))
             {
                 newWorkerWindow.OfficerUC.Visibility = Visibility.Collapsed;
                 newWorkerWindow.PatientUC.Visibility = Visibility.Collapsed;
