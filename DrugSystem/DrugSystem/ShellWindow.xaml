@@ -10,7 +10,7 @@
         xmlns:local2="clr-namespace:DrugSystem.Command" FlowDirection="RightToLeft"
         x:Name="Shell"
         WindowState="Maximized"
-        MinHeight="450" MinWidth="500">
+        MinHeight="450" MinWidth="500" Background="{Binding Back}">
     <Window.Resources>
         <local:FontSizeConverter x:Key="FontSizeConverter"/>
         <local1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>

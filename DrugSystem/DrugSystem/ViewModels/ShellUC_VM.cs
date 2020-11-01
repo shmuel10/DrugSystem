@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -20,6 +21,7 @@ namespace DrugSystem.ViewModels
         public ICommand StackCommand { get; set; }
 
         Brush _background;
+
         public Brush Background { get { return _background; }
             set { _background = value;
                 if (PropertyChanged != null)
@@ -75,7 +77,7 @@ namespace DrugSystem.ViewModels
             StackCommand = new StackCommand();
             StatusBar = "";
         }
-
+      
         public event PropertyChangedEventHandler PropertyChanged;
     }
 }
