@@ -167,7 +167,6 @@ class CheckInteraction
     {
         do
         {
-
             try
             {
                 int drugNum = ResolveRxcuiFromName(drugName);
@@ -205,7 +204,7 @@ class CheckInteraction
         } while (true);
         Console.WriteLine(result);
     }
-    public  int ResolveRxcuiFromName(string name)
+    public int ResolveRxcuiFromName(string name)
     {
         int result = 0;
         XmlElement root = drugsNums.DocumentElement;
