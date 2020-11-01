@@ -10,7 +10,9 @@ using BLL.BE;
 namespace DAL
 {
     public class DrugSystemContext : DbContext
-    { 
+    {
+        private DbModelBuilder modelBuilder;
+
         public DrugSystemContext() : base("name=DrugSystemContext")
         {
             

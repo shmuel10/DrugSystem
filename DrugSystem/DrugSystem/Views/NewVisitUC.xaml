@@ -94,7 +94,7 @@
                                 <Grid Width="200" Margin="5" Visibility="{Binding ChooseMedUCVisibility, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <local1:MedChooseUC x:Name="med"/>
                                 </Grid>
-                                <ListView x:Name="IteractionMedicine" Width="100" Margin="10,5"/>
+                                <ListView ItemsSource="{Binding InteractionsMedicinesNames, UpdateSourceTrigger=PropertyChanged}" x:Name="IteractionMedicine" Width="100" Margin="10,5"/>
                             </StackPanel>
                         </GroupBox>
                     </materialDesign:Card>

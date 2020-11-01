@@ -31,6 +31,7 @@ namespace BLL
         void UpdateOfficer(Officer officer);
         Officer GetOfficer(string OfficerID);
         List<Officer> GetAllOfficers();
+        string GetMedicineCodeByName(string genericName);
 
         //Medicines DB
         void AddMedicine(Medicine medicine);
@@ -58,6 +59,5 @@ namespace BLL
         List<string> GetPatientsCurrentMedicinesNames(string PatientID);
         List<string> GetInteractionMedicines(string patientID, string medicineID);
         string GetMedicineCodeIfExistInXML(string medicineName);
-        string GetMedicineCodeByName(string genericCode);
     }
 }
