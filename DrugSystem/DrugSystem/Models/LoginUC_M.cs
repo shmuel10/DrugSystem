@@ -8,7 +8,7 @@ using BLL.BE;
 
 namespace DrugSystem.Models
 {
-    public class LoginUC_M
+    class LoginUC_M
     {
         IBll BL;
         public LoginUC_M()
@@ -16,9 +16,9 @@ namespace DrugSystem.Models
             BL = new BllImplementation();
         }
 
-        public User SignIn(string mail,string password)
+        internal User SignIn(string mail, string password)
         {
-            return BL.GetLoginUser(mail, password);
+            throw new NotImplementedException();
         }
     }
 }

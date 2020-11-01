@@ -24,8 +24,26 @@ namespace DrugSystem.ViewModels
         public List<string> Medicines { get { return _newVisitUC_M.Medicines; } }
         string _selectedMed = "";
         public string SelectedMed { get { return _selectedMed; } set { _selectedMed += "\n" + value + " ";
-                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed")); } }
-        //public List<string> Interactions { get; set; }
+                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed"));
+                _selectedMedicinesCodes.Add(_newVisitUC_M.GetMedicineCode(value));
+                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedicinesCodes"));
+                List<string> list = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, _newVisitUC_M.GetMedicineCode(value));
+                foreach (string item in list)
+                {
+                    _interactionsMedicinesNames.Add(item);
+                }
+                PropertyChanged(this, new PropertyChangedEventArgs("InteractionsMedicinesNames"));
+            }
+        }
+        private ObservableCollection<string> _selectedMedicinesCodes;
+        public ObservableCollection<string> SelectedMedicinesCodes { get { return _selectedMedicinesCodes; }
+            set {  } }
+        private ObservableCollection<string> _interactionsMedicinesNames;
+        public ObservableCollection<string> InteractionsMedicinesNames {
+            get { return _interactionsMedicinesNames; }
+            set { }
+        }
+        public List<string> Interactions { get; set; }
         public ICommand CreatePrescripton { get; set; }
       
         public ICommand ChooseMedCommand { get; set; }
@@ -36,6 +54,8 @@ namespace DrugSystem.ViewModels
             _prescription = new Prescription();
             CreatePrescripton = new SaveVisitCommand(this);
             ChooseMedUCVisibility = false;
+            _selectedMedicinesCodes = new ObservableCollection<string>();
+            _interactionsMedicinesNames = new ObservableCollection<string>();
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
             if (((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Count > 1)
                 CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.CurrentPatient;
