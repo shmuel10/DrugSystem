@@ -29,12 +29,12 @@ namespace DrugSystem.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed"));
                 _selectedMedicinesCodes.Add(_newVisitUC_M.GetMedicineCode(value));
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedicinesCodes"));
-                List<string> list = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, _newVisitUC_M.GetMedicineCode(value));
-                foreach (string item in list)
-                {
-                    _interactionsMedicinesNames.Add(item);
-                }
-                PropertyChanged(this, new PropertyChangedEventArgs("InteractionsMedicinesNames"));
+         //       List<string> list = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, _newVisitUC_M.GetMedicineCode(value));
+         //       foreach (string item in list)
+         //       {
+         //           _interactionsMedicinesNames.Add(item);
+         //       }
+         //       PropertyChanged(this, new PropertyChangedEventArgs("InteractionsMedicinesNames"));
             }
         }
         private ObservableCollection<string> _selectedMedicinesCodes;

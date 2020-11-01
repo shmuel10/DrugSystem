@@ -40,7 +40,7 @@ namespace BLL
                             {
                                 foreach (var item3 in item2.interactionConcept)
                                 {
-                                    if (item3.sourceConceptItem.id != medicineId.ToString())
+                                    if (item3.sourceConceptItem.id != medicineId)
                                     {
                                         interactionMedicinesID.Add(item3.sourceConceptItem.id);
                                     }
@@ -167,6 +167,7 @@ class CheckInteraction
     {
         do
         {
+
             try
             {
                 int drugNum = ResolveRxcuiFromName(drugName);
@@ -204,7 +205,7 @@ class CheckInteraction
         } while (true);
         Console.WriteLine(result);
     }
-    public int ResolveRxcuiFromName(string name)
+    public  int ResolveRxcuiFromName(string name)
     {
         int result = 0;
         XmlElement root = drugsNums.DocumentElement;
