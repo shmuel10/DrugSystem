@@ -23,12 +23,12 @@ namespace BLL
             string p = localPath + @"\BLL\xmlFiles\mainxml.xml";
             drugsNums.Load(p);
         }
-        public List<string> GetInteractionMedicinesID(string medicineId)
+        public List<string> GetInteractionMedicinesNames(string medicineName, string medicineID)
         {
-            List<string> interactionMedicinesID = new List<string>();
+            List<string> interactionMedicinesNames = new List<string>();
             try
             {
-                string interactionJsonString = HttpRequest(GenerateURL(medicineId));
+                string interactionJsonString = HttpRequest(GenerateURL(medicineID));
                 Root interactionObj = Newtonsoft.Json.JsonConvert.DeserializeObject<Root>(interactionJsonString);
                 if (interactionObj.interactionTypeGroup != null)
                 {
@@ -40,9 +40,9 @@ namespace BLL
                             {
                                 foreach (var item3 in item2.interactionConcept)
                                 {
-                                    if (item3.sourceConceptItem.id != medicineId)
+                                    if (item3.sourceConceptItem.name != medicineName)
                                     {
-                                        interactionMedicinesID.Add(item3.sourceConceptItem.id);
+                                        interactionMedicinesNames.Add(item3.sourceConceptItem.name);
                                     }
                                 }
                             }
@@ -54,7 +54,7 @@ namespace BLL
             {
                 throw new Exception("Error");
             }
-            return interactionMedicinesID;
+            return interactionMedicinesNames;
         }
 
         public string FindMedicineID(string name)

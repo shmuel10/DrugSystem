@@ -22,6 +22,7 @@ namespace DrugSystem.ViewModels
         NewVisitUC_M _newVisitUC_M;
         Patient _currentPatient;
         Prescription _prescription;
+        List<string> interactionList;
         public List<string> Medicines { get { return _newVisitUC_M.Medicines; } }
         
         string _selectedMed = "";
@@ -29,12 +30,15 @@ namespace DrugSystem.ViewModels
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed"));
                 _selectedMedicinesCodes.Add(_newVisitUC_M.GetMedicineCode(value));
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedicinesCodes"));
-         //       List<string> list = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, _newVisitUC_M.GetMedicineCode(value));
-         //       foreach (string item in list)
-         //       {
-         //           _interactionsMedicinesNames.Add(item);
-         //       }
-         //       PropertyChanged(this, new PropertyChangedEventArgs("InteractionsMedicinesNames"));
+                interactionList = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID,value, _newVisitUC_M.GetMedicineCode(value));
+                if (interactionList != null)
+                {
+                    foreach (string item in interactionList)
+                    {
+                        _interactionsMedicinesNames.Add(item);
+                    }
+                    PropertyChanged(this, new PropertyChangedEventArgs("InteractionsMedicinesNames"));
+                }
             }
         }
         private ObservableCollection<string> _selectedMedicinesCodes;
@@ -56,6 +60,7 @@ namespace DrugSystem.ViewModels
             _prescription = new Prescription();
             CreatePrescripton = new SaveVisitCommand(this);
             ChooseMedUCVisibility = false;
+            interactionList = new List<string>();
             _selectedMedicinesCodes = new ObservableCollection<string>();
             _interactionsMedicinesNames = new ObservableCollection<string>();
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
