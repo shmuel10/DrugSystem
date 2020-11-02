@@ -13,13 +13,21 @@
     <UserControl.Resources>
         <local1:ConctenateStringConverter x:Key="ConcatString"/>
         <local1:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+        <Style TargetType="TabControl" x:Key="BackAndForeg">
+            <Setter Property="Background" Value="{Binding ElementName=Shell_UC, Path=Background}"/>
+            <Setter Property="Foreground" Value="{Binding ElementName=Shell_UC, Path=Foreground}"/>
+        </Style>
+        <Style TargetType="ListView" x:Key="BackAndForegListView">
+            <Setter Property="Background" Value="{Binding ElementName=Shell_UC, Path=Background}"/>
+            <Setter Property="Foreground" Value="{Binding ElementName=Shell_UC, Path=Foreground}"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="10*"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabs" Grid.Column="1" Style="{x:Null}" BorderThickness="3" MinHeight="500" HorizontalAlignment="Stretch" Margin="0 0 50 0">
+        <TabControl x:Name="tabs" Grid.Column="1" Style="{StaticResource BackAndForeg}" BorderThickness="3" MinHeight="500" HorizontalAlignment="Stretch" Margin="0 0 50 0">
             <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1">
                 <Grid>
                     <Grid.RowDefinitions>

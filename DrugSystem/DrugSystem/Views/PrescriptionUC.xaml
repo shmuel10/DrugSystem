@@ -11,7 +11,8 @@
         <ScrollViewer Margin="30,10" Background="WhiteSmoke" Height="470">
             <Grid Margin="20">
                 <StackPanel Orientation="Vertical">
-                    <materialDesign:Card UniformCornerRadius="20" Margin="5">
+                    <materialDesign:Card UniformCornerRadius="20" Margin="5" Background="{Binding ElementName=Shell_UC, Path=Background}" 
+                      Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
                         <GroupBox Margin="5" Header="פרטי המטופל" Style="{x:Null}" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="180" >
                             <Grid>
                                 <Grid.RowDefinitions>
@@ -64,7 +65,8 @@
                             </Grid>
                         </GroupBox>
                     </materialDesign:Card>
-                    <materialDesign:Card Margin="5" UniformCornerRadius="20" MinHeight="250">
+                    <materialDesign:Card Margin="5" UniformCornerRadius="20" MinHeight="250" Background="{Binding ElementName=Shell_UC, Path=Background}" 
+                      Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
                         <GroupBox Style="{x:Null}" BorderBrush="Transparent" Header="טיפול" MinHeight="100" Margin="0 10 0 0">
                             <TextBox Width="470" AcceptsReturn="True"/>
                         </GroupBox>

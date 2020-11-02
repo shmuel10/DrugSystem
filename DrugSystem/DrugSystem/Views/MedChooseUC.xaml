@@ -7,7 +7,8 @@
              xmlns:local="clr-namespace:DrugSystem" 
              xmlns:local1="clr-namespace:DrugSystem.Converters" 
              Height="200"  Width="200">
-    <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.ColumnSpan="3">
+    <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.ColumnSpan="3" Background="{Binding ElementName=Shell_UC, Path=Background}" 
+                      Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
         <StackPanel Orientation="Vertical" Margin="8">
             <local:SearchLineUC/>
             <ListView ItemsSource="{Binding Path=Medicines}" SelectedItem="{Binding Path=SelectedMed}"

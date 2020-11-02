@@ -37,7 +37,7 @@ namespace DrugSystem.ViewModels
             try
             {
                 //User currentUser = _loginUC_M.SignIn(Mail, Password);
-                User currentUser = new Doctor();
+                User currentUser = new Administrator();
                 if (currentUser != null)
                 {
                     if (currentUser is Doctor)

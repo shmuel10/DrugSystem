@@ -49,7 +49,9 @@ namespace DrugSystem.ViewModels
                 _darkMode = value;
                 if (_darkMode)
                 {
-                    Background = Brushes.Black;
+
+                    Background = new BrushConverter().ConvertFromString("#41506C") as SolidColorBrush;
+                   // Background = Brushes.Black;
                     Foreground = Brushes.WhiteSmoke;
                 }
                 else
@@ -77,7 +79,9 @@ namespace DrugSystem.ViewModels
             StackCommand = new StackCommand();
             StatusBar = "";
         }
-      
         public event PropertyChangedEventHandler PropertyChanged;
+
+
+       
     }
 }

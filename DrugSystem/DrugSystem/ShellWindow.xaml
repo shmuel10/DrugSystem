@@ -10,12 +10,18 @@
         xmlns:local2="clr-namespace:DrugSystem.Command" FlowDirection="RightToLeft"
         x:Name="Shell"
         WindowState="Maximized"
-        MinHeight="450" MinWidth="500" Background="MidnightBlue">
+        MinHeight="450" MinWidth="500">
     <Window.Resources>
         <local:FontSizeConverter x:Key="FontSizeConverter"/>
         <local1:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
         <local2:StackCommand x:Key="StackPop"/>
     </Window.Resources>
+    <Window.Background>
+        <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+            <GradientStop Color="Black" Offset="0"/>
+            <GradientStop Color="#FF7B87B9" Offset="1"/>
+        </LinearGradientBrush>
+    </Window.Background>
 
     <Grid>
         <ContentControl x:Name="MainContentControl" Content="{Binding Path=CurrentElements.CurrentViewModel, Source={x:Static Application.Current}}" 
@@ -91,21 +97,26 @@
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid x:Name="Cancel" Grid.Row="1"/>
-                --><!--<local:AdminUC x:Name="AdminUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
+                -->
+        <!--<local:AdminUC x:Name="AdminUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
                 <local:DoctorUC x:Name="DoctorUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>-->
 
-               
-                    <!--<local:AdminUC x:Name="AdminUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
-                <local:DoctorUC x:Name="DoctorUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>--><!--
+
+        <!--<local:AdminUC x:Name="AdminUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>
+                <local:DoctorUC x:Name="DoctorUC" Visibility="Collapsed" FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}"/>-->
+        <!--
                     <ContentControl x:Name="MainContentControl" Content="{Binding Path=CurrentViewModel, Source={x:Static Application.Current}}" 
                                 FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, 
                     Converter={StaticResource FontSizeConverter}}" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
-                --><!--<ContentControl x:Name="G" Grid.Row="1" Grid.Column="1" Visibility="{Binding ElementName=G, Path=IsFocused, Converter={StaticResource BooleanToVisibilityConverter}}"
-                       Content="{Binding Path=OnFrame, Source={x:Static Application.Current}}"/>--><!--
+                -->
+        <!--<ContentControl x:Name="G" Grid.Row="1" Grid.Column="1" Visibility="{Binding ElementName=G, Path=IsFocused, Converter={StaticResource BooleanToVisibilityConverter}}"
+                       Content="{Binding Path=OnFrame, Source={x:Static Application.Current}}"/>-->
+        <!--
             </Grid>
 
 
-            --><!--<ContentControl  FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}">
+            -->
+        <!--<ContentControl  FontSize="{Binding ElementName=FontSizeComboBox, Path=SelectedValue, Converter={StaticResource FontSizeConverter}}">
                     <ContentControl.Content>
                         <Frame x:Name="MiddleFrame" Margin="60" Visibility="{Binding Path=FrameVisibility,  Source={x:Static Application.Current}, Converter={StaticResource BooleanToVisibilityConverter}}"
                        Content="{Binding Path=OnFrame, Source={x:Static Application.Current}}"/>
@@ -118,9 +129,10 @@
           <Content="{Binding Path=CurrentViewModel, Source={x:Static Application.Current}}"/>
 
                    
-            </Grid>--><!--
+            </Grid>-->
+        <!--
             <TextBlock Grid.Row="2" Background="LightGray"/>
         </Grid>-->
     </Grid>
-    
+
 </Window>

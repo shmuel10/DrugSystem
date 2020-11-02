@@ -5,9 +5,11 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:local="clr-namespace:DrugSystem" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" xmlns:local1="clr-namespace:DrugSystem.Converters"
-             mc:Ignorable="d" Height="400" Width="500">
-  
+             xmlns:wpf="http://materialdesigninxaml.net/winfx/xaml/themes" 
+             xmlns:local1="clr-namespace:DrugSystem.Converters"
+             FlowDirection="RightToLeft"
+             mc:Ignorable="d" Height="500" Width="450">
+
     <UserControl.Resources>
         <Style x:Key="MaterialDesignOutlinedTextBox" TargetType="{x:Type TextBox}" BasedOn="{StaticResource MaterialDesignFloatingHintTextBox}">
             <Setter Property="wpf:TextFieldAssist.HasOutlinedTextField" Value="True" />
@@ -22,8 +24,8 @@
     </UserControl.Resources>
 
 
-    <Grid Width="500" Height="400">
-        <Border BorderBrush="DarkBlue" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+    <Grid Width="450" Height="500">
+        <Border BorderBrush="#FFF9F9F7" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid Margin="3 3 3 3">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="1*"/>
@@ -31,19 +33,21 @@
                     <RowDefinition Height="0.5*"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="70"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="1*"/>
-                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="8*"/>
                     <ColumnDefinition Width="1*"/>
                 </Grid.ColumnDefinitions>
-                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Style="{StaticResource MaterialDesignHeadline3TextBlock}">Log In</TextBlock>
+                <materialDesign:PackIcon Grid.Row="3" Foreground="White" Grid.Column="1" Kind="user" VerticalAlignment="Center" Margin="10,0" Height="30"/>
+                <materialDesign:PackIcon Grid.Row="4" Foreground="White" Grid.Column="1" Kind="ForgotPassword" VerticalAlignment="Center" Margin="10,0" Height="30"/>
+                <TextBlock Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Foreground="White" HorizontalAlignment="Center" FontSize="25" FontWeight="Bold" Style="{StaticResource MaterialDesignHeadline3TextBlock}">כניסה</TextBlock>
 
-                <TextBox x:Name="UserEmail" FontSize="20" Margin="5" Grid.Row="3" Grid.Column="1"
+                <TextBox x:Name="UserEmail" Padding="10,0" FontSize="20" Margin="5" Grid.Row="3" Grid.Column="1"
                              MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="כתובת מייל" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" >
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="אימייל" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" Foreground="White">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
                     </TextBox.InputBindings>
@@ -56,8 +60,8 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBox x:Name="UserPassword" FontSize="20" Grid.Row="4" Grid.Column="1"  Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
-                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="סיסמה" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" AutomationProperties.ItemType="Password">
+                <TextBox x:Name="UserPassword" Padding="10,0" FontSize="20" Grid.Row="4" Grid.Column="1"  Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                 TextWrapping="Wrap" materialDesign:HintAssist.Hint="סיסמה" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" AutomationProperties.ItemType="Password" Foreground="#FFFDF8F8">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
                     </TextBox.InputBindings>
@@ -70,8 +74,8 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <Button x:Name="SignInButton" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}" 
-                 Command="{Binding SignInCommand}" ToolTip="Press To Sign In" Content="כניסה">
+                <Button x:Name="SignInButton" Background="#FFD31F60" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Width="200" VerticalAlignment="Bottom" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}" 
+                 Command="{Binding SignInCommand}" ToolTip="Press To Sign In" Content="כניסה" BorderBrush="#FFFEFEFF">
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource MultyStringConverter}">
                             <Binding Path="Text" ElementName="UserEmail"/>
