@@ -198,11 +198,14 @@ namespace BLL
         {
             return dal.GetDoctor(DocrorsID);
         }
-        public List<string> GetInteractionMedicines(string patientID, string medicineID)
+        public List<string> GetInteractionMedicines(string patientID, string medicineName, string medicineID)
         {
-            var interaction = dal.GetMedicinesNames(medicineApiHandler.GetInteractionMedicinesID(medicineID));
-            return dal.GetMedicinesNames(medicineApiHandler.GetInteractionMedicinesID(medicineID)
-                .Intersect(dal.GetPatientsCurrentMedicinesCodes(patientID)).ToList());
+            var abc = medicineApiHandler.GetInteractionMedicinesNames(medicineName, medicineID);
+            var interaction = abc.Intersect(dal.GetPatientsCurrentMedicinesCodes(patientID));
+            //var result = dal.GetMedicinesNames(interaction as List<string>);
+            return interaction as List<string>;
+            //return dal.GetMedicinesNames(medicineApiHandler.GetInteractionMedicinesNames(medicineID)
+            //    .Intersect(dal.GetPatientsCurrentMedicinesCodes(patientID)).ToList());
         }
 
         public User GetLoginUser(string userMail, string Password)
