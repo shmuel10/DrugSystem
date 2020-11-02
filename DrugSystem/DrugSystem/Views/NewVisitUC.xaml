@@ -101,7 +101,7 @@
                                 <Button x:Name="ChooseMed" Command="{Binding ChooseMedCommand}" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="בחר תרופה">
                                     <materialDesign:PackIcon Kind="Menu" Height="{StaticResource IconSize}" Width="{StaticResource IconSize}"/>
                                 </Button>
-                                <TextBox x:Name="MedChoosenBox" AcceptsReturn="True" Width="200" Text="{Binding Path=SelectedMed}"/>
+                                <TextBox x:Name="MedChoosenBox" AcceptsReturn="True" Width="200" Text="{Binding Path=SelectedMedName}"/>
                                 <Grid Width="200" Margin="5" Visibility="{Binding ChooseMedUCVisibility, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <local1:MedChooseUC x:Name="med"/>
                                 </Grid>

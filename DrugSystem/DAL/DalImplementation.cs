@@ -182,9 +182,12 @@ namespace DAL
         public List<string> GetMedicinesNames(List<string> MedicinesID)
         {
             List<string> medicinesNames = new List<string>();
-            foreach (string medicineId in MedicinesID)
+            if (MedicinesID != null)
             {
-                medicinesNames.Add(GetMedicine(medicineId).CommercialName);
+                foreach (string medicineId in MedicinesID)
+                {
+                    medicinesNames.Add(GetMedicine(medicineId).CommercialName);
+                }
             }
             return medicinesNames;
         }

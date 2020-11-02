@@ -11,7 +11,7 @@
                       Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
         <StackPanel Orientation="Vertical" Margin="8">
             <local:SearchLineUC/>
-            <ListView ItemsSource="{Binding Path=Medicines}" SelectedItem="{Binding Path=SelectedMed}"
+            <ListView ItemsSource="{Binding Path=Medicines}" SelectedItem="{Binding Path=SelectedMedName}"
                       x:Name="MedicinesList" HorizontalAlignment="Stretch" 
                       VerticalAlignment="Stretch"/>
         </StackPanel>

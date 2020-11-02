@@ -24,13 +24,22 @@ namespace DrugSystem.ViewModels
         Prescription _prescription;
         List<string> interactionList;
         public List<string> Medicines { get { return _newVisitUC_M.Medicines; } }
-        
-        string _selectedMed = "";
-        public string SelectedMed { get { return _selectedMed; } set { _selectedMed += "\n" + value + " ";
-                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMed"));
-                _selectedMedicinesCodes.Add(_newVisitUC_M.GetMedicineCode(value));
-                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedicinesCodes"));
-                interactionList = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID,value, _newVisitUC_M.GetMedicineCode(value));
+        string _medicalCare = "";
+        public string MedicalCare {
+            get { return _medicalCare; }
+            set {
+                _medicalCare += value;
+                PropertyChanged(this, new PropertyChangedEventArgs("MedicalCare"));
+            }
+        }
+        string _selectedMedName;
+        public string SelectedMedName { get { return _selectedMedName; } set { _selectedMedName = value;
+                _medicalCare = "";
+                PropertyChanged(this, new PropertyChangedEventArgs("MedicalCare"));
+                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedName"));
+                SelectedMedicineCode = _newVisitUC_M.GetMedicineCode(value);
+                _interactionsMedicinesNames.Clear();
+                interactionList = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, SelectedMedName, SelectedMedicineCode);
                 if (interactionList != null)
                 {
                     foreach (string item in interactionList)
@@ -41,15 +50,18 @@ namespace DrugSystem.ViewModels
                 }
             }
         }
-        private ObservableCollection<string> _selectedMedicinesCodes;
-        public ObservableCollection<string> SelectedMedicinesCodes { get { return _selectedMedicinesCodes; }
-            set {  } }
+        private string _selectedMedicinesCode;
+        public string SelectedMedicineCode { get { return _selectedMedicinesCode; }
+            set {
+                _selectedMedicinesCode = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedicineCode"));
+            } 
+        }
         private ObservableCollection<string> _interactionsMedicinesNames;
         public ObservableCollection<string> InteractionsMedicinesNames {
             get { return _interactionsMedicinesNames; }
             set { }
         }
-        public List<string> Interactions { get; set; }
         public ICommand CreatePrescripton { get; set; }
       
         public ICommand ChooseMedCommand { get; set; }
@@ -61,7 +73,6 @@ namespace DrugSystem.ViewModels
             CreatePrescripton = new SaveVisitCommand(this);
             ChooseMedUCVisibility = false;
             interactionList = new List<string>();
-            _selectedMedicinesCodes = new ObservableCollection<string>();
             _interactionsMedicinesNames = new ObservableCollection<string>();
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
             if (((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Count > 1)
@@ -91,8 +102,8 @@ namespace DrugSystem.ViewModels
             _prescription.ExpireDate = DateTime.Now.AddDays(90);
             _prescription.PatientID = _currentPatient.ID;
             _prescription.StartDate = DateTime.Now;
-            _prescription.MedicineCode = _newVisitUC_M.GetMedicineCode(SelectedMed);
-            _prescription.Instructions = SelectedMed;
+            _prescription.MedicineCode = SelectedMedicineCode;
+            _prescription.Instructions = InteractionsMedicinesNames.ToString();
             _newVisitUC_M.AddPrescription(_prescription);
         }
     }

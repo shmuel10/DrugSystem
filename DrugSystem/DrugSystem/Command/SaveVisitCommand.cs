@@ -30,6 +30,8 @@ namespace DrugSystem.Command
         public void Execute(object parameter)
         {
             ((NewVisitUC_VM)CurrentVM).SavePrescription();
+            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
         }
     }
 }
