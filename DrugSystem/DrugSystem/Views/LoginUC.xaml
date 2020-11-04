@@ -23,7 +23,6 @@
         <local1:MultyStringToArrConverter x:Key="MultyStringConverter"/>
     </UserControl.Resources>
 
-
     <Grid Width="450" Height="500">
         <Border BorderBrush="#FFF9F9F7" BorderThickness="1" CornerRadius="4" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
             <Grid Margin="3 3 3 3">
@@ -55,7 +54,7 @@
                     <TextBox.Text>
                         <Binding Path="Mail" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:EmailAddressValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:EmailAddressValidation ValidationStep="ConvertedProposedValue" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -69,13 +68,14 @@
                     <TextBox.Text>
                         <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:PasswordLogInValidation x:Name="PasswordValidation" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:PasswordLogInValidation ValidationStep="ConvertedProposedValue" x:Name="PasswordValidation" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBlock x:Name="ErrorMessage" FontSize="20" Grid.Row="5" Grid.Column="1" Style="{StaticResource MaterialDesignOverlineTextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center"
-                 TextWrapping="Wrap" Foreground="#FFFDF8F8" Text="{Binding ErrorMessage}"/>
+                <TextBlock x:Name="ErrorMessage" FontSize="20" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
+                 TextWrapping="Wrap" Foreground="#FFFDF8F8" Text="{Binding ErrorMessage, Mode=TwoWay}"/>
+
                 <Button x:Name="SignInButton" Background="#FFD31F60" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Width="200" VerticalAlignment="Bottom" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}" 
                  Command="{Binding SignInCommand}" ToolTip="Press To Sign In" Content="כניסה" BorderBrush="#FFFEFEFF">
                     <Button.CommandParameter>
