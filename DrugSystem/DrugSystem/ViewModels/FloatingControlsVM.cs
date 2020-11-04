@@ -12,12 +12,10 @@ namespace DrugSystem.ViewModels
     class FloatingControlsVM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        public ICommand NewWorkerCommand { get; set; }
-        public ICommand NewMedicineCommand { get; set; }
+        public ICommand NewItemCommand { get; set; }
         public FloatingControlsVM()
         {
-            NewWorkerCommand = new NewItemCommand();
-            NewMedicineCommand = new NewMedicineCommand();
+            NewItemCommand = new NewItemCommand();
         }
     }
 }

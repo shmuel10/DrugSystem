@@ -1,0 +1,29 @@
+﻿<UserControl x:Class="DrugSystem.Views.MedicineAdminSideUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"            
+             xmlns:local="clr-namespace:DrugSystem.Views"
+             mc:Ignorable="d" 
+            FlowDirection="RightToLeft">
+    <Viewbox>
+        <StackPanel>
+            <Border BorderBrush="LightGray" Height="{StaticResource ImageProfileHeigt}" Width="{StaticResource ImageProfileWidth}" BorderThickness="1" Margin="0 10 0 0" CornerRadius="60">
+                <Ellipse x:Name="MenuIcon" Visibility="Visible">
+                    <Ellipse.Fill>
+                        <ImageBrush ImageSource="{Binding ImageSrc}"/>
+                    </Ellipse.Fill>
+                </Ellipse>
+            </Border>
+            <Button Height="10" Width="30" ToolTip="בחר תמונה" Content="בחר תמונה" FontSize="5" Margin="5" Style="{x:Null}" 
+                        Command="{Binding FileDialogCommand}" Background="Transparent" BorderBrush="Transparent"/>
+            <TextBox x:Name="CommercialName" Width="150" Text="{Binding Path=MedicineForUpdate.CommercialName}" materialDesign:HintAssist.Hint="שם מסחרי" Margin="5 10" />
+            <TextBox x:Name="GenericName" Width="150" Text="{Binding Path=MedicineForUpdate.GenericName}" materialDesign:HintAssist.Hint="שם גנרי" Margin="5"/>
+            <TextBox x:Name="Manufacturer" Width="150" Text="{Binding Path=MedicineForUpdate.Manufacturer}" materialDesign:HintAssist.Hint="יצרן" Margin="5"/>
+            <TextBox x:Name="ActiveIngredient" Width="150" Text="{Binding Path=MedicineForUpdate.ActiveIngredient}" materialDesign:HintAssist.Hint="חומר פעיל" Margin="5"/>
+            <TextBlock x:Name="MedicineCode" Width="150" IsEnabled="False" Text="{Binding Path=MedicineForUpdate.MedicineCode, Mode=TwoWay}" materialDesign:HintAssist.Hint="קוד תרופה" Margin="5"/>
+            <Button Content="עדכן" FontSize="5" Height="15" Command="{Binding UpdateMedDetailes}" CommandParameter="{Binding ElementName=GenericName, Path=Text}" Width="60"  Margin="10 10 10 20"/>
+        </StackPanel>
+    </Viewbox>
+</UserControl>

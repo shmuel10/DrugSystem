@@ -7,7 +7,7 @@ using System.Windows;
 using System.Windows.Input;
 using BLL.BE;
 using DrugSystem.ViewModels;
-using DrugSystem.Windows;
+using DrugSystem.Views;
 
 namespace DrugSystem.Command
 {
@@ -20,12 +20,29 @@ namespace DrugSystem.Command
        
         public bool CanExecute(object parameter)
         {
-            return true;
-            //if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser is Administrator)
-            //{
-            //    return true;
-            //}
-            //return false;
+            if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser is Administrator)
+            {
+                return true;
+            }
+            else
+            {
+                if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddDoctor &&
+                    parameter.Equals("Doctor"))
+                {
+                    return true;
+                }
+                if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddMedicine &&
+                    parameter.Equals("Medicine"))
+                {
+                    return true;
+                }
+                if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddPatient &&
+                    parameter.Equals("Patient"))
+                {
+                    return true;
+                }
+                return false;
+            }        
         }
 
         public void Execute(object parameter)
@@ -33,26 +50,26 @@ namespace DrugSystem.Command
             (((App)System.Windows.Application.Current).CurrentElements.CurrentViewModel as ShellUC_VM).StatusBar = "GGG";
 
             string workerToAdd = parameter as string;
-            AddNewUserWindow newWorkerWindow = new AddNewUserWindow();
             if (workerToAdd.Equals("Doctor"))
             {
-                newWorkerWindow.OfficerUC.Visibility = Visibility.Collapsed;
-                newWorkerWindow.PatientUC.Visibility = Visibility.Collapsed;
-                newWorkerWindow.DoctorUC.Visibility = Visibility.Visible;
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                    new AddNewDoctorUC_VM();
             }
             if (workerToAdd.Equals("Officer"))
             {
-                newWorkerWindow.DoctorUC.Visibility = Visibility.Collapsed;
-                newWorkerWindow.PatientUC.Visibility = Visibility.Collapsed;
-                newWorkerWindow.OfficerUC.Visibility = Visibility.Visible;
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                    new AddNewOfficerUC_VM();
             }
             if (workerToAdd.Equals("Patient"))
             {
-                newWorkerWindow.OfficerUC.Visibility = Visibility.Collapsed;
-                newWorkerWindow.DoctorUC.Visibility = Visibility.Collapsed;
-                newWorkerWindow.PatientUC.Visibility = Visibility.Visible;
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                    new AddNewPatientUC_VM();
             }
-            newWorkerWindow.Show();
+            if (workerToAdd.Equals("Medicine"))
+            {
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                    new AddNewMedicineUC_VM();
+            }
         }
     }
 }

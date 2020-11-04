@@ -24,5 +24,31 @@ namespace DrugSystem
         {
             InitializeComponent();
         }
+
+
+
+        public double SearchFontSize {
+            get { return (double)GetValue(SearchFontSizeProperty); }
+            set { SetValue(SearchFontSizeProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for SearchFontSize.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty SearchFontSizeProperty =
+            DependencyProperty.Register("SearchFontSize", typeof(double), typeof(SearchLineUC), new FrameworkPropertyMetadata(23.0, FrameworkPropertyMetadataOptions.AffectsRender,
+                  new PropertyChangedCallback(StateChangeedCallBack), new CoerceValueCallback(FixValueCallBack)));
+
+        private static void StateChangeedCallBack(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var result = d as SearchLineUC;
+            if (e.Property.Name.Equals("SearchFontSize"))
+            {
+                result.FontSize = (int)e.NewValue;
+            }
+        }
+
+        private static object FixValueCallBack(DependencyObject d, object baseValue)
+        {
+            return baseValue;
+        }
     }
 }

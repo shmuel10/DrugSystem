@@ -1,5 +1,5 @@
 ﻿<UserControl x:Class="DrugSystem.AdminUC"
-            xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
@@ -21,13 +21,19 @@
             <Setter Property="Background" Value="{Binding ElementName=Shell_UC, Path=Background}"/>
             <Setter Property="Foreground" Value="{Binding ElementName=Shell_UC, Path=Foreground}"/>
         </Style>
+        <Style x:Key="ForegAndBack" TargetType="DataGridColumnHeader">
+            <Setter Property="Foreground" Value="{Binding Foreground}"/>
+            <Setter Property="Background" Value="{Binding Background}"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="1*"/>
-            <ColumnDefinition Width="10*"/>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="1*" />
+            <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabs" Grid.Column="1" Style="{StaticResource BackAndForeg}" BorderThickness="3" MinHeight="500" HorizontalAlignment="Stretch" Margin="0 0 50 0">
+        <TabControl x:Name="tabs" Grid.Column="1" Style="{StaticResource BackAndForeg}" 
+                    BorderThickness="3" MinHeight="500" HorizontalAlignment="Stretch">
             <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -35,26 +41,30 @@
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
                     <local:SearchLineUC Grid.Row="0"/>
-                    <ListView ItemsSource="{Binding Path=Doctors}" x:Name="DoctorsList" Grid.Row="1" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
-                                <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
-                                <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="כתובת" Width="150">
-                                    <GridViewColumn.DisplayMemberBinding>
-                                        <MultiBinding Converter="{StaticResource ConcatString}">
-                                            <Binding  Path="City" />
-                                            <Binding  Path="Street" />
-                                            <Binding  Path="BuildingNumber" />
-                                        </MultiBinding>
-                                    </GridViewColumn.DisplayMemberBinding>
-                                </GridViewColumn>
-                                <GridViewColumn Header="מספר רשיון" Width="150" DisplayMemberBinding="{Binding LicenceNumber}" />
-                                <GridViewColumn Header="סוג ההתמחות" Width="150" DisplayMemberBinding="{Binding Specialty}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <DataGrid x:Name="DoctorsList" ItemsSource="{Binding Doctors}" 
+                              Background="{Binding ElementName=Shell_UC, Path=Background}"
+                               Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" 
+                              HorizontalAlignment="Stretch" VerticalAlignment="Stretch" 
+                              ColumnHeaderStyle="{StaticResource ForegAndBack}"
+                              IsReadOnly="True" AutoGenerateColumns="False"
+                              SelectedItem="{Binding DoctorSelected, Mode=TwoWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="תעודת זהות" Width="150" Binding="{Binding ID}"/>
+                            <DataGridTextColumn Header="שם פרטי" Width="150" Binding="{Binding FirstName}" />
+                            <DataGridTextColumn Header="שם משפחה" Width="150" Binding="{Binding LastName}" />
+                            <DataGridTextColumn Header="כתובת" Width="150">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding Converter="{StaticResource ConcatString}">
+                                        <Binding  Path="City" />
+                                        <Binding  Path="Street" />
+                                        <Binding  Path="BuildingNumber" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="מספר רשיון" Width="150" Binding="{Binding LicenceNumber}" />
+                            <DataGridTextColumn Header="סוג ההתמחות" Width="150" Binding="{Binding Specialty}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
 
@@ -65,24 +75,25 @@
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
                     <local:SearchLineUC Grid.Row="0"/>
-                    <ListView x:Name="OfficersList" ItemsSource="{Binding Path=Officers}" Grid.Row="1">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
-                                <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
-                                <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="כתובת" Width="150">
-                                    <GridViewColumn.DisplayMemberBinding>
-                                        <MultiBinding Converter="{StaticResource ConcatString}">
-                                            <Binding  Path="City" />
-                                            <Binding  Path="Street" />
-                                            <Binding  Path="BuildingNumber" />
-                                        </MultiBinding>
-                                    </GridViewColumn.DisplayMemberBinding>
-                                </GridViewColumn>
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <DataGrid x:Name="OfficersList" ItemsSource="{Binding Officers}" Background="{Binding ElementName=Shell_UC, Path=Background}"
+                               Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" IsReadOnly="True" 
+                              AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource ForegAndBack}"
+                              SelectedItem="{Binding OfficerSelected, Mode=TwoWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="תעודת זהות" Width="150" Binding="{Binding ID}" />
+                            <DataGridTextColumn Header="שם פרטי" Width="150" Binding="{Binding FirstName}" />
+                            <DataGridTextColumn Header="שם משפחה" Width="150" Binding="{Binding LastName}" />
+                            <DataGridTextColumn Header="כתובת" Width="150">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding Converter="{StaticResource ConcatString}">
+                                        <Binding  Path="City" />
+                                        <Binding  Path="Street" />
+                                        <Binding  Path="BuildingNumber" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
 
@@ -93,60 +104,62 @@
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
                     <local:SearchLineUC Grid.Row="0"/>
-                    <ListView x:Name="PatientsList" ItemsSource="{Binding Path=Patients}" Grid.Row="1">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}" />
-                                <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
-                                <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                                <GridViewColumn Header="כתובת" Width="150">
-                                    <GridViewColumn.DisplayMemberBinding>
-                                        <MultiBinding Converter="{StaticResource ConcatString}">
-                                            <Binding  Path="City" />
-                                            <Binding  Path="Street" />
-                                            <Binding  Path="BuildingNumber" />
-                                        </MultiBinding>
-                                    </GridViewColumn.DisplayMemberBinding>
-                                </GridViewColumn>
-                                <GridViewColumn Header="משקל" Width="150" DisplayMemberBinding="{Binding Weight}" />
-                                <GridViewColumn Header="רופא משפחה" Width="150" DisplayMemberBinding="{Binding FamilyDoctor}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <DataGrid x:Name="PatientsList" ItemsSource="{Binding Patients}" Background="{Binding ElementName=Shell_UC, Path=Background}"
+                               Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" IsReadOnly="True"
+                              ColumnHeaderStyle="{StaticResource ForegAndBack}"
+                              AutoGenerateColumns="False"
+                              SelectedItem="{Binding PatientSelected, Mode=TwoWay}" Grid.ColumnSpan="2">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="תעודת זהות" Width="150" Binding="{Binding ID}" />
+                            <DataGridTextColumn Header="שם פרטי" Width="150" Binding="{Binding FirstName}" />
+                            <DataGridTextColumn Header="שם משפחה" Width="150" Binding="{Binding LastName}" />
+                            <DataGridTextColumn Header="כתובת" Width="150">
+                                <DataGridTextColumn.Binding>
+                                    <MultiBinding Converter="{StaticResource ConcatString}">
+                                        <Binding  Path="City" />
+                                        <Binding  Path="Street" />
+                                        <Binding  Path="BuildingNumber" />
+                                    </MultiBinding>
+                                </DataGridTextColumn.Binding>
+                            </DataGridTextColumn>
+                            <DataGridTextColumn Header="משקל" Width="150" Binding="{Binding Weight}" />
+                            <DataGridTextColumn Header="רופא משפחה" Width="150" Binding="{Binding FamilyDoctor}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
 
-            <TabItem Header="תרופות"  Name="MedsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <TabItem Header="תרופות" Name="MedsTab" TabIndex="3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
                     <local:SearchLineUC Grid.Row="0"/>
-                    <ListView x:Name="MedsList" ItemsSource="{Binding Medicines}" Grid.Row="1">
-                        <ListView.View>
-                            <GridView>
-                                <GridViewColumn Header="קוד תרופה" Width="150" DisplayMemberBinding="{Binding MedicineID}" />
-                                <GridViewColumn Header="שם מסחרי" Width="150" DisplayMemberBinding="{Binding CommercialName}" />
-                                <GridViewColumn Header="שם גנרי" Width="150" DisplayMemberBinding="{Binding GenericName}" />
-                                <GridViewColumn Header="יצרן" Width="150" DisplayMemberBinding="{Binding Manufacturer}" />
-                                <GridViewColumn Header="חומרים פעילים" Width="150" DisplayMemberBinding="{Binding ActiveIngredients}" />
-                                <GridViewColumn Header="מאפייני מנה" Width="150" DisplayMemberBinding="{Binding DoseCharacteristics}" />
-                            </GridView>
-                        </ListView.View>
-                    </ListView>
+                    <DataGrid x:Name="MedsList" ItemsSource="{Binding Medicines}" Background="{Binding ElementName=Shell_UC, Path=Background}"
+                          Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" IsReadOnly="True"
+                              ColumnHeaderStyle="{StaticResource ForegAndBack}"
+                              AutoGenerateColumns="False"
+                              SelectedItem="{Binding DoctorSelected, Mode=TwoWay}">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="קוד תרופה" Width="150" Binding="{Binding MedicineID}" />
+                            <DataGridTextColumn Header="שם מסחרי" Width="150" Binding="{Binding CommercialName}" />
+                            <DataGridTextColumn Header="שם גנרי" Width="150" Binding="{Binding GenericName}" />
+                            <DataGridTextColumn Header="יצרן" Width="150" Binding="{Binding Manufacturer}" />
+                            <DataGridTextColumn Header="חומרים פעילים" Width="150" Binding="{Binding ActiveIngredients}" />
+                            <DataGridTextColumn Header="מאפייני מנה" Width="150" Binding="{Binding DoseCharacteristics}" />
+                        </DataGrid.Columns>
+                    </DataGrid>
                 </Grid>
             </TabItem>
         </TabControl>
         <StackPanel x:Name="ContainGrid" Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Background="Transparent">
             <local:FloatingControls x:Name="FloatingButtons" ToolTipFirst="רופא חדש" ToolTipSecond="פקיד חדש"
                                     ToolTipThird="מטופל חדש" ToolTipForth="תרופה חדשה"
+                                    BackgroundColor="#CFCEC4" ForegroundColor="Black"
                                     VerticalAlignment="Bottom"  Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}"/>
-            <Ellipse x:Name="MenuIcon" Height="60" Width="60" VerticalAlignment="Bottom" Margin="10" Visibility="Visible">
-                <Ellipse.Fill>
-                    <ImageBrush ImageSource="/Icons/MenuIcon.png"/>
-                </Ellipse.Fill>
-            </Ellipse>
+            <materialDesign:PackIcon Foreground="{Binding Foreground}" 
+                                     Background="{Binding Background}" Margin="0,10" Kind="Menu" HorizontalAlignment="Center" Height="60" Width="60"/>
         </StackPanel>
     </Grid>
 </UserControl>

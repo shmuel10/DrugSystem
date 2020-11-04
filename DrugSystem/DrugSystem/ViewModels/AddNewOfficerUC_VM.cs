@@ -3,9 +3,10 @@ using System.ComponentModel;
 using System.Windows.Input;
 using BLL.BE;
 using DrugSystem.Command;
+using DrugSystem.Models;
 using static BLL.BE.AuxiliaryObjects;
 
-namespace DrugSystem.Views
+namespace DrugSystem.ViewModels
 {
     public class AddNewOfficerUC_VM : INotifyPropertyChanged
     {
@@ -15,13 +16,22 @@ namespace DrugSystem.Views
         public ICommand CreateNewOfficerCommand { get; set; }
         public ICommand FileDialogCommand { get; set; }
         public List<Gender> Gender { get; set; }
+        string _imgSrc;
+        public string ImageSrc {
+            get { return _imgSrc; }
+            set {
+                _imgSrc = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
+            }
+        }
         public AddNewOfficerUC_VM()
         {
             _addNewOfficerUC_M = new AddNewOfficerUC_M();
             CreateNewOfficerCommand = new CreateNewOfficerCommand(this);
-            FileDialogCommand = new OpenFileDialogCommand();
+            FileDialogCommand = new OpenFileDialogCommand(this);
             Gender = _addNewOfficerUC_M.Gender;
             newOfficer = new Officer();
+            ImageSrc = @"/Icons/UserIcon.jpg";
         }
         public void CreateNewOfficer()
         {

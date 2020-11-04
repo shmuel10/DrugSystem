@@ -1,0 +1,163 @@
+﻿<UserControl x:Class="DrugSystem.Views.DoctorAdminSideUC"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"          
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:DrugSystem.Views" xmlns:local1="clr-namespace:DrugSystem" xmlns:system1="clr-namespace:System;assembly=mscorlib"
+             mc:Ignorable="d" 
+             x:Name="UpdateDoctorDetailes"
+            FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <system1:Double x:Key="IconSize">5</system1:Double>
+        <system1:Double x:Key="FontSize">6</system1:Double>
+        <Style TargetType="{x:Type DatePicker}" x:Key="datePickerGeneralStyle" BasedOn="{StaticResource {x:Type DatePicker}}">
+            <Setter Property="TextElement.FontSize" Value="24" />
+            <Setter Property="VerticalAlignment" Value="Center" />
+            <Setter Property="VerticalContentAlignment" Value="Center" />
+            <Setter Property="DatePicker.CalendarStyle">
+                <Setter.Value>
+                    <Style TargetType="{x:Type Calendar}">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="{x:Type Calendar}">
+                                    <Viewbox Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DatePicker}}}">
+                                        <CalendarItem x:Name="PART_CalendarItem"
+                              Background="{TemplateBinding Background}"
+                              BorderBrush="{TemplateBinding BorderBrush}"
+                              BorderThickness="{TemplateBinding BorderThickness}"/>
+                                    </Viewbox>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>
+    <Viewbox>
+        <ScrollViewer Margin="20 0 20 0" FlowDirection="RightToLeft" Height="150"  Width="250">
+            <StackPanel>
+                <Border BorderBrush="LightGray" Height="60" Width="60" Margin="0 5 0 0" BorderThickness="1" CornerRadius="60">
+                    <Ellipse x:Name="MenuIcon" Visibility="Visible">
+                        <Ellipse.Fill>
+                            <ImageBrush ImageSource="{Binding ImageSrc}"/>
+                        </Ellipse.Fill>
+                    </Ellipse>
+                </Border>
+                <Button Height="10" Width="30" ToolTip="בחר תמונה" Content="בחר תמונה" FontSize="5" Margin="5" Style="{x:Null}" 
+                        Command="{Binding FileDialogCommand}" Background="Transparent" BorderBrush="Transparent"/>
+                <Separator Background="Black" BorderThickness="1" Margin="20 0 20 0"/>
+                <TextBox x:Name="IDTextBox" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="תעודת זהות" MaxLength="9" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.ID" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:IDValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="FirsNameTextBox" materialDesign:HintAssist.Hint="שם פרטי"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.FirstName" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="LastNameTextBox" materialDesign:HintAssist.Hint="שם משפחה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.LastName" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="PasswordTextBox" materialDesign:HintAssist.Hint="סיסמה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.Password" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="טלפון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.PhoneNumber" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="MailTextBox" materialDesign:HintAssist.Hint="אימייל"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.EmailAddress" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=DoctorForUpdate.BirthDate, Mode=TwoWay}" DisplayDate="{Binding DoctorForUpdate.BirthDate}" materialDesign:HintAssist.Hint="תאריך לידה" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}"/>
+                <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=Gender}" SelectedItem="{Binding Path=DoctorForUpdate.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
+
+                <TextBox x:Name="LicenceNumTextBox" materialDesign:HintAssist.Hint="מספר רשיון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.LicenceNumber" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="CityTextBox" materialDesign:HintAssist.Hint="עיר"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.City" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="StreetTextBox" materialDesign:HintAssist.Hint="רחוב"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.Street" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="BuildingNumberTextBox" materialDesign:HintAssist.Hint="מספר בית" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.BuildingNumber" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <TextBox x:Name="ExpertiseTextBox" materialDesign:HintAssist.Hint="מומחיות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                    <TextBox.Text>
+                        <Binding Path="DoctorForUpdate.Specialty" UpdateSourceTrigger="PropertyChanged">
+                            <Binding.ValidationRules>
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                            </Binding.ValidationRules>
+                        </Binding>
+                    </TextBox.Text>
+                </TextBox>
+                <local1:PermitionsUC x:Name="Permissions" CanAddPrescription="{Binding ElementName=UpdateDoctorDetailes, Path=DataContext.DoctorForUpdate.CanCreatePrescriptions, Mode=TwoWay}" 
+                                             CanAddDoctor="{Binding ElementName=UpdateDoctorDetailes, Path=DataContext.DoctorForUpdate.CanAddDoctor, Mode=TwoWay}"
+                                             CanAddPatient="{Binding ElementName=UpdateDoctorDetailes, Path=DataContext.DoctorForUpdate.CanAddPatient, Mode=TwoWay}"
+                                             CanAddMedicine="{Binding ElementName=UpdateDoctorDetailes, Path=DataContext.DoctorForUpdate.CanAddMedicine, Mode=TwoWay}"
+                                             FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
+
+                <Button Content="עדכן" Command="{Binding UpdateDoctorDetailes}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
+            </StackPanel>
+        </ScrollViewer>
+    </Viewbox>
+</UserControl>

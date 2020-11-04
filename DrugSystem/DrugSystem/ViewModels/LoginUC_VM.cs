@@ -33,11 +33,10 @@ namespace DrugSystem.ViewModels
             //((App)System.Windows.Application.Current).CurrentElements.CurrentViewModel = new ShellUC_VM();
             //((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new DoctorUC_VM();
             //((App)System.Windows.Application.Current).CurrentElements.CurrentUser = currentUser;
-
             try
             {
-                //User currentUser = _loginUC_M.SignIn(Mail, Password);
-                User currentUser = new Doctor();
+                User currentUser = _loginUC_M.SignIn(Mail, Password);
+                //User currentUser = new Administrator();
                 if (currentUser != null)
                 {
                     if (currentUser is Doctor)
@@ -50,7 +49,7 @@ namespace DrugSystem.ViewModels
                     {
                         ((App)Application.Current).CurrentElements.CurrentViewModel = new ShellUC_VM();
                         ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new AdminUC_VM();
-
+                        ((App)System.Windows.Application.Current).CurrentElements.CurrentUser = currentUser;
                     }
                 }
             }

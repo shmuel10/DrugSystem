@@ -6,12 +6,17 @@
              xmlns:local="clr-namespace:DrugSystem" xmlns:local1="clr-namespace:DrugSystem.Converters"
              xmlns:local2="clr-namespace:DrugSystem.Command"
              FlowDirection="RightToLeft"
-             mc:Ignorable="d" >
+             mc:Ignorable="d">
     <UserControl.Resources>
         <local1:ConctenateStringConverter x:Key="ConcatString"/>
         <local1:BoolToVisibilityConverter x:Key="BooleanToVisibilityConverter"/>
+
+        <Style x:Key="ForegAndBack" TargetType="DataGridColumnHeader">
+            <Setter Property="Foreground" Value="{Binding Foreground}"/>
+            <Setter Property="Background" Value="{Binding Background}"/>
+        </Style>
     </UserControl.Resources>
-    
+
     <Grid Margin="20 0 20 0">
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
@@ -19,28 +24,28 @@
         </Grid.RowDefinitions>
         <local:SearchLineUC/>
         <Grid Grid.Row="1">
-            <ListView x:Name="PatientsList" Background="{Binding ElementName=Shell_UC, Path=Background}" 
+            <DataGrid x:Name="PatientsList" Background="{Binding ElementName=Shell_UC, Path=Background}"
                       Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" 
-                      SelectedItem="{Binding SelectedPatient, Mode=TwoWay}" ItemsSource="{Binding Path=Patients}" Grid.Row="1">
-                <ListView.View>
-                    <GridView>
-                        <GridViewColumn Header="תעודת זהות" Width="150" DisplayMemberBinding="{Binding ID}"/>
-                        <GridViewColumn Header="שם פרטי" Width="150" DisplayMemberBinding="{Binding FirstName}" />
-                        <GridViewColumn Header="שם משפחה" Width="150" DisplayMemberBinding="{Binding LastName}" />
-                        <GridViewColumn Header="כתובת" Width="150">
-                            <GridViewColumn.DisplayMemberBinding>
-                                <MultiBinding Converter="{StaticResource ConcatString}">
-                                    <Binding  Path="City" />
-                                    <Binding  Path="Street" />
-                                    <Binding  Path="BuildingNumber" />
-                                </MultiBinding>
-                            </GridViewColumn.DisplayMemberBinding>
-                        </GridViewColumn>
-                        <GridViewColumn Header="משקל" Width="150" DisplayMemberBinding="{Binding Weight}" />
-                        <GridViewColumn Header="רופא משפחה" Width="150" DisplayMemberBinding="{Binding FamilyDoctor}" />
-                    </GridView>
-                </ListView.View>
-            </ListView>
+                      IsTextSearchEnabled="True" ColumnHeaderStyle="{StaticResource ForegAndBack}"
+                      AutoGenerateColumns="False" SelectedItem="{Binding SelectedPatient, Mode=TwoWay}" 
+                      ItemsSource="{Binding Path=Patients}" Grid.Row="1" IsReadOnly="True">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="תעודת זהות" Width="150" Binding="{Binding ID}"/>
+                    <DataGridTextColumn Header="שם פרטי" Width="150" Binding="{Binding FirstName}" />
+                    <DataGridTextColumn Header="שם משפחה" Width="150" Binding="{Binding LastName}" />
+                    <DataGridTextColumn Header="כתובת" Width="150">
+                        <DataGridTextColumn.Binding>
+                            <MultiBinding Converter="{StaticResource ConcatString}">
+                                <Binding  Path="City" />
+                                <Binding  Path="Street" />
+                                <Binding  Path="BuildingNumber" />
+                            </MultiBinding>
+                        </DataGridTextColumn.Binding>
+                    </DataGridTextColumn>
+                    <DataGridTextColumn Header="משקל" Width="150" Binding="{Binding Weight}" />
+                    <DataGridTextColumn Header="רופא משפחה" Width="150" Binding="{Binding FamilyDoctor}" />
+                </DataGrid.Columns>
+            </DataGrid>
         </Grid>
     </Grid>
 </UserControl>

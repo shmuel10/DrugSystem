@@ -10,9 +10,9 @@
     <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.ColumnSpan="3" Background="{Binding ElementName=Shell_UC, Path=Background}" 
                       Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
         <StackPanel Orientation="Vertical" Margin="8">
-            <local:SearchLineUC/>
-            <ListView ItemsSource="{Binding Path=Medicines}" SelectedItem="{Binding Path=SelectedMedName}"
-                      x:Name="MedicinesList" HorizontalAlignment="Stretch" 
+            <local:SearchLineUC Height="40" Width="Auto"/>
+            <ListView ItemsSource="{Binding Medicines}" SelectedItem="{Binding Path=SelectedMedName}"
+                      x:Name="MedicinesList" HorizontalAlignment="Stretch"
                       VerticalAlignment="Stretch"/>
         </StackPanel>
     </materialDesign:Card>

@@ -18,21 +18,26 @@ namespace DrugSystem
     /// </summary>
     public partial class CurrentElements : INotifyPropertyChanged
     {
+        private User _currentUser;
         private INotifyPropertyChanged _currentViewModel;
         private INotifyPropertyChanged _currentOnShell;
-        private User _currentUser;
+        
         public event PropertyChangedEventHandler PropertyChanged;
 
         public Stack<INotifyPropertyChanged> StackOnShell { get; set; }
+
         public CurrentElements()
         {
             CurrentUser = new User();
             CurrentViewModel = new LoginUC_VM();
             StackOnShell = new Stack<INotifyPropertyChanged>();
-            CurrentPatient = new Patient();
+            PatientSelected = new Patient();
         }
 
-        public Patient CurrentPatient { get; set; }
+        public Doctor DoctorSelected { get; set; }
+        public Patient PatientSelected { get; set; }
+        public Officer OfficerSelected { get; set; }
+        public Medicine MedicineSelected { get; set; }
         public User CurrentUser {
             get { return _currentUser; }
             set {

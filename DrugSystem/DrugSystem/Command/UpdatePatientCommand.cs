@@ -1,17 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using DrugSystem.ViewModels;
 
 namespace DrugSystem.Command
 {
-    public class NewMedicineCommand : ICommand
+    public class UpdatePatientCommand : ICommand
     {
         public event EventHandler CanExecuteChanged {
             add { CommandManager.RequerySuggested += value; }
             remove { CommandManager.RequerySuggested -= value; }
+        }
+        INotifyPropertyChanged CurrentVM { get; set; }
+        public UpdatePatientCommand(INotifyPropertyChanged currentVM)
+        {
+            CurrentVM = currentVM;
         }
         public bool CanExecute(object parameter)
         {
@@ -20,8 +27,9 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            AddNewMedicineWindow newMedicineWindow = new AddNewMedicineWindow();
-            newMedicineWindow.Show();
+            ((PatientAdminSideUC_VM)CurrentVM).UpdatePatient();
+            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
         }
     }
 }

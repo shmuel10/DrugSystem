@@ -5,8 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using System.Windows.Navigation;
+using BLL.BE;
 using DrugSystem.ViewModels;
-using DrugSystem.Windows;
 
 namespace DrugSystem.Command
 {
@@ -19,7 +20,15 @@ namespace DrugSystem.Command
         public INotifyPropertyChanged CurrentVM { get; set; }
         public bool CanExecute(object parameter)
         {
-            return true;
+            if ((((App)System.Windows.Application.Current).CurrentElements.CurrentUser) is Administrator ||
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddPatient)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public CreateNewPatientCommand(INotifyPropertyChanged currentVM)
@@ -30,11 +39,13 @@ namespace DrugSystem.Command
         public void Execute(object parameter)
         {
             ((AddNewPatientUC_VM)CurrentVM).CreateNewPatient();
-            AddNewUserWindow win = ((App)System.Windows.Application.Current).Windows.OfType<AddNewUserWindow>().FirstOrDefault();
-            if (win != null)
-            {
-                win.Close();
-            }
+            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            //AddNewUserWindow win = ((App)System.Windows.Application.Current).Windows.OfType<AddNewUserWindow>().FirstOrDefault();
+            //if (win != null)
+            //{
+            //    win.Close();
+            //}
         }
     }
 }

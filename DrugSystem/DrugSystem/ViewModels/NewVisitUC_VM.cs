@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Data;
 using System.Windows.Input;
 using BLL.BE;
 using DrugSystem.Command;
@@ -55,7 +56,7 @@ namespace DrugSystem.ViewModels
             set {
                 _selectedMedicinesCode = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedicineCode"));
-            } 
+            }
         }
         private ObservableCollection<string> _interactionsMedicinesNames;
         public ObservableCollection<string> InteractionsMedicinesNames {
@@ -63,9 +64,9 @@ namespace DrugSystem.ViewModels
             set { }
         }
         public ICommand CreatePrescripton { get; set; }
-      
+
         public ICommand ChooseMedCommand { get; set; }
-      
+
         public NewVisitUC_VM()
         {
             _newVisitUC_M = new NewVisitUC_M();
@@ -76,14 +77,51 @@ namespace DrugSystem.ViewModels
             _interactionsMedicinesNames = new ObservableCollection<string>();
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
             if (((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Count > 1)
-                CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.CurrentPatient;
+            {
+                CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.PatientSelected;
+            }
+            SearchFontSize = 10;
+            _medsCollectionView = CollectionViewSource.GetDefaultView(Medicines);
+            _medsCollectionView.Filter = ListsFilter;
         }
 
+        ICollectionView _medsCollectionView;
+
+        string _search;
+        public string Search {
+            get { return _search; }
+            set {
+                _search = value;
+                PropRaised();
+            }
+        }
+
+        private void PropRaised()
+        {
+            if (Medicines != null)
+            {
+                CollectionViewSource.GetDefaultView(Medicines).Refresh();
+            }
+        }
+
+        private bool ListsFilter(object item)
+        {
+            if (String.IsNullOrEmpty(Search))
+            {
+                return true;
+            }
+            else
+            {
+                return ((item as string).IndexOf(Search, StringComparison.OrdinalIgnoreCase) >= 0);
+            }
+        }
+    
+        public double SearchFontSize { get; set; }
         public Patient CurrentPatient {
             get { return _currentPatient; }
             set {
                 _currentPatient = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentPatient"));
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PatientSelected"));
             }
         }
 

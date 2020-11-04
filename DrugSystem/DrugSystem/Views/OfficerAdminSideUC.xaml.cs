@@ -10,19 +10,21 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
+using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DrugSystem.ViewModels;
 
-namespace DrugSystem
+namespace DrugSystem.Views
 {
     /// <summary>
-    /// Interaction logic for AddNewMedicineWindow.xaml
+    /// Interaction logic for OfficerAdminSideUC.xaml
     /// </summary>
-    public partial class AddNewMedicineWindow : Window
+    public partial class OfficerAdminSideUC : UserControl
     {
-        public AddNewMedicineWindow()
+        public OfficerAdminSideUC()
         {
             InitializeComponent();
-            DataContext = new AddNewMedicineWindow_VM();
+            DataContext = new OfficerAdminSideUC_VM();
         }
     }
 }

@@ -1,20 +1,35 @@
 ﻿using System.ComponentModel;
 using System.Windows.Input;
 using BLL.BE;
+using DrugSystem.Command;
+using DrugSystem.Models;
 
-namespace DrugSystem
+namespace DrugSystem.ViewModels
 {
-    public class AddNewMedicineWindow_VM : INotifyPropertyChanged
+    public class AddNewMedicineUC_VM : INotifyPropertyChanged
     {
-        AddNewMedicinWindow_M _addNewMedicineWindow_M { get; set; }
+        AddNewMedicineUC_M _addNewMedicineWindow_M { get; set; }
         public Medicine newMedicine { get; set; }
         public ICommand CreateNewMedicineCommand { get; set; }
-        public AddNewMedicineWindow_VM()
-        {
-           _addNewMedicineWindow_M = new AddNewMedicinWindow_M();
-            CreateNewMedicineCommand = new CreateNewMedicineCommand(this);
-            newMedicine = new Medicine();
+        public ICommand FileDialogCommand { get; set; }
+
+        string _imgSrc;
+        public string ImageSrc {
+            get { return _imgSrc; }
+            set {
+                _imgSrc = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
+            }
         }
+        public AddNewMedicineUC_VM()
+        {
+            _addNewMedicineWindow_M = new AddNewMedicineUC_M();
+            CreateNewMedicineCommand = new CreateNewMedicineCommand(this);
+            FileDialogCommand = new OpenFileDialogCommand(this);
+            newMedicine = new Medicine();
+            ImageSrc = @"/Icons/DefaultMedPicture.jpg";
+        }
+
         public void CreateNewDoctor()
         {
             _addNewMedicineWindow_M.AddNewMedicine(newMedicine);

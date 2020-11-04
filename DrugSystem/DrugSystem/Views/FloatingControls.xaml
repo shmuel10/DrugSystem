@@ -7,26 +7,27 @@
              xmlns:local="clr-namespace:DrugSystem" xmlns:system1="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d">
     <UserControl.Resources>
-        <system1:Double x:Key="ButtonSize">30</system1:Double>
+        <system1:Double x:Key="ButtonSize">50</system1:Double>
     </UserControl.Resources>
     <StackPanel Orientation="Vertical" >
-        <Button x:Name="First" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                ToolTip="{Binding ToolTipFirst}" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor" Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+        <Button x:Name="First" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                ToolTip="{Binding ToolTipFirst}" Command="{Binding NewItemCommand}" CommandParameter="Doctor" Height="{StaticResource ButtonSize}"
+                Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}"/>
         </Button>
-        <Button x:Name="Second" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-               Command="{Binding NewWorkerCommand}" CommandParameter="Officer"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+        <Button x:Name="Second" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+               Command="{Binding NewItemCommand}" CommandParameter="Officer"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>
-        <Button x:Name="Third"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-               Command="{Binding NewWorkerCommand}" CommandParameter="Patient"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}" >
+        <Button x:Name="Third"  VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+               Command="{Binding NewItemCommand}" CommandParameter="Patient"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}" >
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>
-        <Button x:Name="Forth" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
-                Command="{Binding NewMedicineCommand}"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
+        <Button x:Name="Forth" VerticalAlignment="Bottom" HorizontalAlignment="Center" Margin="10" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" 
+                Command="{Binding NewItemCommand}" CommandParameter="Medicine"  Height="{StaticResource ButtonSize}" Width="{StaticResource ButtonSize}">
             <materialDesign:PackIcon Kind="Add" Height="{StaticResource IconSize}" 
                                      Width="{StaticResource IconSize}" />
         </Button>

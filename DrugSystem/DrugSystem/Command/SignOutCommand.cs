@@ -23,7 +23,6 @@ namespace DrugSystem.Command
         public void Execute(object parameter)
         {
             ((App)System.Windows.Application.Current).CurrentElements = new CurrentElements(); 
-            
         }
     }
 }

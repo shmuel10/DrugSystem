@@ -2,9 +2,10 @@
 using System.ComponentModel;
 using System.Linq;
 using System.Windows.Input;
-using DrugSystem.Windows;
+using BLL.BE;
+using DrugSystem.ViewModels;
 
-namespace DrugSystem.Views
+namespace DrugSystem.Command
 {
     public class CreateNewOfficerCommand : ICommand
     {
@@ -20,17 +21,27 @@ namespace DrugSystem.Views
         }
         public bool CanExecute(object parameter)
         {
-            return true;
+            if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser is Administrator)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+                
         }
 
         public void Execute(object parameter)
         {
             ((AddNewOfficerUC_VM)CurrentVM).CreateNewOfficer();
-            AddNewUserWindow win = ((App)System.Windows.Application.Current).Windows.OfType<AddNewUserWindow>().FirstOrDefault();
-            if (win != null)
-            {
-                win.Close();
-            }
+            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            //AddNewUserWindow win = ((App)System.Windows.Application.Current).Windows.OfType<AddNewUserWindow>().FirstOrDefault();
+            //if (win != null)
+            //{
+            //    win.Close();
+            //}
         }
     }
 }

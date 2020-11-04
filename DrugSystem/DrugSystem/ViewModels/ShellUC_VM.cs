@@ -14,10 +14,9 @@ namespace DrugSystem.ViewModels
 {
     public class ShellUC_VM : INotifyPropertyChanged
     {
-        public ICommand NewMedicineCommand { get; set; }
         public ICommand SignOutCommand { get; set; }
         public ICommand ExitCommand { get; set; }
-        public ICommand NewWorkerCommand { get; set; }
+        public ICommand NewItemCommand { get; set; }
         public ICommand StackCommand { get; set; }
 
         Brush _background;
@@ -72,16 +71,12 @@ namespace DrugSystem.ViewModels
         public ShellUC_VM()
         {
             DarkMode = false;
-            NewWorkerCommand = new NewItemCommand();
-            NewMedicineCommand = new NewMedicineCommand();
+            NewItemCommand = new NewItemCommand();
             SignOutCommand = new SignOutCommand();
             ExitCommand = new ExitCommand();
             StackCommand = new StackCommand();
             StatusBar = "";
         }
         public event PropertyChangedEventHandler PropertyChanged;
-
-
-       
     }
 }

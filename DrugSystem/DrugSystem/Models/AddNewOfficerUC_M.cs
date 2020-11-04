@@ -4,7 +4,7 @@ using BLL;
 using BLL.BE;
 using static BLL.BE.AuxiliaryObjects;
 
-namespace DrugSystem.Views
+namespace DrugSystem.Models
 {
     public class AddNewOfficerUC_M
     {

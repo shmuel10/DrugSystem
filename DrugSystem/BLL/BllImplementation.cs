@@ -3,6 +3,7 @@ using DAL;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,44 +20,81 @@ namespace BLL
             dal = new DalImplementation();
             validations = new Validations();
             medicineApiHandler = new HandleMedicineAPI();
-            //AddAdmin(new Administrator() { BirthDate = new AuxiliaryObjects.DateTime { Day = 20, Month = 10, Year = 2000 } ,
-            //ID = "311215149", EmailAddress="simchapodo@gmail.com", PersonName = new AuxiliaryObjects.Name{ FirstName = "simcha", LastName = "podolsky" }
-            //, PhoneNumber="0556679804", Password="Simchap1"}) ;
-
-            //AddDoctor(new Doctor() {
-            //    BirthDate = new DateTime(2000, 10, 20),
-            //    ID = "024219107",
-            //    EmailAddress = "e@wewe",
-            //    FirstName = "simcha",
-            //    LastName = "podolsky",
-            //    PhoneNumber = "0556679804",
-            //    Password = "AAAA1111",
-            //    BuildingNumber = "27",
-            //    City = "Netanya",
-            //    Street = "yehuda halevi",
-            //    LicenceNumber = "60",
-            //    Specialty = "as"
-            //});
-
-            //List<User> users = dal.GetAllUsers();
-            //AddMedicine(new Medicine() { CommercialName = "Advil", 
-            //ActiveIngredients = new List<string>() { "a", "b", "c" }
-            //});
-            //Medicine m = dal.GetAllMedicines()[0];
         }
 
-        #region add to DB
+        //Admins DB
         public void AddAdmin(Administrator administrator)
         {
             validations.ValidateAdmin(administrator);
             dal.AddAdmin(administrator);
         }
 
+        //Users DB
+        public List<User> GetAllUsers()
+        {
+            return dal.GetAllUsers();
+        }
+        public User GetLoginUser(string userMail, string Password)
+        {
+            User user = dal.GetUserByEmail(userMail);
+            if (user == null)
+            {
+                throw new ArgumentException("User Dosn't Exist");
+            }
+            if (!user.Password.Equals(Password))
+            {
+                throw new ArgumentException("Wrong Password");
+            }
+            return user;
+        }
+
+        //Officers DB
+        public void AddOfficer(Officer officer)
+        {
+            try
+            {
+                // validations.ValidateOfficer(officer);
+                if (officer.ProfileImagePath != null && officer.ProfileImageSrc != null)
+                {
+                    (File.Create(officer.ProfileImagePath)).Close();
+                    File.Copy(officer.ProfileImageSrc, officer.ProfileImagePath, true);
+                }
+                dal.AddOfficer(officer);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
+        }
+        public void UpdateOfficer(Officer officer)
+        {
+            if (officer.ProfileImagePath != null && officer.ProfileImageSrc != null)
+            {
+                (File.Create(officer.ProfileImagePath)).Close();
+                File.Copy(officer.ProfileImageSrc, officer.ProfileImagePath, true);
+            }
+            dal.UpdateOfficer(officer);
+        }
+        public Officer GetOfficer(string OfficerID)
+        {
+            return dal.GetOfficer(OfficerID);
+        }
+        public List<Officer> GetAllOfficers()
+        {
+            return dal.GetAllOfficers();
+        }
+
+        //Doctors DB
         public void AddDoctor(Doctor doctor)
         {
             try
             {
-             //   validations.ValidateDoctor(doctor);
+                //   validations.ValidateDoctor(doctor);
+                if (doctor.ProfileImagePath != null && doctor.ProfileImageSrc != null)
+                {
+                    (File.Create(doctor.ProfileImagePath)).Close();
+                    File.Copy(doctor.ProfileImageSrc, doctor.ProfileImagePath, true);
+                }
                 dal.AddDoctor(doctor);
             }
 
@@ -65,49 +103,25 @@ namespace BLL
                 throw new ArgumentException(ex.Message);
             }
         }
-        public string GetMedicineCodeIfExistInXML(string medicineName)
+        public void UpdateDoctor(Doctor doctor)
         {
-            string result = null;
-            try
+            if (doctor.ProfileImagePath != null && doctor.ProfileImageSrc != null)
             {
-                result = medicineApiHandler.FindMedicineID(medicineName).ToString();
-                return result;
+                (File.Create(doctor.ProfileImagePath)).Close();
+                File.Copy(doctor.ProfileImageSrc, doctor.ProfileImagePath, true);
             }
-            catch
-            {
-                return result;
-            }
+            dal.UpdateDoctor(doctor);
         }
-        public void AddMedicine(Medicine medicine)
+        public Doctor GetDoctor(string DocrorsID)
         {
-            try
-            {
-                validations.ValidateMedicine(medicine);
-                dal.AddMedicine(medicine);
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
+            return dal.GetDoctor(DocrorsID);
+        }
+        public List<Doctor> GetAllDoctors()
+        {
+            return dal.GetAllDoctors();
         }
 
-        public void AddVisit(Visit visit)
-        {
-            dal.AddVisit(visit);
-        }
-        public void AddOfficer(Officer officer)
-        {
-            try
-            {
-               // validations.ValidateOfficer(officer);
-                dal.AddOfficer(officer);
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
-        }
-
+        //Patients DB
         public void AddPatient(Patient patient)
         {
             try
@@ -120,7 +134,38 @@ namespace BLL
                 throw new ArgumentException(ex.Message);
             }
         }
+        public void UpdatePatient(Patient patient)
+        {
+            dal.UpdatePatient(patient);
+        }
+        public Patient GetPatient(string PatientID)
+        {
+            return dal.GetPatient(PatientID);
+        }
+        public List<Patient> GetAllPatients()
+        {
+            return dal.GetAllPatients();
+        }
 
+        //Visits DB
+        public void AddVisit(Visit visit)
+        {
+            dal.AddVisit(visit);
+        }
+        public List<Visit> GetAllVisits()
+        {
+            return dal.GetAllVisits();
+        }
+        public List<Visit> GetAllPatientVisits(string patientID)
+        {
+            return dal.GetAllPatientVisits(patientID);
+        }
+        public List<Visit> GetAllDoctorVisits(string doctorID)
+        {
+            return dal.GetAllDoctorVisits(doctorID);
+        }
+
+        //Prescription DB
         public void AddPrescription(Prescription prescription)
         {
             try
@@ -144,59 +189,62 @@ namespace BLL
                 throw new ArgumentException(ex.Message);
             }
         }
-        public List<Visit> GetAllVisits()
-        {
-            return dal.getAllVisits();
-        }
-        #endregion
-
-        #region get from db
-        public List<Visit> GetAllPatientVisits(string patientID)
-        {
-            return dal.GetAllPatientVisits(patientID);
-        }
-        public List<Visit> GetAllDoctorVisits(string doctorID)
-        {
-            return dal.GetAllDoctorVisits(doctorID);
-        }
-        public List<Doctor> GetAllDoctors()
-        {
-            return dal.GetAllDoctors();
-        }
-
-        public List<Medicine> GetAllMedicines()
-        {
-            return dal.GetAllMedicines();
-        }
-
-        public string GetMedicineCodeByName(string genericCode)
-        {
-            return dal.GetMedicineCodeByName(genericCode);
-        }
-
-        public List<Officer> GetAllOfficers()
-        {
-            return dal.GetAllOfficers();
-        }
-
-        public List<Patient> GetAllPatients()
-        {
-            return dal.GetAllPatients();
-        }
-
         public List<Prescription> GetAllPrescriptions()
         {
             return dal.GetAllPrescriptions();
         }
-
-        public List<User> GetAllUsers()
+        public List<Prescription> GetPatientsPrescriptions(string PatientID)
         {
-            return dal.GetAllUsers();
+            return dal.GetPatientsPrescriptions(PatientID);
         }
 
-        public Doctor GetDoctor(string DocrorsID)
+        //Medicines DB
+        public void AddMedicine(Medicine medicine)
         {
-            return dal.GetDoctor(DocrorsID);
+            try
+            {
+                validations.ValidateMedicine(medicine);
+                if (medicine.ProfileImagePath != null && medicine.ProfileImageSrc != null)
+                {
+                    (File.Create(medicine.ProfileImagePath)).Close();
+                    File.Copy(medicine.ProfileImageSrc, medicine.ProfileImagePath, true);
+                }
+                dal.AddMedicine(medicine);
+            }
+            catch (Exception ex)
+            {
+                throw new ArgumentException(ex.Message);
+            }
+        }
+        public void UpdateMedicine(Medicine medicine)
+        {
+            if (medicine.ProfileImagePath != null && medicine.ProfileImageSrc != null)
+            {
+                (File.Create(medicine.ProfileImagePath)).Close();
+                File.Copy(medicine.ProfileImageSrc, medicine.ProfileImagePath, true);
+            }
+            dal.UpdateMedicine(medicine);
+        }
+        public string GetMedicineCodeIfExistInXML(string medicineName)
+        {
+            string result = null;
+            try
+            {
+                result = medicineApiHandler.FindMedicineID(medicineName).ToString();
+                return result;
+            }
+            catch
+            {
+                return result;
+            }
+        }        
+        public List<Medicine> GetAllMedicines()
+        {
+            return dal.GetAllMedicines();
+        }
+        public string GetMedicineCodeByName(string genericCode)
+        {
+            return dal.GetMedicineCodeByName(genericCode);
         }
         public List<string> GetInteractionMedicines(string patientID, string medicineName, string medicineID)
         {
@@ -207,90 +255,35 @@ namespace BLL
             //return dal.GetMedicinesNames(medicineApiHandler.GetInteractionMedicinesNames(medicineID)
             //    .Intersect(dal.GetPatientsCurrentMedicinesCodes(patientID)).ToList());
         }
-
-        public User GetLoginUser(string userMail, string Password)
-        {
-            User user = dal.GetUserByEmail(userMail);
-            if (user == null)
-            {
-                throw new ArgumentException("User Dosn't Exist");
-            }
-            if (!user.Password.Equals(Password))
-            {
-                throw new ArgumentException("Wrong Password");
-            }
-            return user;
-        }
-
         public Medicine GetMedicine(string MedicineID)
         {
             return dal.GetMedicine(MedicineID);
-        }
-
-        public Officer GetOfficer(string OfficerID)
-        {
-            return dal.GetOfficer(OfficerID);
-        }
-
-        public Patient GetPatient(string PatientID)
-        {
-            return dal.GetPatient(PatientID);
-        }
-
-        public List<Prescription> GetPatientsPrescriptions(string PatientID)
-        {
-            return dal.GetPatientsPrescriptions(PatientID);
-        }
-
-        #endregion
-
-        #region update DB
-        public void UpdateDoctor(Doctor doctor)
-        {
-            dal.UpdateDoctor(doctor);
-        }
-
-        public void UpdateMedicine(Medicine medicine)
-        {
-            dal.UpdateMedicine(medicine);
-        }
-
-        public void UpdateOfficer(Officer officer)
-        {
-            dal.UpdateOfficer(officer);
-        }
-
-        public void UpdatePatient(Patient patient)
-        {
-            dal.UpdatePatient(patient);
-        }
-
+        }        
         public List<string> GetPatientsCurrentMedicines(string PatientID)
         {
             return dal.GetPatientsCurrentMedicinesCodes(PatientID);
         }
-
         public List<string> GetPatientsCurrentMedicinesNames(string PatientID)
         {
             return dal.GetPatientsCurrentMedicinesNames(PatientID);
         }
-
         public List<string> GetAllMedicinesByName()
         {
             return dal.GetAllMedicinesByName();
         }
-        #endregion
 
-        // public User VerifyLogIn(string EmailAddress, string Password)
-        // {
-        //     try
-        //     {
-        //         User user = dal.GetUserByEmail(EmailAddress);
-        //         return user.Password.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
-        //     } catch
-        //     {
-        //         throw new ArgumentException("No Such User");
-        //     }
-        // }
+
+        //public User VerifyLogIn(string EmailAddress, string Password)
+        //{
+        //    try
+        //    {
+        //        User user = dal.GetUserByEmail(EmailAddress);
+        //        return user.Password.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
+        //    }
+        //    catch
+        //    {
+        //        throw new ArgumentException("No Such User");
+        //    }
+        //}
     }
 }

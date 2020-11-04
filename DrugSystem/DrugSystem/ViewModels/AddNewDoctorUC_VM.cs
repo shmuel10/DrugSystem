@@ -24,13 +24,20 @@ namespace DrugSystem.ViewModels
         public ICommand CreateNewDoctorCommand { get; set; }
         public ICommand FileDialogCommand { get; set; }
         public List<Gender> Gender { get; set; }
+        string _imgSrc;
+        public string ImageSrc { get { return _imgSrc; } 
+            set { _imgSrc = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
+            } 
+        }
         public AddNewDoctorUC_VM()
         {           
             _addNewDoctorUC_M = new AddNewDoctorUC_M();
             Gender = _addNewDoctorUC_M.Gender;
             CreateNewDoctorCommand = new CreateNewDoctorCommand(this);
-            FileDialogCommand = new OpenFileDialogCommand();
+            FileDialogCommand = new OpenFileDialogCommand(this);
             newDoctor = new Doctor();
+            ImageSrc = @"/Icons/UserIcon.jpg";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -39,6 +46,5 @@ namespace DrugSystem.ViewModels
         {
             _addNewDoctorUC_M.AddNewDoctor(newDoctor);
         }
-       
     }
 }

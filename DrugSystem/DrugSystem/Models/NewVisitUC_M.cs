@@ -17,7 +17,6 @@ namespace DrugSystem.Models
         {
             BL = new BllImplementation();
             Medicines = BL.GetAllMedicinesByName();
-
         }
 
         public void AddPrescription(Prescription prescription)

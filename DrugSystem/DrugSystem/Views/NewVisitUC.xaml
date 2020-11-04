@@ -28,7 +28,7 @@
                 <StackPanel Orientation="Vertical">
                     <materialDesign:Card UniformCornerRadius="20" Margin="5" Style="{StaticResource BackAndForeg}" >
 
-                        <GroupBox Margin="5" Header="פרטי המטופל"  Style="{StaticResource ZeroThickness}" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="180" >
+                        <GroupBox Margin="5" Header="פרטי המטופל"  Style="{StaticResource ZeroThickness}" BorderThickness="0" BorderBrush="Transparent" VerticalAlignment="Center" HorizontalAlignment="Stretch" Height="180" >
                             <Grid>
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="1*"/>
@@ -84,19 +84,19 @@
 
                     <materialDesign:Card Margin="5" UniformCornerRadius="20" Background="{Binding ElementName=Shell_UC, Path=Background}" 
                       Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
-                        <GroupBox Style="{x:Null}" BorderBrush="Transparent" Header="סיבת הפניה" MinHeight="100">
+                        <GroupBox Style="{x:Null}" BorderThickness="0" BorderBrush="Transparent" Header="סיבת הפניה" MinHeight="100">
                             <TextBox Width="470" AcceptsReturn="True"/>
                         </GroupBox>
                     </materialDesign:Card>
                     <materialDesign:Card Margin="5" UniformCornerRadius="20" Background="{Binding ElementName=Shell_UC, Path=Background}" 
                       Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
-                        <GroupBox Style="{x:Null}" BorderBrush="Transparent" Header="אבחנה" MinHeight="100" Margin="0 10 0 0">
+                        <GroupBox Style="{x:Null}" BorderThickness="0" BorderBrush="Transparent" Header="אבחנה" MinHeight="100" Margin="0 10 0 0">
                             <TextBox Width="470" AcceptsReturn="True"/>
                         </GroupBox>
                     </materialDesign:Card>
                     <materialDesign:Card Margin="5" UniformCornerRadius="20" Background="{Binding ElementName=Shell_UC, Path=Background}" 
                       Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
-                        <GroupBox Style="{x:Null}" BorderBrush="Transparent" Header="טיפול" MinHeight="100" Margin="0 10 0 0">
+                        <GroupBox Style="{x:Null}" BorderThickness="0" BorderBrush="Transparent" Header="טיפול" MinHeight="100" Margin="0 10 0 0">
                             <StackPanel Orientation="Horizontal">
                                 <Button x:Name="ChooseMed" Command="{Binding ChooseMedCommand}" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="בחר תרופה">
                                     <materialDesign:PackIcon Kind="Menu" Height="{StaticResource IconSize}" Width="{StaticResource IconSize}"/>

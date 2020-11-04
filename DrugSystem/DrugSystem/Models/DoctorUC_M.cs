@@ -2,7 +2,7 @@
 using BLL;
 using BLL.BE;
 
-namespace DrugSystem.ViewModels
+namespace DrugSystem.Models
 {
     public class DoctorUC_M
     {

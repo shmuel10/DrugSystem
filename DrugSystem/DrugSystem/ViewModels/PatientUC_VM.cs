@@ -16,7 +16,7 @@ namespace DrugSystem.ViewModels
         public List<string> MedicinesNames { get { return _patientUC_M.MedicinesNames; } }
         public PatientUC_VM()
         {
-            CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.CurrentPatient;
+            CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.PatientSelected;
             _patientUC_M = new PatientUC_M(CurrentPatient.ID);
         }
 
@@ -27,7 +27,7 @@ namespace DrugSystem.ViewModels
             set {
                 _currentPatient = value;
                 if (PropertyChanged != null)
-                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentPatient"));
+                    PropertyChanged(this, new PropertyChangedEventArgs("PatientSelected"));
             }
         }
     }

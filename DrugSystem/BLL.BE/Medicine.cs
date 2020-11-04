@@ -18,6 +18,7 @@ namespace BLL.BE
         public string Manufacturer { get; set; }
         public string ActiveIngredients { get; set; }
         public string DoseCharacteristics { get; set; }
-        public string ImageUrl { get; set; }
+        public string ProfileImageSrc { get; set; }
+        public string ProfileImagePath { get; set; }
     }
 }

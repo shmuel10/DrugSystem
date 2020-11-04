@@ -20,7 +20,7 @@ namespace DrugSystem
     /// <summary>
     /// Interaction logic for PermitionsUC.xaml
     /// </summary>
-    public partial class PermitionsUC : UserControl, INotifyPropertyChanged
+    public partial class PermitionsUC : UserControl
     {
         public PermitionsUC()
         {
@@ -29,79 +29,81 @@ namespace DrugSystem
         }
 
 
+
+        public bool CanAddPrescription {
+            get { return (bool)GetValue(CanAddPrescriptionProperty); }
+            set { SetValue(CanAddPrescriptionProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CanAddPrescription.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CanAddPrescriptionProperty =
+            DependencyProperty.Register("CanAddPrescription", typeof(bool), typeof(PermitionsUC), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender,
+                   new PropertyChangedCallback(StateChangeedCallBack), new CoerceValueCallback(FixValueCallBack)));
+
+
+
         public bool CanAddDoctor {
-            get { return (bool)GetValue(CanAddDoctorDPProperty); }
-            set {
-                SetValue(CanAddDoctorDPProperty, value);
-                PropertyChanged(this, new PropertyChangedEventArgs("CanAddDoctor"));
-            }
+            get { return (bool)GetValue(CanAddDoctorProperty); }
+            set { SetValue(CanAddDoctorProperty, value); }
         }
 
-        public bool CanAddDoctorDP {
-            get { return (bool)GetValue(CanAddDoctorDPProperty); }
-            set { SetValue(CanAddDoctorDPProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CanAddDoctorDP.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CanAddDoctorDPProperty =
-            DependencyProperty.Register("CanAddDoctorDP", typeof(bool), typeof(PermitionsUC), new PropertyMetadata(false));
+        // Using a DependencyProperty as the backing store for CanAddDoctor.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CanAddDoctorProperty =
+            DependencyProperty.Register("CanAddDoctor", typeof(bool), typeof(PermitionsUC), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender,
+                  new PropertyChangedCallback(StateChangeedCallBack), new CoerceValueCallback(FixValueCallBack)));
 
 
 
         public bool CanAddPatient {
-            get { return (bool)GetValue(CanAddPatientDPProperty); }
-            set {
-                SetValue(CanAddPatientDPProperty, value);
-                PropertyChanged(this, new PropertyChangedEventArgs("CanAddPatient"));
-            }
+            get { return (bool)GetValue(CanAddPatientProperty); }
+            set { SetValue(CanAddPatientProperty, value); }
         }
 
-        public bool CanAddPatientDP {
-            get { return (bool)GetValue(CanAddPatientDPProperty); }
-            set { SetValue(CanAddPatientDPProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CanAddPatientDP.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CanAddPatientDPProperty =
-            DependencyProperty.Register("CanAddPatientDP", typeof(bool), typeof(PermitionsUC), new PropertyMetadata(false));
-
-
-
-        public bool CanAddPrescription { get { return (bool)GetValue(CanAddPrescriptionDPProperty); }
-            set {
-                SetValue(CanAddPrescriptionDPProperty, value);
-                PropertyChanged(this, new PropertyChangedEventArgs("CanAddPrescription")); } }
-
-        public bool CanAddPrescriptionDP {
-            get { return (bool)GetValue(CanAddPrescriptionDPProperty); }
-            set { SetValue(CanAddPrescriptionDPProperty, value); }
-        }
-
-        // Using a DependencyProperty as the backing store for CanAddPrescriptionDP.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CanAddPrescriptionDPProperty =
-            DependencyProperty.Register("CanAddPrescriptionDP", typeof(bool), typeof(PermitionsUC), new PropertyMetadata(false));
+        // Using a DependencyProperty as the backing store for CanAddPatient.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CanAddPatientProperty =
+            DependencyProperty.Register("CanAddPatient", typeof(bool), typeof(PermitionsUC), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender,
+                    new PropertyChangedCallback(StateChangeedCallBack), new CoerceValueCallback(FixValueCallBack)));
 
 
 
         public bool CanAddMedicine {
-            get { return (bool)GetValue(CanAddMedicineDPProperty); }
-            set {
-                SetValue(CanAddMedicineDPProperty, value);
-                PropertyChanged(this, new PropertyChangedEventArgs("CanAddMedicine"));
+            get { return (bool)GetValue(CanAddMedicineProperty); }
+            set { SetValue(CanAddMedicineProperty, value); }
+        }
+
+        // Using a DependencyProperty as the backing store for CanAddMedicine.  This enables animation, styling, binding, etc...
+        public static readonly DependencyProperty CanAddMedicineProperty =
+            DependencyProperty.Register("CanAddMedicine", typeof(bool), typeof(PermitionsUC), new FrameworkPropertyMetadata(false, FrameworkPropertyMetadataOptions.AffectsRender,
+                   new PropertyChangedCallback(StateChangeedCallBack), new CoerceValueCallback(FixValueCallBack)));
+
+        private static void StateChangeedCallBack(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var result = d as PermitionsUC;
+            if (e.Property.Name.Equals("CanAddPrescription"))
+            {
+                result.Prescription.IsChecked = (bool)e.NewValue;
+            }
+            else if (e.Property.Name.Equals("CanAddDoctor"))
+            {
+                result.Doctor.IsChecked = (bool)e.NewValue;
+            }
+            else if (e.Property.Name.Equals("CanAddPatient"))
+            {
+                result.Patient.IsChecked = (bool)e.NewValue;
+            }
+            else if (e.Property.Name.Equals("CanAddMedicine"))
+            {
+                result.Medicine.IsChecked = (bool)e.NewValue;
             }
         }
-    
 
-        public bool CanAddMedicineDP {
-            get { return (bool)GetValue(CanAddMedicineDPProperty); }
-            set { SetValue(CanAddMedicineDPProperty, value); }
+        private static object FixValueCallBack(DependencyObject d, object baseValue)
+        {
+            return baseValue;
         }
 
-        // Using a DependencyProperty as the backing store for CanAddMedicineDP.  This enables animation, styling, binding, etc...
-        public static readonly DependencyProperty CanAddMedicineDPProperty =
-            DependencyProperty.Register("CanAddMedicineDP", typeof(bool), typeof(PermitionsUC), new PropertyMetadata(false));
 
 
-        public event PropertyChangedEventHandler PropertyChanged;
+  
     }
 }

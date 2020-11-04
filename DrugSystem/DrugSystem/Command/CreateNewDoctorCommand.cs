@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Web.UI;
 using System.Windows;
 using System.Windows.Input;
+using BLL.BE;
 using DrugSystem.Models;
 using DrugSystem.ViewModels;
-using DrugSystem.Windows;
 using MahApps.Metro.Controls;
 
 namespace DrugSystem.Command
@@ -30,18 +30,22 @@ namespace DrugSystem.Command
 
         public bool CanExecute(object parameter)
         {
-            return true;
+            if ((((App)System.Windows.Application.Current).CurrentElements.CurrentUser) is Administrator ||
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddDoctor)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public void Execute(object parameter)
         {
             ((AddNewDoctorUC_VM)CurrentVM).CreateNewDoctor();
-            AddNewUserWindow win = ((App)System.Windows.Application.Current).
-                Windows.OfType<AddNewUserWindow>().FirstOrDefault();
-            if(win!= null)
-            {
-                win.Close();
-            }
+            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
         }
     }
 }

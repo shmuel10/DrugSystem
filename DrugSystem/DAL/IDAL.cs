@@ -9,18 +9,12 @@ namespace DAL
 {
     public interface IDAL
     {
+        //Admins DB
+        void AddAdmin(Administrator administrator);
+
         //Users DB
         User GetUserByEmail(string emailAddress);
         List<User> GetAllUsers();
-
-        //Admins DB
-        void AddAdmin(Administrator administrator);
-        
-        //Doctors DB
-        void AddDoctor(Doctor doctor);
-        void UpdateDoctor(Doctor doctor);
-        Doctor GetDoctor(string DocrorsID);
-        List<Doctor> GetAllDoctors();
 
         //Officers DB
         void AddOfficer(Officer officer);
@@ -28,11 +22,11 @@ namespace DAL
         Officer GetOfficer(string OfficerID);
         List<Officer> GetAllOfficers();
 
-        //Medicines DB
-        void AddMedicine(Medicine medicine);
-        void UpdateMedicine(Medicine medicine);
-        Medicine GetMedicine(string MedicineCode);
-        List<Medicine> GetAllMedicines();
+        //Doctors DB
+        void AddDoctor(Doctor doctor);
+        void UpdateDoctor(Doctor doctor);
+        Doctor GetDoctor(string DocrorsID);
+        List<Doctor> GetAllDoctors();
 
         //Patients DB
         void AddPatient(Patient patient);
@@ -40,14 +34,22 @@ namespace DAL
         Patient GetPatient(string PatientID);
         List<Patient> GetAllPatients();
 
+        //Visits DB
+        void AddVisit(Visit visit);
+        List<Visit> GetAllVisits();
+        List<Visit> GetAllPatientVisits(string patientID);
+        List<Visit> GetAllDoctorVisits(string doctorID);
+
         //Prescription DB
         void AddPrescription(Prescription prescription);
         List<Prescription> GetAllPrescriptions();
         List<Prescription> GetPatientsPrescriptions(string PatientID);
-        void AddVisit(Visit visit);
-        List<Visit> getAllVisits();
-        List<Visit> GetAllPatientVisits(string patientID);
-        List<Visit> GetAllDoctorVisits(string doctorID);
+
+        //Medicines DB
+        void AddMedicine(Medicine medicine);
+        void UpdateMedicine(Medicine medicine);
+        Medicine GetMedicine(string MedicineCode);
+        List<Medicine> GetAllMedicines();
         List<string> GetPatientsCurrentMedicinesCodes(string PatientID);
         List<string> GetMedicinesNames(List<string> MedicinesID);
         List<string> GetPatientsCurrentMedicinesNames(string patientID);

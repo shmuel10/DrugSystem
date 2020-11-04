@@ -18,7 +18,7 @@ namespace DrugSystem.Models
 
         internal User SignIn(string mail, string password)
         {
-            throw new NotImplementedException();
+           return BL.GetLoginUser(mail, password);
         }
     }
 }

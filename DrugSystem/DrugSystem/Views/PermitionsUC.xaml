@@ -6,9 +6,13 @@
              xmlns:local="clr-namespace:DrugSystem">
     <GroupBox Header="הרשאות" FlowDirection="RightToLeft" Style="{x:Null}">
         <StackPanel>
-            <CheckBox x:Name="Prescription" Content="הנפקת מרשמים" IsChecked="{Binding CanAddPrescription}"/>
+            <!--<CheckBox x:Name="Prescription" Content="הנפקת מרשמים" IsChecked="{Binding CanAddPrescription}"/>
             <CheckBox x:Name="Doctor" Content="הוספת רופא חדש" IsChecked="{Binding CanAddDoctor}"/>
             <CheckBox x:Name="Patient" Content="הוספת מטופל חדש" IsChecked="{Binding CanAddPatient}" />
+            <CheckBox x:Name="Medicine" Content="הוספת תרופה למערכת" IsChecked="{Binding CanAddMedicine}"/>-->
+            <CheckBox x:Name="Prescription" Content="הנפקת מרשמים" IsChecked="{Binding CanAddPrescription}"/>
+            <CheckBox x:Name="Doctor" Content="הוספת רופא חדש" IsChecked="{Binding CanAddDoctor}"/>
+            <CheckBox x:Name="Patient" Content="הוספת מטופל חדש" IsChecked="{Binding CanAddPatient}"/>
             <CheckBox x:Name="Medicine" Content="הוספת תרופה למערכת" IsChecked="{Binding CanAddMedicine}"/>
         </StackPanel>
     </GroupBox>

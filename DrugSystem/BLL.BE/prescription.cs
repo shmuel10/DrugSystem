@@ -9,7 +9,6 @@ using static BLL.BE.AuxiliaryObjects;
 
 namespace BLL.BE
 {
-  //  public enum MedicineType { Pill, Syrup, Suppository }
     [Table("Prescriptions")]
     public class Prescription
     {

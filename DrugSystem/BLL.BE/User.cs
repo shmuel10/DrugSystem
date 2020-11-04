@@ -13,6 +13,8 @@ namespace BLL.BE
     public class User : Person
     {
         public string Password { get; set; }
+        public string ProfileImageSrc { get; set; }
+        public string ProfileImagePath { get; set; }
         public bool CanAddDoctor { get; set; }
         public bool CanAddMedicine { get; set; }
         public bool CanAddPatient { get; set; }

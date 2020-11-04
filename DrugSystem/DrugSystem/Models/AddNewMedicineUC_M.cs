@@ -1,12 +1,12 @@
 ﻿using BLL;
 using BLL.BE;
 
-namespace DrugSystem
+namespace DrugSystem.Models
 {
-    public class AddNewMedicinWindow_M
+    public class AddNewMedicineUC_M
     {
         IBll BL;
-        public AddNewMedicinWindow_M()
+        public AddNewMedicineUC_M()
         {
             BL = new BllImplementation();
         }
