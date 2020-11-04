@@ -149,6 +149,7 @@ namespace DrugSystem.ViewModels
             NewVisit.PatientID = _currentPatient.ID;
             NewVisit.VisitDate = DateTime.Now;
             _newVisitUC_M.AddVisit(NewVisit);
+            WpfToPdf wpfToPdf = new WpfToPdf(_prescription);
         }
     }
 }
