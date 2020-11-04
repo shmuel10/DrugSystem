@@ -23,6 +23,7 @@ namespace DrugSystem.ViewModels
         NewVisitUC_M _newVisitUC_M;
         Patient _currentPatient;
         Prescription _prescription;
+        public Visit NewVisit { get; set; }
         List<string> interactionList;
         public List<string> Medicines { get { return _newVisitUC_M.Medicines; } }
         string _medicalCare = "";
@@ -35,7 +36,7 @@ namespace DrugSystem.ViewModels
         }
         string _selectedMedName;
         public string SelectedMedName { get { return _selectedMedName; } set { _selectedMedName = value;
-                _medicalCare = "";
+                _medicalCare = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("MedicalCare"));
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedName"));
                 SelectedMedicineCode = _newVisitUC_M.GetMedicineCode(value);
@@ -71,14 +72,15 @@ namespace DrugSystem.ViewModels
         {
             _newVisitUC_M = new NewVisitUC_M();
             _prescription = new Prescription();
+            NewVisit = new Visit();
             CreatePrescripton = new SaveVisitCommand(this);
             ChooseMedUCVisibility = false;
             interactionList = new List<string>();
             _interactionsMedicinesNames = new ObservableCollection<string>();
             ChooseMedCommand = new ChooseMedicineForPrescriptionCommand(this);
-            if (((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Count > 1)
+            if (((App)Application.Current).CurrentElements.StackOnShell.Count > 1)
             {
-                CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.PatientSelected;
+                CurrentPatient = ((App)Application.Current).CurrentElements.PatientSelected;
             }
             SearchFontSize = 10;
             _medsCollectionView = CollectionViewSource.GetDefaultView(Medicines);
@@ -141,8 +143,12 @@ namespace DrugSystem.ViewModels
             _prescription.PatientID = _currentPatient.ID;
             _prescription.StartDate = DateTime.Now;
             _prescription.MedicineCode = SelectedMedicineCode;
-            _prescription.Instructions = InteractionsMedicinesNames.ToString();
+            _prescription.Instructions = MedicalCare;
             _newVisitUC_M.AddPrescription(_prescription);
+            NewVisit.DoctorID = doctor.ID;
+            NewVisit.PatientID = _currentPatient.ID;
+            NewVisit.VisitDate = DateTime.Now;
+            _newVisitUC_M.AddVisit(NewVisit);
         }
     }
 }

@@ -20,6 +20,15 @@ namespace DrugSystem.ViewModels
         public ICommand SignInCommand { get; set; }
         public string Mail { get; set; }
         public string Password { get; set; }
+
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
         public LoginUC_VM()
         {
             _loginUC_M = new LoginUC_M();
@@ -28,15 +37,9 @@ namespace DrugSystem.ViewModels
 
         public void Login()
         {
-            //User currentUser = _loginUC_M.SignIn(Mail, Password);
-            // User user = new Doctor();   
-            //((App)System.Windows.Application.Current).CurrentElements.CurrentViewModel = new ShellUC_VM();
-            //((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new DoctorUC_VM();
-            //((App)System.Windows.Application.Current).CurrentElements.CurrentUser = currentUser;
             try
             {
                 User currentUser = _loginUC_M.SignIn(Mail, Password);
-                //User currentUser = new Administrator();
                 if (currentUser != null)
                 {
                     if (currentUser is Doctor)
@@ -55,7 +58,7 @@ namespace DrugSystem.ViewModels
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                ErrorMessage = ex.Message;
             }
         }
     }

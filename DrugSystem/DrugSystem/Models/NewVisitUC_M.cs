@@ -23,6 +23,10 @@ namespace DrugSystem.Models
         {
             BL.AddPrescription(prescription);
         }
+        public void AddVisit(Visit visit)
+        {
+            BL.AddVisit(visit);
+        }
 
         internal List<string> GetAllMedicinies()
         {

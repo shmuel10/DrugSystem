@@ -28,14 +28,14 @@
             <StackPanel Orientation="Vertical" Background="{Binding Background}">
                 <Menu  x:Name="AppMenu" Background="{Binding Background}" Foreground="{Binding Foreground}" DockPanel.Dock="Top" Style="{x:Null}" Height="20">
                     <MenuItem Header="עובדים" Style="{x:Null}" Background="{Binding Background}" Foreground="{Binding Foreground}">
-                        <MenuItem Header="רופא חדש" Style="{x:Null}" Command="{Binding NewWorkerCommand}" CommandParameter="Doctor" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
-                        <MenuItem Header="פקיד חדש" Style="{x:Null}" Command="{Binding NewWorkerCommand}" CommandParameter="Officer" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
+                        <MenuItem Header="רופא חדש" Style="{x:Null}" Command="{Binding NewItemCommand}" CommandParameter="Doctor" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
+                        <MenuItem Header="פקיד חדש" Style="{x:Null}" Command="{Binding NewItemCommand}" CommandParameter="Officer" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
                     </MenuItem>
                     <MenuItem Background="{Binding Background}" Foreground="{Binding Foreground}" Header="תרופות" Style="{x:Null}">
-                        <MenuItem Header="הוסף תרופה" Style="{x:Null}" Command="{Binding NewMedicineCommand}" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
+                        <MenuItem Header="הוסף תרופה" Style="{x:Null}" Command="{Binding NewItemCommand}" CommandParameter="Medicine" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
                     </MenuItem>
                     <MenuItem Background="{Binding Background}" Foreground="{Binding Foreground}" Header="מטופלים" Style="{x:Null}" >
-                        <MenuItem Header="מטופל חדש" Style="{x:Null}" Command="{Binding NewWorkerCommand}" CommandParameter="Patient" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
+                        <MenuItem Header="מטופל חדש" Style="{x:Null}" Command="{Binding NewItemCommand}" CommandParameter="Patient" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
                     </MenuItem>
                     <MenuItem Background="{Binding Background}" Foreground="{Binding Foreground}" Header="סיום" Style="{x:Null}">
                         <MenuItem Header="התנתק" Style="{x:Null}" Command="{Binding SignOutCommand}" Background="{Binding Background}" Foreground="{Binding Foreground}"/>

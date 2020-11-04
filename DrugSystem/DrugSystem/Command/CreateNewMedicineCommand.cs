@@ -23,14 +23,7 @@ namespace DrugSystem.Command
 
         public bool CanExecute(object parameter)
         {
-            if ((((App)System.Windows.Application.Current).CurrentElements.CurrentUser) is Administrator)
-            {
-                return true;
-            }
-            else
-            {
-                if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddMedicine)
-                {
+
                     if (((AddNewMedicineUC_VM)CurrentVM).MedicineExistInXML(parameter as string))
                     {
                         return true;
@@ -39,17 +32,13 @@ namespace DrugSystem.Command
                     {
                         return false;
                     }
-                }
-                else
-                {
-                    return false;
-                }
+
             }
-        }
+        
 
         public void Execute(object parameter)
         {
-            ((AddNewMedicineUC_VM)CurrentVM).CreateNewDoctor();
+            ((AddNewMedicineUC_VM)CurrentVM).CreateNewMedicine();
             ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
                 ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
         }

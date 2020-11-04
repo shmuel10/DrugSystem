@@ -85,13 +85,13 @@
                     <materialDesign:Card Margin="5" UniformCornerRadius="20" Background="{Binding ElementName=Shell_UC, Path=Background}" 
                       Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
                         <GroupBox Style="{x:Null}" BorderThickness="0" BorderBrush="Transparent" Header="סיבת הפניה" MinHeight="100">
-                            <TextBox Width="470" AcceptsReturn="True"/>
+                            <TextBox Width="470" AcceptsReturn="True" Text="{Binding NewVisit.VisitConclusion}"/>
                         </GroupBox>
                     </materialDesign:Card>
                     <materialDesign:Card Margin="5" UniformCornerRadius="20" Background="{Binding ElementName=Shell_UC, Path=Background}" 
                       Foreground="{Binding ElementName=Shell_UC, Path=Foreground}">
                         <GroupBox Style="{x:Null}" BorderThickness="0" BorderBrush="Transparent" Header="אבחנה" MinHeight="100" Margin="0 10 0 0">
-                            <TextBox Width="470" AcceptsReturn="True"/>
+                            <TextBox Width="470" AcceptsReturn="True" Text="{Binding NewVisit.VisitReason}"/>
                         </GroupBox>
                     </materialDesign:Card>
                     <materialDesign:Card Margin="5" UniformCornerRadius="20" Background="{Binding ElementName=Shell_UC, Path=Background}" 
@@ -101,7 +101,7 @@
                                 <Button x:Name="ChooseMed" Command="{Binding ChooseMedCommand}" Height="20" Width="20" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="2" Background="CadetBlue" Style="{StaticResource MaterialDesignFloatingActionDarkButton}" ToolTip="בחר תרופה">
                                     <materialDesign:PackIcon Kind="Menu" Height="{StaticResource IconSize}" Width="{StaticResource IconSize}"/>
                                 </Button>
-                                <TextBox x:Name="MedChoosenBox" AcceptsReturn="True" Width="200" Text="{Binding Path=SelectedMedName}"/>
+                                <TextBox x:Name="MedChoosenBox" AcceptsReturn="True" Width="200" Text="{Binding Path=MedicalCare}"/>
                                 <Grid Width="200" Margin="5" Visibility="{Binding ChooseMedUCVisibility, Converter={StaticResource BoolToVisibilityConverter}}">
                                     <local1:MedChooseUC x:Name="med"/>
                                 </Grid>

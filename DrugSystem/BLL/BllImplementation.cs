@@ -150,6 +150,17 @@ namespace BLL
         //Visits DB
         public void AddVisit(Visit visit)
         {
+            if (dal.GetAllVisits().Count == 0)
+            {
+                Random random = new Random();
+                string visitID = Convert.ToString(random.Next(2345465, 999999999));
+                visit.VisitID = visitID;
+            }
+            else
+            {
+                int max = Int32.Parse(dal.GetAllPrescriptions().Max(x => x.PrescriptionID));
+                visit.VisitID = Convert.ToString(max + 1);
+            }
             dal.AddVisit(visit);
         }
         public List<Visit> GetAllVisits()

@@ -33,7 +33,8 @@
                     <RowDefinition Height="0.5*"/>
                     <RowDefinition Height="60"/>
                     <RowDefinition Height="60"/>
-                    <RowDefinition Height="70"/>
+                    <RowDefinition Height="20"/>
+                    <RowDefinition Height="60"/>
                     <RowDefinition Height="1*"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
@@ -73,8 +74,9 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-
-                <Button x:Name="SignInButton" Background="#FFD31F60" Grid.Row="5" Grid.Column="1" HorizontalAlignment="Center" Width="200" VerticalAlignment="Bottom" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}" 
+                <TextBlock x:Name="ErrorMessage" FontSize="20" Grid.Row="5" Grid.Column="1" Style="{StaticResource MaterialDesignOverlineTextBlock}" VerticalAlignment="Center" HorizontalAlignment="Center"
+                 TextWrapping="Wrap" Foreground="#FFFDF8F8" Text="{Binding ErrorMessage}"/>
+                <Button x:Name="SignInButton" Background="#FFD31F60" Grid.Row="6" Grid.Column="1" HorizontalAlignment="Center" Width="200" VerticalAlignment="Bottom" Margin="5" Style="{StaticResource MaterialDesignRaisedButton}" 
                  Command="{Binding SignInCommand}" ToolTip="Press To Sign In" Content="כניסה" BorderBrush="#FFFEFEFF">
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource MultyStringConverter}">

@@ -20,23 +20,23 @@ namespace DrugSystem.Command
        
         public bool CanExecute(object parameter)
         {
-            if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser is Administrator)
+            if (((App)Application.Current).CurrentElements.CurrentUser is Administrator)
             {
                 return true;
             }
             else
             {
-                if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddDoctor &&
+                if (((App)Application.Current).CurrentElements.CurrentUser.CanAddDoctor &&
                     parameter.Equals("Doctor"))
                 {
                     return true;
                 }
-                if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddMedicine &&
+                if (((App)Application.Current).CurrentElements.CurrentUser.CanAddMedicine &&
                     parameter.Equals("Medicine"))
                 {
                     return true;
                 }
-                if (((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddPatient &&
+                if (((App)Application.Current).CurrentElements.CurrentUser.CanAddPatient &&
                     parameter.Equals("Patient"))
                 {
                     return true;
@@ -47,27 +47,27 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            (((App)System.Windows.Application.Current).CurrentElements.CurrentViewModel as ShellUC_VM).StatusBar = "GGG";
+            (((App)Application.Current).CurrentElements.CurrentViewModel as ShellUC_VM).StatusBar = "GGG";
 
-            string workerToAdd = parameter as string;
-            if (workerToAdd.Equals("Doctor"))
+            string itemToAdd = parameter as string;
+            if (itemToAdd.Equals("Doctor"))
             {
-                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)Application.Current).CurrentElements.CurrentOnShell =
                     new AddNewDoctorUC_VM();
             }
-            if (workerToAdd.Equals("Officer"))
+            if (itemToAdd.Equals("Officer"))
             {
-                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)Application.Current).CurrentElements.CurrentOnShell =
                     new AddNewOfficerUC_VM();
             }
-            if (workerToAdd.Equals("Patient"))
+            if (itemToAdd.Equals("Patient"))
             {
-                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)Application.Current).CurrentElements.CurrentOnShell =
                     new AddNewPatientUC_VM();
             }
-            if (workerToAdd.Equals("Medicine"))
+            if (itemToAdd.Equals("Medicine"))
             {
-                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+                ((App)Application.Current).CurrentElements.CurrentOnShell =
                     new AddNewMedicineUC_VM();
             }
         }

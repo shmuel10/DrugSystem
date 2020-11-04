@@ -20,6 +20,28 @@ namespace DAL
         public DalImplementation()
         {
             DB = new DrugSystemContext();
+            if (GetAllAdmins().Count == 0)
+            {
+                Administrator defaultAdmin = new Administrator() {
+                    BirthDate = new DateTime(2000, 1, 1),
+                    BuildingNumber = "10",
+                    CanAddDoctor = true,
+                    CanAddMedicine = true,
+                    CanAddPatient = true,
+                    CanCreatePrescriptions = false,
+                    City = "Netanya",
+                    EmailAddress = "yossi@gmail.com",
+                    FirstName = "Yossi",
+                    Gender = Gender.זכר,
+                    ID = "311215149",
+                    LastName = "Zaguri",
+                    Password = "Admin1234",
+                    PhoneNumber = "0501234567",
+                    Street = "Yehuda Halevi"
+                };
+                AddAdmin(defaultAdmin);
+            }
+            
         }
 
         //Admins DB
@@ -56,6 +78,10 @@ namespace DAL
         public List<User> GetAllUsers()
         {
             return GetAllElementsOfTypeT<User>();
+        }
+        public List<Administrator> GetAllAdmins()
+        {
+            return GetAllElementsOfTypeT<Administrator>();
         }
         public User GetUserByEmail(string emailAddress)
         {

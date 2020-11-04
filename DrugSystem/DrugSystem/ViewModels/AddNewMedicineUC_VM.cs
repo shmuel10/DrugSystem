@@ -30,7 +30,7 @@ namespace DrugSystem.ViewModels
             ImageSrc = @"/Icons/DefaultMedPicture.jpg";
         }
 
-        public void CreateNewDoctor()
+        public void CreateNewMedicine()
         {
             _addNewMedicineWindow_M.AddNewMedicine(newMedicine);
         }

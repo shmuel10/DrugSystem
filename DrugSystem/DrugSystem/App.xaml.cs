@@ -25,14 +25,11 @@ namespace DrugSystem
             get { return _currentElements; }
             set {
                 _currentElements = value;
-                if (PropertyChanged != null)
-                {
-                    PropertyChanged(this, new PropertyChangedEventArgs("CurrentElements"));
-                }
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("CurrentElements"));
             }
         }
              
-        App() {
+        public App() {
             CurrentElements = new CurrentElements();
         }
 
