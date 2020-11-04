@@ -18,7 +18,7 @@ namespace DrugSystem.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand SignInCommand { get; set; }
-        string _mail = "";
+        string _mail;
         public string Mail { get { return _mail; }
             set {
                 _mail = value;
@@ -29,7 +29,17 @@ namespace DrugSystem.ViewModels
                 }
             }
         }
-        public string Password { get; set; }
+        string _password;
+        public string Password { get { return _password; }
+            set {
+                _password = value;
+                if (value?.Length > 0)
+                {
+                    ErrorMessage = "";
+                    PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Password"));
+                }
+            } 
+        }
 
         private string _errorMessage = string.Empty;
         public string ErrorMessage {
