@@ -60,10 +60,6 @@
                 <local1:NewVisitUC/>
             </DataTemplate>
 
-            <DataTemplate DataType="{x:Type ViewModels:PrescriptionUC_VM}">
-                <local1:PrescriptionUC/>
-            </DataTemplate>
-
             <DataTemplate DataType="{x:Type ViewModels:AddNewMedicineUC_VM}">
                 <local1:AddNewMedicineUC/>
             </DataTemplate>
@@ -72,7 +68,23 @@
                 <local1:MedicineAdminSideUC/>
             </DataTemplate>
 
-
+            <DataTemplate DataType="{x:Type ViewModels:VisitUC_VM}">
+                <local1:VisitUC/>
+            </DataTemplate>
+            
+            
+            
+            <Style x:Key="HeaderFont" TargetType="GroupBox">
+                <Setter Property="FontWeight" Value="UltraBlack"/>
+                <Setter Property="BorderThickness" Value="0"/>
+            </Style>
+            <Style x:Key="TitleFont" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="UltraBlack"/>
+            </Style>
+            <Style x:Key="ContentFont" TargetType="TextBlock">
+                <Setter Property="FontWeight" Value="Normal"/>
+            </Style>
+           
             <system1:Double x:Key="IconSize">20</system1:Double>
             <system1:Double x:Key="FontSize">20</system1:Double>
             <system1:Double x:Key="ImageProfileHeigt">60</system1:Double>

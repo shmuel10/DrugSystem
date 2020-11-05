@@ -98,6 +98,21 @@
     <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
       <HintPath>..\packages\PDFsharp.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
     </Reference>
+    <Reference Include="Syncfusion.Compression.Base, Version=18.3460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Compression.Base.18.3.0.44\lib\net46\Syncfusion.Compression.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Licensing, Version=18.3460.0.44, Culture=neutral, PublicKeyToken=632609b4d040f6b4, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Licensing.18.3.0.44\lib\net46\Syncfusion.Licensing.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Pdf.Base, Version=18.3460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Pdf.Wpf.18.3.0.44\lib\net46\Syncfusion.Pdf.Base.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.PdfViewer.WPF, Version=18.3460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.PdfViewer.WPF.18.3.0.44\lib\net46\Syncfusion.PdfViewer.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="Syncfusion.Shared.WPF, Version=18.3460.0.44, Culture=neutral, PublicKeyToken=3d67ed1f87d44c89, processorArchitecture=MSIL">
+      <HintPath>..\packages\Syncfusion.Shared.WPF.18.3.0.44\lib\net46\Syncfusion.Shared.WPF.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Configuration" />
@@ -162,7 +177,7 @@
     <Compile Include="Models\NewVisitUC_M.cs" />
     <Compile Include="Models\OfficerAdminSide_M.cs" />
     <Compile Include="Models\PatientAdminSideUC_M.cs" />
-    <Compile Include="Models\PrescriptionUC_M.cs" />
+    <Compile Include="Models\VisitUC_M.cs" />
     <Compile Include="ToolsFolder\CurrentElements.cs" />
     <Compile Include="Models\AddNewPatientUC_M.cs" />
     <Compile Include="Models\PatientUC_M.cs" />
@@ -182,7 +197,8 @@
     <Compile Include="ViewModels\OfficerAdminSideUC_VM.cs" />
     <Compile Include="ViewModels\PatientAdminSideUC_VM.cs" />
     <Compile Include="ViewModels\PatientUC_VM.cs" />
-    <Compile Include="ViewModels\PrescriptionUC_VM.cs" />
+    <Compile Include="ViewModels\PdfViwerUC_VM.cs" />
+    <Compile Include="ViewModels\VisitUC_VM.cs" />
     <Compile Include="Views\AddNewDoctorUC.xaml.cs">
       <DependentUpon>AddNewDoctorUC.xaml</DependentUpon>
     </Compile>
@@ -215,8 +231,8 @@
     <Compile Include="Views\PatientUC.xaml.cs">
       <DependentUpon>PatientUC.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Views\PrescriptionUC.xaml.cs">
-      <DependentUpon>PrescriptionUC.xaml</DependentUpon>
+    <Compile Include="Views\PdfViewerUC.xaml.cs">
+      <DependentUpon>PdfViewerUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ShellUC.xaml.cs">
       <DependentUpon>ShellUC.xaml</DependentUpon>
@@ -256,6 +272,9 @@
       <DependentUpon>SearchLineUC.xaml</DependentUpon>
     </Compile>
     <Compile Include="ToolsFolder\WpfToPdf.cs" />
+    <Compile Include="Views\VisitUC.xaml.cs">
+      <DependentUpon>VisitUC.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\AddNewDoctorUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -296,7 +315,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Views\PrescriptionUC.xaml">
+    <Page Include="Views\PdfViewerUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -343,6 +362,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\SearchLineUC.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VisitUC.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

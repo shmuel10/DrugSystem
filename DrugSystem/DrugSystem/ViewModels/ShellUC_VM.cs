@@ -50,7 +50,6 @@ namespace DrugSystem.ViewModels
                 {
 
                     Background = new BrushConverter().ConvertFromString("#41506C") as SolidColorBrush;
-                   // Background = Brushes.Black;
                     Foreground = Brushes.WhiteSmoke;
                 }
                 else

@@ -12,18 +12,19 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using DrugSystem.ViewModels;
 
 namespace DrugSystem.Views
 {
     /// <summary>
-    /// Interaction logic for PrescriptionUC.xaml
+    /// Interaction logic for VisitUC.xaml
     /// </summary>
-    public partial class PrescriptionUC : UserControl
+    public partial class VisitUC : UserControl
     {
-        public PrescriptionUC()
+        public VisitUC()
         {
             InitializeComponent();
-            DataContext = new PrescriptionUC();
+            DataContext = new VisitUC_VM();
         }
     }
 }

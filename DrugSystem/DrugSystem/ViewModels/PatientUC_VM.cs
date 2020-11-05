@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -33,11 +34,49 @@ namespace DrugSystem.ViewModels
         public PatientUC_VM()
         {
             CurrentPatient = ((App)System.Windows.Application.Current).CurrentElements.PatientSelected;
-            _patientUC_M = new PatientUC_M(CurrentPatient.ID);
+            _patientUC_M = new PatientUC_M(CurrentPatient?.ID);
             Visits = _patientUC_M.Visits;
             Prescriptions = _patientUC_M.Prescriptions;
+         }
+
+        Visit _oldVisitSelected;
+        public Visit OldVisitSelected {
+            get { return _oldVisitSelected; }
+            set {
+                _oldVisitSelected = value;
+                ((App)System.Windows.Application.Current).CurrentElements.VisitSelected = value;
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell = new VisitUC_VM();
+            }
         }
 
+        Prescription _presSelected;
+        public Prescription PresSelected { get { return _presSelected; }
+            set {
+                _presSelected = value;
+
+                //Pdf = @"C:/Users/User/source/repos/DrugSystem/DrugSystem/DrugSystem/bin/Debug/prescription_305974966.pdf";
+                string pdfPath = @"..\..\.." + @"prescription_" + @value.PrescriptionID + @".pdf";
+                if (File.Exists(pdfPath))
+                {
+                    string tempPath = System.IO.Path.GetTempFileName();
+                    File.Copy(pdfPath, tempPath, true);
+                    Pdf = tempPath;
+                   
+                }
+                
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PresSelected"));
+            }
+        }
+
+
+        string _pdf;
+        public string Pdf { get { return _pdf; }
+            set {
+                _pdf = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Pdf"));
+            }
+        }
+     
         public event PropertyChangedEventHandler PropertyChanged;
         private Patient _currentPatient;
         public Patient CurrentPatient {

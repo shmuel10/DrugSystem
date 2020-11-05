@@ -37,6 +37,5 @@ namespace DrugSystem.ViewModels
         {
             _addNewOfficerUC_M.AddNewOfficer(newOfficer);
         }
-
     }
 }

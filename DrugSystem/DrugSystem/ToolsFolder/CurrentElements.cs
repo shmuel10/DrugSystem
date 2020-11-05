@@ -31,13 +31,13 @@ namespace DrugSystem
             CurrentUser = new User();
             CurrentViewModel = new LoginUC_VM();
             StackOnShell = new Stack<INotifyPropertyChanged>();
-            PatientSelected = new Patient();
         }
 
         public Doctor DoctorSelected { get; set; }
         public Patient PatientSelected { get; set; }
         public Officer OfficerSelected { get; set; }
         public Medicine MedicineSelected { get; set; }
+        public Visit VisitSelected { get; set; }
         public User CurrentUser {
             get { return _currentUser; }
             set {

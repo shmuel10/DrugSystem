@@ -14,7 +14,7 @@ using PdfSharp.Pdf;
 namespace DrugSystem
 {
     public class WpfToPdf
-    {
+    { 
         public WpfToPdf(Prescription prescription)
         {
             PdfDocument pdf = new PdfDocument();
@@ -25,7 +25,7 @@ namespace DrugSystem
             graph.DrawString("Prescription" + prescription.PrescriptionID, font, XBrushes.Black, new XRect(0, 0, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.TopCenter);
             graph.DrawString(prescription.StartDate.ToString(), font, XBrushes.Black, new XRect(0, 0, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.Center);
             graph.DrawString("This is my first PDF document", font, XBrushes.Black, new XRect(0, 0, pdfPage.Width.Point, pdfPage.Height.Point), XStringFormats.Center);
-            string pdfFilename = "prescription_" + prescription.PatientID+ ".pdf";
+            string pdfFilename = "prescription_" + prescription.PrescriptionID + ".pdf";
             pdf.Save(pdfFilename);
             Process.Start(pdfFilename);
         }

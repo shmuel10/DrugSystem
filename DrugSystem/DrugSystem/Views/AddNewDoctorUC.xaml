@@ -40,7 +40,7 @@
     <Viewbox>
         <ScrollViewer Margin="20 0 20 0" FlowDirection="RightToLeft" Height="150" Width="250">
             <StackPanel>
-                <Border BorderBrush="LightGray" Height="{StaticResource ImageProfileHeigt}" Width="{StaticResource ImageProfileWidth}" Margin="0 5 0 0" BorderThickness="1" CornerRadius="60">
+                  <Border BorderBrush="LightGray" Height="{StaticResource ImageProfileHeigt}" Width="{StaticResource ImageProfileWidth}" Margin="0 5 0 0" BorderThickness="1" CornerRadius="60">
                     <Ellipse x:Name="MenuIcon" Visibility="Visible">
                         <Ellipse.Fill>
                             <ImageBrush ImageSource="{Binding ImageSrc}"/>

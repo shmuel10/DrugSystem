@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -44,10 +45,13 @@ namespace DrugSystem.ViewModels
                 interactionList = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, SelectedMedName, SelectedMedicineCode);
                 if (interactionList != null)
                 {
+                    _interactionsMedicinesNames.Add("קיימת התנגשות עם");
+                    _interactionsMedicinesNames.Add("אקמול");
                     foreach (string item in interactionList)
                     {
                         _interactionsMedicinesNames.Add(item);
                     }
+                    IteractionMedicineVisibility = true;
                     PropertyChanged(this, new PropertyChangedEventArgs("InteractionsMedicinesNames"));
                 }
             }
@@ -82,9 +86,19 @@ namespace DrugSystem.ViewModels
             {
                 CurrentPatient = ((App)Application.Current).CurrentElements.PatientSelected;
             }
-            SearchFontSize = 10;
+           
             _medsCollectionView = CollectionViewSource.GetDefaultView(Medicines);
             _medsCollectionView.Filter = ListsFilter;
+
+            IteractionMedicineVisibility = false;
+        }
+
+        bool _redBorder;
+        public bool IteractionMedicineVisibility { get { return _redBorder; }
+            set {
+                _redBorder = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IteractionMedicineVisibility"));
+            }
         }
 
         ICollectionView _medsCollectionView;
@@ -117,8 +131,7 @@ namespace DrugSystem.ViewModels
                 return ((item as string).IndexOf(Search, StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
-    
-        public double SearchFontSize { get; set; }
+   
         public Patient CurrentPatient {
             get { return _currentPatient; }
             set {
