@@ -36,16 +36,17 @@ namespace DrugSystem
             string str = Assembly.GetExecutingAssembly().Location;
             string localPath = Path.GetDirectoryName(str);
             for (int i = 0; i < 2; i++)
+            {
                 localPath = Path.GetDirectoryName(localPath);
-            string p = localPath;
-            XImage xImage = XImage.FromFile(p+@"\Icons\med.jpg");
+            }
+            XImage xImage = XImage.FromFile(localPath + @"\Icons\med.jpg");
             graph.DrawImage(xImage, 100, 20, 40, 40);
             graph.DrawString("Prescription Number: " + prescription.PrescriptionID, font1, XBrushes.Black, 150, 40);
             graph.DrawLine(XPens.DarkRed, 20, 70, pdfPage.Width - 20, 70);
             graph.DrawString("Patient ID: " + prescription.PatientID, font2, XBrushes.Black, 100, 100);
             graph.DrawString("Patient Name: " + patient.FirstName + " " + patient.LastName, font2, XBrushes.Black, 100, 125);
             graph.DrawLine(XPens.DeepSkyBlue, 70, 150, pdfPage.Width - 70, 150);
-            graph.DrawString("Doctor ID: " + prescription.DoctorID, font2, XBrushes.Black, 100, 175);
+            graph.DrawString("Doctor ID: " + doctor.LicenceNumber, font2, XBrushes.Black, 100, 175);
             graph.DrawString("Doctor Name: " + doctor.FirstName + " " + doctor.LastName, font2, XBrushes.Black, 100, 200);
             graph.DrawLine(XPens.DeepSkyBlue, 70, 225, pdfPage.Width - 70, 225);
             graph.DrawString("Medicine Code: " + prescription.MedicineCode, font2, XBrushes.Black, 100, 250);
@@ -55,11 +56,11 @@ namespace DrugSystem
             graph.DrawString("Expire Date: " + prescription.ExpireDate, font2, XBrushes.Black, 100, 350);
             graph.DrawLine(XPens.DeepSkyBlue, 70, 375, pdfPage.Width - 70, 375);
             graph.DrawLine(XPens.DarkRed, 20, pdfPage.Height - 70, pdfPage.Width - 20, pdfPage.Height - 70);
-            graph.DrawString("Created By Shmuel Vazana's & Simcha podolsky's Drug System", font3, XBrushes.Green, 130, pdfPage.Height - 40);
+            graph.DrawString("Created By Shmuel Vazana's & Simcha Podolsky's Drug System", font3, XBrushes.Green, 130, pdfPage.Height - 40);
 
-            string pdfFilename = "prescription_" + prescription.PatientID+ "_" + prescription.PrescriptionID + ".pdf";
+            string pdfFilename = localPath + @"\PrescriptionsPdf\" + "prescription_" + prescription.PatientID+ "_" + prescription.PrescriptionID + ".pdf";
             pdf.Save(pdfFilename);
-            Process.Start(pdfFilename);
+            //Process.Start(pdfFilename);
         }
     }
 }
