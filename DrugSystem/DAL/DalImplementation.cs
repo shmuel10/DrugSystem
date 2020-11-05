@@ -30,7 +30,7 @@ namespace DAL
                     CanAddPatient = true,
                     CanCreatePrescriptions = false,
                     City = "Netanya",
-                    EmailAddress = "yossi@gmail.com",
+                    EmailAddress = "admin@gmail.com",
                     FirstName = "Yossi",
                     Gender = Gender.זכר,
                     ID = "311215149",
