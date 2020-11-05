@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -56,9 +57,15 @@ namespace DrugSystem.ViewModels
                 string pdfPath = @"..\.." + @"\PrescriptionsPdf\" + @"prescription_" + @value.PatientID + @"_" + @value.PrescriptionID + @".pdf";
                 if (File.Exists(pdfPath))
                 {
-                    string tempPath = System.IO.Path.GetTempPath() + ".pdf";
-                    File.Copy(pdfPath, tempPath, true);
-                    Pdf = tempPath;                   
+                    try
+                    {
+                        string tempPath = System.IO.Path.GetTempPath() + ".pdf";
+                        File.Copy(pdfPath, tempPath, true);
+                        Pdf = tempPath;
+                    }catch (IOException)
+                    {
+                        Process.Start(pdfPath);
+                    }
                 }
                 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PresSelected"));

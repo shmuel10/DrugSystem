@@ -46,7 +46,7 @@ namespace DrugSystem
             graph.DrawString("Patient ID: " + prescription.PatientID, font2, XBrushes.Black, 100, 100);
             graph.DrawString("Patient Name: " + patient.FirstName + " " + patient.LastName, font2, XBrushes.Black, 100, 125);
             graph.DrawLine(XPens.DeepSkyBlue, 70, 150, pdfPage.Width - 70, 150);
-            graph.DrawString("Doctor ID: " + doctor.LicenceNumber, font2, XBrushes.Black, 100, 175);
+            graph.DrawString("Doctor Licence Number: " + doctor.LicenceNumber, font2, XBrushes.Black, 100, 175);
             graph.DrawString("Doctor Name: " + doctor.FirstName + " " + doctor.LastName, font2, XBrushes.Black, 100, 200);
             graph.DrawLine(XPens.DeepSkyBlue, 70, 225, pdfPage.Width - 70, 225);
             graph.DrawString("Medicine Code: " + prescription.MedicineCode, font2, XBrushes.Black, 100, 250);
