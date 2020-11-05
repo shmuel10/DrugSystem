@@ -53,15 +53,12 @@ namespace DrugSystem.ViewModels
         public Prescription PresSelected { get { return _presSelected; }
             set {
                 _presSelected = value;
-
-                //Pdf = @"C:/Users/User/source/repos/DrugSystem/DrugSystem/DrugSystem/bin/Debug/prescription_305974966.pdf";
-                string pdfPath = @"..\..\.." + @"prescription_" + @value.PrescriptionID + @".pdf";
+                string pdfPath = @"..\.." + @"\PrescriptionsPdf\" + @"prescription_" + @value.PatientID + @"_" + @value.PrescriptionID + @".pdf";
                 if (File.Exists(pdfPath))
                 {
-                    string tempPath = System.IO.Path.GetTempFileName();
+                    string tempPath = System.IO.Path.GetTempPath() + ".pdf";
                     File.Copy(pdfPath, tempPath, true);
-                    Pdf = tempPath;
-                   
+                    Pdf = tempPath;                   
                 }
                 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("PresSelected"));

@@ -40,7 +40,7 @@ namespace DrugSystem.Command
                 if (CurrentVM is AddNewDoctorUC_VM)
                 {
                     string doctorID = ((AddNewDoctorUC_VM)CurrentVM).newDoctor.ID;
-                    string picturePath = @"..\..\.." + @"\" + doctorID + @".JPG";
+                    string picturePath = @"..\..\ProfilePictures" + @"\" + doctorID + @".JPG";
                     ((AddNewDoctorUC_VM)CurrentVM).newDoctor.ProfileImagePath = picturePath;
                     ((AddNewDoctorUC_VM)CurrentVM).newDoctor.ProfileImageSrc = op.FileName;
                     ((AddNewDoctorUC_VM)CurrentVM).ImageSrc = op.FileName;
@@ -48,7 +48,7 @@ namespace DrugSystem.Command
                 else if (CurrentVM is DoctorAdminSideUC_VM)
                 {
                     string doctorID = ((DoctorAdminSideUC_VM)CurrentVM).DoctorForUpdate.ID;
-                    string picturePath = @"..\..\.." + @"\" + doctorID + @".JPG";
+                    string picturePath = @"..\..\ProfilePictures" + @"\" + doctorID + @".JPG";
                     ((DoctorAdminSideUC_VM)CurrentVM).DoctorForUpdate.ProfileImagePath = picturePath;
                     ((DoctorAdminSideUC_VM)CurrentVM).DoctorForUpdate.ProfileImageSrc = op.FileName;
                     ((DoctorAdminSideUC_VM)CurrentVM).ImageSrc = new BitmapImage(new Uri(op.FileName));
@@ -56,14 +56,14 @@ namespace DrugSystem.Command
                 else if (CurrentVM is AddNewMedicineUC_VM)
                 {
                     string medID = ((AddNewMedicineUC_VM)CurrentVM).newMedicine.MedicineID;
-                    string picturePath = @"..\..\.." + @"\" + medID + @".JPG";
+                    string picturePath = @"..\..\ProfilePictures" + @"\" + medID + @".JPG";
                     ((AddNewMedicineUC_VM)CurrentVM).newMedicine.ProfileImagePath = picturePath;
                     ((AddNewMedicineUC_VM)CurrentVM).newMedicine.ProfileImageSrc = op.FileName;
                     ((AddNewMedicineUC_VM)CurrentVM).ImageSrc = op.FileName;
                 }else if(CurrentVM is AddNewOfficerUC_VM)
                 {
                     string officerID = ((AddNewOfficerUC_VM)CurrentVM).newOfficer.ID;
-                    string picturePath = @"..\..\.." + @"\" + officerID + @".JPG";
+                    string picturePath = @"..\..\ProfilePictures" + @"\" + officerID + @".JPG";
                     ((AddNewOfficerUC_VM)CurrentVM).newOfficer.ProfileImagePath = picturePath;
                     ((AddNewOfficerUC_VM)CurrentVM).newOfficer.ProfileImageSrc = op.FileName;
                     ((AddNewOfficerUC_VM)CurrentVM).ImageSrc = op.FileName;
