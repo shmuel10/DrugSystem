@@ -14,6 +14,7 @@ namespace DrugSystem.ViewModels
         VisitUC_M _visitUC_M;
         public event PropertyChangedEventHandler PropertyChanged;
         public Visit OldVisit { get; set; }
+        public Prescription TreatOfOldVisit { get; set; }
         public Patient Patient { get; set; }
 
         public VisitUC_VM()
@@ -21,6 +22,7 @@ namespace DrugSystem.ViewModels
             _visitUC_M = new VisitUC_M();
             OldVisit = ((App)System.Windows.Application.Current).CurrentElements.VisitSelected;
             Patient = _visitUC_M.GetPatientByID(OldVisit?.PatientID);
+            TreatOfOldVisit = _visitUC_M.GetPrescriptionByNum(OldVisit.VisitID);
         }
     }
 }

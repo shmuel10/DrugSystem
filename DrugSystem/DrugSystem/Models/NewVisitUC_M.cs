@@ -38,5 +38,11 @@ namespace DrugSystem.Models
             string result = BL.GetMedicineCodeByName(genericName);
             return result;
         }
+
+        public string GeneratePrescriptionSerialNumber()
+        {
+            string result = BL.GeneratePrescriptionSerialNumber();
+            return result;
+        }
     }
 }

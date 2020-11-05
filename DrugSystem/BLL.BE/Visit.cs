@@ -19,5 +19,6 @@ namespace BLL.BE
         public DateTime VisitDate { get; set; }
         public string VisitReason { get; set; }
         public string VisitConclusion { get; set; }
+        public string PrescriptionID { get; set; }
     }
 }

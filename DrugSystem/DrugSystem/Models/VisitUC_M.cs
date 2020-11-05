@@ -21,5 +21,10 @@ namespace DrugSystem.Models
         {
             return Bll.GetPatient(patientID);
         }
+
+        public Prescription GetPrescriptionByNum(string presNum)
+        {
+            return Bll.GetAllPrescriptions().Where(x => x.PrescriptionID == presNum).FirstOrDefault();
+        }
     }
 }

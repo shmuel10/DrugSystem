@@ -150,17 +150,17 @@ namespace BLL
         //Visits DB
         public void AddVisit(Visit visit)
         {
-            if (dal.GetAllVisits().Count == 0)
-            {
-                Random random = new Random();
-                string visitID = Convert.ToString(random.Next(2345465, 999999999));
-                visit.VisitID = visitID;
-            }
-            else
-            {
-                int max = Int32.Parse(dal.GetAllPrescriptions().Max(x => x.PrescriptionID));
-                visit.VisitID = Convert.ToString(max + 1);
-            }
+            //if (dal.GetAllVisits().Count == 0)
+            //{
+            //    Random random = new Random();
+            //    string visitID = Convert.ToString(random.Next(2345465, 999999999));
+            //    visit.VisitID = visitID;
+            //}
+            //else
+            //{
+            //    int max = Int32.Parse(dal.GetAllPrescriptions().Max(x => x.PrescriptionID));
+            //    visit.VisitID = Convert.ToString(max + 1);
+            //}
             dal.AddVisit(visit);
         }
         public List<Visit> GetAllVisits()
@@ -181,17 +181,17 @@ namespace BLL
         {
             try
             {
-                if (dal.GetAllPrescriptions().Count == 0)
-                {
-                    Random random = new Random();
-                    string prescriptionID = Convert.ToString(random.Next(2345465, 999999999));
-                    prescription.PrescriptionID = prescriptionID;
-                }
-                else
-                {
-                    int max = Int32.Parse(dal.GetAllPrescriptions().Max(x => x.PrescriptionID));
-                    prescription.PrescriptionID = Convert.ToString(max + 1);
-                }
+                //if (dal.GetAllPrescriptions().Count == 0)
+                //{
+                //    Random random = new Random();
+                //    string prescriptionID = Convert.ToString(random.Next(2345465, 999999999));
+                //    prescription.PrescriptionID = prescriptionID;
+                //}
+                //else
+                //{
+                //    int max = Int32.Parse(dal.GetAllPrescriptions().Max(x => x.PrescriptionID));
+                //    prescription.PrescriptionID = Convert.ToString(max + 1);
+                //}
                 validations.ValidatePrescription(prescription);
                 dal.AddPrescription(prescription);
             }
@@ -207,6 +207,20 @@ namespace BLL
         public List<Prescription> GetPatientsPrescriptions(string PatientID)
         {
             return dal.GetPatientsPrescriptions(PatientID);
+        }
+        public string GeneratePrescriptionSerialNumber()
+        {
+            string prescriptionID;
+            if (dal.GetAllPrescriptions().Count == 0)
+            {
+                Random random = new Random();
+                prescriptionID = Convert.ToString(random.Next(2345465, 999999999));               
+            }
+            else
+            {
+                prescriptionID = Convert.ToString(Int32.Parse(dal.GetAllPrescriptions().Max(x => x.PrescriptionID)) + 1);               
+            }
+            return prescriptionID;
         }
 
         //Medicines DB

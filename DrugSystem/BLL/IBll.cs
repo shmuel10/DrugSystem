@@ -44,6 +44,7 @@ namespace BLL
         void AddPrescription(Prescription prescription);
         List<Prescription> GetAllPrescriptions();
         List<Prescription> GetPatientsPrescriptions(string PatientID);
+        string GeneratePrescriptionSerialNumber();
 
         //Medicines DB
         void AddMedicine(Medicine medicine);

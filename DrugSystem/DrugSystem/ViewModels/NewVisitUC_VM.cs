@@ -151,14 +151,21 @@ namespace DrugSystem.ViewModels
         public void SavePrescription()
         {
             Doctor doctor = ((App)System.Windows.Application.Current).CurrentElements.CurrentUser as Doctor;
-            _prescription.DoctorID = doctor.ID;
-            _prescription.ExpireDate = DateTime.Now.AddDays(90);
-            _prescription.PatientID = _currentPatient.ID;
-            _prescription.StartDate = DateTime.Now;
-            _prescription.MedicineCode = SelectedMedicineCode;
-            _prescription.Instructions = MedicalCare;
-            _newVisitUC_M.AddPrescription(_prescription);
+            string serialNuber = _newVisitUC_M.GeneratePrescriptionSerialNumber();
+            if (MedicalCare.Length > 0)
+            {
+                _prescription.DoctorID = doctor.ID;
+                _prescription.ExpireDate = DateTime.Now.AddDays(90);
+                _prescription.PatientID = _currentPatient.ID;
+                _prescription.StartDate = DateTime.Now;
+                _prescription.MedicineCode = SelectedMedicineCode;
+                _prescription.Instructions = MedicalCare;
+                _prescription.PrescriptionID = serialNuber;
+                _newVisitUC_M.AddPrescription(_prescription);
+            }
+            NewVisit.VisitID = serialNuber;
             NewVisit.DoctorID = doctor.ID;
+            NewVisit.PrescriptionID = serialNuber;
             NewVisit.PatientID = _currentPatient.ID;
             NewVisit.VisitDate = DateTime.Now;
             _newVisitUC_M.AddVisit(NewVisit);

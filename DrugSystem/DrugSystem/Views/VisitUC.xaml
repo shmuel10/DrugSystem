@@ -110,8 +110,14 @@
                     </materialDesign:Card>
                     <materialDesign:Card Margin="5" UniformCornerRadius="20" Style="{StaticResource BackAndForegCard}">
                         <GroupBox Style="{StaticResource HeaderFont}" Header="טיפול" MinHeight="100" Margin="0 10 0 0">
-                            <TextBox x:Name="Meds" FontWeight="Normal" AcceptsReturn="True" Width="470" 
-                                         Text="{Binding Source=OldVisit, Path=VisitConclusion}"/>
+                            <TextBox x:Name="Meds" FontWeight="Normal" AcceptsReturn="True" Style="{StaticResource TextBoxStyle}" Width="470">
+                                <TextBox.Text>
+                                    <MultiBinding StringFormat="{}{0} {1}">
+                                        <Binding Path="OldVisit.VisitConclusion"/>
+                                        <Binding Path="TreatOfOldVisit.Instructions"/>
+                                    </MultiBinding>
+                                </TextBox.Text>
+                            </TextBox>
                         </GroupBox>
                     </materialDesign:Card>
                 </StackPanel>
