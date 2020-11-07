@@ -193,6 +193,7 @@
     <Compile Include="Converters\BoolToVisibilityConverter.cs" />
     <Compile Include="Converters\ConctenateStringConverter.cs" />
     <Compile Include="Converters\ListToStringConverter.cs" />
+    <Compile Include="Converters\InverseAndBooleansToBooleanConverter.cs" />
     <Compile Include="Models\AddNewMedicineUC_M.cs" />
     <Compile Include="Models\DoctorAdminSideUC_M.cs" />
     <Compile Include="Models\MedicineAdminSide_M.cs" />

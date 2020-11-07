@@ -63,7 +63,7 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="PhoneTextBox" MaxLength="{StaticResource PhoneLength}" materialDesign:HintAssist.Hint="טלפון" materialDesign:ValidationAssist.Suppress="True" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="PhoneTextBox"  MaxLength="{StaticResource PhoneLength}" materialDesign:HintAssist.Hint="טלפון" materialDesign:ValidationAssist.Suppress="True" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newPatient.PhoneNumber" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -100,7 +100,7 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="FamilyDoctorBox" materialDesign:HintAssist.Hint="רופא משפחה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="FamilyDoctorBox" materialDesign:HintAssist.Hint="רופא משפחה" materialDesign:ValidationAssist.Suppress="True" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newPatient.FamilyDoctor" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -111,7 +111,7 @@
                 </TextBox>
                 <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=Gender}" SelectedItem="{Binding Path=newDoctor.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
 
-                <TextBox x:Name="CityTextBox" materialDesign:HintAssist.Hint="עיר"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="CityTextBox" materialDesign:HintAssist.Hint="עיר" materialDesign:ValidationAssist.Suppress="True" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newPatient.City" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -120,7 +120,7 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="StreetTextBox" materialDesign:HintAssist.Hint="רחוב"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="StreetTextBox" materialDesign:HintAssist.Hint="רחוב" materialDesign:ValidationAssist.Suppress="True" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newPatient.Street" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -129,7 +129,7 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="BuildingNumberTextBox" materialDesign:HintAssist.Hint="מספר בית"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="BuildingNumberTextBox" materialDesign:HintAssist.Hint="מספר בית" materialDesign:ValidationAssist.Suppress="True" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newPatient.BuildingNumber" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
