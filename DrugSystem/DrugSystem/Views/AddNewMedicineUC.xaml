@@ -18,10 +18,42 @@
             </Border>
             <Button Height="10" Width="30" ToolTip="בחר תמונה" Content="בחר תמונה" FontSize="5" Margin="5" Style="{x:Null}" 
                         Command="{Binding FileDialogCommand}" Background="Transparent" BorderBrush="Transparent"/>
-            <TextBox x:Name="CommercialName" Width="150" Text="{Binding Path=newMedicine.CommercialName}" materialDesign:HintAssist.Hint="שם מסחרי" Margin="5 10" />
-            <TextBox x:Name="GenericName" Width="150" Text="{Binding Path=newMedicine.GenericName}" materialDesign:HintAssist.Hint="שם גנרי" Margin="5"/>
-            <TextBox x:Name="Manufacturer" Width="150" Text="{Binding Path=newMedicine.Manufacturer}" materialDesign:HintAssist.Hint="יצרן" Margin="5"/>
-            <TextBox x:Name="ActiveIngredient" Width="150" Text="{Binding Path=newMedicine.ActiveIngredient}" materialDesign:HintAssist.Hint="חומר פעיל" Margin="5"/>
+            <TextBox materialDesign:ValidationAssist.Suppress="True" x:Name="CommercialName" Width="150" materialDesign:HintAssist.Hint="שם מסחרי" Margin="5 10">
+            <TextBox.Text>
+                    <Binding Path="newMedicine.CommercialName" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            </TextBox>
+            <TextBox materialDesign:ValidationAssist.Suppress="True" x:Name="GenericName" Width="150" materialDesign:HintAssist.Hint="שם גנרי" Margin="5">
+                <TextBox.Text>
+                    <Binding Path="newMedicine.GenericName" UpdateSourceTrigger="PropertyChanged">
+                        <Binding.ValidationRules>
+                            <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+            <TextBox materialDesign:ValidationAssist.Suppress="True" x:Name="Manufacturer" Width="150" materialDesign:HintAssist.Hint="יצרן" Margin="5">
+            <TextBox.Text>
+                    <Binding Path="newMedicine.Manufacturer" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            </TextBox>
+            <TextBox materialDesign:ValidationAssist.Suppress="True" x:Name="ActiveIngredient" Width="150" materialDesign:HintAssist.Hint="חומר פעיל" Margin="5">
+            <TextBox.Text>
+                    <Binding Path="newMedicine.ActiveIngredient" UpdateSourceTrigger="PropertyChanged">
+                    <Binding.ValidationRules>
+                        <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            </TextBox>
             <TextBlock x:Name="MedicineCode" Width="150" IsEnabled="False" Text="{Binding MedicineCode, Mode=TwoWay}" materialDesign:HintAssist.Hint="קוד תרופה" Margin="5"/>
             <Button Content="הוסף" FontSize="5" Height="15" Command="{Binding CreateNewMedicineCommand}" CommandParameter="{Binding ElementName=GenericName, Path=Text}" Width="60"  Margin="10 10 10 20"/>
         </StackPanel>

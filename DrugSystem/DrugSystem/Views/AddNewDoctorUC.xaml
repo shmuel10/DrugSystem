@@ -6,12 +6,14 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:DrugSystem.Views" 
              xmlns:system1="clr-namespace:System;assembly=mscorlib" 
-             xmlns:local1="clr-namespace:DrugSystem"
+             xmlns:local1="clr-namespace:DrugSystem" xmlns:local11="clr-namespace:DrugSystem.Converters"
              mc:Ignorable="d" 
              x:Name="AddNewDocUC">
 
     <UserControl.Resources>
         <system1:Double x:Key="FontSize">6</system1:Double>
+        <local11:MultyStringToArrConverter x:Key="MultyStringConverter"/>
+        <local11:MultyStringToArrConverter x:Key="InverseAndBooleansToBooleanConverter"/>
         <Style TargetType="{x:Type DatePicker}" x:Key="datePickerGeneralStyle" BasedOn="{StaticResource {x:Type DatePicker}}">
             <Setter Property="TextElement.FontSize" Value="{StaticResource FontSize}" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -36,7 +38,7 @@
             </Setter>
         </Style>
     </UserControl.Resources>
-    <Viewbox>
+    <Viewbox x:Name="NewDoctorViewBox">
         <ScrollViewer Margin="20 0 20 0" FlowDirection="RightToLeft" Height="150" Width="250">
             <StackPanel>
                   <Border BorderBrush="LightGray" Height="{StaticResource ImageProfileHeigt}" Width="{StaticResource ImageProfileWidth}" Margin="0 5 0 0" BorderThickness="1" CornerRadius="60">
@@ -53,12 +55,12 @@
                     <TextBox.Text>
                         <Binding Path="newDoctor.ID" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:IDValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:IDValidation x:Name="IDValid" ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="FirsNameTextBox" materialDesign:HintAssist.Hint="שם פרטי"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="FirsNameTextBox"  materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="שם פרטי"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.FirstName" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -67,7 +69,7 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="LastNameTextBox" materialDesign:HintAssist.Hint="שם משפחה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="LastNameTextBox"  materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="שם משפחה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.LastName" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -76,29 +78,29 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="PasswordTextBox" materialDesign:HintAssist.Hint="סיסמה"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="PasswordTextBox" materialDesign:HintAssist.Hint="סיסמה"  materialDesign:ValidationAssist.Suppress="True" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.Password" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:PasswordLogInValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="PhoneTextBox" materialDesign:HintAssist.Hint="טלפון" MaxLength="{StaticResource PhoneLength}"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="PhoneTextBox"  materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="טלפון" MaxLength="{StaticResource PhoneLength}"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.PhoneNumber" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:PhoneNumberValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="MailTextBox" materialDesign:HintAssist.Hint="אימייל"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="MailTextBox"  materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="אימייל"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.EmailAddress" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:EmailAddressValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -106,7 +108,7 @@
                 <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=newDoctor.BirthDate, Mode=OneWayToSource}"  DisplayDate="{x:Static system1:DateTime.Now}" materialDesign:HintAssist.Hint="תאריך לידה" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}"/>
                 <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=Gender}" SelectedItem="{Binding Path=newDoctor.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
 
-                <TextBox x:Name="LicenceNumTextBox" materialDesign:HintAssist.Hint="מספר רשיון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="LicenceNumTextBox"  materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="מספר רשיון"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.LicenceNumber" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -115,7 +117,7 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="CityTextBox" materialDesign:HintAssist.Hint="עיר"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="CityTextBox" materialDesign:HintAssist.Hint="עיר" materialDesign:ValidationAssist.Suppress="True"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.City" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -124,7 +126,7 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="StreetTextBox" materialDesign:HintAssist.Hint="רחוב"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="StreetTextBox" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="רחוב"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.Street" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -133,7 +135,7 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="BuildingNumberTextBox" materialDesign:HintAssist.Hint="מספר בית"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="BuildingNumberTextBox" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="מספר בית"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.BuildingNumber" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
@@ -142,11 +144,11 @@
                         </Binding>
                     </TextBox.Text>
                 </TextBox>
-                <TextBox x:Name="ExpertiseTextBox" materialDesign:HintAssist.Hint="מומחיות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="ExpertiseTextBox"  materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="מומחיות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.Specialty" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:NotEmptyValidation x:Name="SpeValid" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -157,7 +159,47 @@
                                              CanAddMedicine="{Binding ElementName=AddNewDocUC, Path=DataContext.newDoctor.CanAddMedicine, Mode=TwoWay}"
                                              FontSize="{StaticResource FontSize}" Margin="25" Width="120"/>
 
-                <Button Content="שמירה" Command="{Binding CreateNewDoctorCommand}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
+                <Button Content="שמירה" Command="{Binding CreateNewDoctorCommand}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20">
+                    <Button.Style>
+                        <Style TargetType="Button">
+                            <Setter Property="IsEnabled" Value="False"/>
+                            <Style.Triggers>
+                                <MultiDataTrigger>
+                                    <MultiDataTrigger.Conditions>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=IDTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=FirsNameTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=LastNameTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=PasswordTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=PhoneTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=MailTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=LicenceNumTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=CityTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=StreetTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=BuildingNumberTextBox}" Value="False"/>
+                                        <Condition Binding="{Binding Path=(Validation.HasError), ElementName=ExpertiseTextBox}" Value="False"/>
+                                    </MultiDataTrigger.Conditions>
+                                    <Setter Property="IsEnabled" Value="True"/>
+                                </MultiDataTrigger>
+                            </Style.Triggers>
+                        </Style>
+                    </Button.Style>
+
+                    <!--<Button.IsEnabled>
+                        <MultiBinding Converter="{StaticResource InverseAndBooleansToBooleanConverter}" Mode="TwoWay">
+                            <Binding ElementName="IDTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="FirsNameTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="LastNameTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="PasswordTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="PhoneTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="MailTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="LicenceNumTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="CityTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="StreetTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="BuildingNumberTextBox" Path="(Validation.HasError)" />
+                            <Binding ElementName="ExpertiseTextBox" Path="(Validation.HasError)" />
+                        </MultiBinding>
+                    </Button.IsEnabled>-->
+                </Button>
             </StackPanel>
         </ScrollViewer>
     </Viewbox>

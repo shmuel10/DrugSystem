@@ -62,9 +62,16 @@ namespace DrugSystem.ViewModels
                         string tempPath = System.IO.Path.GetTempPath() + ".pdf";
                         File.Copy(pdfPath, tempPath, true);
                         Pdf = tempPath;
-                    }catch (IOException)
+                    }catch (Exception)
                     {
-                        Process.Start(pdfPath);
+                        try
+                        {
+                            Process.Start(pdfPath);
+                        }
+                        catch
+                        {
+
+                        }
                     }
                 }
                 

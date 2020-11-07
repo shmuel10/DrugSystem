@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Web.UI;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using BLL.BE;
 using DrugSystem.Models;
@@ -30,6 +31,8 @@ namespace DrugSystem.Command
 
         public bool CanExecute(object parameter)
         {
+            //ValidationResult[] validations = parameter as ValidationResult[];
+
             if ((((App)System.Windows.Application.Current).CurrentElements.CurrentUser) is Administrator ||
                 ((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddDoctor)
             {

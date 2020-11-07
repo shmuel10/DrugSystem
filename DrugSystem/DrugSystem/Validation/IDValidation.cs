@@ -12,13 +12,15 @@ namespace DrugSystem.Validation
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
-            string id = value.ToString();
             string EerrorMessage = null;
-            if (id == null)
+            if (value == null)
             {
                 EerrorMessage = "ID is required";
+                return new ValidationResult(false, EerrorMessage);
             }
-            else if (id.Length != 9)
+            string id = value.ToString();
+
+            if (id.Length != 9)
             {
                 EerrorMessage = "ID Number Must Contain 9 Characters";
             }
