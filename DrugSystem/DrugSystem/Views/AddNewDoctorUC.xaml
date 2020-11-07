@@ -8,8 +8,7 @@
              xmlns:system1="clr-namespace:System;assembly=mscorlib" 
              xmlns:local1="clr-namespace:DrugSystem"
              mc:Ignorable="d" 
-             x:Name="AddNewDocUC"
-             FlowDirection="RightToLeft">
+             x:Name="AddNewDocUC">
 
     <UserControl.Resources>
         <system1:Double x:Key="FontSize">6</system1:Double>
