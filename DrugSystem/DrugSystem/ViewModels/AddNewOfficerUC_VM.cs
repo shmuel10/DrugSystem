@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 using BLL.BE;
@@ -33,9 +34,28 @@ namespace DrugSystem.ViewModels
             newOfficer = new Officer();
             ImageSrc = @"/Icons/UserIcon.jpg";
         }
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
+
         public void CreateNewOfficer()
         {
-            _addNewOfficerUC_M.AddNewOfficer(newOfficer);
+            try
+            {
+                _addNewOfficerUC_M.AddNewOfficer(newOfficer);
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            }
+            catch(Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
     }
 }

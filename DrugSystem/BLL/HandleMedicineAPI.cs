@@ -52,7 +52,7 @@ namespace BLL
             }
             catch
             {
-                throw new Exception("Error");
+                throw new Exception("לא ניתן לקבל נתונים כעת, אנא בדוק חיבור לאינטרנט");
             }
             return interactionMedicinesNames;
         }
@@ -69,7 +69,7 @@ namespace BLL
                     return properties[0].InnerText;
                 }
             }
-            throw new ArgumentException("Can't find medicine name");
+            throw new ArgumentException("לא ניתו למצוא את שם התרופה");
         }
 
         private string HttpRequest(String url)

@@ -47,7 +47,7 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            (((App)Application.Current).CurrentElements.CurrentViewModel as ShellUC_VM).StatusBar = "GGG";
+            //(((App)Application.Current).CurrentElements.CurrentViewModel as ShellUC_VM).StatusBar = "GGG";
 
             string itemToAdd = parameter as string;
             if (itemToAdd.Equals("Doctor"))

@@ -44,10 +44,27 @@ namespace DrugSystem.ViewModels
             FileDialogCommand = new OpenFileDialogCommand(this);
             Gender = _doctorAdminSideUC_M.Gender;
         }
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
         public void UpdateDoctor()
         {
-            _doctorAdminSideUC_M.UpdateDoctor(DoctorForUpdate);
+            try
+            {
+                _doctorAdminSideUC_M.UpdateDoctor(DoctorForUpdate);
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            }
+            catch(Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
         public event PropertyChangedEventHandler PropertyChanged;
     }

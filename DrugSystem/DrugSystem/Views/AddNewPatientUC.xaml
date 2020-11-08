@@ -139,6 +139,8 @@
                     </TextBox.Text>
                 </TextBox>
                 <Button Content="סיום" Command="{Binding CreateNewPatientCommand}" FontSize="{StaticResource FontSize}" Height="Auto" HorizontalAlignment="Stretch" Width="70"  Margin="10 10 10 20"/>
+                <TextBlock x:Name="ErrorMessage" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"
+                 TextWrapping="Wrap" Foreground="Red" Text="{Binding ErrorMessage, Mode=TwoWay}"/>
             </StackPanel>
         </ScrollViewer>
     </Viewbox>

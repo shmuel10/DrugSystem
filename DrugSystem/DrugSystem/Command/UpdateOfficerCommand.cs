@@ -28,8 +28,6 @@ namespace DrugSystem.Command
         public void Execute(object parameter)
         {
             ((OfficerAdminSideUC_VM)CurrentVM).UpdateOfficer();
-            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
-                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
         }
     }
 }

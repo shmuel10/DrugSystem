@@ -30,6 +30,15 @@ namespace DrugSystem.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
             } 
         }
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
+
         public AddNewDoctorUC_VM()
         {           
             _addNewDoctorUC_M = new AddNewDoctorUC_M();
@@ -44,7 +53,16 @@ namespace DrugSystem.ViewModels
 
         public void CreateNewDoctor()
         {
-            _addNewDoctorUC_M.AddNewDoctor(newDoctor);
+            try
+            {
+                _addNewDoctorUC_M.AddNewDoctor(newDoctor);
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            }
+            catch(Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
     }
 }

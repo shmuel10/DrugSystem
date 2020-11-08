@@ -56,6 +56,8 @@
             </TextBox>
             <TextBlock x:Name="MedicineCode" Width="150" IsEnabled="False" Text="{Binding MedicineCode, Mode=TwoWay}" materialDesign:HintAssist.Hint="קוד תרופה" Margin="5"/>
             <Button Content="הוסף" FontSize="5" Height="15" Command="{Binding CreateNewMedicineCommand}" CommandParameter="{Binding ElementName=GenericName, Path=Text}" Width="60"  Margin="10 10 10 20"/>
+            <TextBlock x:Name="ErrorMessage" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"
+                 TextWrapping="Wrap" Foreground="Red" Text="{Binding ErrorMessage, Mode=TwoWay}"/>
         </StackPanel>
     </Viewbox>
 </UserControl>

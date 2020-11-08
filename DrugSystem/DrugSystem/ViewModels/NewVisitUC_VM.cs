@@ -147,29 +147,46 @@ namespace DrugSystem.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ChooseMedUCVisibility"));
             }
         }
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
         public void SavePrescription()
         {
-            Doctor doctor = ((App)System.Windows.Application.Current).CurrentElements.CurrentUser as Doctor;
-            string serialNuber = _newVisitUC_M.GeneratePrescriptionSerialNumber();
-            if (MedicalCare.Length > 0)
+            try
             {
-                _prescription.DoctorID = doctor.ID;
-                _prescription.ExpireDate = DateTime.Now.AddDays(90);
-                _prescription.PatientID = _currentPatient.ID;
-                _prescription.StartDate = DateTime.Now;
-                _prescription.MedicineCode = SelectedMedicineCode;
-                _prescription.Instructions = MedicalCare;
-                _prescription.PrescriptionID = serialNuber;
-                _newVisitUC_M.AddPrescription(_prescription);
+                Doctor doctor = ((App)System.Windows.Application.Current).CurrentElements.CurrentUser as Doctor;
+                string serialNuber = _newVisitUC_M.GeneratePrescriptionSerialNumber();
+                if (MedicalCare.Length > 0)
+                {
+                    _prescription.DoctorID = doctor.ID;
+                    _prescription.ExpireDate = DateTime.Now.AddDays(90);
+                    _prescription.PatientID = _currentPatient.ID;
+                    _prescription.StartDate = DateTime.Now;
+                    _prescription.MedicineCode = SelectedMedicineCode;
+                    _prescription.Instructions = MedicalCare;
+                    _prescription.PrescriptionID = serialNuber;
+                    _newVisitUC_M.AddPrescription(_prescription);
+                }
+                NewVisit.VisitID = serialNuber;
+                NewVisit.DoctorID = doctor.ID;
+                NewVisit.PrescriptionID = serialNuber;
+                NewVisit.PatientID = _currentPatient.ID;
+                NewVisit.VisitDate = DateTime.Now;
+                _newVisitUC_M.AddVisit(NewVisit);
+                WpfToPdf wpfToPdf = new WpfToPdf(_prescription);
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
             }
-            NewVisit.VisitID = serialNuber;
-            NewVisit.DoctorID = doctor.ID;
-            NewVisit.PrescriptionID = serialNuber;
-            NewVisit.PatientID = _currentPatient.ID;
-            NewVisit.VisitDate = DateTime.Now;
-            _newVisitUC_M.AddVisit(NewVisit);
-            WpfToPdf wpfToPdf = new WpfToPdf(_prescription);
+            catch(Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
     }
 }

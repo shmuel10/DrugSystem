@@ -35,13 +35,7 @@ namespace DrugSystem.Command
         public void Execute(object parameter)
         {
             ((AddNewOfficerUC_VM)CurrentVM).CreateNewOfficer();
-            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
-                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
-            //AddNewUserWindow win = ((App)System.Windows.Application.Current).Windows.OfType<AddNewUserWindow>().FirstOrDefault();
-            //if (win != null)
-            //{
-            //    win.Close();
-            //}
+
         }
     }
 }

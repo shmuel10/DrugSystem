@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Windows.Input;
 using BLL.BE;
 using DrugSystem.Command;
@@ -32,7 +33,16 @@ namespace DrugSystem.ViewModels
 
         public void CreateNewMedicine()
         {
-            _addNewMedicineWindow_M.AddNewMedicine(newMedicine);
+            try
+            {
+                _addNewMedicineWindow_M.AddNewMedicine(newMedicine);
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            }
+            catch (Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
         //private string _medicineCode;
         public string MedicineCode {
@@ -40,6 +50,16 @@ namespace DrugSystem.ViewModels
             set {
                 newMedicine.MedicineID = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("MedicineCode"));
+            }
+        }
+
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
             }
         }
         public bool MedicineExistInXML(string MedicinesName)

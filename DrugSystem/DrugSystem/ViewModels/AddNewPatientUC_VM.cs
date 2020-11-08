@@ -27,10 +27,27 @@ namespace DrugSystem.ViewModels
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
         public void CreateNewPatient()
         {
-            _addNewPatientUC_M.AddNewPatient(newPatient);
+            try
+            {
+                _addNewPatientUC_M.AddNewPatient(newPatient);
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            }
+            catch(Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
     }
 }

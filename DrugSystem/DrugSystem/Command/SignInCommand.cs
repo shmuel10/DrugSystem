@@ -38,8 +38,6 @@ namespace DrugSystem.Command
         {
             if(parameter != null)
             {
-                // ((LoginWindowVM)CurrentVM).Mail = ((IEnumerable)parameter).Cast<object>().Select(x => x.ToString()).ElementAt(0);
-                // ((LoginWindowVM)CurrentVM).Password = ((IEnumerable)parameter).Cast<object>().Select(x => x.ToString()).ElementAt(1);
                 ((LoginUC_VM)CurrentVM).Login();
             }            
         }
