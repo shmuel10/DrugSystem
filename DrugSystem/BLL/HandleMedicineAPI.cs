@@ -59,15 +59,22 @@ namespace BLL
 
         public string FindMedicineID(string name)
         {
-            XmlElement root = drugsNums.DocumentElement;
-            XmlNodeList nodes = root.SelectNodes("minConcept"); // You can also use XPath here
-            foreach (XmlNode node in nodes)
+            try
             {
-                XmlNodeList properties = node.ChildNodes;
-                if (properties[1].InnerText.ToLower() == name.ToLower())
+                XmlElement root = drugsNums.DocumentElement;
+                XmlNodeList nodes = root.SelectNodes("minConcept");
+                foreach (XmlNode node in nodes)
                 {
-                    return properties[0].InnerText;
+                    XmlNodeList properties = node.ChildNodes;
+                    if (properties[1].InnerText.ToLower() == name.ToLower())
+                    {
+                        return properties[0].InnerText;
+                    }
                 }
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתו למצוא את שם התרופה");
             }
             throw new ArgumentException("לא ניתו למצוא את שם התרופה");
         }

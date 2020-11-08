@@ -88,7 +88,6 @@ namespace BLL
 
         public bool ValidateID(string id)
         {
-            return true;
             string EerrorMessage = null;
             if (id == null)
             {
@@ -167,7 +166,7 @@ namespace BLL
         {
             Regex hasNumber = new Regex(@"[0-9]+");
             Regex hasUpperChar = new Regex(@"[A-Z]+");
-            Regex hasMinimum8Chars = new Regex(@".{8,}");
+            Regex hasMinimum8Chars = new Regex(@".{5,}");
             return hasNumber.IsMatch(password) && hasUpperChar.IsMatch(password)
                 && hasMinimum8Chars.IsMatch(password) ?
                 true :

@@ -38,7 +38,7 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            ((AddNewPatientUC_VM)CurrentVM).CreateNewPatient();
+            ((AddNewPatientUC_VM)CurrentVM).Save();
 
         }
     }

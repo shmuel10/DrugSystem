@@ -23,22 +23,13 @@ namespace DrugSystem.Command
 
         public bool CanExecute(object parameter)
         {
-
-                    if (((AddNewMedicineUC_VM)CurrentVM).MedicineExistInXML(parameter as string))
-                    {
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-
-            }
+            return true;
+        }
         
 
         public void Execute(object parameter)
         {
-            ((AddNewMedicineUC_VM)CurrentVM).CreateNewMedicine();
+            ((AddNewMedicineUC_VM)CurrentVM).Save();
 
         }
     }

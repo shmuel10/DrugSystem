@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Input;
 using BLL.BE;
@@ -7,7 +8,7 @@ using DrugSystem.Models;
 
 namespace DrugSystem.ViewModels
 {
-    public class AddNewMedicineUC_VM : INotifyPropertyChanged
+    public class AddNewMedicineUC_VM : INotifyPropertyChanged, IDataErrorInfo
     {
         AddNewMedicineUC_M _addNewMedicineWindow_M { get; set; }
         public Medicine newMedicine { get; set; }
@@ -44,7 +45,6 @@ namespace DrugSystem.ViewModels
                 ErrorMessage = ex.Message;
             }
         }
-        //private string _medicineCode;
         public string MedicineCode {
             get { return newMedicine.MedicineID; }
             set {
@@ -60,6 +60,106 @@ namespace DrugSystem.ViewModels
                 _errorMessage = value;
 
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
+        bool _flag;
+        public string GenericName { get { return newMedicine.GenericName; } set { newMedicine.GenericName = value; _flag = true; } }
+        public string CommercialName { get { return newMedicine.CommercialName; } set { newMedicine.CommercialName = value; _flag = true; } }
+        public string DoseCharacteristics { get { return newMedicine.DoseCharacteristics; } set { newMedicine.DoseCharacteristics = value; _flag = true; } }
+        public string ActiveIngredients { get { return newMedicine.ActiveIngredients; } set { newMedicine.ActiveIngredients = value; _flag = true; } }
+        public string Manufacturer { get { return newMedicine.Manufacturer; } set { newMedicine.Manufacturer = value; _flag = true; } }
+
+        Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        void Validate()
+        {
+            validationErrors.Clear();
+            if (string.IsNullOrWhiteSpace(GenericName))
+            {
+                validationErrors.Add("GenericName", "יש להזין שם גנרי");
+            }
+            if (string.IsNullOrWhiteSpace(DoseCharacteristics))
+            {
+                validationErrors.Add("DoseCharacteristics", "יש להזין נתונים");
+            }
+            if (string.IsNullOrWhiteSpace(CommercialName))
+                validationErrors.Add("CommercialName", "יש להזין שם מסחרי");
+            else if (!MedicineExistInXML(CommercialName))
+            {
+                validationErrors.Add("CommercialName", "שם זה אינו קביל במערכת");
+            }
+            if (string.IsNullOrWhiteSpace(ActiveIngredients))
+            {
+                validationErrors.Add("ActiveIngredients", "יש להזין נתונים");
+            }
+            if (string.IsNullOrWhiteSpace(Manufacturer))
+            {
+                validationErrors.Add("Manufacturer", "יש להזין נתונים");
+            }
+            PropertyChanged(this, new PropertyChangedEventArgs(null));
+        }
+        public string Error {
+            get {
+                if (validationErrors.Count > 0)
+                {
+                    return "Errors found.";
+                }
+                return null;
+            }
+        }
+
+        public string this[string columnName] {
+            get {
+                if (_flag)
+                {
+                    _flag = false;
+                    string errorMessage = string.Empty;
+                    switch (columnName)
+                    {
+                        case "GenericName":
+                            if (string.IsNullOrWhiteSpace(GenericName))
+                            {
+                                errorMessage = "יש להזין שם גנרי";
+                            }
+                            break;
+                        case "DoseCharacteristics":
+                            if (string.IsNullOrWhiteSpace(DoseCharacteristics))
+                                errorMessage = "יש להזין נתונים";
+                            break;
+                        case "CommercialName":
+                            if (string.IsNullOrWhiteSpace(CommercialName))
+                                errorMessage = "יש להזין שם מסחרי";
+                            else if (!MedicineExistInXML(CommercialName))
+                                errorMessage = "שם זה אינו קביל במערכת";
+                            break;
+                        case "ActiveIngredients":
+                            if (string.IsNullOrWhiteSpace(ActiveIngredients))
+                                errorMessage = "יש להזין נתונים";
+                            break;
+                        case "Manufacturer":
+                            if (string.IsNullOrWhiteSpace(Manufacturer))
+                            {
+                                errorMessage = "יש להזין נתונים";
+                            }
+                            break;
+                        default:
+                            break;
+                    }
+                    return errorMessage;
+                }
+                if (validationErrors.ContainsKey(columnName))
+                {
+                    return validationErrors[columnName];
+                }
+                return null;
+            }
+        }
+
+        public void Save()
+        {
+            Validate();
+            if (validationErrors.Count == 0)
+            {
+                CreateNewMedicine();
             }
         }
         public bool MedicineExistInXML(string MedicinesName)
