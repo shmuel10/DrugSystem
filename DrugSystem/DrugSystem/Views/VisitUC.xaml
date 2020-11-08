@@ -8,7 +8,6 @@
              xmlns:local2="clr-namespace:DrugSystem.Converters" 
              xmlns:local1="clr-namespace:DrugSystem"
              xmlns:system1="clr-namespace:System;assembly=mscorlib"
-             FlowDirection="RightToLeft"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.Resources>
