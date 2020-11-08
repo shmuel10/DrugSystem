@@ -160,6 +160,9 @@
     <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
+    <Reference Include="System.Windows.Controls.DataVisualization.Toolkit, Version=4.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Controls.DataVisualization.Toolkit.4.0.0.0\lib\net40-Client\System.Windows.Controls.DataVisualization.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -194,6 +197,7 @@
     <Compile Include="Converters\ConctenateStringConverter.cs" />
     <Compile Include="Converters\ListToStringConverter.cs" />
     <Compile Include="Converters\InverseAndBooleansToBooleanConverter.cs" />
+    <Compile Include="Converters\ObjectToStringConverter.cs" />
     <Compile Include="Models\AddNewMedicineUC_M.cs" />
     <Compile Include="Models\DoctorAdminSideUC_M.cs" />
     <Compile Include="Models\MedicineAdminSide_M.cs" />
@@ -441,9 +445,6 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\med.jpg" />
-  </ItemGroup>
-  <ItemGroup>
-    <SplashScreen Include="Icons\splash.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="PrescriptionsPdf\" />

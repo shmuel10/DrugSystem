@@ -5,15 +5,16 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:DrugSystem.Views" 
+             xmlns:domain1="clr-namespace:DrugSystem.Validation" 
              xmlns:system1="clr-namespace:System;assembly=mscorlib" 
-             xmlns:local1="clr-namespace:DrugSystem" xmlns:local11="clr-namespace:DrugSystem.Converters"
+             xmlns:local1="clr-namespace:DrugSystem" 
+             xmlns:local11="clr-namespace:DrugSystem.Converters"
              mc:Ignorable="d" 
              x:Name="AddNewDocUC">
 
     <UserControl.Resources>
         <system1:Double x:Key="FontSize">6</system1:Double>
         <local11:MultyStringToArrConverter x:Key="MultyStringConverter"/>
-        <local11:MultyStringToArrConverter x:Key="InverseAndBooleansToBooleanConverter"/>
         <Style TargetType="{x:Type DatePicker}" x:Key="datePickerGeneralStyle" BasedOn="{StaticResource {x:Type DatePicker}}">
             <Setter Property="TextElement.FontSize" Value="{StaticResource FontSize}" />
             <Setter Property="VerticalAlignment" Value="Center" />
@@ -51,11 +52,11 @@
                 <Button Height="10" Width="30" ToolTip="בחר תמונה" Content="בחר תמונה" FontSize="5" Margin="5" Style="{x:Null}" 
                         Command="{Binding FileDialogCommand}" Background="Transparent" BorderBrush="Transparent"/>
                 <Separator Background="Black" BorderThickness="1" Margin="20 0 20 0"/>
-                <TextBox x:Name="IDTextBox"  materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="תעודת זהות" MaxLength="{StaticResource IDLength}" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="IDTextBox" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="תעודת זהות" MaxLength="{StaticResource IDLength}" FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="newDoctor.ID" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:IDValidation x:Name="IDValid" ValidatesOnTargetUpdated="True" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:IDValidation x:Name="IDValid" ValidatesOnTargetUpdated="False"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -64,7 +65,7 @@
                     <TextBox.Text>
                         <Binding Path="newDoctor.FirstName" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -91,7 +92,7 @@
                     <TextBox.Text>
                         <Binding Path="newDoctor.PhoneNumber" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:PhoneNumberValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:PhoneNumberValidation ValidatesOnTargetUpdated="False"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -100,7 +101,7 @@
                     <TextBox.Text>
                         <Binding Path="newDoctor.EmailAddress" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:EmailAddressValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:EmailAddressValidation ValidatesOnTargetUpdated="False"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -121,7 +122,7 @@
                     <TextBox.Text>
                         <Binding Path="newDoctor.City" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -130,7 +131,7 @@
                     <TextBox.Text>
                         <Binding Path="newDoctor.Street" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -139,7 +140,7 @@
                     <TextBox.Text>
                         <Binding Path="newDoctor.BuildingNumber" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:NotEmptyValidation ValidatesOnTargetUpdated="False"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
@@ -148,7 +149,7 @@
                     <TextBox.Text>
                         <Binding Path="newDoctor.Specialty" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
-                                <domain1:NotEmptyValidation x:Name="SpeValid" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
+                                <domain1:NotEmptyValidation x:Name="SpeValid" ValidatesOnTargetUpdated="False"/>
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>

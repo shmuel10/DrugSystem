@@ -116,7 +116,7 @@
                             </GroupBox>
                         </materialDesign:Card>
                         <StackPanel Orientation="Horizontal">
-                            <Grid HorizontalAlignment="Stretch" MinHeight="150" MinWidth="610">
+                            <Grid HorizontalAlignment="Stretch" Height="150" Width="610">
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="1*"/>
                                     <ColumnDefinition Width="1*"/>

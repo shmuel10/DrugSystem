@@ -23,6 +23,7 @@ namespace DrugSystem.ViewModels
         public ObservableCollection<Officer> Officers { get; set; }
         public ObservableCollection<Patient> Patients { get; set; }
         public ObservableCollection<Medicine> Medicines { get; set; }
+        public ObservableCollection<string> MedsName { get; set; }
 
         Doctor _doctorSelected;
         Patient _patientSelected;
@@ -120,10 +121,31 @@ namespace DrugSystem.ViewModels
             _patientCollectionView.Filter = ListsFilter;
             _officersCollectionView.Filter = ListsFilter;
             _medsCollectionView.Filter = ListsFilter;
-
             SearchFontSize = 23;
+            MedsName = new ObservableCollection<string>(_adminUC_M.MedicinesName);
         }
 
+        public ObservableCollection<KeyValuePair<string, int>> _staristics;
+        public ObservableCollection<KeyValuePair<string,int>> Statistics { get { return _staristics; }
+            set {
+                _staristics = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Statistics"));
+            }
+        }
+
+        string _medSelected;
+        public string MedSelected { get { return _medSelected; }
+            set {
+                _medSelected = value;
+                Statistics = _adminUC_M.GetMedsUses(value);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MedSelected"));
+            }
+        }
+
+
+
+        public Dictionary<string, int> B { get; set; }
+     
         public double SearchFontSize { get; set; }
 
         ICollectionView _doctorsCollectionView;

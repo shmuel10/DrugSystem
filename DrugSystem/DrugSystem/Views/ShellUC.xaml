@@ -79,7 +79,9 @@
                                 Background="{Binding Background}" Foreground="{Binding Foreground}">
                 </ContentControl>
             </Grid>
-            <TextBlock x:Name="StatusBar" Text="{Binding StatusBar}" Grid.Row="2" Background="LightGray"/>
+            <StackPanel Grid.Row="2" Background="LightGray" Orientation="Horizontal">
+                <TextBlock x:Name="StatusBar" Width="200" Margin="10,0" HorizontalAlignment="Right" Text="{Binding Path=CurrentElements.StatusBar, Source={x:Static Application.Current}}"/>
+              </StackPanel>
         </Grid>
     </Grid>
 </UserControl>

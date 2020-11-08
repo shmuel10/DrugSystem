@@ -8,21 +8,21 @@ using System.Windows.Controls;
 
 namespace DrugSystem.Validation
 {
-    class IDValidation : ValidationRule
+    public class IDValidation : ValidationRule
     {
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             string EerrorMessage = null;
             if (value == null)
             {
-                EerrorMessage = "ID is required";
+                EerrorMessage = "תעודת זהות חובה";
                 return new ValidationResult(false, EerrorMessage);
             }
             string id = value.ToString();
 
             if (id.Length != 9)
             {
-                EerrorMessage = "ID Number Must Contain 9 Characters";
+                EerrorMessage = "תעודת זהות חייבת לכלול 9 ספרות";
             }
             else
             {
@@ -45,7 +45,7 @@ namespace DrugSystem.Validation
                 }
                 if (10 - (sum % 10) != (int)idNumbs[8])
                 {
-                    EerrorMessage = "Invalid ID Number";
+                    EerrorMessage = "תעודת זהות לא חוקית";
                 }
                 else
                 {

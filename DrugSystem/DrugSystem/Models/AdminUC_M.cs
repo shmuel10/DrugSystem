@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -17,6 +18,7 @@ namespace DrugSystem.Models
         public List<Patient> Patients { get; set; }
         public List<Officer> Officers { get; set; }
         public List<Medicine> Medicines { get; set; }
+        public List<string> MedicinesName { get; set; }
 
         public AdminUC_M()
         {
@@ -25,26 +27,29 @@ namespace DrugSystem.Models
             Patients = BL.GetAllPatients();
             Officers = BL.GetAllOfficers();
             Medicines = BL.GetAllMedicines();
-            GetData();
+            MedicinesName = BL.GetAllMedicinesByName();
         }
 
-        private void GetData()
+        public ObservableCollection<KeyValuePair<string, int>> GetMedsUses(string medName)
         {
-            (new Thread(() => {
-                while (true)
+            ObservableCollection<KeyValuePair<string, int>> result =
+                    new ObservableCollection<KeyValuePair<string, int>>();
+            if (medName != "")
+            {
+                DateTime dateTime;
+                string medCode = BL.GetMedicineCodeByName(medName);
+                List<Prescription> prescriptions =
+                    BL.GetAllPrescriptions().Where(x => x.MedicineCode.Equals(medCode)).ToList();
+                for (int i = 11; i >= 0; --i)
                 {
-                    Doctors?.Clear();
-                    Doctors = BL.GetAllDoctors();
-                    Patients?.Clear();
-                    Patients = BL.GetAllPatients();
-                    Officers?.Clear();
-                    Officers = BL.GetAllOfficers();
-                    Medicines?.Clear();
-                    Medicines = BL.GetAllMedicines();
-                    Thread.Sleep(1000);
-                }
+                    dateTime = DateTime.Now.AddMonths(-i);
+                    result.Add(new KeyValuePair<string, int>(dateTime.Month.ToString() + "/" +
+                        dateTime.Year.ToString(), prescriptions
+                        .Where(x => x.StartDate.Month.Equals(dateTime.Month) &&
+                        x.StartDate.Year.Equals(dateTime.Year)).Count()));
+                }                
             }
-            )).Start();
+            return result;
         }
     }
 }

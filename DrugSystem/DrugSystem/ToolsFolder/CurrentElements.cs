@@ -33,6 +33,13 @@ namespace DrugSystem
             StackOnShell = new Stack<INotifyPropertyChanged>();
         }
 
+        string _statusBar;
+        public string StatusBar { get { return _statusBar; }
+            set {
+                _statusBar = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("StatusBar"));
+            }
+        }
         public Doctor DoctorSelected { get; set; }
         public Patient PatientSelected { get; set; }
         public Officer OfficerSelected { get; set; }

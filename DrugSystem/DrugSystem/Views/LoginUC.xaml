@@ -63,10 +63,10 @@
                 <TextBox x:Name="UserPassword" Padding="10,0" FontSize="20" Grid.Row="4" Grid.Column="1"  Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                  TextWrapping="Wrap" materialDesign:HintAssist.Hint="סיסמה" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" AutomationProperties.ItemType="Password" Foreground="#FFFDF8F8">
                     <TextBox.InputBindings>
-                        <KeyBinding Key="Enter" Command="{Binding SignInCommand}" />
+                        <KeyBinding Key="Return" Command="{Binding SignInCommand}" />
                     </TextBox.InputBindings>
                     <TextBox.Text>
-                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
+                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged" >
                             <Binding.ValidationRules>
                                 <domain1:PasswordLogInValidation ValidationStep="ConvertedProposedValue" x:Name="PasswordValidation" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>

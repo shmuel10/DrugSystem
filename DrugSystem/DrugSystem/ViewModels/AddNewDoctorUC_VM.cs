@@ -12,6 +12,7 @@ using System.Windows.Media;
 using BLL.BE;
 using DrugSystem.Command;
 using DrugSystem.Models;
+using DrugSystem.Validation;
 using DrugSystem.Views;
 using static BLL.BE.AuxiliaryObjects;
 
@@ -24,6 +25,7 @@ namespace DrugSystem.ViewModels
         public ICommand CreateNewDoctorCommand { get; set; }
         public ICommand FileDialogCommand { get; set; }
         public List<Gender> Gender { get; set; }
+
         string _imgSrc;
         public string ImageSrc { get { return _imgSrc; } 
             set { _imgSrc = value;
@@ -46,5 +48,6 @@ namespace DrugSystem.ViewModels
         {
             _addNewDoctorUC_M.AddNewDoctor(newDoctor);
         }
+       
     }
 }

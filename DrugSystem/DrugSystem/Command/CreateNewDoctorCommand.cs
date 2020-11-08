@@ -46,9 +46,12 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
+            (((App)System.Windows.Application.Current).CurrentElements.StatusBar) = "שומר...";
             ((AddNewDoctorUC_VM)CurrentVM).CreateNewDoctor();
             ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
                 ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            (((App)System.Windows.Application.Current).CurrentElements.StatusBar) = "מוכן...";
+
         }
     }
 }

@@ -4,6 +4,8 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:DrugSystem"  
+             xmlns:lvc="clr-namespace:LiveCharts.Wpf;assembly=LiveCharts.Wpf"
+             xmlns:DVC="clr-namespace:System.Windows.Controls.DataVisualization.Charting;assembly=System.Windows.Controls.DataVisualization.Toolkit"  
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
              xmlns:system1="clr-namespace:System;assembly=mscorlib" 
              xmlns:i1="http://schemas.microsoft.com/xaml/behaviors" 
@@ -12,6 +14,7 @@
     <UserControl.Resources>
         <local1:ConctenateStringConverter x:Key="ConcatString"/>
         <local1:BoolToVisibilityConverter x:Key="BoolToVisibility"/>
+        <local1:ObjectToStringConverter x:Key="ObjToStringConverter"/>
         <Style TargetType="TabControl" x:Key="BackAndForeg">
             <Setter Property="Background" Value="{Binding ElementName=Shell_UC, Path=Background}"/>
             <Setter Property="Foreground" Value="{Binding ElementName=Shell_UC, Path=Foreground}"/>
@@ -24,6 +27,10 @@
             <Setter Property="Foreground" Value="{Binding Foreground}"/>
             <Setter Property="Background" Value="{Binding Background}"/>
         </Style>
+        <Style TargetType="materialDesign:PackIcon" x:Key="BackAndForegIcon">
+            <Setter Property="Background" Value="{Binding ElementName=Shell_UC, Path=Background}"/>
+            <Setter Property="Foreground" Value="{Binding ElementName=Shell_UC, Path=Foreground}"/>
+        </Style>
     </UserControl.Resources>
     <Grid>
         <Grid.ColumnDefinitions>
@@ -31,7 +38,7 @@
             <ColumnDefinition Width="1*" />
             <ColumnDefinition Width="100"/>
         </Grid.ColumnDefinitions>
-        <TabControl x:Name="tabs" Grid.Column="1" Style="{StaticResource BackAndForeg}" 
+            <TabControl x:Name="tabs" Grid.Column="1" Style="{StaticResource BackAndForeg}" 
                     BorderThickness="3" MinHeight="500" HorizontalAlignment="Stretch">
             <TabItem Header="רופאים" VerticalAlignment="Top" Name="DoctorsTab" TabIndex="1">
                 <Grid>
@@ -39,7 +46,8 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
-                    <local:SearchLineUC Grid.Row="0"/>
+                    <local:SearchLineUC IconBackground="{Binding ElementName=Shell_UC, Path=Background}"
+                                        IconForeground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="0"/>
                     <DataGrid x:Name="DoctorsList" ItemsSource="{Binding Doctors}" 
                               Background="{Binding ElementName=Shell_UC, Path=Background}"
                                Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" 
@@ -73,7 +81,8 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
-                    <local:SearchLineUC Grid.Row="0"/>
+                    <local:SearchLineUC IconBackground="{Binding ElementName=Shell_UC, Path=Background}"
+                                        IconForeground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="0"/>
                     <DataGrid x:Name="OfficersList" ItemsSource="{Binding Officers}" Background="{Binding ElementName=Shell_UC, Path=Background}"
                                Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" IsReadOnly="True" 
                               AutoGenerateColumns="False" ColumnHeaderStyle="{StaticResource ForegAndBack}"
@@ -102,7 +111,8 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
-                    <local:SearchLineUC Grid.Row="0"/>
+                    <local:SearchLineUC IconBackground="{Binding ElementName=Shell_UC, Path=Background}"
+                                        IconForeground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="0"/>
                     <DataGrid x:Name="PatientsList" ItemsSource="{Binding Patients}" Background="{Binding ElementName=Shell_UC, Path=Background}"
                                Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" IsReadOnly="True"
                               ColumnHeaderStyle="{StaticResource ForegAndBack}"
@@ -134,7 +144,8 @@
                         <RowDefinition Height="1*"/>
                         <RowDefinition Height="10*"/>
                     </Grid.RowDefinitions>
-                    <local:SearchLineUC Grid.Row="0"/>
+                    <local:SearchLineUC IconBackground="{Binding ElementName=Shell_UC, Path=Background}"
+                                        IconForeground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="0"/>
                     <DataGrid x:Name="MedsList" ItemsSource="{Binding Medicines}" Background="{Binding ElementName=Shell_UC, Path=Background}"
                           Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" IsReadOnly="True"
                               ColumnHeaderStyle="{StaticResource ForegAndBack}"
@@ -151,14 +162,26 @@
                     </DataGrid>
                 </Grid>
             </TabItem>
+            <TabItem Header="סטטיסטיקות" x:Name="StatisticsTab" TabIndex="4" HorizontalAlignment="Stretch"
+                     VerticalAlignment="Stretch">
+                <DockPanel LastChildFill="True" >
+                    <ComboBox x:Name="ChooseMed" DockPanel.Dock="Top" Height="40" ItemsSource="{Binding MedsName}" SelectedItem="{Binding MedSelected}" materialDesign:HintAssist.Hint="בחר תרופה"/>
+                    <DVC:Chart Name="motorbyke" DockPanel.Dock="Bottom">
+                        <DVC:LineSeries Title="{Binding MedSelected}" ItemsSource="{Binding Statistics}" 
+                                        IndependentValueBinding="{Binding Path=Key}" 
+                                        DependentValueBinding="{Binding Path=Value}"/>
+                    </DVC:Chart>
+                 </DockPanel>
+            </TabItem>
         </TabControl>
+        
         <StackPanel x:Name="ContainGrid" Orientation="Vertical" VerticalAlignment="Bottom" Visibility="Visible" Background="Transparent">
             <local:FloatingControls x:Name="FloatingButtons" ToolTipFirst="רופא חדש" ToolTipSecond="פקיד חדש"
                                     ToolTipThird="מטופל חדש" ToolTipForth="תרופה חדשה"
                                     BackgroundColor="#CFCEC4" ForegroundColor="Black"
                                     VerticalAlignment="Bottom"  Visibility="{Binding ElementName=ContainGrid, Path=IsMouseOver, Converter={StaticResource BoolToVisibility}}"/>
-            <materialDesign:PackIcon Foreground="{Binding Foreground}" 
-                                     Background="{Binding Background}" Margin="0,10" Kind="Menu" HorizontalAlignment="Center" Height="60" Width="60"/>
+            <materialDesign:PackIcon  Style="{StaticResource BackAndForegIcon}"
+                                      Margin="0,10" Kind="Menu" HorizontalAlignment="Center" Height="60" Width="60"/>
         </StackPanel>
     </Grid>
 </UserControl>
