@@ -52,24 +52,31 @@ namespace BLL
             }
             catch
             {
-                throw new Exception("Error");
+                throw new Exception("לא ניתן לקבל נתונים כעת, אנא בדוק חיבור לאינטרנט");
             }
             return interactionMedicinesNames;
         }
 
         public string FindMedicineID(string name)
         {
-            XmlElement root = drugsNums.DocumentElement;
-            XmlNodeList nodes = root.SelectNodes("minConcept"); // You can also use XPath here
-            foreach (XmlNode node in nodes)
+            try
             {
-                XmlNodeList properties = node.ChildNodes;
-                if (properties[1].InnerText.ToLower() == name.ToLower())
+                XmlElement root = drugsNums.DocumentElement;
+                XmlNodeList nodes = root.SelectNodes("minConcept");
+                foreach (XmlNode node in nodes)
                 {
-                    return properties[0].InnerText;
+                    XmlNodeList properties = node.ChildNodes;
+                    if (properties[1].InnerText.ToLower() == name.ToLower())
+                    {
+                        return properties[0].InnerText;
+                    }
                 }
             }
-            throw new ArgumentException("Can't find medicine name");
+            catch
+            {
+                throw new ArgumentException("לא ניתו למצוא את שם התרופה");
+            }
+            throw new ArgumentException("לא ניתו למצוא את שם התרופה");
         }
 
         private string HttpRequest(String url)

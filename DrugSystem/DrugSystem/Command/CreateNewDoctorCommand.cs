@@ -31,8 +31,6 @@ namespace DrugSystem.Command
 
         public bool CanExecute(object parameter)
         {
-            //ValidationResult[] validations = parameter as ValidationResult[];
-
             if ((((App)System.Windows.Application.Current).CurrentElements.CurrentUser) is Administrator ||
                 ((App)System.Windows.Application.Current).CurrentElements.CurrentUser.CanAddDoctor)
             {

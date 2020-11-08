@@ -29,8 +29,7 @@ namespace DrugSystem.Command
         public void Execute(object parameter)
         {
             ((MedicineAdminSideUC_VM)CurrentVM).UpdateMedicine();
-            ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
-                ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+
         }
     }
 }

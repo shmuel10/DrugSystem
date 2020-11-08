@@ -46,9 +46,27 @@ namespace DrugSystem.ViewModels
             UpdateMedDetailes = new UpdateMedicineCommand(this);
             FileDialogCommand = new OpenFileDialogCommand(this);
         }
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
         public void UpdateMedicine()
         {
-            _medicineAdminSide_M.UpdateMedicine(MedicineForUpdate);
+            try
+            {
+                _medicineAdminSide_M.UpdateMedicine(MedicineForUpdate);
+                ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
+    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+            }
+            catch(Exception ex)
+            {
+                ErrorMessage = ex.Message;
+            }
         }
         public event PropertyChangedEventHandler PropertyChanged;
     }

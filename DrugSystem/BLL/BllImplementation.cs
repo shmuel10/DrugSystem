@@ -39,11 +39,11 @@ namespace BLL
             User user = dal.GetUserByEmail(userMail);
             if (user == null)
             {
-                throw new ArgumentException("User Dosn't Exist");
+                throw new ArgumentException("משתמש לא קיים");
             }
             if (!user.Password.Equals(Password))
             {
-                throw new ArgumentException("Wrong Password");
+                throw new ArgumentException("סיסמה שגויה");
             }
             return user;
         }
@@ -51,20 +51,13 @@ namespace BLL
         //Officers DB
         public void AddOfficer(Officer officer)
         {
-            try
-            {
                 // validations.ValidateOfficer(officer);
                 if (officer.ProfileImagePath != null && officer.ProfileImageSrc != null)
                 {
                     (File.Create(officer.ProfileImagePath)).Close();
                     File.Copy(officer.ProfileImageSrc, officer.ProfileImagePath, true);
                 }
-                dal.AddOfficer(officer);
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
+                dal.AddOfficer(officer);            
         }
         public void UpdateOfficer(Officer officer)
         {
@@ -87,8 +80,6 @@ namespace BLL
         //Doctors DB
         public void AddDoctor(Doctor doctor)
         {
-            try
-            {
                 //   validations.ValidateDoctor(doctor);
                 if (doctor.ProfileImagePath != null && doctor.ProfileImageSrc != null)
                 {
@@ -96,12 +87,6 @@ namespace BLL
                     File.Copy(doctor.ProfileImageSrc, doctor.ProfileImagePath, true);
                 }
                 dal.AddDoctor(doctor);
-            }
-
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
         }
         public void UpdateDoctor(Doctor doctor)
         {
@@ -124,15 +109,8 @@ namespace BLL
         //Patients DB
         public void AddPatient(Patient patient)
         {
-            try
-            {
                 //validations.ValidatePatient(patient);
                 dal.AddPatient(patient);
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
         }
         public void UpdatePatient(Patient patient)
         {
@@ -179,8 +157,6 @@ namespace BLL
         //Prescription DB
         public void AddPrescription(Prescription prescription)
         {
-            try
-            {
                 //if (dal.GetAllPrescriptions().Count == 0)
                 //{
                 //    Random random = new Random();
@@ -194,11 +170,6 @@ namespace BLL
                 //}
                 validations.ValidatePrescription(prescription);
                 dal.AddPrescription(prescription);
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
         }
         public List<Prescription> GetAllPrescriptions()
         {
@@ -226,8 +197,7 @@ namespace BLL
         //Medicines DB
         public void AddMedicine(Medicine medicine)
         {
-            try
-            {
+            
                 validations.ValidateMedicine(medicine);
                 if (medicine.ProfileImagePath != null && medicine.ProfileImageSrc != null)
                 {
@@ -235,11 +205,6 @@ namespace BLL
                     File.Copy(medicine.ProfileImageSrc, medicine.ProfileImagePath, true);
                 }
                 dal.AddMedicine(medicine);
-            }
-            catch (Exception ex)
-            {
-                throw new ArgumentException(ex.Message);
-            }
         }
         public void UpdateMedicine(Medicine medicine)
         {
@@ -275,10 +240,7 @@ namespace BLL
         {
             List<string> abc = medicineApiHandler.GetInteractionMedicinesNames(medicineName, medicineID);
             List<string> interaction = abc.Intersect(dal.GetPatientsCurrentMedicinesNames(patientID)).ToList();
-            //var result = dal.GetMedicinesNames(interaction as List<string>);
             return interaction;
-            //return dal.GetMedicinesNames(medicineApiHandler.GetInteractionMedicinesNames(medicineID)
-            //    .Intersect(dal.GetPatientsCurrentMedicinesCodes(patientID)).ToList());
         }
         public Medicine GetMedicine(string MedicineID)
         {
@@ -296,19 +258,5 @@ namespace BLL
         {
             return dal.GetAllMedicinesByName();
         }
-
-
-        //public User VerifyLogIn(string EmailAddress, string Password)
-        //{
-        //    try
-        //    {
-        //        User user = dal.GetUserByEmail(EmailAddress);
-        //        return user.Password.Equals(Password) ? user : throw new ArgumentException("Wrong Password");
-        //    }
-        //    catch
-        //    {
-        //        throw new ArgumentException("No Such User");
-        //    }
-        //}
     }
 }

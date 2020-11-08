@@ -211,6 +211,7 @@
     <Compile Include="Validation\IDValidation.cs" />
     <Compile Include="Validation\PasswordLogInValidation.cs" />
     <Compile Include="Validation\PhoneNumberValidation.cs" />
+    <Compile Include="Validation\Validations.cs" />
     <Compile Include="Validation\WeightValidation.cs" />
     <Compile Include="ViewModels\AddNewDoctorUC_VM.cs" />
     <Compile Include="Models\AddNewOfficerUC_M.cs" />

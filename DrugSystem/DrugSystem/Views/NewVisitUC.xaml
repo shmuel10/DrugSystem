@@ -128,6 +128,8 @@
                         </GroupBox>
                     </materialDesign:Card>
                     <Button Content="סיום" Command="{Binding CreatePrescripton}" Margin="0 20 0 10" Width="150" Height="25" />
+                    <TextBlock x:Name="ErrorMessage" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"
+                 TextWrapping="Wrap" Foreground="Red" Text="{Binding ErrorMessage, Mode=TwoWay}"/>
                 </StackPanel>
             </Grid>
         </ScrollViewer>

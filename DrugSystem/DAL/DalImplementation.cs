@@ -41,15 +41,22 @@ namespace DAL
                 };
                 AddAdmin(defaultAdmin);
             }
-            
+
         }
 
         //Admins DB
         public void AddAdmin(Administrator administrator)
         {
             ThrowExceptionIfPrsonExist(administrator);
-            DB.PersonsTable.Add(administrator);
-            DB.SaveChanges();
+            try
+            {
+                DB.PersonsTable.Add(administrator);
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לשמור, בדוק את הנתונים");
+            }
         }
 
         //Users DB
@@ -85,66 +92,101 @@ namespace DAL
         }
         public User GetUserByEmail(string emailAddress)
         {
-            User result = DB.PersonsTable.Where(user => user.EmailAddress.Equals(emailAddress.Trim())).FirstOrDefault() as User;
-            return result;
+            try
+            {
+                User result = DB.PersonsTable.Where(user => user.EmailAddress.Equals(emailAddress.Trim())).FirstOrDefault() as User;
+                return result;
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לקבל את המשתמש");
+            }
         }
 
         //Officers DB
         public void AddOfficer(Officer officer)
         {
             ThrowExceptionIfPrsonExist(officer);
-            DB.PersonsTable.Add(officer);
-            DB.SaveChanges();
+            try
+            {
+                DB.PersonsTable.Add(officer);
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לשמור את הפקיד");
+            }
         }
         public void UpdateOfficer(Officer officer)
         {
             Officer officerToUpdate = GetOfficer(officer.ID);
             UpdateUser(officerToUpdate, officer);
-            DB.SaveChanges();
+            try
+            {
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לעדכן את הפרטים");
+            }
         }
         public Officer GetOfficer(string OfficerID)
         {
-            Officer officer = DB.PersonsTable.Find(OfficerID) as Officer;
-            return officer ?? throw new ArgumentException("Officer Dosn't exist");
+            try
+            {
+                Officer officer = DB.PersonsTable.Find(OfficerID) as Officer;
+                return officer ?? throw new ArgumentException("לא ניתן למצוא את הפקיד המבוקש");
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לבצע את הפעולה");
+            }
         }
         public List<Officer> GetAllOfficers()
         {
             return GetAllElementsOfTypeT<Officer>();
         }
-        
+
         //Doctors DB
         public void AddDoctor(Doctor doctor)
         {
+            ThrowExceptionIfPrsonExist(doctor);
             try
             {
-                ThrowExceptionIfPrsonExist(doctor);
                 DB.PersonsTable.Add(doctor);
                 DB.SaveChanges();
             }
-            catch (DbEntityValidationException ex)
+            catch
             {
-                foreach (var errors in ex.EntityValidationErrors)
-                {
-                    foreach (var validationError in errors.ValidationErrors)
-                    {
-                        // get the error message 
-                        string errorMessage = validationError.ErrorMessage;
-                    }
-                }
+                throw new ArgumentException("לא ניתן למצוא את הרופא המבוקש במערכת");
             }
         }
         public void UpdateDoctor(Doctor doctor)
         {
-            Doctor doctorToUpdate = GetDoctor(doctor.ID);
-            UpdateUser(doctorToUpdate, doctor);
-            doctorToUpdate.Specialty = doctor.Specialty;
-            doctorToUpdate.LicenceNumber = doctor.LicenceNumber;
-            DB.SaveChanges();
+            try
+            {
+                Doctor doctorToUpdate = GetDoctor(doctor.ID);
+                UpdateUser(doctorToUpdate, doctor);
+                doctorToUpdate.Specialty = doctor.Specialty;
+                doctorToUpdate.LicenceNumber = doctor.LicenceNumber;
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן להשלים את הפעולה");
+            }
         }
         public Doctor GetDoctor(string DocrorsID)
         {
-            Doctor doctor = DB.PersonsTable.Find(DocrorsID) as Doctor;
-            return doctor ?? throw new ArgumentException("Doctor Dosn't exist");
+            try
+            {
+                Doctor doctor = DB.PersonsTable.Find(DocrorsID) as Doctor;
+                return doctor ?? throw new ArgumentException("לא ניתן למצוא את הרופא המבוקש במערכת");
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן להשלים את הפעולה");
+            }
         }
         public List<Doctor> GetAllDoctors()
         {
@@ -155,22 +197,43 @@ namespace DAL
         public void AddPatient(Patient patient)
         {
             ThrowExceptionIfPrsonExist(patient);
-            DB.PersonsTable.Add(patient);
-            DB.SaveChanges();
+            try
+            {
+                DB.PersonsTable.Add(patient);
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן להוסיף פציינט למערכת, אנא בדוק את הפרטים");
+            }
         }
         public void UpdatePatient(Patient patient)
         {
-            Patient patientToUpdate = GetPatient(patient.ID);
-            UpdatePerson(patientToUpdate, patient);
-            patientToUpdate.FamilyDoctor = patient.FamilyDoctor;
-            patientToUpdate.Weight = patient.Weight;
-            patientToUpdate.FatherName = patient.FatherName;
-            DB.SaveChanges();
+            try
+            {
+                Patient patientToUpdate = GetPatient(patient.ID);
+                UpdatePerson(patientToUpdate, patient);
+                patientToUpdate.FamilyDoctor = patient.FamilyDoctor;
+                patientToUpdate.Weight = patient.Weight;
+                patientToUpdate.FatherName = patient.FatherName;
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לעדכן פרטים כעת");
+            }
         }
         public Patient GetPatient(string PatientID)
         {
-            Patient patient = DB.PersonsTable.Find(PatientID) as Patient;
-            return patient ?? throw new ArgumentException("Patient Dosn't exist");
+            try
+            {
+                Patient patient = DB.PersonsTable.Find(PatientID) as Patient;
+                return patient ?? throw new ArgumentException("לא נמצאו פרטי פציינט במערכת");
+            }
+            catch
+            {
+                throw new ArgumentException("לא נמצאו פרטי פציינט במערכת");
+            }
         }
         public List<Patient> GetAllPatients()
         {
@@ -180,70 +243,139 @@ namespace DAL
         //Visits DB
         public void AddVisit(Visit visit)
         {
-            DB.VisitsTable.Add(visit);
-            DB.SaveChanges();
+            try
+            {
+                DB.VisitsTable.Add(visit);
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לשמור ביקור, אנא בדוק את הפרטים");
+            }
         }
         public List<Visit> GetAllVisits()
         {
-            return DB.VisitsTable.ToList();
+            try
+            {
+                return DB.VisitsTable.ToList();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לקבל נתונים");
+            }
         }
         public List<Visit> GetAllPatientVisits(string patientID)
         {
-            return DB.VisitsTable.Where(visit => visit.PatientID.Equals(patientID)).ToList();
+            try
+            {
+                return DB.VisitsTable.Where(visit => visit.PatientID.Equals(patientID)).ToList();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לקבל נתונים");
+            }
         }
         public List<Visit> GetAllDoctorVisits(string doctorID)
         {
-            return DB.VisitsTable.Where(visit => visit.DoctorID.Equals(doctorID)).ToList();
+            try
+            {
+                return DB.VisitsTable.Where(visit => visit.DoctorID.Equals(doctorID)).ToList();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לקבל נתונים");
+            }
         }
-
         //Prescription DB
         public void AddPrescription(Prescription prescription)
         {
             ThrowExceptionIfPrescriptionExist(prescription);
-            DB.PrescriptionsTable.Add(prescription);
-            DB.SaveChanges();
+            try
+            {
+                DB.PrescriptionsTable.Add(prescription);
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן להוסיף מרשם");
+            }
         }
         public List<Prescription> GetPatientsPrescriptions(string PatientID)
         {
             if (DB.PersonsTable.Find(PatientID) == null)
             {
-                throw new ArgumentException("Patient Dosn't exist");
+                throw new ArgumentException("פציינט לא זוהה במערכת");
             }
             return DB.PrescriptionsTable.Where(prescription => prescription.PatientID == PatientID).ToList();
         }
         public List<Prescription> GetAllPrescriptions()
         {
-            return DB.PrescriptionsTable.ToList();
+            try
+            {
+                return DB.PrescriptionsTable.ToList();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לקבל נתונים");
+            }
         }
 
         //Medicines DB
         public void AddMedicine(Medicine medicine)
         {
             ThrowExceptionIfMedicineExist(medicine);
-            DB.MedicinesTable.Add(medicine);
-            DB.SaveChanges();
+            try
+            {
+                DB.MedicinesTable.Add(medicine);
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן לנ=הוסיף תרופה למערכת");
+            }
         }
         public void UpdateMedicine(Medicine medicine)
         {
-            Medicine medicineToUpdate = GetMedicine(medicine.MedicineID);
-            medicineToUpdate.ActiveIngredients = medicine.ActiveIngredients;
-            medicineToUpdate.CommercialName = medicine.CommercialName;
-            medicineToUpdate.DoseCharacteristics = medicine.DoseCharacteristics;
-            medicineToUpdate.GenericName = medicine.GenericName;
-            medicineToUpdate.ProfileImageSrc = medicine.ProfileImageSrc;
-            medicineToUpdate.ProfileImagePath = medicine.ProfileImagePath;
-            medicineToUpdate.Manufacturer = medicine.Manufacturer;
-            DB.SaveChanges();
-        }          
+            try
+            {
+                Medicine medicineToUpdate = GetMedicine(medicine.MedicineID);
+                medicineToUpdate.ActiveIngredients = medicine.ActiveIngredients;
+                medicineToUpdate.CommercialName = medicine.CommercialName;
+                medicineToUpdate.DoseCharacteristics = medicine.DoseCharacteristics;
+                medicineToUpdate.GenericName = medicine.GenericName;
+                medicineToUpdate.ProfileImageSrc = medicine.ProfileImageSrc;
+                medicineToUpdate.ProfileImagePath = medicine.ProfileImagePath;
+                medicineToUpdate.Manufacturer = medicine.Manufacturer;
+                DB.SaveChanges();
+            }
+            catch
+            {
+                throw new ArgumentException("לא ניתן להוסיף תרופה למערכת");
+            }
+        }
         public string GetMedicineCodeByName(string genericName)
         {
-            return DB.MedicinesTable.Where(MedName => MedName.GenericName.Equals(genericName))
-                .Select(Med => Med.MedicineID).FirstOrDefault();
+            try
+            {
+                return DB.MedicinesTable.Where(MedName => MedName.GenericName.Equals(genericName))
+                    .Select(Med => Med.MedicineID).FirstOrDefault();
+            }
+            catch
+            {
+                throw new ArgumentException("המערכת לא יכולה לספק נתונים כרגע");
+            }
         }
         public Medicine GetMedicine(string MedicineID)
         {
-            Medicine medicine = DB.MedicinesTable.Find(MedicineID);
-            return medicine ?? throw new ArgumentException("Medicine Dosn't exist");
+            try
+            {
+                Medicine medicine = DB.MedicinesTable.Find(MedicineID);
+                return medicine ?? throw new ArgumentException("תרופה לא זוהתה במערכת");
+            }
+            catch
+            {
+                throw new ArgumentException("המערכת לא יכולה לספק נתונים כרגע");
+            }
         }
         public List<string> GetMedicinesNames(List<string> MedicinesID)
         {
@@ -259,29 +391,50 @@ namespace DAL
         }
         public List<Medicine> GetAllMedicines()
         {
-            return DB.MedicinesTable.ToList();
+            try
+            {
+                return DB.MedicinesTable.ToList();
+            }
+            catch
+            {
+                throw new ArgumentException("המערכת לא יכולה לספק נתונים כרגע");
+            }
         }
         public List<string> GetPatientsCurrentMedicinesNames(string PatientID)
         {
             if (DB.PersonsTable.Find(PatientID) == null)
             {
-                throw new ArgumentException("Patient Dosn't exist");
+                throw new ArgumentException("פציינט לא זוהה במערכת");
             }
-            List<Prescription> prescriptions = DB.PrescriptionsTable.Where(prescription =>
-            prescription.PatientID == PatientID).ToList();
-            List<string> medicineCodes = new List<string>();
-            foreach (var pres in prescriptions)
+            try
             {
-                if (IsMedicineStillTaken(pres.ExpireDate))
+                List<Prescription> prescriptions = DB.PrescriptionsTable.Where(prescription =>
+                prescription.PatientID == PatientID).ToList();
+                List<string> medicineCodes = new List<string>();
+                foreach (var pres in prescriptions)
                 {
-                    medicineCodes.Add(pres.MedicineCode);
+                    if (IsMedicineStillTaken(pres.ExpireDate))
+                    {
+                        medicineCodes.Add(pres.MedicineCode);
+                    }
                 }
+                return GetMedicinesNames(medicineCodes);
             }
-            return GetMedicinesNames(medicineCodes);
+            catch
+            {
+                throw new ArgumentException("המערת לא יכולה לבצע את הפעלה כעת");
+            }
         }
         public List<string> GetAllMedicinesByName()
         {
-            return DB.MedicinesTable.Select(medicine => medicine.GenericName).ToList();
+            try
+            {
+                return DB.MedicinesTable.Select(medicine => medicine.GenericName).ToList();
+            }
+            catch
+            {
+                throw new ArgumentException("המערת לא יכולה לבצע את הפעלה כעת");
+            }
         }
         private bool IsMedicineStillTaken(DateTime prescriptionExpireDate)
         {
@@ -296,55 +449,76 @@ namespace DAL
         {
             if (DB.PersonsTable.Find(PatientID) == null)
             {
-                throw new ArgumentException("Patient Dosn't exist");
+                throw new ArgumentException("פציינט לא זוהה במערכת");
             }
-            List<Prescription> prescriptions = DB.PrescriptionsTable.Where(prescription =>
-            prescription.PatientID == PatientID).ToList();
-            List<string> medicineCodes = new List<string>();
-            foreach (var pres in prescriptions)
+            try
             {
-                if (IsMedicineStillTaken(pres.ExpireDate))
+                List<Prescription> prescriptions = DB.PrescriptionsTable.Where(prescription =>
+                prescription.PatientID == PatientID).ToList();
+                List<string> medicineCodes = new List<string>();
+                foreach (var pres in prescriptions)
                 {
-                    medicineCodes.Add(pres.MedicineCode);
+                    if (IsMedicineStillTaken(pres.ExpireDate))
+                    {
+                        medicineCodes.Add(pres.MedicineCode);
+                    }
                 }
+                return GetMedicinesNames(medicineCodes);
             }
-            return GetMedicinesNames(medicineCodes);
+            catch
+            {
+                throw new ArgumentException("המערת לא יכולה לבצע את הפעלה כעת");
+            }
         }
 
         //Exeptions
         private List<T> GetAllElementsOfTypeT<T>()
-        {   
-            return DB.PersonsTable.OfType<T>().ToList();
-        }       
+        {
+            try
+            {
+                return DB.PersonsTable.OfType<T>().ToList();
+            }
+            catch
+            {
+                throw new ArgumentException("המערכת לא יכולה לספק את הנתונים המבוקשים");
+            }
+        }
         private void ThrowExceptionIfPrsonExist(Person person)
         {
             if (DoesElementExistInPersonsDB(user => user.ID == person.ID))
             {
-                throw new ArgumentException("The ID number is already stored in the system");
+                throw new ArgumentException("מספר זהות כבר שמור במערכת");
             }
 
             if (DoesElementExistInPersonsDB(user => user.EmailAddress == person.EmailAddress))
             {
-                throw new ArgumentException("The email address is already stored in the system");
+                throw new ArgumentException("כתובת המייל כבר שמורה במערכת");
             }
         }
         private void ThrowExceptionIfMedicineExist(Medicine medicine)
         {
             if (DB.MedicinesTable.Find(medicine.MedicineID) != null)
             {
-                throw new ArgumentException("Medicine already exist");
+                throw new ArgumentException("תרופה כבר שמורה במערכת");
             }
         }
         private void ThrowExceptionIfPrescriptionExist(Prescription prescription)
         {
             if (DB.PrescriptionsTable.Find(prescription.PrescriptionID) != null)
             {
-                throw new ArgumentException("Medicine already exist");
+                throw new ArgumentException("קוד מרשם כבר שמור במערכת");
             }
         }
         private bool DoesElementExistInPersonsDB(Func<Person, bool> predicate)
         {
-            return DB.PersonsTable.Where(predicate).FirstOrDefault() != null;
+            try
+            {
+                return DB.PersonsTable.Where(predicate).FirstOrDefault() != null;
+            }
+            catch
+            {
+                throw new ArgumentException("המערת לא יכולה לבצע את הפעלה כעת");
+            }
         }
     }
 }
