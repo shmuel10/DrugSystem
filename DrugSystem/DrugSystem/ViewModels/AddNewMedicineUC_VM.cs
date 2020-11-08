@@ -65,7 +65,6 @@ namespace DrugSystem.ViewModels
         bool _flag;
         public string GenericName { get { return newMedicine.GenericName; } set { newMedicine.GenericName = value; _flag = true; } }
         public string CommercialName { get { return newMedicine.CommercialName; } set { newMedicine.CommercialName = value; _flag = true; } }
-        public string DoseCharacteristics { get { return newMedicine.DoseCharacteristics; } set { newMedicine.DoseCharacteristics = value; _flag = true; } }
         public string ActiveIngredients { get { return newMedicine.ActiveIngredients; } set { newMedicine.ActiveIngredients = value; _flag = true; } }
         public string Manufacturer { get { return newMedicine.Manufacturer; } set { newMedicine.Manufacturer = value; _flag = true; } }
 
@@ -76,10 +75,6 @@ namespace DrugSystem.ViewModels
             if (string.IsNullOrWhiteSpace(GenericName))
             {
                 validationErrors.Add("GenericName", "יש להזין שם גנרי");
-            }
-            if (string.IsNullOrWhiteSpace(DoseCharacteristics))
-            {
-                validationErrors.Add("DoseCharacteristics", "יש להזין נתונים");
             }
             if (string.IsNullOrWhiteSpace(CommercialName))
                 validationErrors.Add("CommercialName", "יש להזין שם מסחרי");
@@ -120,10 +115,6 @@ namespace DrugSystem.ViewModels
                             {
                                 errorMessage = "יש להזין שם גנרי";
                             }
-                            break;
-                        case "DoseCharacteristics":
-                            if (string.IsNullOrWhiteSpace(DoseCharacteristics))
-                                errorMessage = "יש להזין נתונים";
                             break;
                         case "CommercialName":
                             if (string.IsNullOrWhiteSpace(CommercialName))
