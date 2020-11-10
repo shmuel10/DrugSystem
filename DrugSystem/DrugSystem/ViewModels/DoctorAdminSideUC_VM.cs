@@ -23,11 +23,35 @@ namespace DrugSystem.ViewModels
         public List<Gender> Gender { get; set; }
         public Doctor DoctorForUpdate { get; set; }
         BitmapImage _imageSrc;
+        private bool _flag;
+        public string FirstName { get { return DoctorForUpdate.FirstName; } set { DoctorForUpdate.FirstName = value; _flag = true; } }
+        public string LastName { get { return DoctorForUpdate.LastName; } set { DoctorForUpdate.LastName = value; _flag = true; } }
+        public string Password { get { return DoctorForUpdate.Password; } set { DoctorForUpdate.Password = value; _flag = true; } }
+        public string PhoneNumber { get { return DoctorForUpdate.PhoneNumber; } set { DoctorForUpdate.PhoneNumber = value; _flag = true; } }
+        public string EmailAddress { get { return DoctorForUpdate.EmailAddress; } set { DoctorForUpdate.EmailAddress = value; _flag = true; } }
+        public string LicenceNumber { get { return DoctorForUpdate.LicenceNumber; } set { DoctorForUpdate.LicenceNumber = value; _flag = true; } }
+        public string City { get { return DoctorForUpdate.City; } set { DoctorForUpdate.City = value; _flag = true; } }
+        public string Street { get { return DoctorForUpdate.Street; } set { DoctorForUpdate.Street = value; _flag = true; } }
+        public string BuildingNumber { get { return DoctorForUpdate.BuildingNumber; } set { DoctorForUpdate.BuildingNumber = value; _flag = true; } }
+        public string Specialty { get { return DoctorForUpdate.Specialty; } set { DoctorForUpdate.Specialty = value; _flag = true; } }
+        private Validations Validations;
+        private Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        public event PropertyChangedEventHandler PropertyChanged;
         public BitmapImage ImageSrc { get { return _imageSrc; }
             set { _imageSrc = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
             }
         }
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
+
         public DoctorAdminSideUC_VM()
         {
             _doctorAdminSideUC_M = new DoctorAdminSideUC_M();
@@ -46,29 +70,7 @@ namespace DrugSystem.ViewModels
             FileDialogCommand = new OpenFileDialogCommand(this);
             Gender = _doctorAdminSideUC_M.Gender;
         }
-        private string _errorMessage = string.Empty;
-        public string ErrorMessage {
-            get { return _errorMessage; }
-            set {
-                _errorMessage = value;
-
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
-            }
-        }
-        bool _flag;
-        public string FirstName { get { return DoctorForUpdate.FirstName; } set { DoctorForUpdate.FirstName = value; _flag = true; } }
-        public string LastName { get { return DoctorForUpdate.LastName; } set { DoctorForUpdate.LastName = value; _flag = true; } }
-        public string Password { get { return DoctorForUpdate.Password; } set { DoctorForUpdate.Password = value; _flag = true; } }
-        public string PhoneNumber { get { return DoctorForUpdate.PhoneNumber; } set { DoctorForUpdate.PhoneNumber = value; _flag = true; } }
-        public string EmailAddress { get { return DoctorForUpdate.EmailAddress; } set { DoctorForUpdate.EmailAddress = value; _flag = true; } }
-        public string LicenceNumber { get { return DoctorForUpdate.LicenceNumber; } set { DoctorForUpdate.LicenceNumber = value; _flag = true; } }
-        public string City { get { return DoctorForUpdate.City; } set { DoctorForUpdate.City = value; _flag = true; } }
-        public string Street { get { return DoctorForUpdate.Street; } set { DoctorForUpdate.Street = value; _flag = true; } }
-        public string BuildingNumber { get { return DoctorForUpdate.BuildingNumber; } set { DoctorForUpdate.BuildingNumber = value; _flag = true; } }
-        public string Specialty { get { return DoctorForUpdate.Specialty; } set { DoctorForUpdate.Specialty = value; _flag = true; } }
-
-        Dictionary<string, string> validationErrors = new Dictionary<string, string>();
-
+        
         void Validate()
         {
             validationErrors.Clear();
@@ -197,7 +199,6 @@ namespace DrugSystem.ViewModels
             }
         }
 
-        Validations Validations;
         public void UpdateDoctor()
         {
             try
@@ -222,6 +223,5 @@ namespace DrugSystem.ViewModels
                 }
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

@@ -17,8 +17,8 @@ namespace DrugSystem.ViewModels
     public class DoctorUC_VM : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
-        DoctorUC_M _doctorUC_M;
-        Patient _selectedPatient;
+        public DoctorUC_M _doctorUC_M;
+        public Patient _selectedPatient;
 
         public ICommand Command { get; set; }
         public List<Patient> Patients { get { return _doctorUC_M.Patients; } }
@@ -39,17 +39,6 @@ namespace DrugSystem.ViewModels
             }
         }
 
-        public DoctorUC_VM()
-        {
-            Command = new NewItemCommand();
-            _doctorUC_M = new DoctorUC_M();
-            _selectedPatient = new Patient();
-            SelectedPatient = new Patient();
-            _patientCollectionView = CollectionViewSource.GetDefaultView(Patients);
-            _patientCollectionView.Filter = PatientListFilter;
-            SearchFontSize = 23;
-        }
-
         public double SearchFontSize { get; set; }
 
         ICollectionView _patientCollectionView;
@@ -60,6 +49,17 @@ namespace DrugSystem.ViewModels
                 _search = value;
                 PropRaised();
             }
+        }
+
+        public DoctorUC_VM()
+        {
+            Command = new NewItemCommand();
+            _doctorUC_M = new DoctorUC_M();
+            _selectedPatient = new Patient();
+            SelectedPatient = new Patient();
+            _patientCollectionView = CollectionViewSource.GetDefaultView(Patients);
+            _patientCollectionView.Filter = PatientListFilter;
+            SearchFontSize = 23;
         }
 
         private void PropRaised()

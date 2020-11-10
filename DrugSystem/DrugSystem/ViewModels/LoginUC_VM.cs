@@ -18,7 +18,7 @@ namespace DrugSystem.ViewModels
 
         public event PropertyChangedEventHandler PropertyChanged;
         public ICommand SignInCommand { get; set; }
-        string _mail;
+        private string _mail;
         public string Mail { get { return _mail; }
             set {
                 _mail = value;
@@ -29,7 +29,7 @@ namespace DrugSystem.ViewModels
                 }
             }
         }
-        string _password;
+        private string _password;
         public string Password { get { return _password; }
             set {
                 _password = value;
@@ -61,7 +61,6 @@ namespace DrugSystem.ViewModels
             try
             {
                 User currentUser = _loginUC_M.SignIn(mail, password);
-               // User currentUser = _loginUC_M.SignIn(Mail, Password);
                 if (currentUser != null)
                 {
                     if (currentUser is Doctor)
