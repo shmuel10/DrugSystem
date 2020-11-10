@@ -8,6 +8,7 @@ using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
+using System.Windows.Controls;
 using System.Windows.Input;
 using DrugSystem.Models;
 using DrugSystem.ViewModels;
@@ -36,9 +37,12 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
+            Object[] vs = parameter as Object[];
+            string userMail = vs[0] as string;
+            PasswordBox passwordBox = vs[1] as PasswordBox;          
             if(parameter != null)
             {
-                ((LoginUC_VM)CurrentVM).Login();
+                ((LoginUC_VM)CurrentVM).Login(userMail,passwordBox.Password);
             }            
         }
     }

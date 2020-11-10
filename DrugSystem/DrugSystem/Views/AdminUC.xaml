@@ -150,7 +150,7 @@
                           Foreground="{Binding ElementName=Shell_UC, Path=Foreground}" Grid.Row="1" IsReadOnly="True"
                               ColumnHeaderStyle="{StaticResource ForegAndBack}"
                               AutoGenerateColumns="False"
-                              SelectedItem="{Binding DoctorSelected, Mode=TwoWay}">
+                              SelectedItem="{Binding MedicineSelected, Mode=TwoWay}">
                         <DataGrid.Columns>
                             <DataGridTextColumn Header="קוד תרופה" Width="150" Binding="{Binding MedicineID}" />
                             <DataGridTextColumn Header="שם מסחרי" Width="150" Binding="{Binding CommercialName}" />

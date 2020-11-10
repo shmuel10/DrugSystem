@@ -25,8 +25,8 @@
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="20"/>
             </Grid.RowDefinitions>
-            <StackPanel Orientation="Vertical" Background="{Binding Background}">
-                <Menu  x:Name="AppMenu" Background="{Binding Background}" Foreground="{Binding Foreground}" DockPanel.Dock="Top" Style="{x:Null}" Height="20">
+            <DockPanel Background="{Binding Background}">
+                <Menu x:Name="AppMenu" Background="{Binding Background}" Foreground="{Binding Foreground}" DockPanel.Dock="Top" Style="{x:Null}" Height="20">
                     <MenuItem Header="עובדים" Style="{x:Null}" Background="{Binding Background}" Foreground="{Binding Foreground}">
                         <MenuItem Header="רופא חדש" Style="{x:Null}" Command="{Binding NewItemCommand}" CommandParameter="Doctor" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
                         <MenuItem Header="פקיד חדש" Style="{x:Null}" Command="{Binding NewItemCommand}" CommandParameter="Officer" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
@@ -42,35 +42,47 @@
                         <MenuItem Header="יציאה" Style="{x:Null}" Command="{Binding ExitCommand}" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
                     </MenuItem>
                 </Menu>
-                <ToolBarTray Background="{Binding Background}" x:Name="ToolBar" Height="50">
-                    <ToolBar Background="{Binding Background}" Foreground="{Binding Foreground}" Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False" >
-                        <Button Background="{Binding Background}" Foreground="{Binding Foreground}" ToolTip="Back" Command="{Binding StackCommand}" >
-                            <materialDesign:PackIcon Kind="ArrowForward" />
-                        </Button>
-                        <Separator />
-                        <Button Background="{Binding Background}" Foreground="{Binding Foreground}" Command="Cut" ToolTip="Cut" ToolBar.OverflowMode="AsNeeded">
-                            <materialDesign:PackIcon Kind="ContentCut" />
-                        </Button>
-                        <Button Background="{Binding Background}" Foreground="{Binding Foreground}" Command="Copy" ToolTip="Copy that stuff" ToolBar.OverflowMode="AsNeeded">
-                            <materialDesign:PackIcon Kind="ContentCopy" />
-                        </Button>
-                        <Separator />
-                        <Button Background="{Binding Background}" Foreground="{Binding Foreground}" Command="Paste" ToolTip="Paste some stuff" ToolBar.OverflowMode="AsNeeded">
-                            <materialDesign:PackIcon Kind="ContentPaste" />
-                        </Button>
-                        <Separator />
-                        <Label Background="{Binding Background}" Foreground="{Binding Foreground}" Content="Font size:" VerticalAlignment="Center" />
-                        <ComboBox x:Name="FontSizeComboBox" Background="{Binding Background}" Foreground="{Binding Foreground}">
-                            <ComboBoxItem Content="10" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
-                            <ComboBoxItem IsSelected="True" Content="12" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
-                            <ComboBoxItem Content="14" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
-                            <ComboBoxItem Content="16" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
-                        </ComboBox>
-                        <Separator />
-                        <ToggleButton IsChecked="{Binding DarkMode}" x:Name="ColorModeToggle" ToolTip="מצב חשוך"/>
-                    </ToolBar>
-                </ToolBarTray>
-            </StackPanel>
+                <DockPanel DockPanel.Dock="Bottom">
+                    <ToolBarTray Background="{Binding Background}" x:Name="ToolBar" Height="50" DockPanel.Dock="Left">
+                        <ToolBar Background="{Binding Background}" Foreground="{Binding Foreground}" Style="{DynamicResource MaterialDesignToolBar}" ClipToBounds="False">
+                            <Button Background="{Binding Background}" Foreground="{Binding Foreground}" ToolTip="Back" Command="{Binding StackCommand}" >
+                                <materialDesign:PackIcon Kind="ArrowForward" />
+                            </Button>
+                            <Separator />
+                            <Button Background="{Binding Background}" Foreground="{Binding Foreground}" Command="Cut" ToolTip="Cut" ToolBar.OverflowMode="AsNeeded">
+                                <materialDesign:PackIcon Kind="ContentCut" />
+                            </Button>
+                            <Button Background="{Binding Background}" Foreground="{Binding Foreground}" Command="Copy" ToolTip="Copy that stuff" ToolBar.OverflowMode="AsNeeded">
+                                <materialDesign:PackIcon Kind="ContentCopy" />
+                            </Button>
+                            <Separator />
+                            <Button Background="{Binding Background}" Foreground="{Binding Foreground}" Command="Paste" ToolTip="Paste some stuff" ToolBar.OverflowMode="AsNeeded">
+                                <materialDesign:PackIcon Kind="ContentPaste" />
+                            </Button>
+                            <Separator />
+                            <Label Background="{Binding Background}" Foreground="{Binding Foreground}" Content="Font size:" VerticalAlignment="Center" />
+                            <ComboBox x:Name="FontSizeComboBox" Background="{Binding Background}" Foreground="{Binding Foreground}">
+                                <ComboBoxItem Content="10" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
+                                <ComboBoxItem IsSelected="True" Content="12" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
+                                <ComboBoxItem Content="14" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
+                                <ComboBoxItem Content="16" Background="{Binding Background}" Foreground="{Binding Foreground}"/>
+                            </ComboBox>
+                            <Separator />
+                            <ToggleButton IsChecked="{Binding DarkMode}" x:Name="ColorModeToggle" ToolTip="מצב חשוך"/>
+                        </ToolBar>
+                    </ToolBarTray>
+                    <StackPanel Orientation="Vertical" DockPanel.Dock="Left" HorizontalAlignment="Right" VerticalAlignment="Stretch" Width="60">
+                        <Border HorizontalAlignment="Center" BorderBrush="LightGray" Height="40" Width="40" BorderThickness="1" CornerRadius="60">
+                            <Ellipse x:Name="MenuIcon" Visibility="Visible">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding CurrentUserImg}"/>
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Border>
+                        <TextBlock Text="{Binding CurrentUserName}" FontSize="10"/>
+                    </StackPanel>
+                </DockPanel>
+            </DockPanel>
 
             <Grid x:Name="ContentGrid" Grid.Row="1" Background="{Binding Background}">
                 <ContentControl x:Name="MainContentControl" Content="{Binding Path=CurrentElements.CurrentOnShell, Source={x:Static Application.Current}}" 
