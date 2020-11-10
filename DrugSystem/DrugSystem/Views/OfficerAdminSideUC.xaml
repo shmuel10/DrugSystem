@@ -49,7 +49,7 @@
                 <Button Height="10" Width="30" ToolTip="בחר תמונה" Content="בחר תמונה" FontSize="5" Margin="5" Style="{x:Null}" 
                         Command="{Binding FileDialogCommand}" Background="Transparent" BorderBrush="Transparent"/>
 
-                <TextBox x:Name="IDTextBox" MaxLength="{StaticResource IDLength}" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="תעודת זהות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="IDTextBox" IsEnabled="False" MaxLength="{StaticResource IDLength}" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="תעודת זהות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="OfficerForUpdate.ID" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>

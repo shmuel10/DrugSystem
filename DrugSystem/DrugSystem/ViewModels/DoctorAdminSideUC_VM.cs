@@ -61,7 +61,7 @@ namespace DrugSystem.ViewModels
                 ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
     ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
             }

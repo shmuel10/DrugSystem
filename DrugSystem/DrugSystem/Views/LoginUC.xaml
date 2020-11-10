@@ -66,7 +66,7 @@
                         <KeyBinding Key="Return" Command="{Binding SignInCommand}" />
                     </TextBox.InputBindings>
                     <TextBox.Text>
-                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged" >
+                        <Binding Path="Password" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>
                                 <domain1:PasswordLogInValidation ValidationStep="ConvertedProposedValue" x:Name="PasswordValidation" ValidatesOnTargetUpdated="False" xmlns:domain1="clr-namespace:DrugSystem.Validation" />
                             </Binding.ValidationRules>

@@ -17,27 +17,13 @@ namespace DriveQuickstart
     {
         // If modifying these scopes, delete your previously saved credentials
         // at ~/.credentials/drive-dotnet-quickstart.json
-        static string[] Scopes = { DriveService.Scope.DriveReadonly };
+        static string[] Scopes = { DriveService.Scope.Drive };
         static string ApplicationName = "Drive API .NET Quickstart";
 
         static void Main(string[] args)
         {
             UserCredential credential;
-
-            using (var stream =
-                new FileStream(@"credentials.json", FileMode.Open, FileAccess.Read))
-            {
-                // The file token.json stores the user's access and refresh tokens, and is created
-                // automatically when the authorization flow completes for the first time.
-                string credPath = "token.json";
-                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
-                    GoogleClientSecrets.Load(stream).Secrets,
-                    Scopes,
-                    "user",
-                    CancellationToken.None,
-                    new FileDataStore(credPath, true)).Result;
-                Console.WriteLine("Credential file saved to: " + credPath);
-            }
+            credential = GetCredential();
 
             // Create Drive API service.
             var service = new DriveService(new BaseClientService.Initializer() {
@@ -45,10 +31,15 @@ namespace DriveQuickstart
                 ApplicationName = ApplicationName,
             });
 
-            // Define parameters of request.
-            FilesResource.ListRequest listRequest = service.Files.List();
-            listRequest.PageSize = 10;
-            listRequest.Fields = "nextPageToken, files(id, name)";
+
+            string path = @"C:\Users\User\source\repos\DrugSystem\DrugSystem\GoogleAPI\Icon\gg.jpg";
+            UploadImage(path, service);
+
+            //// Define parameters of request.
+            //FilesResource.ListRequest listRequest = service.Files.List();
+            //listRequest.PageSize = 10;
+            //listRequest.Fields = "nextPageToken, files(id, name)";
+            //FilesResource.CreateMediaUpload request;
 
             // List files.
             IList<Google.Apis.Drive.v3.Data.File> files = listRequest.Execute()
@@ -67,6 +58,42 @@ namespace DriveQuickstart
             }
             Console.Read();
 
+        }
+
+        private static void UploadImage(string path, DriveService service)
+        {
+            var fileMetaData = new Google.Apis.Drive.v3.Data.File();
+            fileMetaData.Name = Path.GetFileName(path);
+            fileMetaData.MimeType = "image/jpeg";
+            FilesResource.CreateMediaUpload request;
+            using (var stream = new System.IO.FileStream(path, System.IO.FileMode.Open))
+            {
+                request = service.Files.Create(fileMetaData, stream, "image/jpeg");
+                request.Fields = "id";
+                request.Upload();
+            }
+            var file = request.ResponseBody;
+            Console.WriteLine(file.Id);
+        }
+
+        private static UserCredential GetCredential()
+        {
+            UserCredential credential;
+            using (var stream =
+                    new FileStream(@"credentials.json", FileMode.Open, FileAccess.Read))
+            {
+                // The file token.json stores the user's access and refresh tokens, and is created
+                // automatically when the authorization flow completes for the first time.
+                string credPath = "token.json";
+                credential = GoogleWebAuthorizationBroker.AuthorizeAsync(
+                    GoogleClientSecrets.Load(stream).Secrets,
+                    Scopes,
+                    "user",
+                    CancellationToken.None,
+                    new FileDataStore(credPath, true)).Result;
+             //   Console.WriteLine("Credential file saved to: " + credPath);
+            }
+            return credential;
         }
     }
 }

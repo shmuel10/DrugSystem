@@ -56,6 +56,7 @@ namespace DrugSystem.ViewModels
         public string Specialty { get { return newDoctor.Specialty; } set { newDoctor.Specialty = value; _flag = true; } }
         
         Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        
         void Validate()
         {
             validationErrors.Clear();
@@ -120,6 +121,7 @@ namespace DrugSystem.ViewModels
                 return null;
             }
         }
+
 
         public string this[string columnName] {
             get {
@@ -211,13 +213,29 @@ namespace DrugSystem.ViewModels
             {
                 _addNewDoctorUC_M.AddNewDoctor(newDoctor);
                 ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
-    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
+                    ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
             }
             catch (Exception ex)
             {
-                ErrorMessage = ex.Message;
+                if(ex.Message.Equals("מספר זהות כבר שמור במערכת"))
+                {
+                    validationErrors.Add("ID", ex.Message);
+                    PropertyChanged(this, new PropertyChangedEventArgs(null));
+                    validationErrors.Remove("ID");
+                    ErrorMessage = "ישנם שדות לא תקינים";
+                }
+                else if(ex.Message.Equals("כתובת המייל כבר שמורה במערכת"))
+                {
+                    validationErrors.Add("EmailAddress", ex.Message);
+                    PropertyChanged(this, new PropertyChangedEventArgs(null));
+                    validationErrors.Remove("EmailAddress");
+                    ErrorMessage = "ישנם שדות לא תקינים";
+                }
+                else
+                {
+                    ErrorMessage = ex.Message;
+                }              
             }
-        }
-       
+        }      
     }
 }

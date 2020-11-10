@@ -37,7 +37,7 @@
     <Viewbox Stretch="Fill">
         <ScrollViewer Margin="20 0 20 0" FlowDirection="RightToLeft" Height="150" Width="250">
             <StackPanel>
-                <TextBox x:Name="IDTextBox" MaxLength="{StaticResource IDLength}" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="תעודת זהות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
+                <TextBox x:Name="IDTextBox" IsEnabled="False" MaxLength="{StaticResource IDLength}" materialDesign:ValidationAssist.Suppress="True" materialDesign:HintAssist.Hint="תעודת זהות"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5">
                     <TextBox.Text>
                         <Binding Path="PatientForUpdate.ID" UpdateSourceTrigger="PropertyChanged">
                             <Binding.ValidationRules>

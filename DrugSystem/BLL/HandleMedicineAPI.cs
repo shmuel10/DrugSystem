@@ -23,6 +23,7 @@ namespace BLL
             string p = localPath + @"\BLL\xmlFiles\mainxml.xml";
             drugsNums.Load(p);
         }
+
         public List<string> GetInteractionMedicinesNames(string medicineName, string medicineID)
         {
             List<string> interactionMedicinesNames = new List<string>();
