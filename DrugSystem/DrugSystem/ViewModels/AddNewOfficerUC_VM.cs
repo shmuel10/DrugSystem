@@ -18,6 +18,10 @@ namespace DrugSystem.ViewModels
         public ICommand CreateNewOfficerCommand { get; set; }
         public ICommand FileDialogCommand { get; set; }
         public List<Gender> Gender { get; set; }
+        public DateTime StartDate { get { return DateTime.Now.AddYears(-70); } set { } }
+        public DateTime EndDate { get { return DateTime.Now.AddYears(-17); } set { } }
+
+
         string _imgSrc;
         public string ImageSrc {
             get { return _imgSrc; }

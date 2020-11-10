@@ -7,6 +7,16 @@
              xmlns:local="clr-namespace:DrugSystem.Views"
              mc:Ignorable="d" 
             FlowDirection="RightToLeft">
+    <UserControl.Resources>
+        <ControlTemplate x:Key="validationTemplate">
+            <Grid>
+                <materialDesign:PackIcon  Foreground="Red" Kind="AlertCircleOutline" Width="10" Height="10"
+                 HorizontalAlignment="Right"
+                 ToolTip="{Binding Path=/ErrorContent}" />
+                <AdornedElementPlaceholder />
+            </Grid>
+        </ControlTemplate>
+    </UserControl.Resources>
     <Viewbox>
         <StackPanel>
             <Border BorderBrush="LightGray" Height="{StaticResource ImageProfileHeigt}" Width="{StaticResource ImageProfileWidth}" BorderThickness="1" Margin="0 10 0 0" CornerRadius="60">
@@ -19,9 +29,19 @@
             <Button Height="10" Width="30" ToolTip="בחר תמונה" Content="בחר תמונה" FontSize="5" Margin="5" Style="{x:Null}" 
                         Command="{Binding FileDialogCommand}" Background="Transparent" BorderBrush="Transparent"/>
             <TextBox x:Name="CommercialName" IsEnabled="False" Width="150" Text="{Binding Path=MedicineForUpdate.CommercialName}" materialDesign:HintAssist.Hint="שם מסחרי" Margin="5 10" />
-            <TextBox x:Name="GenericName" Width="150" Text="{Binding Path=MedicineForUpdate.GenericName}" materialDesign:HintAssist.Hint="שם גנרי" Margin="5"/>
-            <TextBox x:Name="Manufacturer" Width="150" Text="{Binding Path=MedicineForUpdate.Manufacturer}" materialDesign:HintAssist.Hint="יצרן" Margin="5"/>
-            <TextBox x:Name="ActiveIngredient" Width="150" Text="{Binding Path=MedicineForUpdate.ActiveIngredient}" materialDesign:HintAssist.Hint="חומר פעיל" Margin="5"/>
+           
+            <TextBox x:Name="GenericName" materialDesign:HintAssist.Hint="שם גנרי" materialDesign:ValidationAssist.Suppress="True" Width="150" 
+                     Margin="5 10"  Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                     Text="{Binding Path=GenericName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBox x:Name="Manufacturer" materialDesign:HintAssist.Hint="יצרן" materialDesign:ValidationAssist.Suppress="True" Width="150" 
+                     Margin="5 10"  Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                     Text="{Binding Path=Manufacturer, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+
+            <TextBox x:Name="ActiveIngredients" materialDesign:HintAssist.Hint="חומר פעיל" materialDesign:ValidationAssist.Suppress="True" Width="150" 
+                     Margin="5"  Validation.ErrorTemplate="{StaticResource validationTemplate}"
+                     Text="{Binding Path=ActiveIngredients, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
+             
             <TextBlock x:Name="MedicineCode" Width="150" IsEnabled="False" Text="{Binding Path=MedicineForUpdate.MedicineCode, Mode=TwoWay}" materialDesign:HintAssist.Hint="קוד תרופה" Margin="5"/>
             <Button Content="עדכן" FontSize="5" Height="15" Command="{Binding UpdateMedDetailes}" CommandParameter="{Binding ElementName=GenericName, Path=Text}" Width="60"  Margin="10 10 10 20"/>
             <TextBlock x:Name="ErrorMessage" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"

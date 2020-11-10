@@ -27,7 +27,7 @@ namespace DrugSystem.Command
 
         public void Execute(object parameter)
         {
-            ((DoctorAdminSideUC_VM)CurrentVM).UpdateDoctor();
+            ((DoctorAdminSideUC_VM)CurrentVM).Save();
         }
     }
 }

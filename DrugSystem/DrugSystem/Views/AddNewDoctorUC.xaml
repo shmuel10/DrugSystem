@@ -85,7 +85,9 @@
                          FontSize="{StaticResource FontSize}" Width="120"  Margin="5" Validation.ErrorTemplate="{StaticResource validationTemplate}"
                          Text="{Binding Path=EmailAddress, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
-                <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=newDoctor.BirthDate, Mode=OneWayToSource}"  DisplayDate="{x:Static system1:DateTime.Now}" materialDesign:HintAssist.Hint="תאריך לידה" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}"/>
+                <DatePicker x:Name="BirthDayTextBox" Validation.ErrorTemplate="{x:Null}" SelectedDate="{Binding Path=newDoctor.BirthDate, Mode=OneWayToSource}"
+                            DisplayDate="{Binding EndDate, Mode=OneTime}" DisplayDateStart="{Binding StartDate, Mode=OneTime}" DisplayDateEnd="{Binding EndDate, Mode=OneTime}"
+                            materialDesign:HintAssist.Hint="תאריך לידה" Width="120" Height="20" FontSize="10" Padding="2 2 2 2" Margin="5" Style="{StaticResource datePickerGeneralStyle}"/>
 
                 <ComboBox x:Name="GenderTextBox" Style="{x:Null}" ItemsSource="{Binding Path=Gender}" SelectedItem="{Binding Path=newDoctor.Gender}" materialDesign:HintAssist.Hint="מין"  FontSize="{StaticResource FontSize}" Width="120"  Margin="5"/>
 

@@ -20,6 +20,7 @@ namespace DrugSystem.ViewModels
         public Patient newPatient { get; set; }
         public List<Gender> Gender { get; set; }
         Validations Validations;
+        public DateTime StartDate { get { return DateTime.Now.AddYears(-120); } set { } }
         public AddNewPatientUC_VM()
         {
             newPatient = new Patient();

@@ -25,7 +25,8 @@ namespace DrugSystem.ViewModels
         public ICommand CreateNewDoctorCommand { get; set; }
         public ICommand FileDialogCommand { get; set; }
         public List<Gender> Gender { get; set; }
-
+        public DateTime StartDate { get { return DateTime.Now.AddYears(-70); } }
+        public DateTime EndDate { get { return DateTime.Now.AddYears(-22); } set { } }
         string _imgSrc;
         public string ImageSrc {
             get { return _imgSrc; }
