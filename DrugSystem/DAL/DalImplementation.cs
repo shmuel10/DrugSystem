@@ -353,11 +353,11 @@ namespace DAL
                 throw new ArgumentException("לא ניתן להוסיף תרופה למערכת");
             }
         }
-        public string GetMedicineCodeByName(string genericName)
+        public string GetMedicineCodeByName(string commercialName)
         {
             try
             {
-                return DB.MedicinesTable.Where(MedName => MedName.GenericName.Equals(genericName))
+                return DB.MedicinesTable.Where(MedName => MedName.CommercialName.Equals(commercialName))
                     .Select(Med => Med.MedicineID).FirstOrDefault();
             }
             catch
@@ -422,18 +422,18 @@ namespace DAL
             }
             catch
             {
-                throw new ArgumentException("המערת לא יכולה לבצע את הפעלה כעת");
+                throw new ArgumentException("המערכת לא יכולה לבצע את הפעלה כעת");
             }
         }
         public List<string> GetAllMedicinesByName()
         {
             try
             {
-                return DB.MedicinesTable.Select(medicine => medicine.GenericName).ToList();
+                return DB.MedicinesTable.Select(medicine => medicine.CommercialName).ToList();
             }
             catch
             {
-                throw new ArgumentException("המערת לא יכולה לבצע את הפעלה כעת");
+                throw new ArgumentException("המערכת לא יכולה לבצע את הפעלה כעת");
             }
         }
         private bool IsMedicineStillTaken(DateTime prescriptionExpireDate)
