@@ -103,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DalImplementation.cs" />
+    <Compile Include="DataToLoadWhenDBIsEmpty.cs" />
     <Compile Include="DrugSystemContext.cs" />
     <Compile Include="IDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
