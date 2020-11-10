@@ -44,7 +44,7 @@
              
             <TextBlock x:Name="MedicineCode" Width="150" IsEnabled="False" Text="{Binding Path=MedicineForUpdate.MedicineCode, Mode=TwoWay}" materialDesign:HintAssist.Hint="קוד תרופה" Margin="5"/>
             <Button Content="עדכן" FontSize="5" Height="15" Command="{Binding UpdateMedDetailes}" CommandParameter="{Binding ElementName=GenericName, Path=Text}" Width="60"  Margin="10 10 10 20"/>
-            <TextBlock x:Name="ErrorMessage" FontSize="20" VerticalAlignment="Center" HorizontalAlignment="Center"
+            <TextBlock x:Name="ErrorMessage" FontSize="{StaticResource ErrorMsgFontSize}" VerticalAlignment="Center" HorizontalAlignment="Center"
                  TextWrapping="Wrap" Foreground="Red" Text="{Binding ErrorMessage, Mode=TwoWay}"/>
         </StackPanel>
     </Viewbox>

@@ -87,6 +87,7 @@
            
             <system1:Double x:Key="IconSize">20</system1:Double>
             <system1:Double x:Key="FontSize">20</system1:Double>
+            <system1:Double x:Key="ErrorMsgFontSize">6</system1:Double>
             <system1:Double x:Key="ImageProfileHeigt">60</system1:Double>
             <system1:Double x:Key="ImageProfileWidth">60</system1:Double>
             <system1:Int32 x:Key="IDLength">9</system1:Int32>

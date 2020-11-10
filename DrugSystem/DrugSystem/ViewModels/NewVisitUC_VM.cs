@@ -45,8 +45,7 @@ namespace DrugSystem.ViewModels
                 interactionList = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, SelectedMedName, SelectedMedicineCode);
                 if (interactionList != null)
                 {
-                    _interactionsMedicinesNames.Add("קיימת התנגשות עם");
-                    _interactionsMedicinesNames.Add("אקמול");
+                    _interactionsMedicinesNames.Add("קיימת התנגשות עם:\n");
                     foreach (string item in interactionList)
                     {
                         _interactionsMedicinesNames.Add(item);
