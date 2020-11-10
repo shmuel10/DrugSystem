@@ -60,7 +60,7 @@
                     </TextBox.Text>
                 </TextBox>
 
-                <TextBox x:Name="UserPassword" Padding="10,0" FontSize="20" Grid.Row="4" Grid.Column="1"  Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                <!--<TextBox x:Name="UserPassword" Padding="10,0" FontSize="20" Grid.Row="4" Grid.Column="1"  Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedTextBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
                  TextWrapping="Wrap" materialDesign:HintAssist.Hint="סיסמה" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" AutomationProperties.ItemType="Password" Foreground="#FFFDF8F8">
                     <TextBox.InputBindings>
                         <KeyBinding Key="Return" Command="{Binding SignInCommand}" />
@@ -72,7 +72,11 @@
                             </Binding.ValidationRules>
                         </Binding>
                     </TextBox.Text>
-                </TextBox>
+                </TextBox>-->
+
+                <PasswordBox x:Name="UserPassword" Padding="10,0" FontSize="20" Grid.Row="4" Grid.Column="1"  Margin="5" MaxLength="50" Style="{StaticResource MaterialDesignOutlinedPasswordFieldPasswordBox}" VerticalAlignment="Stretch" HorizontalAlignment="Stretch"
+                  materialDesign:HintAssist.Hint="סיסמה" materialDesign:ValidationAssist.Suppress="True" materialDesign:ValidationAssist.FontSize="10" AutomationProperties.ItemType="Password" Foreground="#FFFDF8F8"/>
+
                 <TextBlock x:Name="ErrorMessage" FontSize="20" Grid.Row="5" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center"
                  TextWrapping="Wrap" Foreground="#FFFDF8F8" Text="{Binding ErrorMessage, Mode=TwoWay}"/>
 
@@ -81,7 +85,7 @@
                     <Button.CommandParameter>
                         <MultiBinding Converter="{StaticResource MultyStringConverter}">
                             <Binding Path="Text" ElementName="UserEmail"/>
-                            <Binding Path="Text" ElementName="UserPassword"/>
+                            <Binding ElementName="UserPassword"/>
                         </MultiBinding>
                     </Button.CommandParameter>
                 </Button>

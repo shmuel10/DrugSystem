@@ -56,11 +56,12 @@ namespace DrugSystem.ViewModels
             SignInCommand = new SignInCommand(this);         
         }
 
-        public void Login()
+        public void Login(string mail, string password)
         {
             try
             {
-                User currentUser = _loginUC_M.SignIn(Mail, Password);
+                User currentUser = _loginUC_M.SignIn(mail, password);
+               // User currentUser = _loginUC_M.SignIn(Mail, Password);
                 if (currentUser != null)
                 {
                     if (currentUser is Doctor)
