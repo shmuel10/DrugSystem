@@ -58,7 +58,6 @@ namespace DrugSystem.ViewModels
             get { return _errorMessage; }
             set {
                 _errorMessage = value;
-
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
             }
         }
@@ -110,17 +109,17 @@ namespace DrugSystem.ViewModels
                     string errorMessage = string.Empty;
                     switch (columnName)
                     {
-                        case "GenericName":
-                            if (string.IsNullOrWhiteSpace(GenericName))
-                            {
-                                errorMessage = "יש להזין שם גנרי";
-                            }
-                            break;
                         case "CommercialName":
                             if (string.IsNullOrWhiteSpace(CommercialName))
                                 errorMessage = "יש להזין שם מסחרי";
                             else if (!MedicineExistInXML(CommercialName))
                                 errorMessage = "שם זה אינו קביל במערכת";
+                            break;
+                        case "GenericName":
+                            if (string.IsNullOrWhiteSpace(GenericName))
+                            {
+                                errorMessage = "יש להזין שם גנרי";
+                            }
                             break;
                         case "ActiveIngredients":
                             if (string.IsNullOrWhiteSpace(ActiveIngredients))

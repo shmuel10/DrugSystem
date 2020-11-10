@@ -52,7 +52,7 @@ namespace BLL
         Medicine GetMedicine(string MedicineCode);
         List<Medicine> GetAllMedicines();
         List<string> GetAllMedicinesByName();
-        string GetMedicineCodeByName(string genericName);
+        string GetMedicineCodeByName(string commercialName);
         List<string> GetPatientsCurrentMedicines(string PatientID);
         List<string> GetPatientsCurrentMedicinesNames(string PatientID);
         string GetMedicineCodeIfExistInXML(string medicineName);
