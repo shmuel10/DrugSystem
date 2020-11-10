@@ -201,7 +201,7 @@ namespace DrugSystem.ViewModels
             CreateNewDoctorCommand = new CreateNewDoctorCommand(this);
             FileDialogCommand = new OpenFileDialogCommand(this);
             newDoctor = new Doctor();
-            ImageSrc = @"/Icons/UserIcon.jpg";
+            ImageSrc = @"Images/UsersPicture/UserIcon.jpg";
             Validations = new Validations();
             _flag = false;
         }

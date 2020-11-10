@@ -29,7 +29,7 @@ namespace DrugSystem.ViewModels
             CreateNewMedicineCommand = new CreateNewMedicineCommand(this);
             FileDialogCommand = new OpenFileDialogCommand(this);
             newMedicine = new Medicine();
-            ImageSrc = @"/Icons/DefaultMedPicture.jpg";
+            ImageSrc = @"Images/MedsPicture/DefaultMedPicture.jpg";
         }
 
         public void CreateNewMedicine()

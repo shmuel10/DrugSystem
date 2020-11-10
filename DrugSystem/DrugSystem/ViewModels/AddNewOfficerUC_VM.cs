@@ -38,7 +38,7 @@ namespace DrugSystem.ViewModels
             FileDialogCommand = new OpenFileDialogCommand(this);
             Gender = _addNewOfficerUC_M.Gender;
             newOfficer = new Officer();
-            ImageSrc = @"/Icons/UserIcon.jpg";
+            ImageSrc = @"Images/UsersPicture/UserIcon.jpg";
             Validations = new Validations();
             _flag = false;
         }
@@ -47,7 +47,6 @@ namespace DrugSystem.ViewModels
             get { return _errorMessage; }
             set {
                 _errorMessage = value;
-
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
             }
         }

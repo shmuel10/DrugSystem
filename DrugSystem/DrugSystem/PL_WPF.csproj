@@ -442,10 +442,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\UserIcon.jpg" />
+    <Resource Include="Images\UsersPicture\UserIcon.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <Resource Include="Icons\DefaultMedPicture.jpg" />
+    <Resource Include="Images\MedsPicture\DefaultMedPicture.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Icons\med.jpg" />

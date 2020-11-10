@@ -43,7 +43,7 @@ namespace DrugSystem.ViewModels
                 SelectedMedicineCode = _newVisitUC_M.GetMedicineCode(value);
                 _interactionsMedicinesNames.Clear();
                 interactionList = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, SelectedMedName, SelectedMedicineCode);
-                if (interactionList != null)
+                if (interactionList?.Count > 0)
                 {
                     _interactionsMedicinesNames.Add("קיימת התנגשות עם:\n");
                     foreach (string item in interactionList)
