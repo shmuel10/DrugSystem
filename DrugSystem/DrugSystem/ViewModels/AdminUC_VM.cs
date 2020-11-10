@@ -24,11 +24,10 @@ namespace DrugSystem.ViewModels
         public ObservableCollection<Patient> Patients { get; set; }
         public ObservableCollection<Medicine> Medicines { get; set; }
         public ObservableCollection<string> MedsName { get; set; }
-
-        Doctor _doctorSelected;
-        Patient _patientSelected;
-        Medicine _medicineSelected;
-        Officer _officerSelected;
+        private Doctor _doctorSelected;
+        private Patient _patientSelected;
+        private Medicine _medicineSelected;
+        private Officer _officerSelected;
         public Doctor DoctorSelected {
             get { return _doctorSelected; }
             set {
@@ -45,7 +44,6 @@ namespace DrugSystem.ViewModels
                 }
             }
         }
-
         public Patient PatientSelected {
             get { return _patientSelected; }
             set {
@@ -62,7 +60,6 @@ namespace DrugSystem.ViewModels
                 }
             }
         }
-
         public Medicine MedicineSelected {
             get { return _medicineSelected; }
             set {
@@ -79,7 +76,6 @@ namespace DrugSystem.ViewModels
                 }
             }
         }
-
         public Officer OfficerSelected {
             get { return _officerSelected; }
             set {
@@ -94,6 +90,29 @@ namespace DrugSystem.ViewModels
                         PropertyChanged(this, new PropertyChangedEventArgs("OfficerSelected"));
                     }
                 }
+            }
+        }
+        private string _medSelected;
+        public string MedSelected {
+            get { return _medSelected; }
+            set {
+                _medSelected = value;
+                Statistics = _adminUC_M.GetMedsUses(value);
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MedSelected"));
+            }
+        }
+        public Dictionary<string, int> B { get; set; }
+        public double SearchFontSize { get; set; }
+        ICollectionView _doctorsCollectionView;
+        ICollectionView _patientCollectionView;
+        ICollectionView _officersCollectionView;
+        ICollectionView _medsCollectionView;
+        private string _search;
+        public string Search {
+            get { return _search; }
+            set {
+                _search = value;
+                PropRaised();
             }
         }
         public AdminUC_VM()
@@ -126,39 +145,11 @@ namespace DrugSystem.ViewModels
         }
 
         public ObservableCollection<KeyValuePair<string, int>> _staristics;
-        public ObservableCollection<KeyValuePair<string,int>> Statistics { get { return _staristics; }
+        public ObservableCollection<KeyValuePair<string, int>> Statistics {
+            get { return _staristics; }
             set {
                 _staristics = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Statistics"));
-            }
-        }
-
-        string _medSelected;
-        public string MedSelected { get { return _medSelected; }
-            set {
-                _medSelected = value;
-                Statistics = _adminUC_M.GetMedsUses(value);
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("MedSelected"));
-            }
-        }
-
-
-
-        public Dictionary<string, int> B { get; set; }
-     
-        public double SearchFontSize { get; set; }
-
-        ICollectionView _doctorsCollectionView;
-        ICollectionView _patientCollectionView;
-        ICollectionView _officersCollectionView;
-        ICollectionView _medsCollectionView;
-
-        string _search;
-        public string Search {
-            get { return _search; }
-            set {
-                _search = value;
-                PropRaised();
             }
         }
 

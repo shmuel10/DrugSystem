@@ -13,14 +13,36 @@ namespace DrugSystem.ViewModels
         AddNewMedicineUC_M _addNewMedicineWindow_M { get; set; }
         public Medicine newMedicine { get; set; }
         public ICommand CreateNewMedicineCommand { get; set; }
-        public ICommand FileDialogCommand { get; set; }
-
-        string _imgSrc;
+        public ICommand FileDialogCommand { get; set; }     
+        bool _flag;
+        public string GenericName { get { return newMedicine.GenericName; } set { newMedicine.GenericName = value; _flag = true; } }
+        public string CommercialName { get { return newMedicine.CommercialName; } set { newMedicine.CommercialName = value; _flag = true; } }
+        public string ActiveIngredients { get { return newMedicine.ActiveIngredients; } set { newMedicine.ActiveIngredients = value; _flag = true; } }
+        public string Manufacturer { get { return newMedicine.Manufacturer; } set { newMedicine.Manufacturer = value; _flag = true; } }
+        public event PropertyChangedEventHandler PropertyChanged;
+        Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        private string _imgSrc = string.Empty;
         public string ImageSrc {
             get { return _imgSrc; }
             set {
                 _imgSrc = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
+            }
+        }
+        public string MedicineCode {
+            get { return newMedicine.MedicineID; }
+            set {
+                newMedicine.MedicineID = value;
+                PropertyChanged(this, new PropertyChangedEventArgs("MedicineCode"));
+            }
+        }
+
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
             }
         }
         public AddNewMedicineUC_VM()
@@ -45,29 +67,7 @@ namespace DrugSystem.ViewModels
                 ErrorMessage = ex.Message;
             }
         }
-        public string MedicineCode {
-            get { return newMedicine.MedicineID; }
-            set {
-                newMedicine.MedicineID = value;
-                PropertyChanged(this, new PropertyChangedEventArgs("MedicineCode"));
-            }
-        }
 
-        private string _errorMessage = string.Empty;
-        public string ErrorMessage {
-            get { return _errorMessage; }
-            set {
-                _errorMessage = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
-            }
-        }
-        bool _flag;
-        public string GenericName { get { return newMedicine.GenericName; } set { newMedicine.GenericName = value; _flag = true; } }
-        public string CommercialName { get { return newMedicine.CommercialName; } set { newMedicine.CommercialName = value; _flag = true; } }
-        public string ActiveIngredients { get { return newMedicine.ActiveIngredients; } set { newMedicine.ActiveIngredients = value; _flag = true; } }
-        public string Manufacturer { get { return newMedicine.Manufacturer; } set { newMedicine.Manufacturer = value; _flag = true; } }
-
-        Dictionary<string, string> validationErrors = new Dictionary<string, string>();
         void Validate()
         {
             validationErrors.Clear();
@@ -157,6 +157,5 @@ namespace DrugSystem.ViewModels
             MedicineCode = _addNewMedicineWindow_M.GetMedicineCode(MedicinesName);
             return MedicineCode != null;
         }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

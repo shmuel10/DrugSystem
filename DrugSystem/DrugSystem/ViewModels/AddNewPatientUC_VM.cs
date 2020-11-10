@@ -21,26 +21,7 @@ namespace DrugSystem.ViewModels
         public List<Gender> Gender { get; set; }
         Validations Validations;
         public DateTime StartDate { get { return DateTime.Now.AddYears(-120); } set { } }
-        public AddNewPatientUC_VM()
-        {
-            newPatient = new Patient();
-            _addNewPatientUC_M = new AddNewPatientUC_M();
-            CreateNewPatientCommand = new CreateNewPatientCommand(this);
-            Gender = _addNewPatientUC_M.Gender;
-            Validations = new Validations();
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private string _errorMessage = string.Empty;
-        public string ErrorMessage {
-            get { return _errorMessage; }
-            set {
-                _errorMessage = value;
-
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
-            }
-        }
-        bool _flag;
+        private bool _flag;
         public string ID { get { return newPatient.ID; } set { newPatient.ID = value; _flag = true; } }
         public string FirstName { get { return newPatient.FirstName; } set { newPatient.FirstName = value; _flag = true; } }
         public string LastName { get { return newPatient.LastName; } set { newPatient.LastName = value; _flag = true; } }
@@ -53,7 +34,26 @@ namespace DrugSystem.ViewModels
         public string FamilyDoctor { get { return newPatient.FamilyDoctor; } set { newPatient.FamilyDoctor = value; _flag = true; } }
         public double Weight { get { return newPatient.Weight; } set { newPatient.Weight = value; _flag = true; } }
 
-        Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        private Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        public event PropertyChangedEventHandler PropertyChanged;
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
+        public AddNewPatientUC_VM()
+        {
+            newPatient = new Patient();
+            _addNewPatientUC_M = new AddNewPatientUC_M();
+            CreateNewPatientCommand = new CreateNewPatientCommand(this);
+            Gender = _addNewPatientUC_M.Gender;
+            Validations = new Validations();
+        }    
+        
         void Validate()
         {
             validationErrors.Clear();

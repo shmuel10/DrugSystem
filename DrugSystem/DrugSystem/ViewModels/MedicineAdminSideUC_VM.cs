@@ -22,6 +22,7 @@ namespace DrugSystem.ViewModels
         public List<Gender> Gender { get; set; }
         public Medicine MedicineForUpdate { get; set; }
         BitmapImage _imageSrc;
+        public event PropertyChangedEventHandler PropertyChanged;
         public BitmapImage ImageSrc {
             get { return _imageSrc; }
             set {
@@ -29,7 +30,21 @@ namespace DrugSystem.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
             }
         }
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
 
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
+        private bool _flag;
+        public string GenericName { get { return MedicineForUpdate.GenericName; } set { MedicineForUpdate.GenericName = value; _flag = true; } }
+        public string ActiveIngredients { get { return MedicineForUpdate.ActiveIngredients; } set { MedicineForUpdate.ActiveIngredients = value; _flag = true; } }
+        public string Manufacturer { get { return MedicineForUpdate.Manufacturer; } set { MedicineForUpdate.Manufacturer = value; _flag = true; } }
+
+        private Dictionary<string, string> validationErrors = new Dictionary<string, string>();
         public MedicineAdminSideUC_VM()
         {
             _medicineAdminSide_M = new MedicineAdminSide_M();
@@ -46,22 +61,8 @@ namespace DrugSystem.ViewModels
             UpdateMedDetailes = new UpdateMedicineCommand(this);
             FileDialogCommand = new OpenFileDialogCommand(this);
         }
-        private string _errorMessage = string.Empty;
-        public string ErrorMessage {
-            get { return _errorMessage; }
-            set {
-                _errorMessage = value;
-
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
-            }
-        }
-        bool _flag;
-        public string GenericName { get { return MedicineForUpdate.GenericName; } set { MedicineForUpdate.GenericName = value; _flag = true; } }
-        public string ActiveIngredients { get { return MedicineForUpdate.ActiveIngredients; } set { MedicineForUpdate.ActiveIngredients = value; _flag = true; } }
-        public string Manufacturer { get { return MedicineForUpdate.Manufacturer; } set { MedicineForUpdate.Manufacturer = value; _flag = true; } }
-
-        Dictionary<string, string> validationErrors = new Dictionary<string, string>();
-        void Validate()
+       
+        private void Validate()
         {
             validationErrors.Clear();
             if (string.IsNullOrWhiteSpace(GenericName))
@@ -146,6 +147,5 @@ namespace DrugSystem.ViewModels
                 ErrorMessage = ex.Message;
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

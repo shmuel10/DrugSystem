@@ -27,7 +27,23 @@ namespace DrugSystem.ViewModels
         public List<Gender> Gender { get; set; }
         public DateTime StartDate { get { return DateTime.Now.AddYears(-70); } }
         public DateTime EndDate { get { return DateTime.Now.AddYears(-22); } set { } }
-        string _imgSrc;
+        public string ID { get { return newDoctor.ID; } set { newDoctor.ID = value; _flag = true; } }
+        public string FirstName { get { return newDoctor.FirstName; } set { newDoctor.FirstName = value; _flag = true; } }
+        public string LastName { get { return newDoctor.LastName; } set { newDoctor.LastName = value; _flag = true; } }
+        public string Password { get { return newDoctor.Password; } set { newDoctor.Password = value; _flag = true; } }
+        public string PhoneNumber { get { return newDoctor.PhoneNumber; } set { newDoctor.PhoneNumber = value; _flag = true; } }
+        public string EmailAddress { get { return newDoctor.EmailAddress; } set { newDoctor.EmailAddress = value; _flag = true; } }
+        public string LicenceNumber { get { return newDoctor.LicenceNumber; } set { newDoctor.LicenceNumber = value; _flag = true; } }
+        public string City { get { return newDoctor.City; } set { newDoctor.City = value; _flag = true; } }
+        public string Street { get { return newDoctor.Street; } set { newDoctor.Street = value; _flag = true; } }
+        public string BuildingNumber { get { return newDoctor.BuildingNumber; } set { newDoctor.BuildingNumber = value; _flag = true; } }
+        public string Specialty { get { return newDoctor.Specialty; } set { newDoctor.Specialty = value; _flag = true; } }
+
+        Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        Validations Validations;
+        public event PropertyChangedEventHandler PropertyChanged;
+        bool _flag;
+        private string _imgSrc = string.Empty;
         public string ImageSrc {
             get { return _imgSrc; }
             set {
@@ -43,20 +59,17 @@ namespace DrugSystem.ViewModels
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
             }
         }
-        bool _flag;
-        public string ID { get { return newDoctor.ID; } set { newDoctor.ID = value; _flag = true; } }
-        public string FirstName { get { return newDoctor.FirstName; } set { newDoctor.FirstName = value; _flag = true; } }
-        public string LastName { get { return newDoctor.LastName; } set { newDoctor.LastName = value; _flag = true; } }
-        public string Password { get { return newDoctor.Password; } set { newDoctor.Password = value; _flag = true; } }
-        public string PhoneNumber { get { return newDoctor.PhoneNumber; } set { newDoctor.PhoneNumber = value; _flag = true; } }
-        public string EmailAddress { get { return newDoctor.EmailAddress; } set { newDoctor.EmailAddress = value; _flag = true; } }
-        public string LicenceNumber { get { return newDoctor.LicenceNumber; } set { newDoctor.LicenceNumber = value; _flag = true; } }
-        public string City { get { return newDoctor.City; } set { newDoctor.City = value; _flag = true; } }
-        public string Street { get { return newDoctor.Street; } set { newDoctor.Street = value; _flag = true; } }
-        public string BuildingNumber { get { return newDoctor.BuildingNumber; } set { newDoctor.BuildingNumber = value; _flag = true; } }
-        public string Specialty { get { return newDoctor.Specialty; } set { newDoctor.Specialty = value; _flag = true; } }
-        
-        Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        public AddNewDoctorUC_VM()
+        {
+            _addNewDoctorUC_M = new AddNewDoctorUC_M();
+            Gender = _addNewDoctorUC_M.Gender;
+            CreateNewDoctorCommand = new CreateNewDoctorCommand(this);
+            FileDialogCommand = new OpenFileDialogCommand(this);
+            newDoctor = new Doctor();
+            ImageSrc = @"/Icons/UserIcon.jpg";
+            Validations = new Validations();
+            _flag = false;
+        }
         
         void Validate()
         {
@@ -122,7 +135,6 @@ namespace DrugSystem.ViewModels
                 return null;
             }
         }
-
 
         public string this[string columnName] {
             get {
@@ -193,22 +205,7 @@ namespace DrugSystem.ViewModels
             }
         }
 
-        Validations Validations;
-        public AddNewDoctorUC_VM()
-        {
-            _addNewDoctorUC_M = new AddNewDoctorUC_M();
-            Gender = _addNewDoctorUC_M.Gender;
-            CreateNewDoctorCommand = new CreateNewDoctorCommand(this);
-            FileDialogCommand = new OpenFileDialogCommand(this);
-            newDoctor = new Doctor();
-            ImageSrc = @"Images/UsersPicture/UserIcon.jpg";
-            Validations = new Validations();
-            _flag = false;
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-
-        public void CreateNewDoctor()
+       public void CreateNewDoctor()
         {
             try
             {

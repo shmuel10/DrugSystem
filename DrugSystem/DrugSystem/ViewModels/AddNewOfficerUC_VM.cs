@@ -20,37 +20,6 @@ namespace DrugSystem.ViewModels
         public List<Gender> Gender { get; set; }
         public DateTime StartDate { get { return DateTime.Now.AddYears(-70); } set { } }
         public DateTime EndDate { get { return DateTime.Now.AddYears(-17); } set { } }
-
-
-        string _imgSrc;
-        public string ImageSrc {
-            get { return _imgSrc; }
-            set {
-                _imgSrc = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
-            }
-        }
-        Validations Validations;
-        public AddNewOfficerUC_VM()
-        {
-            _addNewOfficerUC_M = new AddNewOfficerUC_M();
-            CreateNewOfficerCommand = new CreateNewOfficerCommand(this);
-            FileDialogCommand = new OpenFileDialogCommand(this);
-            Gender = _addNewOfficerUC_M.Gender;
-            newOfficer = new Officer();
-            ImageSrc = @"Images/UsersPicture/UserIcon.jpg";
-            Validations = new Validations();
-            _flag = false;
-        }
-        private string _errorMessage = string.Empty;
-        public string ErrorMessage {
-            get { return _errorMessage; }
-            set {
-                _errorMessage = value;
-                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
-            }
-        }
-        bool _flag;
         public string ID { get { return newOfficer.ID; } set { newOfficer.ID = value; _flag = true; } }
         public string FirstName { get { return newOfficer.FirstName; } set { newOfficer.FirstName = value; _flag = true; } }
         public string LastName { get { return newOfficer.LastName; } set { newOfficer.LastName = value; _flag = true; } }
@@ -62,6 +31,37 @@ namespace DrugSystem.ViewModels
         public string BuildingNumber { get { return newOfficer.BuildingNumber; } set { newOfficer.BuildingNumber = value; _flag = true; } }
 
         Dictionary<string, string> validationErrors = new Dictionary<string, string>();
+        private bool _flag;
+        private Validations Validations;
+        private string _imgSrc = string.Empty;
+        public string ImageSrc {
+            get { return _imgSrc; }
+            set {
+                _imgSrc = value;
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ImageSrc"));
+            }
+        }
+        private string _errorMessage = string.Empty;
+        public string ErrorMessage {
+            get { return _errorMessage; }
+            set {
+                _errorMessage = value;
+
+                PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("ErrorMessage"));
+            }
+        }
+        public AddNewOfficerUC_VM()
+        {
+            _addNewOfficerUC_M = new AddNewOfficerUC_M();
+            CreateNewOfficerCommand = new CreateNewOfficerCommand(this);
+            FileDialogCommand = new OpenFileDialogCommand(this);
+            Gender = _addNewOfficerUC_M.Gender;
+            newOfficer = new Officer();
+            ImageSrc = @"Images/UsersPicture/UserIcon.jpg";
+            Validations = new Validations();
+            _flag = false;
+        }
+        
         void Validate()
         {
             validationErrors.Clear();
