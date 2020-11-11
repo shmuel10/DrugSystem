@@ -261,8 +261,8 @@ namespace DAL
         private void AddMedicines()
         {
             Medicine med1 = new Medicine() {
-                CommercialName = "Promacta Oral Powder Product",
-                MedicineID = "1859500",
+                CommercialName = "Promacta",
+                MedicineID = "825422",
                 GenericName = "Promacta",
                 Manufacturer = "",
                 ActiveIngredients = ""
@@ -270,8 +270,8 @@ namespace DAL
             DB.MedicinesTable.Add(med1);
             DB.SaveChanges();
             Medicine med2 = new Medicine() {
-                CommercialName = "griseofulvin 125 MG Oral Tablet",
-                MedicineID = "242831",
+                CommercialName = "griseofulvin",
+                MedicineID = "5021",
                 GenericName = "Griseofulvin",
                 Manufacturer = "",
                 ActiveIngredients = ""
@@ -288,8 +288,8 @@ namespace DAL
             DB.MedicinesTable.Add(med3);
             DB.SaveChanges();
             Medicine med4 = new Medicine() {
-                CommercialName = "imipramine hydrochloride 25 MG",
-                MedicineID = "835563",
+                CommercialName = "imipramine hydrochloride",
+                MedicineID = "150816",
                 GenericName = "Imipramine",
                 Manufacturer = "",
                 ActiveIngredients = ""
@@ -297,8 +297,8 @@ namespace DAL
             DB.MedicinesTable.Add(med4);
             DB.SaveChanges();
             Medicine med5 = new Medicine() {
-                CommercialName = "Stemphylium solani allergenic extract 20000 UNT/ML",
-                MedicineID = "968166",
+                CommercialName = "Stemphylium solani allergenic extract",
+                MedicineID = "867349",
                 GenericName = "Stemphylium",
                 Manufacturer = "",
                 ActiveIngredients = ""
@@ -306,8 +306,8 @@ namespace DAL
             DB.MedicinesTable.Add(med5);
             DB.SaveChanges();
             Medicine med6 = new Medicine() {
-                CommercialName = "rizatriptan Oral Tablet",
-                MedicineID = "373798",
+                CommercialName = "rizatriptan",
+                MedicineID = "88014",
                 GenericName = "Rizatriptan",
                 Manufacturer = "",
                 ActiveIngredients = ""
@@ -315,8 +315,8 @@ namespace DAL
             DB.MedicinesTable.Add(med6);
             DB.SaveChanges();
             Medicine med7 = new Medicine() {
-                CommercialName = "river birch pollen extract Injectable Solution",
-                MedicineID = "852150",
+                CommercialName = "river birch pollen extract",
+                MedicineID = "852148",
                 GenericName = "River birch",
                 Manufacturer = "",
                 ActiveIngredients = ""
@@ -324,8 +324,8 @@ namespace DAL
             DB.MedicinesTable.Add(med7);
             DB.SaveChanges();
             Medicine med8 = new Medicine() {
-                CommercialName = "phenelzine Pill",
-                MedicineID = "1156435",
+                CommercialName = "phenelzine",
+                MedicineID = "8123",
                 GenericName = "Phenelzine",
                 Manufacturer = "",
                 ActiveIngredients = ""
@@ -342,16 +342,16 @@ namespace DAL
             DB.MedicinesTable.Add(med9);
             DB.SaveChanges();
             Medicine med10 = new Medicine() {
-                CommercialName = "isocarboxazid 10 MG Oral Tablet [Marplan]",
-                MedicineID = "201708",
+                CommercialName = "isocarboxazid",
+                MedicineID = "6011",
                 GenericName = "Moclobemide",
                 Manufacturer = "",
                 ActiveIngredients = ""
             };
             Medicine med11 = new Medicine() {
-                CommercialName = "benzoic acid 9 MG / hyoscyamine sulfate 0.12 MG / methenamine 81.6 MG / methylene blue 10.8 MG / phenyl salicylate 36.2 MG[Prosed DS]",
-                MedicineID = "1245488",
-                GenericName = "Moclobemide",
+                CommercialName = "benzoic acid",
+                MedicineID = "18989",
+                GenericName = "Benzoic Acid",
                 Manufacturer = "",
                 ActiveIngredients = ""
             };
