@@ -215,7 +215,7 @@ namespace DrugSystem.ViewModels
                     validationErrors.Add("EmailAddress", ex.Message);
                     PropertyChanged(this, new PropertyChangedEventArgs(null));
                     validationErrors.Remove("EmailAddress");
-                    ErrorMessage = "ישנם שדות לא תקינים";
+                    ErrorMessage = "ישנן שדות לא תקינים";
                 }
                 else
                 {

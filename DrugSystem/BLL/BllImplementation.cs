@@ -54,7 +54,7 @@ namespace BLL
                 // validations.ValidateOfficer(officer);
                 if (officer.ProfileImagePath != null && officer.ProfileImageSrc != null)
                 {
-                    (File.Create(officer.ProfileImagePath)).Close();
+                    File.Create(officer.ProfileImagePath).Close();
                     File.Copy(officer.ProfileImageSrc, officer.ProfileImagePath, true);
                 }
                 dal.AddOfficer(officer);            
@@ -63,7 +63,7 @@ namespace BLL
         {
             if (officer.ProfileImagePath != null && officer.ProfileImageSrc != null)
             {
-                (File.Create(officer.ProfileImagePath)).Close();
+               File.Create(officer.ProfileImagePath).Close();
                 File.Copy(officer.ProfileImageSrc, officer.ProfileImagePath, true);
             }
             dal.UpdateOfficer(officer);
@@ -83,7 +83,7 @@ namespace BLL
                 //   validations.ValidateDoctor(doctor);
                 if (doctor.ProfileImagePath != null && doctor.ProfileImageSrc != null)
                 {
-                    (File.Create(doctor.ProfileImagePath)).Close();
+                    File.Create(doctor.ProfileImagePath).Close();
                     File.Copy(doctor.ProfileImageSrc, doctor.ProfileImagePath, true);
                 }
                 dal.AddDoctor(doctor);
@@ -92,7 +92,7 @@ namespace BLL
         {
             if (doctor.ProfileImagePath != null && doctor.ProfileImageSrc != null)
             {
-                (File.Create(doctor.ProfileImagePath)).Close();
+                File.Create(doctor.ProfileImagePath).Close();
                 File.Copy(doctor.ProfileImageSrc, doctor.ProfileImagePath, true);
             }
             dal.UpdateDoctor(doctor);

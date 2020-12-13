@@ -40,7 +40,9 @@ namespace DAL
                 LastName = "Zaguri",
                 Password = "Admin1234",
                 PhoneNumber = "0501234567",
-                Street = "Yehuda Halevi"
+                Street = "Yehuda Halevi",
+                ProfileImagePath = "../../Images/UsersPicture/111111111.JPG",
+                ProfileImageSrc = "../../../Desktop/ProfilePictures/111111111.JPG"
             };
             DB.PersonsTable.Add(defaultAdmin);
             DB.SaveChanges();
@@ -64,8 +66,8 @@ namespace DAL
                 PhoneNumber = "0528888888",
                 Street = "Alenby",
                 LicenceNumber = "174",
-                ProfileImagePath = "",
-                ProfileImageSrc = "",
+                ProfileImagePath = "../../Images/UsersPicture/222222222.JPG",
+                ProfileImageSrc = "../../../Desktop/ProfilePictures/222222222.JPG",
                 Specialty = "Ears"
             };
             DB.PersonsTable.Add(doctor1);
@@ -87,8 +89,8 @@ namespace DAL
                 PhoneNumber = "0528888888",
                 Street = "Jafo",
                 LicenceNumber = "973",
-                ProfileImagePath = "",
-                ProfileImageSrc = "",
+                ProfileImagePath = "../../Images/UsersPicture/333333333.JPG",
+                ProfileImageSrc = "../../../Desktop/ProfilePictures/333333333.JPG",
                 Specialty = "Eyes"
             };
             DB.PersonsTable.Add(doctor2);
@@ -110,8 +112,8 @@ namespace DAL
                 PhoneNumber = "0528888888",
                 Street = "Yehuda Halevi",
                 LicenceNumber = "64",
-                ProfileImagePath = "",
-                ProfileImageSrc = "",
+                ProfileImagePath = "../../Images/UsersPicture/444444444.JPG",
+                ProfileImageSrc = "../../../Desktop/ProfilePictures/444444444.JPG",
                 Specialty = "Heart"
             };
             DB.PersonsTable.Add(doctor3);
@@ -133,8 +135,8 @@ namespace DAL
                 PhoneNumber = "0528888888",
                 Street = "Vered",
                 LicenceNumber = "7381",
-                ProfileImagePath = "",
-                ProfileImageSrc = "",
+                ProfileImagePath = "../../Images/UsersPicture/555555555.JPG",
+                ProfileImageSrc = "../../../Desktop/ProfilePictures/555555555.JPG",
                 Specialty = "All"
             };
             DB.PersonsTable.Add(doctor4);
@@ -156,8 +158,8 @@ namespace DAL
                 PhoneNumber = "0528888888",
                 Street = "Katz",
                 LicenceNumber = "1411",
-                ProfileImagePath = "",
-                ProfileImageSrc = "",
+                ProfileImagePath = "../../Images/UsersPicture/666666666.JPG",
+                ProfileImageSrc = "../../../Desktop/ProfilePictures/666666666.JPG",
                 Specialty = "EKG"
             };
             DB.PersonsTable.Add(doctor5);
@@ -181,8 +183,8 @@ namespace DAL
                 Password = "Menashe12",
                 PhoneNumber = "0528888888",
                 Street = "Katz",
-                ProfileImagePath = "",
-                ProfileImageSrc = "",
+                ProfileImagePath = "../../Images/UsersPicture/222222222.JPG",
+                ProfileImageSrc = "../../../Desktop/ProfilePictures/222222222.JPG",
             };
             DB.PersonsTable.Add(officer1);
             DB.SaveChanges();
