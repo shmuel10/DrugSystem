@@ -4,7 +4,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"            
-             xmlns:local="clr-namespace:DrugSystem.Views"
+             xmlns:local="clr-namespace:DrugSystem.Views" xmlns:system1="clr-namespace:System;assembly=mscorlib"
              mc:Ignorable="d" 
             FlowDirection="RightToLeft">
     <UserControl.Resources>
@@ -16,6 +16,7 @@
                 <AdornedElementPlaceholder />
             </Grid>
         </ControlTemplate>
+        <system1:Double x:Key="TextBoxWidth">200</system1:Double>
     </UserControl.Resources>
     <Viewbox>
         <StackPanel>
@@ -28,17 +29,17 @@
             </Border>
             <Button Height="10" Width="30" ToolTip="בחר תמונה" Content="בחר תמונה" FontSize="5" Margin="5" Style="{x:Null}" 
                         Command="{Binding FileDialogCommand}" Background="Transparent" BorderBrush="Transparent"/>
-            <TextBox x:Name="CommercialName" IsEnabled="False" Width="150" Text="{Binding Path=MedicineForUpdate.CommercialName}" materialDesign:HintAssist.Hint="שם מסחרי" Margin="5 10" />
+            <TextBox x:Name="CommercialName" IsEnabled="False" Width="{StaticResource TextBoxWidth}" Text="{Binding Path=MedicineForUpdate.CommercialName}" materialDesign:HintAssist.Hint="שם מסחרי" Margin="5 10" />
            
-            <TextBox x:Name="GenericName" materialDesign:HintAssist.Hint="שם גנרי" materialDesign:ValidationAssist.Suppress="True" Width="150" 
+            <TextBox x:Name="GenericName" materialDesign:HintAssist.Hint="שם גנרי" materialDesign:ValidationAssist.Suppress="True" Width="{StaticResource TextBoxWidth}" 
                      Margin="5 10"  Validation.ErrorTemplate="{StaticResource validationTemplate}"
                      Text="{Binding Path=GenericName, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <TextBox x:Name="Manufacturer" materialDesign:HintAssist.Hint="יצרן" materialDesign:ValidationAssist.Suppress="True" Width="150" 
+            <TextBox x:Name="Manufacturer" materialDesign:HintAssist.Hint="יצרן" materialDesign:ValidationAssist.Suppress="True" Width="{StaticResource TextBoxWidth}" 
                      Margin="5 10"  Validation.ErrorTemplate="{StaticResource validationTemplate}"
                      Text="{Binding Path=Manufacturer, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
 
-            <TextBox x:Name="ActiveIngredients" materialDesign:HintAssist.Hint="חומר פעיל" materialDesign:ValidationAssist.Suppress="True" Width="150" 
+            <TextBox x:Name="ActiveIngredients" materialDesign:HintAssist.Hint="חומר פעיל" materialDesign:ValidationAssist.Suppress="True" Width="{StaticResource TextBoxWidth}" 
                      Margin="5"  Validation.ErrorTemplate="{StaticResource validationTemplate}"
                      Text="{Binding Path=ActiveIngredients, ValidatesOnDataErrors=True, UpdateSourceTrigger=PropertyChanged}"/>
              

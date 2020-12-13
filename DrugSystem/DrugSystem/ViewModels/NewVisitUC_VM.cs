@@ -36,27 +36,35 @@ namespace DrugSystem.ViewModels
             }
         }
         string _selectedMedName;
-        public string SelectedMedName { get { return _selectedMedName; } set { _selectedMedName = value;
+        public string SelectedMedName {
+            get { return _selectedMedName; }
+            set {
+                _selectedMedName = value;
                 _medicalCare = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("MedicalCare"));
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedName"));
                 SelectedMedicineCode = _newVisitUC_M.GetMedicineCode(value);
                 _interactionsMedicinesNames.Clear();
+
                 interactionList = _newVisitUC_M.BL.GetInteractionMedicines(CurrentPatient.ID, SelectedMedName, SelectedMedicineCode);
                 if (interactionList?.Count > 0)
                 {
-                    _interactionsMedicinesNames.Add("קיימת התנגשות עם:\n");
                     foreach (string item in interactionList)
                     {
                         _interactionsMedicinesNames.Add(item);
                     }
-                    IteractionMedicineVisibility = true;
-                    PropertyChanged(this, new PropertyChangedEventArgs("InteractionsMedicinesNames"));
+                    string meds = "";
+                    foreach (var item in _interactionsMedicinesNames)
+                    {
+                        meds += item + '\n';
+                    }
+                    MessageBox.Show("קיימת התנגשות עם:\n" + meds,"אזהרה", MessageBoxButton.OK,MessageBoxImage.Error);
                 }
             }
         }
         private string _selectedMedicinesCode;
-        public string SelectedMedicineCode { get { return _selectedMedicinesCode; }
+        public string SelectedMedicineCode {
+            get { return _selectedMedicinesCode; }
             set {
                 _selectedMedicinesCode = value;
                 PropertyChanged(this, new PropertyChangedEventArgs("SelectedMedicineCode"));
@@ -85,7 +93,7 @@ namespace DrugSystem.ViewModels
             {
                 CurrentPatient = ((App)Application.Current).CurrentElements.PatientSelected;
             }
-           
+
             _medsCollectionView = CollectionViewSource.GetDefaultView(Medicines);
             _medsCollectionView.Filter = ListsFilter;
 
@@ -93,7 +101,8 @@ namespace DrugSystem.ViewModels
         }
 
         bool _redBorder;
-        public bool IteractionMedicineVisibility { get { return _redBorder; }
+        public bool IteractionMedicineVisibility {
+            get { return _redBorder; }
             set {
                 _redBorder = value;
                 PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("IteractionMedicineVisibility"));
@@ -130,7 +139,7 @@ namespace DrugSystem.ViewModels
                 return ((item as string).IndexOf(Search, StringComparison.OrdinalIgnoreCase) >= 0);
             }
         }
-   
+
         public Patient CurrentPatient {
             get { return _currentPatient; }
             set {
@@ -182,7 +191,7 @@ namespace DrugSystem.ViewModels
                 ((App)System.Windows.Application.Current).CurrentElements.CurrentOnShell =
     ((App)System.Windows.Application.Current).CurrentElements.StackOnShell.Peek();
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ErrorMessage = ex.Message;
             }

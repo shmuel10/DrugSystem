@@ -19,7 +19,6 @@ namespace BLL
             string localPath = Path.GetDirectoryName(str);
             for (int i = 0; i < 3; i++)
                 localPath = Path.GetDirectoryName(localPath);
-
             string p = localPath + @"\BLL\xmlFiles\mainxml.xml";
             drugsNums.Load(p);
         }

@@ -239,7 +239,8 @@ namespace BLL
         public List<string> GetInteractionMedicines(string patientID, string medicineName, string medicineID)
         {
             List<string> abc = medicineApiHandler.GetInteractionMedicinesNames(medicineName, medicineID);
-            List<string> interaction = abc.Intersect(dal.GetPatientsCurrentMedicinesNames(patientID)).ToList();
+            List<string> abcd = dal.GetPatientsCurrentMedicinesNames(patientID);
+            List<string> interaction = abc.Intersect(abcd).ToList();
             return interaction;
         }
         public Medicine GetMedicine(string MedicineID)

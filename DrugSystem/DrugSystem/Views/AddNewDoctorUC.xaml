@@ -6,8 +6,10 @@
              xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
              xmlns:local="clr-namespace:DrugSystem.Views" 
              xmlns:system1="clr-namespace:System;assembly=mscorlib" 
-             xmlns:local1="clr-namespace:DrugSystem" xmlns:local11="clr-namespace:DrugSystem.Converters"
+             xmlns:local1="clr-namespace:DrugSystem" 
+             xmlns:local11="clr-namespace:DrugSystem.Converters"
              mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800"
              x:Name="AddNewDocUC">
 
     <UserControl.Resources>
@@ -15,39 +17,40 @@
         <local11:MultyStringToArrConverter x:Key="MultyStringConverter"/>
         <local11:MultyStringToArrConverter x:Key="InverseAndBooleansToBooleanConverter"/>
         <Style TargetType="{x:Type DatePicker}" x:Key="datePickerGeneralStyle" BasedOn="{StaticResource {x:Type DatePicker}}">
-            <Setter Property="TextElement.FontSize" Value="{StaticResource FontSize}" />
-            <Setter Property="VerticalAlignment" Value="Center" />
-            <Setter Property="VerticalContentAlignment" Value="Center" />
-            <Setter Property="DatePicker.CalendarStyle">
-                <Setter.Value>
-                    <Style TargetType="{x:Type Calendar}">
-                        <Setter Property="Template">
-                            <Setter.Value>
-                                <ControlTemplate TargetType="{x:Type Calendar}">
-                                    <Viewbox Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DatePicker}}}">
-                                        <CalendarItem x:Name="PART_CalendarItem"
+    <Setter Property="TextElement.FontSize" Value="{StaticResource FontSize}" />
+    <Setter Property="VerticalAlignment" Value="Center" />
+    <Setter Property="VerticalContentAlignment" Value="Center" />
+    <Setter Property="DatePicker.CalendarStyle">
+        <Setter.Value>
+            <Style TargetType="{x:Type Calendar}">
+                <Setter Property="Template">
+                    <Setter.Value>
+                        <ControlTemplate TargetType="{x:Type Calendar}">
+                            <Viewbox Width="{Binding ActualWidth, RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type DatePicker}}}">
+                                <CalendarItem x:Name="PART_CalendarItem"
                               Background="{TemplateBinding Background}"
                               BorderBrush="{TemplateBinding BorderBrush}"
                               BorderThickness="{TemplateBinding BorderThickness}"/>
-                                    </Viewbox>
-                                </ControlTemplate>
-                            </Setter.Value>
-                        </Setter>
-                    </Style>
-                </Setter.Value>
-            </Setter>
-        </Style>
-        <ControlTemplate x:Key="validationTemplate">
-            <Grid>
-                <materialDesign:PackIcon  Foreground="Red" Kind="AlertCircleOutline" Width="10" Height="10"
+                            </Viewbox>
+                        </ControlTemplate>
+                    </Setter.Value>
+                </Setter>
+            </Style>
+        </Setter.Value>
+    </Setter>
+    </Style>
+    <ControlTemplate x:Key="validationTemplate">
+        <Grid>
+            <materialDesign:PackIcon  Foreground="Red" Kind="AlertCircleOutline" Width="10" Height="10"
                  HorizontalAlignment="Right"
                  ToolTip="{Binding Path=/ErrorContent}" />
-                <AdornedElementPlaceholder />
-            </Grid>
-        </ControlTemplate>
+            <AdornedElementPlaceholder />
+        </Grid>
+    </ControlTemplate>
     </UserControl.Resources>
-    <Viewbox x:Name="NewDoctorViewBox">
-        <ScrollViewer Margin="20 0 20 0" FlowDirection="RightToLeft" Height="150" Width="250">
+    <Viewbox>
+    <Grid>
+        <ScrollViewer Margin="20 0 20 0" Style="{x:Null}" FlowDirection="RightToLeft" Height="150" Width="250">
             <StackPanel>
                 <Border BorderBrush="LightGray" Height="{StaticResource ImageProfileHeigt}" Width="{StaticResource ImageProfileWidth}" Margin="0 5 0 0" BorderThickness="1" CornerRadius="60">
                     <Ellipse x:Name="MenuIcon" Visibility="Visible">
@@ -122,5 +125,6 @@
                  TextWrapping="Wrap" Foreground="Red" Text="{Binding ErrorMessage, Mode=TwoWay}"/>
             </StackPanel>
         </ScrollViewer>
+    </Grid>
     </Viewbox>
 </UserControl>

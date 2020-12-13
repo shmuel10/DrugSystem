@@ -404,6 +404,7 @@ namespace DAL
                 throw new ArgumentException("המערכת לא יכולה לבצע את הפעלה כעת");
             }
         }
+
         public List<string> GetAllMedicinesByName()
         {
             try

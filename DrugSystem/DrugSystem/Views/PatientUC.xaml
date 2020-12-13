@@ -129,7 +129,7 @@
                                 </materialDesign:Card>
                                 <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.Column="1" Style="{StaticResource BackAndForegCard}">
                                     <GroupBox Style="{StaticResource HeaderFont}" Margin="5" FontWeight="UltraBlack" Header="תרופות קבועות">
-                                        <ListView Style="{StaticResource ListViewStyle}">
+                                        <ListView Style="{StaticResource ListViewStyle}" >
                                             <local:PdfViewerUC Height="0" Width="0" PdfPath="{Binding Pdf, Mode=TwoWay}"/>
                                         </ListView>
                                     </GroupBox>
@@ -138,7 +138,7 @@
                                     <GroupBox Style="{StaticResource HeaderFont}" Margin="5" FontWeight="UltraBlack" Header="מרשמים בתוקף">
                                         <DataGrid ItemsSource="{Binding Path=Prescriptions}" Style="{StaticResource DataGridStyle}"
                                                   SelectedItem="{Binding PresSelected, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"                                                  
-                                                  x:Name="PrescriptionsList" HorizontalAlignment="Stretch"
+                                                  x:Name="PrescriptionsList" HorizontalAlignment="Stretch" HorizontalScrollBarVisibility="Disabled"
                                                   VerticalAlignment="Stretch" ColumnHeaderStyle="{StaticResource ForegAndBack}">
                                             <DataGrid.Columns>
                                                 <DataGridTextColumn Header="ניתן בתאריך" Binding="{Binding StartDate}"/>
@@ -150,7 +150,7 @@
                         </StackPanel>
                         <materialDesign:Card Margin="5" UniformCornerRadius="20" Grid.ColumnSpan="3" Style="{StaticResource BackAndForegCard}">
                             <GroupBox Style="{StaticResource HeaderFont}" Margin="5" FontWeight="UltraBlack" Header="היסטוריית ביקורים" MinHeight="100">
-                                <DataGrid ColumnHeaderStyle="{StaticResource ForegAndBack}" Style="{StaticResource DataGridStyle}" 
+                                <DataGrid HorizontalScrollBarVisibility="Disabled" ColumnHeaderStyle="{StaticResource ForegAndBack}" Style="{StaticResource DataGridStyle}" 
                                           ItemsSource="{Binding Path=Visits}" x:Name="VisitsList" 
                                           SelectedItem="{Binding OldVisitSelected, Mode=TwoWay}"
                                           HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
